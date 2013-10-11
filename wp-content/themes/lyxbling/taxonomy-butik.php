@@ -1,6 +1,6 @@
 <?php
 /**
- * "Tävlingar" Taxonomy Archive Template
+ * "TÃ¤vlingar" Taxonomy Archive Template
  *
  * This template file is used when displaying an archive of posts in the
  * "butik" taxonomy.

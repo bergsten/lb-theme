@@ -71,9 +71,9 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
     remove_filter('the_excerpt', 'st_add_widget');
     the_excerpt(); 
-    //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
+    //do_shortcode( '[button color="pink"]LÃ¤s mer &raquo;[/button]' );
     ?>
-    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><? _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
+    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
