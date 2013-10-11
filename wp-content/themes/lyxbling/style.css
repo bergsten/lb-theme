@@ -1,0 +1,57 @@
+/*
+Theme Name:     Lyxbling
+Theme URI:      http://lyxbling.se
+Description:    Child theme for the Canvas theme from WooThemes
+Author:         Mats Bergsten
+Author URI:     http://mats.bergsten.net/en/
+Template:       canvas
+Version:        1.0.0
+*/
+
+@import url("../canvas/css/reset.css");
+@import url("../canvas/style.css");
+
+
+.widget ul {
+list-style-type: none !important;
+}
+
+/* Lyxbling buttons */
+a.button,
+a.comment-reply-link,
+#commentform #submit,
+.submit,
+input[type=submit],
+input.button,
+button.button,
+#wrapper .woo-sc-button {
+    float: right !important;
+}
+a.woo-sc-button {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(.2, #52a8e8), color-stop(1, #2e76cf) ) !important;
+    float: right !important;
+}
+
+
+/* LyxBling Pink buttons. */
+a.button.lb-pink,
+a.comment-reply-link.lb-pink,
+#commentform #submit.lb-pink,
+.submit.lb-pink,
+input[type=submit].lb-pink,
+input.button.lb-pink,
+button.button.lb-pink,
+#wrapper .woo-sc-button.lb-pink {
+    border-color: #d623cb !important;
+    background: #eccfd3 !important;
+}
+a.button.lb-pink:hover,
+a.comment-reply-link.lb-pink:hover,
+#commentform #submit.lb-pink:hover,
+.submit.lb-pink:hover,
+input[type=submit].lb-pink:hover,
+input.button.lb-pink:hover,
+button.button.lb-pink:hover,
+#wrapper .woo-sc-button.lb-pink:hover {
+    background: #ccafb3 !important;
+}
