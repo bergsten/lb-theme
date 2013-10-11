@@ -35,8 +35,14 @@ foreach($authors as $author) {
     $user_data = get_userdata( $author->ID );
 //pr($user_data);
     if( $user_data->allcaps['publish_posts'] && !$user_data->allcaps['administrator'] ) { ?>
-        <h2><a href="<?php echo( $user_data->data->user_url ); ?>"><?php echo( $user_data->data->display_name ); ?></a></h2>
-        <p><?php echo($user_data->user_description); ?></p>
+        <aside id="post-author">
+            <div class="profile-image"><?php echo(get_avatar($author->ID, $size = '80')); ?></div>
+            <div class="profile-content">
+                    <h4><a href="<?php echo( $user_data->data->user_url ); ?>"><?php echo( $user_data->data->display_name ); ?></a></h4>
+                    <p><?php echo($user_data->user_description); ?></p>
+            </div>
+            <div class="fix"></div>
+        </aside>
         <?php
     }
 }
