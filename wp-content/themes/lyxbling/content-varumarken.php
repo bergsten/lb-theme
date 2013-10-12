@@ -104,7 +104,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     the_excerpt(); 
     //do_shortcode( '[button color="pink"]L�s mer &raquo;[/button]' );
     ?>
-    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php_e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
+    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
