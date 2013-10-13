@@ -67,15 +67,9 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
-    ?>
-    <h2>Fakta</h2>
-    <?php
-    $varumarken_url = get_site_meta_url(get_the_ID());
+    echo(lb_get_post_meta_fakta(get_the_ID()));
     
-    echo('<p>URL: <a href="' . $varumarken_url["url"] . '" target="_blank">' . $varumarken_url["pretty_url"] . '</a></p>');
-    echo(get_site_meta_fakta(get_the_ID()));
-    
-    $rabattkoder = get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');
+    $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');
     if($rabattkoder->post_count > 0) {
         echo('<h2>Aktuella rabattkoder for ' . get_the_title() . '</h2>');
         foreach($rabattkoder->posts as $the_post) {
@@ -85,7 +79,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
         }
     }
     
-    $tavlingar = get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'tavlingar');
+    $tavlingar = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'tavlingar');
     if($tavlingar->post_count > 0) {
         echo('<h2>Aktuella tavlingar fran ' . get_the_title() . '</h2>');
         foreach($tavlingar->posts as $the_post) {

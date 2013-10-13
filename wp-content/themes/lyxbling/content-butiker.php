@@ -30,7 +30,7 @@ $title_before = '<h1 class="title tavlingar">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-    $title_before = '<h2 class="title tavlingar">';
+    $title_before = '<h2 class="title butiker">';
     $title_after = '</h2>';
     $article_url = esc_url( get_permalink( get_the_ID() ) );
     $article_link = '<a href="' . $article_url . '" rel="bookmark">';
@@ -68,15 +68,9 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
-    ?>
-    <h2>Fakta</h2>
-    <?php
-    $butiker_url = get_site_meta_url(get_the_ID());
+    echo(lb_get_post_meta_fakta(get_the_ID()));
     
-    echo('<p>URL: <a href="' . $butiker_url["url"] . '" target="_blank">' . $butiker_url["pretty_url"] . '</a></p>');
-    echo(get_site_meta_fakta(get_the_ID()));
-    
-    $rabattkoder = get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'rabattkoder');
+    $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'rabattkoder');
     if($rabattkoder->post_count > 0) {
         echo('<h2>Aktuella rabattkoder f&ouml;r ' . get_the_title() . '</h2>');
         foreach($rabattkoder->posts as $the_post) {
@@ -87,7 +81,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
         }
     }
     
-    $tavlingar = get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'tavlingar');
+    $tavlingar = lb_get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'tavlingar');
     if($tavlingar->post_count > 0) {
         echo('<h2>Aktuella t&auml;vlingar fr&aring;n ' . get_the_title() . '</h2>');
         foreach($tavlingar->posts as $the_post) {

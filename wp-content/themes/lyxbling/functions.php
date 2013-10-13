@@ -40,7 +40,7 @@ if ( ! function_exists( 'woo_author_box' ) ) {
     } // End woo_author_box()
 }
 
-function change_yoast_title($yoast_title) {
+function lb_change_yoast_title($yoast_title) {
     if ( function_exists( 'is_post_type_archive' ) && is_post_type_archive() ) {
         /* Get the post type object. */
         $post_type_object = get_post_type_object( get_query_var( 'post_type' ) );
@@ -156,7 +156,7 @@ function woo_archive_title ( $before = '', $after = '', $echo = true ) {
 
 } // End woo_archive_title()
 
-function get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=array()) {
+function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=array()) {
     $query = new WP_Query();
     $terms = wp_get_object_terms( $post_id, $taxonomy );
     
@@ -177,20 +177,67 @@ function get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=ar
     return $query;
 }
 
-function get_site_meta_url($site_id) {
-    $site_array = array();
-    $site_array['url'] = types_render_field('hemsida-url', array('output' => 'raw'));
-    //$site_array['url'] = do_shortcode("[types id='$site_id']");
-    
-    $site_domain_parts = parse_url($site_array['url']);
-    
-    $site_array['pretty_url'] = $site_domain_parts['host'];;
-    
-    return $site_array;
+function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'raw')) {
+    return types_render_field("$custom_field", $args);
 }
 
-function get_site_meta_fakta($site_id) {
-    return types_render_field('fakta', array('output' => 'html'));
+function lb_get_post_meta_homepage_url($post_id) {
+    $homepage_array = array();
+
+    $homepage_array['url'] = lb_get_post_meta($post_id, 'hemsida-url');
+    $homepage_array['affiliate_url'] = lb_get_post_meta($post_id, 'affiliate-url');
+    
+    $homepage_domain_parts = parse_url($homepage_array['url']);
+    
+    $homepage_array['pretty_url'] = $homepage_domain_parts['host'];;
+
+    return $homepage_array;
+}
+
+function lb_get_post_meta_homepage_link($post_id, $anchor_text = '') {
+    $homepage_array = lb_get_post_meta_homepage_url($post_id);
+    
+    $link_url = $homepage_array['url'];
+    $microdata = ' itemprop="url"';
+    $link_rel = '';
+    $anchor_text = $homepage_array['pretty_url'];
+    
+    if('' != trim($homepage_array['affiliate_url'])) {
+        $link_url = $homepage_array['affiliate_url'];
+        $link_rel = ' rel="nofollow"';
+    }
+    
+    return '<a href="' . $link_url . '"' . $microdata . $link_rel . ' target="_blank">' . $anchor_text . '</a>';
+}
+
+function lb_get_post_meta_fakta($post_id) {
+    if('' != trim(lb_get_post_meta($post_id, 'varumarke'))) {
+        $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
+        $brand_microformats = '<span itemprop="brand">' . $brand . '</span> / ';
+    }
+    
+    $fakta_html = '<div itemscope itemtype="http://schema.org/Organization"><h2>Fakta &amp; kontaktuppgifter för <span itemprop="name">' . $brand . '</span></h2>';
+    
+    if('' != trim(lb_get_post_meta($post_id, 'fakta-wysiwyg')))
+        $fakta_html .= '<div id="fakta-fritext" itemprop="description">' . lb_get_post_meta($post_id, 'fakta-wysiwyg', $args = array('output' => 'html')) . '</div>';
+    if('' != trim(lb_get_post_meta_homepage_link($post_id)))
+        $fakta_html .= '<strong>Hemsida:</strong> ' . lb_get_post_meta_homepage_link($post_id) . '<br /><br />';
+    if('' != trim(lb_get_post_meta($post_id, 'gatuadress'))) 
+        $fakta_html .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' . $brand_microformats . '<span class="fn org">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br /><span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br /><span itemprop="postalCode">' . substr_replace(lb_get_post_meta($post_id, 'postnummer'), ' ', 3, 0) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span></section><br />';
+    if('' != trim(lb_get_post_meta($post_id, 'telefon')))
+        $fakta_html .= '<strong>Telefon:</strong> <span itemprop="telephone">' . lb_get_post_meta($post_id, 'telefon') . '</span><br /><br />';
+    if('' != trim(lb_get_post_meta($post_id, 'e-post')))
+        $fakta_html .= '<strong>E-post:</strong> <a href="mailto:' . lb_get_post_meta($post_id, 'e-post') . '" itemprop="email">' . lb_get_post_meta($post_id, 'e-post') . '</a><br /><br />';
+    if('' != trim(lb_get_post_meta($post_id, 'organisationsnummer')))
+        $fakta_html .= '<strong>Organisationsnummer:</strong> <span itemprop="taxID">' . lb_get_post_meta($post_id, 'organisationsnummer') . '</span><br /><br />';
+    
+    $fakta_html .= '</div><!- itemscope itemtype="http://schema.org/Organization" -->';
+    
+    return $fakta_html;
+}
+
+function lb_get_urgent_competitions() {
+    
 }
 
 function pr($array, $title='Array') {
