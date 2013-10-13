@@ -91,7 +91,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
             <br clear="all" /><a href="<?php echo(get_permalink($the_post->ID)); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a><?php
         }
     }
-    
+//lb_get_outgoing_competitions();
     if(function_exists('zemanta_related_posts'))
         zemanta_related_posts();
 } else { 

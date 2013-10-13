@@ -213,17 +213,17 @@ function lb_get_post_meta_homepage_link($post_id, $anchor_text = '') {
 function lb_get_post_meta_fakta($post_id) {
     if('' != trim(lb_get_post_meta($post_id, 'varumarke'))) {
         $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
-        $brand_microformats = '<span itemprop="brand">' . $brand . '</span> / ';
+        $brand_microformats = '<span itemprop="brand">' . $brand . '</span>';
     }
     
-    $fakta_html = '<div itemscope itemtype="http://schema.org/Organization"><h2>Fakta &amp; kontaktuppgifter för <span itemprop="name">' . $brand . '</span></h2>';
+    $fakta_html = '<div itemscope itemtype="http://schema.org/Organization"><h2>Fakta &amp; kontaktuppgifter för ' . $brand_microformats . '</h2>';
     
     if('' != trim(lb_get_post_meta($post_id, 'fakta-wysiwyg')))
         $fakta_html .= '<div id="fakta-fritext" itemprop="description">' . lb_get_post_meta($post_id, 'fakta-wysiwyg', $args = array('output' => 'html')) . '</div>';
     if('' != trim(lb_get_post_meta_homepage_link($post_id)))
         $fakta_html .= '<strong>Hemsida:</strong> ' . lb_get_post_meta_homepage_link($post_id) . '<br /><br />';
     if('' != trim(lb_get_post_meta($post_id, 'gatuadress'))) 
-        $fakta_html .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' . $brand_microformats . '<span class="fn org">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br /><span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br /><span itemprop="postalCode">' . substr_replace(lb_get_post_meta($post_id, 'postnummer'), ' ', 3, 0) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span></section><br />';
+        $fakta_html .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span class="fn org">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br /><span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br /><span itemprop="postalCode">' . substr_replace(lb_get_post_meta($post_id, 'postnummer'), ' ', 3, 0) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span></section><br />';
     if('' != trim(lb_get_post_meta($post_id, 'telefon')))
         $fakta_html .= '<strong>Telefon:</strong> <span itemprop="telephone">' . lb_get_post_meta($post_id, 'telefon') . '</span><br /><br />';
     if('' != trim(lb_get_post_meta($post_id, 'e-post')))
@@ -236,8 +236,31 @@ function lb_get_post_meta_fakta($post_id) {
     return $fakta_html;
 }
 
-function lb_get_urgent_competitions() {
+function lb_get_outgoing_competitions() {
+    $todays_date = date('d.M.y');
+    $todays_date_string = strtotime($todays_date);
+
+    $args = array(
+        'post_type' => 'tavlingar',
+	'meta_key' => 'wpcf-slutdatum',
+        'meta_compare' => '>=',
+        'meta_value' => $todays_date_string,
+        'posts_per_page' => '-1',
+        'orderby' => 'wpcf-slutdatum',
+        'order' => 'ASC'
+    );
     
+    $temp = $wp_query;
+    $wp_query = null;
+    $wp_query = new WP_Query();
+    $wp_query->query($args);
+    
+    while ($wp_query->have_posts()) {
+        $wp_query->the_post(); ?>
+        <ul <?php post_class(); ?>>
+            <li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+        </ul><?php
+    }
 }
 
 function pr($array, $title='Array') {
