@@ -263,6 +263,20 @@ function lb_get_outgoing_competitions() {
     }
 }
 
+function lb_get_social_buttons() { 
+    $html_output = '<div class="social-buttons">';
+    $html_output .= '<ul>';
+    $html_output .= '<li class="iframetrack facebook"><div class="fb-like" data-href="" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>';
+    $html_output .= '<li class="pinterest"><a href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" alt="" /></a></li>';
+    $html_output .= '<li class="iframetrack twitter"><a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet</a></li>';
+    $html_output .= '<li class="iframetrack googleplus"><div class="g-plusone" data-size="medium" data-annotation="none"></div></li>';
+    $html_output .= '<li class="linkedin"><script type="IN/Share"></script></li>';
+    $html_output .= '</ul>';
+    $html_output .= '</div>';
+    
+    return $html_output;
+}
+
 function pr($array, $title='Array') {
     echo('<p>' . $title . ':</p><pre>');
     print_r($array);
