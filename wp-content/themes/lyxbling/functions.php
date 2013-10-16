@@ -181,6 +181,42 @@ function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'ra
     return types_render_field("$custom_field", $args);
 }
 
+function lb_aff_redirect_query($post_id) {
+	global $wpdb, $table_prefix;
+	$request = $_SERVER['REQUEST_URI'];
+	if (!isset($_SERVER['REQUEST_URI'])) {
+		$request = substr($_SERVER['PHP_SELF'], 1);
+		if (isset($_SERVER['QUERY_STRING']) AND $_SERVER['QUERY_STRING'] != '') { $request.='?'.$_SERVER['QUERY_STRING']; }
+	}
+	if (isset($_GET['gocode'])) {
+		$request = '/go/'.$_GET['gocode'].'/';
+	}
+	$url_trigger = get_option("wsc_gocodes_url_trigger");
+	$nofollow = get_option("wsc_gocodes_nofollow");
+	if ($url_trigger=='') {
+		$url_trigger = 'go';
+	}
+	if ( strpos('/'.$request, '/'.$url_trigger.'/') ) {
+		$gocode_key = explode($url_trigger.'/', $request);
+		$gocode_key = $gocode_key[1];
+		$gocode_key = str_replace('/', '', $gocode_key);
+		$table_name = $wpdb->prefix . "wsc_gocodes";
+		$gocode_key = $wpdb->escape($gocode_key);
+		$gocode_db = $wpdb->get_row("SELECT id, target, key1, docount FROM $table_name WHERE key1 = '$gocode_key'", OBJECT);
+		$gocode_target = $gocode_db->target;
+		if ($gocode_target!="") {
+			if ($gocode_db->docount == 1) {
+				$update = "UPDATE ". $table_name ." SET hitcount=hitcount+1 WHERE id='$gocode_db->id'";
+				$results = $wpdb->query( $update );
+			}
+			if ($nofollow != '') { header("X-Robots-Tag: noindex, nofollow", true); }
+			wp_redirect($gocode_target, 301);
+			exit;
+		} else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
+	}
+}
+//***** End Redirection *****
+
 function lb_get_post_meta_homepage_url($post_id) {
     $homepage_array = array();
 
