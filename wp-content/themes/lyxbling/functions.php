@@ -1,5 +1,14 @@
 <?php
- 
+/*
+ * Remove '?ver' from all .js and .css files in header.
+ */
+function _remove_script_version( $src ){
+    $parts = explode( '?ver', $src );
+        return $parts[0];
+}
+add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
+add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+
 // Load the textdomain for translation
 load_child_theme_textdomain( 'woothemes' );
 
@@ -42,6 +51,43 @@ function woo_custom_breadcrumbs () {
     } 
 }
 add_action('woo_loop_before', 'woo_custom_breadcrumbs', 10 );
+
+/*-----------------------------------------------------------------------------------*/
+/* Optionally load custom logo with microtags. */
+/*-----------------------------------------------------------------------------------*/
+function lb_woo_logo () {
+	$settings = woo_get_dynamic_values( array( 'logo' => '' ) );
+	// Setup the tag to be used for the header area (`h1` on the front page and `span` on all others).
+	$heading_tag = 'span';
+	if ( is_home() || is_front_page() ) { $heading_tag = 'h1'; }
+
+	// Get our website's name, description and URL. We use them several times below so lets get them once.
+	$site_title = get_bloginfo( 'name' );
+	$site_url = home_url( '/' );
+	$site_description = get_bloginfo( 'description' );
+?>
+<div id="logo" itemscope itemtype="http://schema.org/Organization">
+<?php
+	// Website heading/logo and description text.
+	if ( ( '' != $settings['logo'] ) ) {
+		$logo_url = $settings['logo'];
+		if ( is_ssl() ) $logo_url = str_replace( 'http://', 'https://', $logo_url );
+
+		echo '<a href="' . esc_url( $site_url ) . '" title="' . esc_attr( $site_description ) . '"><img itemprop="logo" src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $site_title ) . '" /></a>' . "\n";
+	} // End IF Statement
+
+	echo '<' . $heading_tag . ' class="site-title"><a itemprop="url" href="' . esc_url( $site_url ) . '"><span itemprop="brand">' . $site_title . '</span></a></' . $heading_tag . '>' . "\n";
+	if ( $site_description ) { echo '<span itemprop="description" class="site-description">' . $site_description . '</span>' . "\n"; }
+?>
+</div>
+<?php
+} // End woo_logo()
+// Remove logo code from Canvas - See https://gist.github.com/srikat/5581777
+add_action('wp_head', 'remove_woo_logo');
+function remove_woo_logo() {
+    remove_action('woo_header_inside','woo_logo');
+}
+add_action( 'woo_header_inside', 'lb_woo_logo', 10 );
 
 /*-----------------------------------------------------------------------------------*/
 /* Single Post Author. From https://managewp.com/create-an-authority-site-part-2 */
@@ -210,6 +256,42 @@ function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args
 function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'raw')) {
     return types_render_field("$custom_field", $args);
 }
+
+function lb_aff_redirect_query($post_id) {
+	global $wpdb, $table_prefix;
+	$request = $_SERVER['REQUEST_URI'];
+	if (!isset($_SERVER['REQUEST_URI'])) {
+		$request = substr($_SERVER['PHP_SELF'], 1);
+		if (isset($_SERVER['QUERY_STRING']) AND $_SERVER['QUERY_STRING'] != '') { $request.='?'.$_SERVER['QUERY_STRING']; }
+	}
+	if (isset($_GET['gocode'])) {
+		$request = '/go/'.$_GET['gocode'].'/';
+	}
+	$url_trigger = get_option("wsc_gocodes_url_trigger");
+	$nofollow = get_option("wsc_gocodes_nofollow");
+	if ($url_trigger=='') {
+		$url_trigger = 'go';
+	}
+	if ( strpos('/'.$request, '/'.$url_trigger.'/') ) {
+		$gocode_key = explode($url_trigger.'/', $request);
+		$gocode_key = $gocode_key[1];
+		$gocode_key = str_replace('/', '', $gocode_key);
+		$table_name = $wpdb->prefix . "wsc_gocodes";
+		$gocode_key = $wpdb->escape($gocode_key);
+		$gocode_db = $wpdb->get_row("SELECT id, target, key1, docount FROM $table_name WHERE key1 = '$gocode_key'", OBJECT);
+		$gocode_target = $gocode_db->target;
+		if ($gocode_target!="") {
+			if ($gocode_db->docount == 1) {
+				$update = "UPDATE ". $table_name ." SET hitcount=hitcount+1 WHERE id='$gocode_db->id'";
+				$results = $wpdb->query( $update );
+			}
+			if ($nofollow != '') { header("X-Robots-Tag: noindex, nofollow", true); }
+			wp_redirect($gocode_target, 301);
+			exit;
+		} else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
+	}
+}
+//***** End Redirection *****
 
 function lb_get_post_meta_homepage_url($post_id) {
     $homepage_array = array();
