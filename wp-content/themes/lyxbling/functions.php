@@ -3,36 +3,6 @@
 // Load the textdomain for translation
 load_child_theme_textdomain( 'woothemes' );
 
-function lb_redirect_link() {
-    /*
-    $url_trigger = 'till';
-    $request = $_SERVER['REQUEST_URI'];
-    if (!isset($_SERVER['REQUEST_URI'])) {
-            $request = substr($_SERVER['PHP_SELF'], 1);
-            if (isset($_SERVER['QUERY_STRING']) AND $_SERVER['QUERY_STRING'] != '') { $request.='?'.$_SERVER['QUERY_STRING']; }
-    }
-    if ( strpos('/'.$request, '/' . $url_trigger . '/') ) {
-            $gocode_key = explode($url_trigger . '/', $request);
-            $gocode_key = $gocode_key[1];
-            $gocode_key = str_replace('/', '', $gocode_key);
-            $table_name = $wpdb->prefix . "wsc_gocodes";
-            $gocode_key = $wpdb->escape($gocode_key);
-            $gocode_db = $wpdb->get_row("SELECT id, target, key1, docount FROM $table_name WHERE key1 = '$gocode_key'", OBJECT);
-            $gocode_target = $gocode_db->target;
-            if ($gocode_target!="") {
-                    if ($gocode_db->docount == 1) {
-                            $update = "UPDATE ". $table_name ." SET hitcount=hitcount+1 WHERE id='$gocode_db->id'";
-                            $results = $wpdb->query( $update );
-                    }
-                    if ($nofollow != '') { header("X-Robots-Tag: noindex, nofollow", true); }
-                    wp_redirect($gocode_target, 301);
-                    exit;
-            } else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
-    }
-     * */
-}
-add_action('init', lb_redirect_link);
-
 /*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs with Yoast SEO plugin. */
 /*-----------------------------------------------------------------------------------*/
@@ -302,26 +272,6 @@ function lb_get_social_buttons() {
     $html_output .= '<li class="iframetrack googleplus"><div class="g-plusone" data-size="medium" data-annotation="none"></div></li>';
     $html_output .= '<li class="linkedin"><script type="IN/Share"></script></li>';
     $html_output .= '</ul>';
-    $html_output .= '</div>';
-    
-    return $html_output;
-}
-
-function lb_get_shop_social_buttons($post_id) { 
-    $html_output = '<div class="social">';
-    if('' != trim(lb_get_post_meta($post_id, 'facebook-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'facebook-url') . '" class="facebook" title="Facebook"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'twitter-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'twitter-url') . '" class="twitter" title="Twitter"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'instagram-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'instagram-url') . '" class="instagram" title="Instagram"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'pinterest-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'pinterest-url') . '" class="pinterest" title="Pinterest"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'youtube-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'youtube-url') . '" class="youtube" title="YouTube"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'google-url'))) 
-        $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'google-url') . '" class="googleplus" title="Google+"></a>';
-    
     $html_output .= '</div>';
     
     return $html_output;
