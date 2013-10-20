@@ -62,12 +62,12 @@ function lb_woo_breadcrumbs_section () {
 /*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs with Yoast SEO plugin. */
 /*-----------------------------------------------------------------------------------*/
-function woo_custom_breadcrumbs () {
+function lb_woo_custom_breadcrumbs () {
     if ( !is_front_page() && function_exists('yoast_breadcrumb') ) {    
         yoast_breadcrumb('<p id="breadcrumbs">','</p></br>');
     } 
 }
-add_action('woo_loop_before', 'woo_custom_breadcrumbs', 10 );
+add_action('woo_loop_before', 'lb_woo_custom_breadcrumbs', 10 );
 
 /*-----------------------------------------------------------------------------------*/
 /* Optionally load custom logo with microtags. */
