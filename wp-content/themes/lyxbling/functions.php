@@ -43,6 +43,23 @@ function lb_redirect_link() {
 add_action('init', lb_redirect_link);
 
 /*-----------------------------------------------------------------------------------*/
+/* Custom breadcrumbs section under the navigation bar. */
+/*-----------------------------------------------------------------------------------*/
+
+function lb_woo_breadcrumbs_section () {
+?>
+        <div id="breadcrumbs-section"><?php
+            if ( !is_front_page() && function_exists('yoast_breadcrumb') ) {    
+                yoast_breadcrumb('<p id="breadcrumbs">','</p></br>');
+            } ?>
+        </div>
+    </div><!--/#nav-container-->
+<?php
+}
+//remove_action('woo_nav_after', 'woo_nav_container_end');
+//add_action( 'woo_nav_after', 'lb_woo_breadcrumbs_section' );
+
+/*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs with Yoast SEO plugin. */
 /*-----------------------------------------------------------------------------------*/
 function woo_custom_breadcrumbs () {
@@ -354,6 +371,7 @@ function lb_get_outgoing_competitions() {
 
     $args = array(
         'post_type' => 'tavlingar',
+        'post_status' => 'publish',
 	'meta_key' => 'wpcf-slutdatum',
         'meta_compare' => '>=',
         'meta_value' => $todays_date_string,
@@ -372,6 +390,36 @@ function lb_get_outgoing_competitions() {
         <ul <?php post_class(); ?>>
             <li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
         </ul><?php
+    }
+}
+
+function lb_get_brands_sold($post_id) {
+    $post = get_post($post_id);
+//echo("postname: $post->post_name<br>");
+    
+    $brand_terms = get_the_terms($post->ID, 'varumarke');
+    
+    foreach($brand_terms as $brand_term) {
+//pr($brand_term);
+        $args = array(
+                'post_type' => 'varumarken',
+                'varumarke' => $brand_term,
+        );
+        $query = new WP_Query( $args );
+//pr($query->posts, 'Query');
+        $brands_args = get_posts( array(
+            'post_type' => 'varumarken',
+            'post_status' => 'publish',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'varumarke',
+                    'field' => 'id',
+                    'terms' => array($brand_term->term_taxonomy_id)
+                )
+            )
+        ));
+        $brands_query = new WP_Query($brands_args);
+//pr($brands_query, 'Items');
     }
 }
 

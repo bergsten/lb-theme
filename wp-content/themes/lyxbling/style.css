@@ -10,6 +10,14 @@ Version:        1.0.0
 
 @import url("../canvas/style.css");
 
+#nav-container {
+    margin-bottom: 1em !important;
+}
+
+#breadcrumbs-section {
+    clear: both;
+    position: relative;
+}
 
 .widget ul {
 list-style-type: none !important;

@@ -91,6 +91,9 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
             <br clear="all" /><a href="<?php echo(get_permalink($the_post->ID)); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a><?php
         }
     }
+    //pr($the_post);
+    //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
+    
     //echo(lb_get_social_buttons());
 //lb_get_outgoing_competitions();
     if(function_exists('zemanta_related_posts'))
