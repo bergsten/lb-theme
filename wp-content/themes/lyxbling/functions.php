@@ -16,7 +16,7 @@ add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 // Load the textdomain for translation
 load_child_theme_textdomain( 'woothemes' );
 
-function lb_redirect_link() {
+function lb_redirect_link($url = '') {
     /*
     $url_trigger = 'till';
     $request = $_SERVER['REQUEST_URI'];
