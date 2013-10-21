@@ -1,5 +1,9 @@
 <?php
 /*
+ * See canvas hooks and filters at http://woothemes.zendesk.com/entries/22533468-Canvas-Hook-Filter-Reference
+ */
+
+/*
  * Remove '?ver' from all .js and .css files in header.
  */
 function _remove_script_version( $src ){
