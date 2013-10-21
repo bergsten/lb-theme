@@ -45,29 +45,14 @@ add_action('init', lb_redirect_link);
 /*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs section under the navigation bar. */
 /*-----------------------------------------------------------------------------------*/
-
-function lb_woo_breadcrumbs_section () {
-?>
-        <div id="breadcrumbs-section"><?php
-            if ( !is_front_page() && function_exists('yoast_breadcrumb') ) {    
-                yoast_breadcrumb('<p id="breadcrumbs">','</p></br>');
-            } ?>
-        </div>
-    </div><!--/#nav-container-->
-<?php
+function lb_woo_breadcrumbs_section() {
+    if ( !is_front_page() && function_exists('yoast_breadcrumb') ) { ?>
+        <div id="breadcrumbs-container"><?php  
+            yoast_breadcrumb('<p id="breadcrumbs">','</p></br>'); ?>
+        </div><?php
+    }
 }
-//remove_action('woo_nav_after', 'woo_nav_container_end');
-//add_action( 'woo_nav_after', 'lb_woo_breadcrumbs_section' );
-
-/*-----------------------------------------------------------------------------------*/
-/* Custom breadcrumbs with Yoast SEO plugin. */
-/*-----------------------------------------------------------------------------------*/
-function lb_woo_custom_breadcrumbs () {
-    if ( !is_front_page() && function_exists('yoast_breadcrumb') ) {    
-        yoast_breadcrumb('<p id="breadcrumbs">','</p></br>');
-    } 
-}
-add_action('woo_loop_before', 'lb_woo_custom_breadcrumbs', 10 );
+add_action( 'woo_main_before', 'lb_woo_breadcrumbs_section' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Optionally load custom logo with microtags. */
