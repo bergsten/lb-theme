@@ -46,6 +46,50 @@ function lb_redirect_link($url = '') {
 }
 add_action('init', lb_redirect_link);
 
+/*
+ *  Create the custom taxonomy permalinks in the format /presenttips/%tips%/%postname% - See http://wp-types.com/forums/topic/custom-taxonomies-not-showing-on-permalink/#post-16949
+ */
+add_filter('post_link', 'lb_presenttips_permalink', 1, 3);
+add_filter('post_type_link', 'lb_presenttips_permalink', 1, 3);
+function lb_presenttips_permalink($permalink, $post_id, $leavename) {
+        if (strpos($permalink, '%tips%') === FALSE) return $permalink;
+ 
+        // Get post
+        $post = get_post($post_id);
+        if (!$post) return $permalink;
+ 
+        // Get taxonomy terms
+        $terms = wp_get_object_terms($post->ID, 'tips');
+        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
+        else $taxonomy_slug = 'diverse';
+ 
+        return str_replace('%tips%', $taxonomy_slug, $permalink);
+}
+/*
+ * Make the Yoast breadcrumbs do the same.
+ */
+function lb_adjust_single_breadcrumb( $link_output, $link ) {
+        if (strpos($link['url'], '%tips%') === FALSE) return $link_output;
+pr($link_output);
+pr($link);
+        $post = get_post();
+        // Get taxonomy terms
+        $terms = wp_get_object_terms($post->ID, 'tips');
+pr($terms);
+        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
+        else $taxonomy_slug = 'diverse';
+        
+        if(!empty($link[0])) {
+            $link_output = str_replace('%tips%', $taxonomy_slug, $link_output);
+        } else {
+            $link_output = str_replace('/%tips%', '', $link_output);
+            
+        }
+        
+        return $link_output;
+}
+//add_filter('wpseo_breadcrumb_single_link_with_sep', 'lb_adjust_single_breadcrumb', 10, 2 );
+
 /*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs section under the navigation bar. */
 /*-----------------------------------------------------------------------------------*/
