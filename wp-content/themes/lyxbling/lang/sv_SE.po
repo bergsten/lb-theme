@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Thirteen sv_SE\n"
-"POT-Creation-Date: 2013-10-07 15:03+0100\n"
-"PO-Revision-Date: 2013-10-07 15:13+0100\n"
+"POT-Creation-Date: 2013-10-26 23:21+0100\n"
+"PO-Revision-Date: 2013-10-26 23:21+0100\n"
 "Last-Translator: Mats Bergsten <mats@bergsten.net>\n"
 "Language-Team: WordPress Sverige <info@wpsv.se>\n"
 "Language: Svenska\n"
@@ -17,80 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__;__ngettext;__ngettext_noop\n"
 "X-Poedit-Basepath: ../../canvas/\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: content-page-template-business.php:24 content-search.php:41
-#: content-magazine-grid.php:26 content-archive-portfolio.php:30
-#: content-page.php:27 content.php:29 content-404.php:24
-#: content-magazine-featured.php:26 content-post.php:41 content-tumblog.php:25
-msgid "Pages:"
-msgstr "Sidor:"
-
-#: template-archives.php:35
-#, fuzzy
-msgid "The Last 30 Posts"
-msgstr "Sida %s"
-
-#: template-archives.php:40
-msgid "comments"
-msgstr "kommentarer"
-
-#: template-archives.php:44 template-sitemap.php:41
-msgid "Categories"
-msgstr "Kategorier"
-
-#: template-archives.php:50
-msgid "Monthly Archives"
-msgstr "Månadsarkiv"
-
-#: search-form.php:4
-msgid "Search..."
-msgstr "Sök..."
-
-#: content-page.php:44 content-post.php:59 content-tumblog.php:38
-msgid "Continue Reading &rarr;"
-msgstr "Läs mer &rarr;"
-
-#: content-404.php:32
-msgid "Error 404 - Page not found!"
-msgstr "Hoppsan, sidan hittades inte. Pinsamt!"
-
-#: content-404.php:37
-msgid ""
-"The page you are trying to reach does not exist, or has been moved. Please "
-"use the menus or the search box to find what you are looking for."
-msgstr ""
-
-#: template-sitemap.php:36
-msgid "Pages"
-msgstr "Sidor"
-
-#: template-sitemap.php:46
-msgid "Posts per category"
-msgstr ""
-
-#: template-sitemap.php:55 includes/widgets/widget-woo-tabs.php:65
-#: includes/widgets/widget-woo-tabs.php:70
-#: includes/widgets/widget-woo-tabs.php:201
-#: includes/widgets/widget-woo-tabs.php:213
-msgid "Comments"
-msgstr "Kommentarer"
-
-#: template-sitemap.php:63
-msgid "Product Categories"
-msgstr "Produktkategorier"
-
-#: template-sitemap.php:68 includes/theme-options.php:1314
-msgid "Products"
-msgstr ""
-
-#: content-noposts.php:2
-msgid "Sorry, no posts matched your criteria."
-msgstr ""
-
-#: loop-search.php:18
-#, fuzzy, php-format
-msgid "Search results for &quot;%s&quot;"
-msgstr "Sökresultat för: %s"
+"X-Poedit-SearchPath-1: ../lyxbling\n"
 
 #: comments.php:14
 msgid "Please do not load this page directly. Thanks!"
@@ -121,6 +48,72 @@ msgstr "Kommentarer inaktiverade."
 #: comments.php:81
 msgid "No comments yet."
 msgstr "Inga kommentarer ännu"
+
+#: content-404.php:24 content-archive-portfolio.php:30
+#: content-magazine-featured.php:26 content-magazine-grid.php:26
+#: content-page-template-business.php:24 content-page.php:27
+#: content-post.php:41 content-search.php:41 content-tumblog.php:25
+#: content.php:29 ../lyxbling/content-archive-butiker.php:30
+#: ../lyxbling/content-archive-varumarken.php:30
+#: ../lyxbling/content-butiker.php:41 ../lyxbling/content-designers.php:41
+#: ../lyxbling/content-frontpage.php:24 ../lyxbling/content-guider.php:41
+#: ../lyxbling/content-post.php:41 ../lyxbling/content-rabattkoder.php:41
+#: ../lyxbling/content-tavlingar.php:41 ../lyxbling/content-varumarken.php:41
+msgid "Pages:"
+msgstr "Sidor:"
+
+#: content-404.php:32
+msgid "Error 404 - Page not found!"
+msgstr "Hoppsan, sidan hittades inte. Pinsamt!"
+
+#: content-404.php:37
+msgid ""
+"The page you are trying to reach does not exist, or has been moved. Please "
+"use the menus or the search box to find what you are looking for."
+msgstr ""
+
+#: content-noposts.php:2
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: content-page.php:44 content-post.php:59 content-tumblog.php:38
+#: ../lyxbling/content-butiker.php:70 ../lyxbling/content-butiker.php:83
+#: ../lyxbling/content-butiker.php:96 ../lyxbling/content-butiker.php:114
+#: ../lyxbling/content-designers.php:65 ../lyxbling/content-guider.php:67
+#: ../lyxbling/content-guider.php:77 ../lyxbling/content-post.php:68
+#: ../lyxbling/content-post.php:76 ../lyxbling/content-rabattkoder.php:68
+#: ../lyxbling/content-rabattkoder.php:76 ../lyxbling/content-tavlingar.php:68
+#: ../lyxbling/content-tavlingar.php:76 ../lyxbling/content-varumarken.php:69
+#: ../lyxbling/content-varumarken.php:78 ../lyxbling/content-varumarken.php:88
+#: ../lyxbling/content-varumarken.php:101
+msgid "Continue Reading &rarr;"
+msgstr "Läs mer &rarr;"
+
+#: loop-search.php:18
+#, fuzzy, php-format
+msgid "Search results for &quot;%s&quot;"
+msgstr "Sökresultat för: %s"
+
+#: search-form.php:4
+msgid "Search..."
+msgstr "Sök..."
+
+#: template-archives.php:35
+#, fuzzy
+msgid "The Last 30 Posts"
+msgstr "Sida %s"
+
+#: template-archives.php:40
+msgid "comments"
+msgstr "kommentarer"
+
+#: template-archives.php:44 template-sitemap.php:41
+msgid "Categories"
+msgstr "Kategorier"
+
+#: template-archives.php:50
+msgid "Monthly Archives"
+msgstr "Månadsarkiv"
 
 #: template-contact.php:30
 msgid "You got the maths wrong."
@@ -233,6 +226,167 @@ msgstr ""
 msgid "If you want to submit this form, do not enter anything in this field"
 msgstr ""
 
+#: template-sitemap.php:36
+msgid "Pages"
+msgstr "Sidor"
+
+#: template-sitemap.php:46
+msgid "Posts per category"
+msgstr ""
+
+#: template-sitemap.php:55 includes/widgets/widget-woo-tabs.php:65
+#: includes/widgets/widget-woo-tabs.php:70
+#: includes/widgets/widget-woo-tabs.php:201
+#: includes/widgets/widget-woo-tabs.php:213
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: template-sitemap.php:63
+msgid "Product Categories"
+msgstr "Produktkategorier"
+
+#: template-sitemap.php:68 includes/theme-options.php:1314
+msgid "Products"
+msgstr ""
+
+#: functions/admin-backup.php:74
+msgid "WooThemes Settings Backup"
+msgstr ""
+
+#: functions/admin-backup.php:74 functions/admin-backup.php:104
+#: functions/admin-framework-settings.php:37
+msgid "Backup Settings"
+msgstr ""
+
+#: functions/admin-backup.php:106
+msgid "Import Settings"
+msgstr ""
+
+#: functions/admin-backup.php:108
+msgid ""
+"If you have settings in a backup file on your computer, the WooFramework can "
+"import those into this site. To get started, upload your backup file to "
+"import from below."
+msgstr ""
+
+#: functions/admin-backup.php:113
+#, php-format
+msgid "Upload File: (Maximum Size: %s)"
+msgstr ""
+
+#: functions/admin-backup.php:116
+msgid "Upload File and Import"
+msgstr ""
+
+#: functions/admin-backup.php:120
+msgid "Export Settings"
+msgstr ""
+
+#: functions/admin-backup.php:122
+msgid ""
+"When you click the button below, the WooFramework will create a text file "
+"for you to save to your computer."
+msgstr ""
+
+#: functions/admin-backup.php:123
+#, php-format
+msgid ""
+"This text file can be used to restore your settings here on \"%s\", or to "
+"easily setup another website with the same settings\"."
+msgstr ""
+
+#: functions/admin-backup.php:127
+msgid "All Settings"
+msgstr ""
+
+#: functions/admin-backup.php:128
+msgid "This will contain all of the options listed below."
+msgstr ""
+
+#: functions/admin-backup.php:130 functions/admin-functions.php:2581
+#: functions/admin-interface.php:190
+msgid "Theme Options"
+msgstr ""
+
+#: functions/admin-backup.php:131 functions/admin-functions.php:2587
+#: functions/admin-interface.php:195
+msgid "Framework Settings"
+msgstr ""
+
+#: functions/admin-backup.php:134
+msgid "Download Export File"
+msgstr ""
+
+#: functions/admin-backup.php:157
+msgid "Welcome to the WooThemes Backup Manager."
+msgstr ""
+
+#: functions/admin-backup.php:158
+msgid "Here are a few notes on using this screen."
+msgstr ""
+
+#: functions/admin-backup.php:159
+msgid ""
+"The backup manager allows you to backup or restore your \"Theme Options\" "
+"and other settings to or from a text file."
+msgstr ""
+
+#: functions/admin-backup.php:160
+msgid ""
+"To create a backup, simply select the setting type you'd like to backup (or "
+"\"All Settings\") and hit the \"Download Export File\" button."
+msgstr ""
+
+#: functions/admin-backup.php:161
+msgid ""
+"To restore your settings from a backup, browse your computer for the file "
+"(under the \"Import Settings\" heading) and hit the \"Upload File and Import"
+"\" button. This will restore only the settings that have changed since the "
+"backup."
+msgstr ""
+
+#: functions/admin-backup.php:163
+msgid ""
+"Please note that only valid backup files generated through the WooThemes "
+"Backup Manager should be imported."
+msgstr ""
+
+#: functions/admin-backup.php:165
+msgid "Looking for assistance?"
+msgstr ""
+
+#: functions/admin-backup.php:166
+#, php-format
+msgid ""
+"Please post your query on the %sWooThemes Support Desk%s where we will do "
+"our best to assist you further."
+msgstr ""
+
+#: functions/admin-backup.php:186
+#, php-format
+msgid ""
+"Please note that this backup manager backs up only your settings and not "
+"your content. To backup your content, please use the %sWordPress Export Tool"
+"%s."
+msgstr ""
+
+#: functions/admin-backup.php:189
+msgid "There was a problem importing your settings. Please Try again."
+msgstr ""
+
+#: functions/admin-backup.php:191
+msgid "There was a problem exporting your settings. Please Try again."
+msgstr ""
+
+#: functions/admin-backup.php:193
+msgid "The import file you've provided is invalid. Please try again."
+msgstr ""
+
+#: functions/admin-backup.php:195
+#, php-format
+msgid "Settings successfully imported. | Return to %sTheme Options%s"
+msgstr ""
+
 #: functions/admin-custom-nav.php:29
 #, php-format
 msgid ""
@@ -245,146 +399,260 @@ msgstr ""
 msgid "WordPress Menu Management"
 msgstr "the WordPress team"
 
-#: functions/admin-interface.php:190 functions/admin-functions.php:2581
-#: functions/admin-backup.php:130
-msgid "Theme Options"
-msgstr ""
-
-#: functions/admin-interface.php:195 functions/admin-functions.php:2587
-#: functions/admin-backup.php:131
-msgid "Framework Settings"
-msgstr ""
-
-#: functions/admin-interface.php:298
-#: functions/admin-framework-settings.php:180
-msgid "Options Updated"
-msgstr ""
-
-#: functions/admin-interface.php:299
-#: functions/admin-framework-settings.php:181
-msgid "Options Reset"
-msgstr ""
-
-#: functions/admin-interface.php:335
-#: functions/admin-framework-settings.php:214
-msgid "View Changelog"
-msgstr ""
-
-#: functions/admin-interface.php:336
-#: functions/admin-framework-settings.php:215
-msgid "View Theme Documentation"
-msgstr ""
-
-#: functions/admin-interface.php:337
-#: functions/admin-framework-settings.php:216
-msgid "Visit Support Desk"
-msgstr ""
-
-#: functions/admin-interface.php:360
-msgid "Error"
-msgstr ""
-
-#: functions/admin-interface.php:367
-msgid "An Error Occured"
-msgstr ""
-
-#: functions/admin-interface.php:370
-msgid "Something went wrong while trying to load your Theme Options panel."
-msgstr ""
-
-#: functions/admin-interface.php:371
-#, php-format
-msgid ""
-"Please reload the page, if this error persists, please get in touch with us "
-"through our %1$s."
-msgstr ""
-
-#: functions/admin-interface.php:371
-msgid "Support Desk"
-msgstr ""
-
-#: functions/admin-interface.php:893
-msgid "Options Saved Successfully"
-msgstr ""
-
-#: functions/admin-interface.php:897
-msgid "There was an error while saving your options. Please try again."
-msgstr ""
-
-#: functions/admin-interface.php:901
-msgid "Options Reset Successfully"
-msgstr ""
-
-#: functions/admin-interface.php:1435 functions/admin-custom.php:390
-msgid "@"
-msgstr ""
-
-#: functions/admin-interface.php:1539
-msgid ""
-"You are not able to update this option because you lack the "
-"<code>unfiltered_html</code> capability."
-msgstr ""
-
-#: functions/admin-interface.php:1679
-msgid "New Version"
-msgstr ""
-
-#: functions/admin-interface.php:1680
-msgid "New Feature"
-msgstr ""
-
-#: functions/admin-interface.php:1681
-msgid "Bugfix"
-msgstr ""
-
-#: functions/admin-interface.php:1705
-msgid "Theme update is available"
-msgstr ""
-
-#: functions/admin-interface.php:1705
-msgid "Get the new version"
-msgstr ""
-
-#: functions/admin-interface.php:1705
-#, php-format
-msgid "Update Type: %s"
-msgstr ""
-
-#: functions/admin-interface.php:1733
-msgid ""
-"ATTENTION: A possible old version of the TimThumb script was detected in "
-"your theme folder. Please remove the following files from your theme as a "
-"security precaution"
-msgstr ""
-
-#: functions/admin-interface.php:1774
-#, php-format
-msgid ""
-"Theme update is available (v%s). %sDownload new version%s (%sSee Changelog%s)"
-msgstr ""
-
-#: functions/admin-interface.php:1801
-#, php-format
-msgid ""
-"WooFramework update is available (v%s). %sDownload new version%s (%sSee "
-"Changelog%s)"
-msgstr ""
-
-#: functions/admin-interface.php:1849
-#, php-format
-msgid ""
-"An important WooFramework update is available (v%s). %sDownload new version"
-"%s (%sSee Changelog%s)"
-msgstr ""
-
 #: functions/admin-custom.php:68 includes/theme-options.php:85
 msgid "General Settings"
+msgstr ""
+
+#: functions/admin-custom.php:390 functions/admin-interface.php:1435
+msgid "@"
 msgstr ""
 
 #: functions/admin-custom.php:585 functions/admin-custom.php:598
 #: functions/admin-custom.php:599
 #, php-format
 msgid "%s Custom Settings"
+msgstr ""
+
+#: functions/admin-express-functions-deprecated.php:198
+#: functions/admin-express-functions.php:214
+msgid "You are not allowed to upload files to this site."
+msgstr ""
+
+#: functions/admin-express-functions-deprecated.php:224
+#: functions/admin-express-functions.php:240
+#, php-format
+msgid "Could not write file %1$s (%2$s)"
+msgstr ""
+
+#: functions/admin-framework-settings.php:25
+msgid "Admin Settings"
+msgstr ""
+
+#: functions/admin-framework-settings.php:29
+msgid "Super User (username)"
+msgstr ""
+
+#: functions/admin-framework-settings.php:30
+#, php-format
+msgid ""
+"Enter your %s to hide the Framework Settings and Update Framework from other "
+"users. Can be reset from the %s under %s."
+msgstr ""
+
+#: functions/admin-framework-settings.php:30
+msgid "username"
+msgstr ""
+
+#: functions/admin-framework-settings.php:30
+msgid "WP options page"
+msgstr ""
+
+#: functions/admin-framework-settings.php:36
+msgid "Disable Backup Settings Menu Item"
+msgstr ""
+
+#: functions/admin-framework-settings.php:37
+#, php-format
+msgid "Disable the %s menu item in the theme menu."
+msgstr ""
+
+#: functions/admin-framework-settings.php:42
+msgid "Theme Update Notification"
+msgstr ""
+
+#: functions/admin-framework-settings.php:43
+msgid ""
+"This will enable notices on your theme options page that there is an update "
+"available for your theme."
+msgstr ""
+
+#: functions/admin-framework-settings.php:48
+msgid "WooFramework Update Notification"
+msgstr ""
+
+#: functions/admin-framework-settings.php:49
+msgid ""
+"This will enable notices on your theme options page that there is an update "
+"available for the WooFramework."
+msgstr ""
+
+#: functions/admin-framework-settings.php:54
+msgid "Theme Settings"
+msgstr ""
+
+#: functions/admin-framework-settings.php:58
+msgid "Remove Generator Meta Tags"
+msgstr ""
+
+#: functions/admin-framework-settings.php:59
+msgid ""
+"This disables the output of generator meta tags in the HEAD section of your "
+"site."
+msgstr ""
+
+#: functions/admin-framework-settings.php:64
+msgid "Image Placeholder"
+msgstr ""
+
+#: functions/admin-framework-settings.php:65
+msgid ""
+"Set a default image placeholder for your thumbnails. Use this if you want a "
+"default image to be shown if you haven't added a custom image to your post."
+msgstr ""
+
+#: functions/admin-framework-settings.php:70
+msgid "Disable Shortcodes Stylesheet"
+msgstr ""
+
+#: functions/admin-framework-settings.php:71
+msgid ""
+"This disables the output of shortcodes.css in the HEAD section of your site."
+msgstr ""
+
+#: functions/admin-framework-settings.php:76
+msgid "Output \"Tracking Code\" Option in Header"
+msgstr ""
+
+#: functions/admin-framework-settings.php:77
+#, php-format
+msgid ""
+"This will output the %s option in your header instead of the footer of your "
+"website."
+msgstr ""
+
+#: functions/admin-framework-settings.php:77 includes/theme-options.php:104
+msgid "Tracking Code"
+msgstr ""
+
+#: functions/admin-framework-settings.php:82
+msgid "Branding"
+msgstr ""
+
+#: functions/admin-framework-settings.php:86
+msgid "Options panel header"
+msgstr ""
+
+#: functions/admin-framework-settings.php:87
+msgid "Change the header image for the WooThemes Backend."
+msgstr ""
+
+#: functions/admin-framework-settings.php:92
+msgid "Options panel icon"
+msgstr ""
+
+#: functions/admin-framework-settings.php:93
+msgid "Change the icon image for the WordPress backend sidebar."
+msgstr ""
+
+#: functions/admin-framework-settings.php:98
+#, fuzzy
+msgid "WordPress login logo"
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:99
+msgid "Change the logo image for the WordPress login page."
+msgstr ""
+
+#: functions/admin-framework-settings.php:99
+msgid "Optimal logo size is 274x63px"
+msgstr ""
+
+#: functions/admin-framework-settings.php:104
+#, fuzzy
+msgid "WordPress login URL"
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:105
+msgid ""
+"Change the URL that the logo image on the WordPress login page links to."
+msgstr ""
+
+#: functions/admin-framework-settings.php:111
+#, fuzzy
+msgid "WordPress login logo Title"
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:112
+msgid "Change the title of the logo image on the WordPress login page."
+msgstr ""
+
+#: functions/admin-framework-settings.php:137
+#, fuzzy
+msgid "WordPress Toolbar"
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:141
+#, fuzzy
+msgid "Disable WordPress Toolbar"
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:142
+#, fuzzy
+msgid "Disable the WordPress Toolbar."
+msgstr "the WordPress team"
+
+#: functions/admin-framework-settings.php:147
+msgid "Enable the WooFramework Toolbar enhancements"
+msgstr ""
+
+#: functions/admin-framework-settings.php:148
+msgid ""
+"Enable several WooFramework-specific enhancements to the WordPress Toolbar, "
+"such as custom navigation items for \"Theme Options\"."
+msgstr ""
+
+#: functions/admin-framework-settings.php:157
+msgid "PressTrends"
+msgstr ""
+
+#: functions/admin-framework-settings.php:161
+msgid "Enable PressTrends Tracking"
+msgstr ""
+
+#: functions/admin-framework-settings.php:162
+msgid "Enable sending of usage data to PressTrends."
+msgstr ""
+
+#: functions/admin-framework-settings.php:167
+msgid "What is PressTrends?"
+msgstr ""
+
+#: functions/admin-framework-settings.php:170
+#, php-format
+msgid ""
+"PressTrends is a simple usage tracker that allows us to see how our "
+"customers are using WooThemes themes - so that we can help improve them for "
+"you. %sNone%s of your personal data is sent to PressTrends.%sFor more "
+"information, please view the PressTrends %s."
+msgstr ""
+
+#: functions/admin-framework-settings.php:170
+msgid "privacy policy"
+msgstr ""
+
+#: functions/admin-framework-settings.php:180
+#: functions/admin-interface.php:298
+msgid "Options Updated"
+msgstr ""
+
+#: functions/admin-framework-settings.php:181
+#: functions/admin-interface.php:299
+msgid "Options Reset"
+msgstr ""
+
+#: functions/admin-framework-settings.php:214
+#: functions/admin-interface.php:335
+msgid "View Changelog"
+msgstr ""
+
+#: functions/admin-framework-settings.php:215
+#: functions/admin-interface.php:336
+msgid "View Theme Documentation"
+msgstr ""
+
+#: functions/admin-framework-settings.php:216
+#: functions/admin-interface.php:337
+msgid "Visit Support Desk"
 msgstr ""
 
 #: functions/admin-functions.php:1069
@@ -581,6 +849,99 @@ msgstr ""
 msgid "Framework %s"
 msgstr ""
 
+#: functions/admin-interface.php:360
+msgid "Error"
+msgstr ""
+
+#: functions/admin-interface.php:367
+msgid "An Error Occured"
+msgstr ""
+
+#: functions/admin-interface.php:370
+msgid "Something went wrong while trying to load your Theme Options panel."
+msgstr ""
+
+#: functions/admin-interface.php:371
+#, php-format
+msgid ""
+"Please reload the page, if this error persists, please get in touch with us "
+"through our %1$s."
+msgstr ""
+
+#: functions/admin-interface.php:371
+msgid "Support Desk"
+msgstr ""
+
+#: functions/admin-interface.php:893
+msgid "Options Saved Successfully"
+msgstr ""
+
+#: functions/admin-interface.php:897
+msgid "There was an error while saving your options. Please try again."
+msgstr ""
+
+#: functions/admin-interface.php:901
+msgid "Options Reset Successfully"
+msgstr ""
+
+#: functions/admin-interface.php:1539
+msgid ""
+"You are not able to update this option because you lack the "
+"<code>unfiltered_html</code> capability."
+msgstr ""
+
+#: functions/admin-interface.php:1679
+msgid "New Version"
+msgstr ""
+
+#: functions/admin-interface.php:1680
+msgid "New Feature"
+msgstr ""
+
+#: functions/admin-interface.php:1681
+msgid "Bugfix"
+msgstr ""
+
+#: functions/admin-interface.php:1705
+msgid "Theme update is available"
+msgstr ""
+
+#: functions/admin-interface.php:1705
+msgid "Get the new version"
+msgstr ""
+
+#: functions/admin-interface.php:1705
+#, php-format
+msgid "Update Type: %s"
+msgstr ""
+
+#: functions/admin-interface.php:1733
+msgid ""
+"ATTENTION: A possible old version of the TimThumb script was detected in "
+"your theme folder. Please remove the following files from your theme as a "
+"security precaution"
+msgstr ""
+
+#: functions/admin-interface.php:1774
+#, php-format
+msgid ""
+"Theme update is available (v%s). %sDownload new version%s (%sSee Changelog%s)"
+msgstr ""
+
+#: functions/admin-interface.php:1801
+#, php-format
+msgid ""
+"WooFramework update is available (v%s). %sDownload new version%s (%sSee "
+"Changelog%s)"
+msgstr ""
+
+#: functions/admin-interface.php:1849
+#, php-format
+msgid ""
+"An important WooFramework update is available (v%s). %sDownload new version"
+"%s (%sSee Changelog%s)"
+msgstr ""
+
 #: functions/admin-medialibrary-uploader.php:51
 msgid "WooFramework Internal Container"
 msgstr ""
@@ -608,228 +969,6 @@ msgstr ""
 #: functions/admin-medialibrary-uploader.php:334
 #, php-format
 msgid "Use as %s"
-msgstr ""
-
-#: functions/admin-framework-settings.php:25
-msgid "Admin Settings"
-msgstr ""
-
-#: functions/admin-framework-settings.php:29
-msgid "Super User (username)"
-msgstr ""
-
-#: functions/admin-framework-settings.php:30
-#, php-format
-msgid ""
-"Enter your %s to hide the Framework Settings and Update Framework from other "
-"users. Can be reset from the %s under %s."
-msgstr ""
-
-#: functions/admin-framework-settings.php:30
-msgid "username"
-msgstr ""
-
-#: functions/admin-framework-settings.php:30
-msgid "WP options page"
-msgstr ""
-
-#: functions/admin-framework-settings.php:36
-msgid "Disable Backup Settings Menu Item"
-msgstr ""
-
-#: functions/admin-framework-settings.php:37
-#, php-format
-msgid "Disable the %s menu item in the theme menu."
-msgstr ""
-
-#: functions/admin-framework-settings.php:37 functions/admin-backup.php:74
-#: functions/admin-backup.php:104
-msgid "Backup Settings"
-msgstr ""
-
-#: functions/admin-framework-settings.php:42
-msgid "Theme Update Notification"
-msgstr ""
-
-#: functions/admin-framework-settings.php:43
-msgid ""
-"This will enable notices on your theme options page that there is an update "
-"available for your theme."
-msgstr ""
-
-#: functions/admin-framework-settings.php:48
-msgid "WooFramework Update Notification"
-msgstr ""
-
-#: functions/admin-framework-settings.php:49
-msgid ""
-"This will enable notices on your theme options page that there is an update "
-"available for the WooFramework."
-msgstr ""
-
-#: functions/admin-framework-settings.php:54
-msgid "Theme Settings"
-msgstr ""
-
-#: functions/admin-framework-settings.php:58
-msgid "Remove Generator Meta Tags"
-msgstr ""
-
-#: functions/admin-framework-settings.php:59
-msgid ""
-"This disables the output of generator meta tags in the HEAD section of your "
-"site."
-msgstr ""
-
-#: functions/admin-framework-settings.php:64
-msgid "Image Placeholder"
-msgstr ""
-
-#: functions/admin-framework-settings.php:65
-msgid ""
-"Set a default image placeholder for your thumbnails. Use this if you want a "
-"default image to be shown if you haven't added a custom image to your post."
-msgstr ""
-
-#: functions/admin-framework-settings.php:70
-msgid "Disable Shortcodes Stylesheet"
-msgstr ""
-
-#: functions/admin-framework-settings.php:71
-msgid ""
-"This disables the output of shortcodes.css in the HEAD section of your site."
-msgstr ""
-
-#: functions/admin-framework-settings.php:76
-msgid "Output \"Tracking Code\" Option in Header"
-msgstr ""
-
-#: functions/admin-framework-settings.php:77
-#, php-format
-msgid ""
-"This will output the %s option in your header instead of the footer of your "
-"website."
-msgstr ""
-
-#: functions/admin-framework-settings.php:77 includes/theme-options.php:104
-msgid "Tracking Code"
-msgstr ""
-
-#: functions/admin-framework-settings.php:82
-msgid "Branding"
-msgstr ""
-
-#: functions/admin-framework-settings.php:86
-msgid "Options panel header"
-msgstr ""
-
-#: functions/admin-framework-settings.php:87
-msgid "Change the header image for the WooThemes Backend."
-msgstr ""
-
-#: functions/admin-framework-settings.php:92
-msgid "Options panel icon"
-msgstr ""
-
-#: functions/admin-framework-settings.php:93
-msgid "Change the icon image for the WordPress backend sidebar."
-msgstr ""
-
-#: functions/admin-framework-settings.php:98
-#, fuzzy
-msgid "WordPress login logo"
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:99
-msgid "Change the logo image for the WordPress login page."
-msgstr ""
-
-#: functions/admin-framework-settings.php:99
-msgid "Optimal logo size is 274x63px"
-msgstr ""
-
-#: functions/admin-framework-settings.php:104
-#, fuzzy
-msgid "WordPress login URL"
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:105
-msgid ""
-"Change the URL that the logo image on the WordPress login page links to."
-msgstr ""
-
-#: functions/admin-framework-settings.php:111
-#, fuzzy
-msgid "WordPress login logo Title"
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:112
-msgid "Change the title of the logo image on the WordPress login page."
-msgstr ""
-
-#: functions/admin-framework-settings.php:137
-#, fuzzy
-msgid "WordPress Toolbar"
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:141
-#, fuzzy
-msgid "Disable WordPress Toolbar"
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:142
-#, fuzzy
-msgid "Disable the WordPress Toolbar."
-msgstr "the WordPress team"
-
-#: functions/admin-framework-settings.php:147
-msgid "Enable the WooFramework Toolbar enhancements"
-msgstr ""
-
-#: functions/admin-framework-settings.php:148
-msgid ""
-"Enable several WooFramework-specific enhancements to the WordPress Toolbar, "
-"such as custom navigation items for \"Theme Options\"."
-msgstr ""
-
-#: functions/admin-framework-settings.php:157
-msgid "PressTrends"
-msgstr ""
-
-#: functions/admin-framework-settings.php:161
-msgid "Enable PressTrends Tracking"
-msgstr ""
-
-#: functions/admin-framework-settings.php:162
-msgid "Enable sending of usage data to PressTrends."
-msgstr ""
-
-#: functions/admin-framework-settings.php:167
-msgid "What is PressTrends?"
-msgstr ""
-
-#: functions/admin-framework-settings.php:170
-#, php-format
-msgid ""
-"PressTrends is a simple usage tracker that allows us to see how our "
-"customers are using WooThemes themes - so that we can help improve them for "
-"you. %sNone%s of your personal data is sent to PressTrends.%sFor more "
-"information, please view the PressTrends %s."
-msgstr ""
-
-#: functions/admin-framework-settings.php:170
-msgid "privacy policy"
-msgstr ""
-
-#: functions/admin-express-functions.php:214
-#: functions/admin-express-functions-deprecated.php:198
-msgid "You are not allowed to upload files to this site."
-msgstr ""
-
-#: functions/admin-express-functions.php:240
-#: functions/admin-express-functions-deprecated.php:224
-#, php-format
-msgid "Could not write file %1$s (%2$s)"
 msgstr ""
 
 #: functions/admin-shortcodes.php:332
@@ -910,129 +1049,6 @@ msgstr ""
 msgid "Pin It"
 msgstr ""
 
-#: functions/admin-backup.php:74
-msgid "WooThemes Settings Backup"
-msgstr ""
-
-#: functions/admin-backup.php:106
-msgid "Import Settings"
-msgstr ""
-
-#: functions/admin-backup.php:108
-msgid ""
-"If you have settings in a backup file on your computer, the WooFramework can "
-"import those into this site. To get started, upload your backup file to "
-"import from below."
-msgstr ""
-
-#: functions/admin-backup.php:113
-#, php-format
-msgid "Upload File: (Maximum Size: %s)"
-msgstr ""
-
-#: functions/admin-backup.php:116
-msgid "Upload File and Import"
-msgstr ""
-
-#: functions/admin-backup.php:120
-msgid "Export Settings"
-msgstr ""
-
-#: functions/admin-backup.php:122
-msgid ""
-"When you click the button below, the WooFramework will create a text file "
-"for you to save to your computer."
-msgstr ""
-
-#: functions/admin-backup.php:123
-#, php-format
-msgid ""
-"This text file can be used to restore your settings here on \"%s\", or to "
-"easily setup another website with the same settings\"."
-msgstr ""
-
-#: functions/admin-backup.php:127
-msgid "All Settings"
-msgstr ""
-
-#: functions/admin-backup.php:128
-msgid "This will contain all of the options listed below."
-msgstr ""
-
-#: functions/admin-backup.php:134
-msgid "Download Export File"
-msgstr ""
-
-#: functions/admin-backup.php:157
-msgid "Welcome to the WooThemes Backup Manager."
-msgstr ""
-
-#: functions/admin-backup.php:158
-msgid "Here are a few notes on using this screen."
-msgstr ""
-
-#: functions/admin-backup.php:159
-msgid ""
-"The backup manager allows you to backup or restore your \"Theme Options\" "
-"and other settings to or from a text file."
-msgstr ""
-
-#: functions/admin-backup.php:160
-msgid ""
-"To create a backup, simply select the setting type you'd like to backup (or "
-"\"All Settings\") and hit the \"Download Export File\" button."
-msgstr ""
-
-#: functions/admin-backup.php:161
-msgid ""
-"To restore your settings from a backup, browse your computer for the file "
-"(under the \"Import Settings\" heading) and hit the \"Upload File and Import"
-"\" button. This will restore only the settings that have changed since the "
-"backup."
-msgstr ""
-
-#: functions/admin-backup.php:163
-msgid ""
-"Please note that only valid backup files generated through the WooThemes "
-"Backup Manager should be imported."
-msgstr ""
-
-#: functions/admin-backup.php:165
-msgid "Looking for assistance?"
-msgstr ""
-
-#: functions/admin-backup.php:166
-#, php-format
-msgid ""
-"Please post your query on the %sWooThemes Support Desk%s where we will do "
-"our best to assist you further."
-msgstr ""
-
-#: functions/admin-backup.php:186
-#, php-format
-msgid ""
-"Please note that this backup manager backs up only your settings and not "
-"your content. To backup your content, please use the %sWordPress Export Tool"
-"%s."
-msgstr ""
-
-#: functions/admin-backup.php:189
-msgid "There was a problem importing your settings. Please Try again."
-msgstr ""
-
-#: functions/admin-backup.php:191
-msgid "There was a problem exporting your settings. Please Try again."
-msgstr ""
-
-#: functions/admin-backup.php:193
-msgid "The import file you've provided is invalid. Please try again."
-msgstr ""
-
-#: functions/admin-backup.php:195
-#, php-format
-msgid "Settings successfully imported. | Return to %sTheme Options%s"
-msgstr ""
-
 #: functions/js/shortcode-generator/dialog.php:52
 msgid "Customize the Shortcode"
 msgstr ""
@@ -1094,16 +1110,51 @@ msgid ""
 "title=\"WooThemes Gallery\">WooThemes Gallery</a> and get one."
 msgstr ""
 
-#: includes/theme-js.php:48
-msgid "Next"
-msgstr "Nästa"
+#: includes/sidebar-init.php:9
+msgid "Primary"
+msgstr ""
 
-#: includes/theme-js.php:48
-msgid "Previous"
-msgstr "Föregående"
+#: includes/sidebar-init.php:9
+msgid ""
+"The default primary sidebar for your website, used in two or three-column "
+"layouts."
+msgstr ""
 
-#: includes/theme-woocommerce.php:246
-msgid "View your shopping cart"
+#: includes/sidebar-init.php:10
+#, fuzzy
+msgid "Secondary"
+msgstr "Sekundärt widgetfält"
+
+#: includes/sidebar-init.php:10
+msgid "A secondary sidebar for your website, used in three-column layouts."
+msgstr ""
+
+#: includes/sidebar-init.php:16
+#, php-format
+msgid "Footer %d"
+msgstr ""
+
+#: includes/sidebar-init.php:16
+#, php-format
+msgid "Widgetized Footer Region %d."
+msgstr ""
+
+#: includes/sidebar-init.php:19
+msgid "Homepage"
+msgstr ""
+
+#: includes/sidebar-init.php:19
+msgid "Optional widgetized homepage (displays only if widgets are added here)."
+msgstr ""
+
+#: includes/sidebar-init.php:20
+msgid "\"Widgets\" Page Template"
+msgstr ""
+
+#: includes/sidebar-init.php:20
+msgid ""
+"The widgetized area used on the \"Widgets\" page template (displays only if "
+"widgets are added here). Defaults to page content if no widgets are added."
 msgstr ""
 
 #: includes/theme-actions.php:1194
@@ -1121,7 +1172,7 @@ msgstr ""
 msgid "Return to Content"
 msgstr "Hoppa till innehåll"
 
-#: includes/theme-actions.php:1461
+#: includes/theme-actions.php:1461 ../lyxbling/functions.php:174
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Visa alla inlägg av %s <span class=\"meta-nav\">&rarr;</span>"
@@ -1161,6 +1212,267 @@ msgstr ""
 #, fuzzy
 msgid "Navigation"
 msgstr "Navigationsmeny"
+
+#: includes/theme-comments.php:20
+msgid "at"
+msgstr ""
+
+#: includes/theme-comments.php:21
+msgid "Direct link to this comment"
+msgstr ""
+
+#: includes/theme-comments.php:22
+msgid "Edit"
+msgstr "Redigera"
+
+#: includes/theme-comments.php:31
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: includes/theme-functions.php:54
+msgid "Older posts"
+msgstr ""
+
+#: includes/theme-functions.php:55
+msgid "Newer posts"
+msgstr ""
+
+#: includes/theme-functions.php:106
+#, fuzzy
+msgid "Primary Menu"
+msgstr "Inläggsnavigering"
+
+#: includes/theme-functions.php:107
+#, fuzzy
+msgid "Top Menu"
+msgstr "Meny"
+
+#: includes/theme-functions.php:126
+msgid "Add New Slide"
+msgstr ""
+
+#: includes/theme-functions.php:127
+msgid "Edit Slide"
+msgstr ""
+
+#: includes/theme-functions.php:128
+msgid "New Slide"
+msgstr ""
+
+#: includes/theme-functions.php:129
+msgid "View Slide"
+msgstr ""
+
+#: includes/theme-functions.php:130
+msgid "Search Slides"
+msgstr ""
+
+#: includes/theme-functions.php:131
+#, fuzzy
+msgid "No slides found"
+msgstr "Kunde inte hittas"
+
+#: includes/theme-functions.php:132
+#, fuzzy
+msgid "No slides found in Trash"
+msgstr "Kunde inte hittas"
+
+#: includes/theme-functions.php:157
+msgid "Search Slide Pages"
+msgstr ""
+
+#: includes/theme-functions.php:158
+msgid "All Slide Pages"
+msgstr ""
+
+#: includes/theme-functions.php:159
+msgid "Parent Slide Page"
+msgstr ""
+
+#: includes/theme-functions.php:160
+msgid "Parent Slide Page:"
+msgstr ""
+
+#: includes/theme-functions.php:161
+msgid "Edit Slide Page"
+msgstr ""
+
+#: includes/theme-functions.php:162
+msgid "Update Slide Page"
+msgstr ""
+
+#: includes/theme-functions.php:163
+msgid "Add New Slide Page"
+msgstr ""
+
+#: includes/theme-functions.php:164
+msgid "New Slide Page Name"
+msgstr ""
+
+#: includes/theme-functions.php:165
+#, fuzzy
+msgid "Slide Pages"
+msgstr "Sidor:"
+
+#: includes/theme-functions.php:201
+msgid "Add New Portfolio Item"
+msgstr ""
+
+#: includes/theme-functions.php:202
+msgid "Edit Portfolio Item"
+msgstr ""
+
+#: includes/theme-functions.php:203
+msgid "New Portfolio Item"
+msgstr ""
+
+#: includes/theme-functions.php:204
+msgid "View Portfolio Item"
+msgstr ""
+
+#: includes/theme-functions.php:205
+msgid "Search Portfolio Items"
+msgstr ""
+
+#: includes/theme-functions.php:206
+#, fuzzy
+msgid "No portfolio items found"
+msgstr "Kunde inte hittas"
+
+#: includes/theme-functions.php:207
+msgid "No portfolio items found in Trash"
+msgstr ""
+
+#: includes/theme-functions.php:240
+msgid "Search Portfolio Galleries"
+msgstr ""
+
+#: includes/theme-functions.php:241
+msgid "All Portfolio Galleries"
+msgstr ""
+
+#: includes/theme-functions.php:242
+msgid "Parent Portfolio Gallery"
+msgstr ""
+
+#: includes/theme-functions.php:243
+msgid "Parent Portfolio Gallery:"
+msgstr ""
+
+#: includes/theme-functions.php:244
+msgid "Edit Portfolio Gallery"
+msgstr ""
+
+#: includes/theme-functions.php:245
+msgid "Update Portfolio Gallery"
+msgstr ""
+
+#: includes/theme-functions.php:246
+msgid "Add New Portfolio Gallery"
+msgstr ""
+
+#: includes/theme-functions.php:247
+msgid "New Portfolio Gallery Name"
+msgstr ""
+
+#: includes/theme-functions.php:248
+msgid "Portfolio Galleries"
+msgstr ""
+
+#: includes/theme-functions.php:279
+msgid "Add New Feedback Item"
+msgstr ""
+
+#: includes/theme-functions.php:280
+msgid "Edit Feedback Item"
+msgstr ""
+
+#: includes/theme-functions.php:281
+msgid "New Feedback Item"
+msgstr ""
+
+#: includes/theme-functions.php:282
+msgid "View Feedback Item"
+msgstr ""
+
+#: includes/theme-functions.php:283
+msgid "Search Feedback Items"
+msgstr ""
+
+#: includes/theme-functions.php:284
+#, fuzzy
+msgid "No Feedback Items found"
+msgstr "Kunde inte hittas"
+
+#: includes/theme-functions.php:285
+msgid "No Feedback Items found in Trash"
+msgstr ""
+
+#: includes/theme-functions.php:322 includes/theme-functions.php:356
+#: includes/theme-options.php:1692
+msgid "Subscribe"
+msgstr ""
+
+#: includes/theme-functions.php:324 includes/theme-functions.php:359
+msgid "Subscribe to our e-mail newsletter to receive updates."
+msgstr ""
+
+#: includes/theme-functions.php:363 includes/theme-functions.php:375
+msgid "E-mail"
+msgstr "E-post"
+
+#: includes/theme-functions.php:428
+msgid "Related Posts:"
+msgstr "Relaterade inlägg:"
+
+#: includes/theme-functions.php:481 includes/theme-functions.php:492
+#: includes/theme-functions.php:499 includes/theme-functions.php:506
+#: includes/theme-functions.php:527 ../lyxbling/functions.php:231
+#: ../lyxbling/functions.php:238 ../lyxbling/functions.php:245
+msgid "Archive"
+msgstr "Arkiv"
+
+#: includes/theme-functions.php:512
+msgid "Author Archive"
+msgstr "Författararkiv"
+
+#: includes/theme-functions.php:518 ../lyxbling/functions.php:257
+msgid "Tag Archives"
+msgstr "Etikettarkiv"
+
+#: includes/theme-functions.php:535 ../lyxbling/functions.php:276
+msgid " Archives"
+msgstr "Arkiv"
+
+#: includes/theme-functions.php:541 ../lyxbling/functions.php:282
+#, fuzzy, php-format
+msgid "%1$s Archives: %2$s"
+msgstr "Etikettarkiv: %s"
+
+#: includes/theme-functions.php:618
+msgid "Select a category:"
+msgstr "Välj en kategori:"
+
+#: includes/theme-functions.php:639 includes/theme-options.php:2073
+#: includes/widgets/widget-woo-blogauthor.php:228
+msgid "All"
+msgstr ""
+
+#: includes/theme-functions.php:676
+msgid "Visit Website"
+msgstr "Besök webbplats"
+
+#: includes/theme-functions.php:878
+msgid "Posted In "
+msgstr "Inlagt i "
+
+#: includes/theme-js.php:48
+msgid "Next"
+msgstr "Nästa"
+
+#: includes/theme-js.php:48
+msgid "Previous"
+msgstr "Föregående"
 
 #: includes/theme-options.php:44 includes/theme-options.php:45
 msgid "Select a number:"
@@ -3196,11 +3508,6 @@ msgid ""
 "Subscribe widget."
 msgstr ""
 
-#: includes/theme-options.php:1692 includes/theme-functions.php:322
-#: includes/theme-functions.php:356
-msgid "Subscribe"
-msgstr ""
-
 #: includes/theme-options.php:1695
 msgid "Subscribe By E-mail ID (Feedburner)"
 msgstr ""
@@ -3649,83 +3956,15 @@ msgid ""
 "(optional) Enter the URL to the feedback author e.g. http://www.woothemes.com"
 msgstr ""
 
-#: includes/theme-options.php:2073 includes/theme-functions.php:639
-#: includes/widgets/widget-woo-blogauthor.php:228
-msgid "All"
-msgstr ""
-
 #: includes/theme-options.php:2088
 msgid ""
 "Optionally select a \"Slide Group\" to show slides from only that \"Slide "
 "Group\"."
 msgstr ""
 
-#: includes/sidebar-init.php:9
-msgid "Primary"
-msgstr ""
-
-#: includes/sidebar-init.php:9
-msgid ""
-"The default primary sidebar for your website, used in two or three-column "
-"layouts."
-msgstr ""
-
-#: includes/sidebar-init.php:10
-#, fuzzy
-msgid "Secondary"
-msgstr "Sekundärt widgetfält"
-
-#: includes/sidebar-init.php:10
-msgid "A secondary sidebar for your website, used in three-column layouts."
-msgstr ""
-
-#: includes/sidebar-init.php:16
-#, php-format
-msgid "Footer %d"
-msgstr ""
-
-#: includes/sidebar-init.php:16
-#, php-format
-msgid "Widgetized Footer Region %d."
-msgstr ""
-
-#: includes/sidebar-init.php:19
-msgid "Homepage"
-msgstr ""
-
-#: includes/sidebar-init.php:19
-msgid "Optional widgetized homepage (displays only if widgets are added here)."
-msgstr ""
-
-#: includes/sidebar-init.php:20
-msgid "\"Widgets\" Page Template"
-msgstr ""
-
-#: includes/sidebar-init.php:20
-msgid ""
-"The widgetized area used on the \"Widgets\" page template (displays only if "
-"widgets are added here). Defaults to page content if no widgets are added."
-msgstr ""
-
-#: includes/theme-comments.php:20
-msgid "at"
-msgstr ""
-
-#: includes/theme-comments.php:21
-msgid "Direct link to this comment"
-msgstr ""
-
-#: includes/theme-comments.php:22
-msgid "Edit"
-msgstr "Redigera"
-
-#: includes/theme-comments.php:31
-msgid "Your comment is awaiting moderation."
-msgstr ""
-
 #: includes/theme-shortcodes.php:42
 msgid "Continue Reading"
-msgstr "Läs mer &raquo;"
+msgstr "Läs mer"
 
 #: includes/theme-shortcodes.php:198
 #, php-format
@@ -3766,807 +4005,8 @@ msgstr "Drivs med %s"
 msgid "Designed by"
 msgstr ""
 
-#: includes/theme-functions.php:54
-msgid "Older posts"
-msgstr ""
-
-#: includes/theme-functions.php:55
-msgid "Newer posts"
-msgstr ""
-
-#: includes/theme-functions.php:106
-#, fuzzy
-msgid "Primary Menu"
-msgstr "Inläggsnavigering"
-
-#: includes/theme-functions.php:107
-#, fuzzy
-msgid "Top Menu"
-msgstr "Meny"
-
-#: includes/theme-functions.php:126
-msgid "Add New Slide"
-msgstr ""
-
-#: includes/theme-functions.php:127
-msgid "Edit Slide"
-msgstr ""
-
-#: includes/theme-functions.php:128
-msgid "New Slide"
-msgstr ""
-
-#: includes/theme-functions.php:129
-msgid "View Slide"
-msgstr ""
-
-#: includes/theme-functions.php:130
-msgid "Search Slides"
-msgstr ""
-
-#: includes/theme-functions.php:131
-#, fuzzy
-msgid "No slides found"
-msgstr "Kunde inte hittas"
-
-#: includes/theme-functions.php:132
-#, fuzzy
-msgid "No slides found in Trash"
-msgstr "Kunde inte hittas"
-
-#: includes/theme-functions.php:157
-msgid "Search Slide Pages"
-msgstr ""
-
-#: includes/theme-functions.php:158
-msgid "All Slide Pages"
-msgstr ""
-
-#: includes/theme-functions.php:159
-msgid "Parent Slide Page"
-msgstr ""
-
-#: includes/theme-functions.php:160
-msgid "Parent Slide Page:"
-msgstr ""
-
-#: includes/theme-functions.php:161
-msgid "Edit Slide Page"
-msgstr ""
-
-#: includes/theme-functions.php:162
-msgid "Update Slide Page"
-msgstr ""
-
-#: includes/theme-functions.php:163
-msgid "Add New Slide Page"
-msgstr ""
-
-#: includes/theme-functions.php:164
-msgid "New Slide Page Name"
-msgstr ""
-
-#: includes/theme-functions.php:165
-#, fuzzy
-msgid "Slide Pages"
-msgstr "Sidor:"
-
-#: includes/theme-functions.php:201
-msgid "Add New Portfolio Item"
-msgstr ""
-
-#: includes/theme-functions.php:202
-msgid "Edit Portfolio Item"
-msgstr ""
-
-#: includes/theme-functions.php:203
-msgid "New Portfolio Item"
-msgstr ""
-
-#: includes/theme-functions.php:204
-msgid "View Portfolio Item"
-msgstr ""
-
-#: includes/theme-functions.php:205
-msgid "Search Portfolio Items"
-msgstr ""
-
-#: includes/theme-functions.php:206
-#, fuzzy
-msgid "No portfolio items found"
-msgstr "Kunde inte hittas"
-
-#: includes/theme-functions.php:207
-msgid "No portfolio items found in Trash"
-msgstr ""
-
-#: includes/theme-functions.php:240
-msgid "Search Portfolio Galleries"
-msgstr ""
-
-#: includes/theme-functions.php:241
-msgid "All Portfolio Galleries"
-msgstr ""
-
-#: includes/theme-functions.php:242
-msgid "Parent Portfolio Gallery"
-msgstr ""
-
-#: includes/theme-functions.php:243
-msgid "Parent Portfolio Gallery:"
-msgstr ""
-
-#: includes/theme-functions.php:244
-msgid "Edit Portfolio Gallery"
-msgstr ""
-
-#: includes/theme-functions.php:245
-msgid "Update Portfolio Gallery"
-msgstr ""
-
-#: includes/theme-functions.php:246
-msgid "Add New Portfolio Gallery"
-msgstr ""
-
-#: includes/theme-functions.php:247
-msgid "New Portfolio Gallery Name"
-msgstr ""
-
-#: includes/theme-functions.php:248
-msgid "Portfolio Galleries"
-msgstr ""
-
-#: includes/theme-functions.php:279
-msgid "Add New Feedback Item"
-msgstr ""
-
-#: includes/theme-functions.php:280
-msgid "Edit Feedback Item"
-msgstr ""
-
-#: includes/theme-functions.php:281
-msgid "New Feedback Item"
-msgstr ""
-
-#: includes/theme-functions.php:282
-msgid "View Feedback Item"
-msgstr ""
-
-#: includes/theme-functions.php:283
-msgid "Search Feedback Items"
-msgstr ""
-
-#: includes/theme-functions.php:284
-#, fuzzy
-msgid "No Feedback Items found"
-msgstr "Kunde inte hittas"
-
-#: includes/theme-functions.php:285
-msgid "No Feedback Items found in Trash"
-msgstr ""
-
-#: includes/theme-functions.php:324 includes/theme-functions.php:359
-msgid "Subscribe to our e-mail newsletter to receive updates."
-msgstr ""
-
-#: includes/theme-functions.php:363 includes/theme-functions.php:375
-msgid "E-mail"
-msgstr "E-post"
-
-#: includes/theme-functions.php:428
-msgid "Related Posts:"
-msgstr "Relaterade inlägg:"
-
-#: includes/theme-functions.php:481 includes/theme-functions.php:492
-#: includes/theme-functions.php:499 includes/theme-functions.php:506
-#: includes/theme-functions.php:527
-msgid "Archive"
-msgstr "Arkiv"
-
-#: includes/theme-functions.php:512
-msgid "Author Archive"
-msgstr "Författararkiv"
-
-#: includes/theme-functions.php:518
-msgid "Tag Archives"
-msgstr "Etikettarkiv"
-
-#: includes/theme-functions.php:535
-msgid " Archives"
-msgstr "Arkiv"
-
-#: includes/theme-functions.php:541
-#, fuzzy, php-format
-msgid "%1$s Archives: %2$s"
-msgstr "Etikettarkiv: %s"
-
-#: includes/theme-functions.php:618
-msgid "Select a category:"
-msgstr "Välj en kategori:"
-
-#: includes/theme-functions.php:676
-msgid "Visit Website"
-msgstr "Besök webbplats"
-
-#: includes/theme-functions.php:878
-msgid "Posted In "
-msgstr "Inlagt i "
-
-#: includes/woo-layout/screens/admin.php:2
-#: includes/woo-layout/classes/woo-layout.class.php:121
-msgid "Layouts"
-msgstr ""
-
-#: includes/woo-layout/screens/admin.php:3
-msgid "Layouts Settings Updated."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:156
-msgid "Settings"
-msgstr "Inställningar"
-
-#: includes/woo-layout/classes/woo-layout.class.php:160
-#: includes/woo-layout/classes/woo-layout.class.php:162
-msgid "Enable Layouts"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:163
-msgid ""
-"Load in the customisations you make to the layouts, using the options below."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:186
-#, php-format
-msgid "Your current layout width is %s and your current layout type is %s."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:187
-#, php-format
-msgid "You can select your desired layout on the %stheme options%s screen."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:212
-msgid "Column"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:245
-msgid ""
-"Adjust the widths of the layout you'd like to customise and hit the \"Save "
-"Changes\" button. It's as easy as that!"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:246
-#: includes/woo-meta/classes/woo-meta.class.php:258
-#: includes/woo-hooks/classes/woo-hooks.class.php:220
-msgid "For more information:"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:247
-#: includes/woo-meta/classes/woo-meta.class.php:259
-#: includes/woo-hooks/classes/woo-hooks.class.php:221
-#, php-format
-msgid "<a href=\"%s\" target=\"_blank\">WooThemes Help Desk</a>"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:249
-#: includes/woo-meta/classes/woo-meta.class.php:261
-#: includes/woo-hooks/classes/woo-hooks.class.php:223
-msgid "Overview"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:576
-msgid "One Column"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:576
-#, fuzzy
-msgid "One column with no sidebars."
-msgstr "En kommentar så här långt"
-
-#: includes/woo-layout/classes/woo-layout.class.php:580
-msgid "Two Columns (Content on the Left)"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:580
-msgid "Two columns with the main content column on the left."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:584
-msgid "Two Columns (Content on the Right)"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:584
-msgid "Two columns with the main content column on the right."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:588
-msgid "Three Columns (Content on the Left)"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:588
-msgid "Three columns with the main content column on the left."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:592
-msgid "Three Columns (Content in the Middle)"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:592
-msgid "Three columns with the main content column in the middle."
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:596
-msgid "Three Columns (Content on the Right)"
-msgstr ""
-
-#: includes/woo-layout/classes/woo-layout.class.php:596
-msgid "Three columns with the main content column on the right."
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:36
-msgid "Add a subscribe/connect widget."
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:42
-msgid "Woo - Subscribe / Connect"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:136
-msgid "Subscribe / Connect"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:140
-#, php-format
-msgid ""
-"Setup this widget in your <a href=\"%s\">options panel</a> under "
-"<strong>Subscribe &amp; Connect</strong>"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:143
-#: includes/widgets/widget-woo-search.php:149
-#: includes/widgets/widget-woo-flickr.php:180
-#: includes/widgets/widget-woo-adspace.php:171
-#: includes/widgets/widget-woo-component.php:137
-#: includes/widgets/widget-woo-feedback.php:200
-msgid "Title (optional):"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:149
-msgid "Disable Subscription Form"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:154
-msgid "Disable Social Icons"
-msgstr ""
-
-#: includes/widgets/widget-woo-subscribe.php:159
-#, fuzzy
-msgid "Disable in Posts"
-msgstr "Sida %s"
-
-#: includes/widgets/widget-woo-subscribe.php:164
-#, fuzzy
-msgid "Disable in Pages"
-msgstr "Sidor:"
-
-#: includes/widgets/widget-woo-blogauthor.php:36
-msgid "This is a WooThemes Blog Author Info widget."
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:42
-msgid "Woo - Blog Author Info"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:174
-msgid "About The Author"
-msgstr "Om författaren"
-
-#: includes/widgets/widget-woo-blogauthor.php:188
-#: includes/widgets/widget-woo-embed.php:179
-msgid "Title:"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:193
-msgid "Bio:"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:198
-msgid "<a href=\"http://www.gravatar.com/\">Gravatar</a> E-mail:"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:203
-msgid "Gravatar Size:"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:208
-msgid "Gravatar Alignment:"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:216
-msgid "Read More Text (optional):"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:221
-msgid "Read More URL (optional):"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:226
-#, fuzzy
-msgid "Visible Pages:"
-msgstr "Sidor:"
-
-#: includes/widgets/widget-woo-blogauthor.php:229
-msgid "Home only"
-msgstr ""
-
-#: includes/widgets/widget-woo-blogauthor.php:230
-msgid "Single only"
-msgstr ""
-
-#: includes/widgets/widget-woo-search.php:36
-msgid "This is a WooThemes standardized search widget."
-msgstr ""
-
-#: includes/widgets/widget-woo-search.php:42
-msgid "Woo - Search"
-msgstr ""
-
-#: includes/widgets/widget-woo-search.php:142
-msgid "Search"
-msgstr "Sök"
-
-#: includes/widgets/widget-woo-flickr.php:36
-msgid "This Flickr widget populates photos from a Flickr ID."
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:42
-msgid "Woo - Flickr"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:72
-msgid "Photos on"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:185
-msgid "Flickr ID (<a href=\"http://www.idgettr.com\">idGettr</a>):"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:190
-msgid "Number:"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:199
-msgid "Type:"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:201
-msgid "User"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:202
-msgid "Group"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:207
-msgid "Sorting:"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:209
-#: includes/widgets/widget-woo-tabs.php:64
-#: includes/widgets/widget-woo-tabs.php:69
-#: includes/widgets/widget-woo-tabs.php:200
-#: includes/widgets/widget-woo-tabs.php:210
-msgid "Latest"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:210
-msgid "Random"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:215
-msgid "Size:"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:217
-msgid "Square"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:218
-msgid "Medium"
-msgstr ""
-
-#: includes/widgets/widget-woo-flickr.php:219
-msgid "Thumbnail"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:36
-msgid "Use this widget to add any type of Ad as a widget."
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:42
-msgid "Woo - Adspace Widget"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:162
-msgid "Advert"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:176
-msgid "Ad Code:"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:179
-msgid "or"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:182
-#, fuzzy
-msgid "Image URL:"
-msgstr "Sidor:"
-
-#: includes/widgets/widget-woo-adspace.php:187
-msgid "Link URL:"
-msgstr ""
-
-#: includes/widgets/widget-woo-adspace.php:192
-msgid "Alt text:"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:42
-msgid ""
-"This is a WooThemes standardized component loading widget. Intended "
-"primarily for use in the \"Widgets\" Page Template widget region."
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:44
-msgid "Woo - Component"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:47
-msgid "Blog"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:48
-msgid "\"Business\" Slider"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:49
-msgid "\"Magazine\" Slider"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:50
-msgid "\"Magazine\" Grid"
-msgstr ""
-
-#: includes/widgets/widget-woo-component.php:51
-#, fuzzy
-msgid "Current Page Content"
-msgstr "Hoppa till innehåll"
-
-#: includes/widgets/widget-woo-component.php:142
-msgid "Component:"
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:37
-msgid ""
-"This is a WooThemes standardized embed widget. It displays the video embed "
-"codes from your posts in a tab-like fashion."
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:43
-msgid "Woo - Embed/Video"
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:168
-msgid "Recent Videos"
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:184
-#, fuzzy
-msgid "Category:"
-msgstr "Kategoriarkiv: %s"
-
-#: includes/widgets/widget-woo-embed.php:198
-msgid "Tag:"
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:203
-msgid "Limit (optional):"
-msgstr ""
-
-#: includes/widgets/widget-woo-embed.php:208
-msgid "Width:"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:36
-msgid ""
-"This widget is the Tabs that classically goes into the sidebar. It contains "
-"the Popular posts, Latest Posts, Recent comments and a Tag cloud."
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:42
-msgid "Woo - Tabs"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:66
-#: includes/widgets/widget-woo-tabs.php:71
-#: includes/widgets/widget-woo-tabs.php:202
-#: includes/widgets/widget-woo-tabs.php:216
-msgid "Tags"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:68
-#: includes/widgets/widget-woo-tabs.php:199
-#: includes/widgets/widget-woo-tabs.php:207
-msgid "Popular"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:182
-msgid "Number of posts:"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:187
-msgid "Thumbnail Size (0=disable):"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:192
-msgid "Popular limit (days):"
-msgstr ""
-
-#: includes/widgets/widget-woo-tabs.php:197
-#, fuzzy
-msgid "First Visible Tab:"
-msgstr "Sidor:"
-
-#: includes/widgets/widget-woo-tabs.php:205
-msgid "Hide Tabs:"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:36
-msgid "Display your feedback in a customised widget."
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:42
-msgid "Woo - Feedback"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:205
-msgid "Limit:"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:210
-msgid "Effect:"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:218
-msgid "Auto-Fade Duration (in seconds):"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:223
-msgid "Fade Speed (in seconds):"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:229
-msgid "Enable Pagination"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:230
-msgid "Disabled if the \"limit\" is 1"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:236
-msgid "Display Author"
-msgstr ""
-
-#: includes/widgets/widget-woo-feedback.php:242
-msgid "Display URL"
-msgstr ""
-
-#: includes/woo-meta/screens/admin.php:2
-#: includes/woo-meta/classes/woo-meta.class.php:211
-msgid "Filters"
-msgstr ""
-
-#: includes/woo-meta/screens/admin.php:3
-msgid "Filters Settings Updated."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:101
-#, fuzzy
-msgid "Above post content"
-msgstr "Hoppa till innehåll"
-
-#: includes/woo-meta/classes/woo-meta.class.php:102
-#, fuzzy
-msgid "on"
-msgstr "på"
-
-#: includes/woo-meta/classes/woo-meta.class.php:104
-msgid "Data above the content of your blog posts."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:107
-msgid "\"Read more\" area below posts"
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:110
-msgid "Data below each blog post."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:257
-#: includes/woo-hooks/classes/woo-hooks.class.php:219
-msgid ""
-"Fill in the area you'd like to customise and hit the \"Save Changes\" "
-"button. It's as easy as that!"
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:262
-msgid "Shortcode Reference"
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:272
-msgid "Use these shortcodes to include dynamic data into your meta sections."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:350
-msgid "Link to read the full post."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:351
-msgid "The post date."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:352
-msgid "The post time."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:353
-msgid "The post author (link to the author's website)."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:354
-msgid "The post author (link to the author's posts archive)."
-msgstr ""
-
-#: includes/woo-meta/classes/woo-meta.class.php:355
-#, fuzzy
-msgid "Comments for the post."
-msgstr "Kommentarer inaktiverade."
-
-#: includes/woo-meta/classes/woo-meta.class.php:356
-#, fuzzy
-msgid "Tags for the post."
-msgstr "Kommentarer inaktiverade."
-
-#: includes/woo-meta/classes/woo-meta.class.php:357
-#, fuzzy
-msgid "Categories for the post."
-msgstr "Kommentarer inaktiverade."
-
-#: includes/woo-meta/classes/woo-meta.class.php:358
-#, fuzzy
-msgid "\"Edit\" link for the post."
-msgstr "Kommentarer inaktiverade."
-
-#: includes/tumblog/wootumblog_postformat.class.php:330
-#: includes/tumblog/wootumblog_postformat.class.php:345
-#: includes/tumblog/theme-custom-post-types.php:130
-#, fuzzy
-msgid "View all Tumblogs"
-msgstr "Visa alla % kommentarer"
-
-#: includes/tumblog/wootumblog_postformat.class.php:350
-msgid "Filter"
-msgstr ""
-
-#: includes/tumblog/theme-tumblog.php:640
-#: includes/tumblog/theme-tumblog.php:748
-msgid "Play Audio"
-msgstr ""
-
-#: includes/tumblog/theme-tumblog.php:645
-#: includes/tumblog/theme-tumblog.php:755
-msgid " ~ "
+#: includes/theme-woocommerce.php:246
+msgid "View your shopping cart"
 msgstr ""
 
 #: includes/tumblog/theme-custom-post-types.php:28
@@ -4640,17 +4080,419 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-#: includes/woo-hooks/screens/admin.php:2
-#: includes/woo-hooks/classes/woo-hooks.class.php:184
-msgid "Hooks"
+#: includes/tumblog/theme-custom-post-types.php:130
+#: includes/tumblog/wootumblog_postformat.class.php:330
+#: includes/tumblog/wootumblog_postformat.class.php:345
+#, fuzzy
+msgid "View all Tumblogs"
+msgstr "Visa alla % kommentarer"
+
+#: includes/tumblog/theme-tumblog.php:640
+#: includes/tumblog/theme-tumblog.php:748
+msgid "Play Audio"
 msgstr ""
 
-#: includes/woo-hooks/screens/admin.php:3
-msgid "Hooks Settings Updated."
+#: includes/tumblog/theme-tumblog.php:645
+#: includes/tumblog/theme-tumblog.php:755
+msgid " ~ "
+msgstr ""
+
+#: includes/tumblog/wootumblog_postformat.class.php:350
+msgid "Filter"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:36
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:42
+msgid "Woo - Adspace Widget"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:162
+msgid "Advert"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:171
+#: includes/widgets/widget-woo-component.php:137
+#: includes/widgets/widget-woo-feedback.php:200
+#: includes/widgets/widget-woo-flickr.php:180
+#: includes/widgets/widget-woo-search.php:149
+#: includes/widgets/widget-woo-subscribe.php:143
+msgid "Title (optional):"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:176
+msgid "Ad Code:"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:179
+msgid "or"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:182
+#, fuzzy
+msgid "Image URL:"
+msgstr "Sidor:"
+
+#: includes/widgets/widget-woo-adspace.php:187
+msgid "Link URL:"
+msgstr ""
+
+#: includes/widgets/widget-woo-adspace.php:192
+msgid "Alt text:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:36
+msgid "This is a WooThemes Blog Author Info widget."
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:42
+msgid "Woo - Blog Author Info"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:174
+msgid "About The Author"
+msgstr "Om författaren"
+
+#: includes/widgets/widget-woo-blogauthor.php:188
+#: includes/widgets/widget-woo-embed.php:179
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:193
+msgid "Bio:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:198
+msgid "<a href=\"http://www.gravatar.com/\">Gravatar</a> E-mail:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:203
+msgid "Gravatar Size:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:208
+msgid "Gravatar Alignment:"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:216
+msgid "Read More Text (optional):"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:221
+msgid "Read More URL (optional):"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:226
+#, fuzzy
+msgid "Visible Pages:"
+msgstr "Sidor:"
+
+#: includes/widgets/widget-woo-blogauthor.php:229
+msgid "Home only"
+msgstr ""
+
+#: includes/widgets/widget-woo-blogauthor.php:230
+msgid "Single only"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:42
+msgid ""
+"This is a WooThemes standardized component loading widget. Intended "
+"primarily for use in the \"Widgets\" Page Template widget region."
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:44
+msgid "Woo - Component"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:47
+msgid "Blog"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:48
+msgid "\"Business\" Slider"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:49
+msgid "\"Magazine\" Slider"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:50
+msgid "\"Magazine\" Grid"
+msgstr ""
+
+#: includes/widgets/widget-woo-component.php:51
+#, fuzzy
+msgid "Current Page Content"
+msgstr "Hoppa till innehåll"
+
+#: includes/widgets/widget-woo-component.php:142
+msgid "Component:"
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:37
+msgid ""
+"This is a WooThemes standardized embed widget. It displays the video embed "
+"codes from your posts in a tab-like fashion."
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:43
+msgid "Woo - Embed/Video"
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:168
+msgid "Recent Videos"
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:184
+#, fuzzy
+msgid "Category:"
+msgstr "Kategoriarkiv: %s"
+
+#: includes/widgets/widget-woo-embed.php:198
+msgid "Tag:"
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:203
+msgid "Limit (optional):"
+msgstr ""
+
+#: includes/widgets/widget-woo-embed.php:208
+msgid "Width:"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:36
+msgid "Display your feedback in a customised widget."
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:42
+msgid "Woo - Feedback"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:205
+msgid "Limit:"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:210
+msgid "Effect:"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:218
+msgid "Auto-Fade Duration (in seconds):"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:223
+msgid "Fade Speed (in seconds):"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:229
+msgid "Enable Pagination"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:230
+msgid "Disabled if the \"limit\" is 1"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:236
+msgid "Display Author"
+msgstr ""
+
+#: includes/widgets/widget-woo-feedback.php:242
+msgid "Display URL"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:36
+msgid "This Flickr widget populates photos from a Flickr ID."
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:42
+msgid "Woo - Flickr"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:72
+msgid "Photos on"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:185
+msgid "Flickr ID (<a href=\"http://www.idgettr.com\">idGettr</a>):"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:190
+msgid "Number:"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:199
+msgid "Type:"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:201
+msgid "User"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:202
+msgid "Group"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:207
+msgid "Sorting:"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:209
+#: includes/widgets/widget-woo-tabs.php:64
+#: includes/widgets/widget-woo-tabs.php:69
+#: includes/widgets/widget-woo-tabs.php:200
+#: includes/widgets/widget-woo-tabs.php:210
+msgid "Latest"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:210
+msgid "Random"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:215
+msgid "Size:"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:217
+msgid "Square"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:218
+msgid "Medium"
+msgstr ""
+
+#: includes/widgets/widget-woo-flickr.php:219
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/widgets/widget-woo-search.php:36
+msgid "This is a WooThemes standardized search widget."
+msgstr ""
+
+#: includes/widgets/widget-woo-search.php:42
+msgid "Woo - Search"
+msgstr ""
+
+#: includes/widgets/widget-woo-search.php:142
+msgid "Search"
+msgstr "Sök"
+
+#: includes/widgets/widget-woo-subscribe.php:36
+msgid "Add a subscribe/connect widget."
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:42
+msgid "Woo - Subscribe / Connect"
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:136
+msgid "Subscribe / Connect"
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:140
+#, php-format
+msgid ""
+"Setup this widget in your <a href=\"%s\">options panel</a> under "
+"<strong>Subscribe &amp; Connect</strong>"
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:149
+msgid "Disable Subscription Form"
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:154
+msgid "Disable Social Icons"
+msgstr ""
+
+#: includes/widgets/widget-woo-subscribe.php:159
+#, fuzzy
+msgid "Disable in Posts"
+msgstr "Sida %s"
+
+#: includes/widgets/widget-woo-subscribe.php:164
+#, fuzzy
+msgid "Disable in Pages"
+msgstr "Sidor:"
+
+#: includes/widgets/widget-woo-tabs.php:36
+msgid ""
+"This widget is the Tabs that classically goes into the sidebar. It contains "
+"the Popular posts, Latest Posts, Recent comments and a Tag cloud."
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:42
+msgid "Woo - Tabs"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:66
+#: includes/widgets/widget-woo-tabs.php:71
+#: includes/widgets/widget-woo-tabs.php:202
+#: includes/widgets/widget-woo-tabs.php:216
+msgid "Tags"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:68
+#: includes/widgets/widget-woo-tabs.php:199
+#: includes/widgets/widget-woo-tabs.php:207
+msgid "Popular"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:182
+msgid "Number of posts:"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:187
+msgid "Thumbnail Size (0=disable):"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:192
+msgid "Popular limit (days):"
+msgstr ""
+
+#: includes/widgets/widget-woo-tabs.php:197
+#, fuzzy
+msgid "First Visible Tab:"
+msgstr "Sidor:"
+
+#: includes/widgets/widget-woo-tabs.php:205
+msgid "Hide Tabs:"
 msgstr ""
 
 #: includes/woo-hooks/classes/woo-hooks.class.php:162
 msgid "Execute Shortcodes on this Hook"
+msgstr ""
+
+#: includes/woo-hooks/classes/woo-hooks.class.php:184
+#: includes/woo-hooks/screens/admin.php:2
+msgid "Hooks"
+msgstr ""
+
+#: includes/woo-hooks/classes/woo-hooks.class.php:219
+#: includes/woo-meta/classes/woo-meta.class.php:257
+msgid ""
+"Fill in the area you'd like to customise and hit the \"Save Changes\" "
+"button. It's as easy as that!"
+msgstr ""
+
+#: includes/woo-hooks/classes/woo-hooks.class.php:220
+#: includes/woo-layout/classes/woo-layout.class.php:246
+#: includes/woo-meta/classes/woo-meta.class.php:258
+msgid "For more information:"
+msgstr ""
+
+#: includes/woo-hooks/classes/woo-hooks.class.php:221
+#: includes/woo-layout/classes/woo-layout.class.php:247
+#: includes/woo-meta/classes/woo-meta.class.php:259
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">WooThemes Help Desk</a>"
+msgstr ""
+
+#: includes/woo-hooks/classes/woo-hooks.class.php:223
+#: includes/woo-layout/classes/woo-layout.class.php:249
+#: includes/woo-meta/classes/woo-meta.class.php:261
+msgid "Overview"
 msgstr ""
 
 #: includes/woo-hooks/classes/woo-hooks.class.php:337
@@ -4790,6 +4632,189 @@ msgstr ""
 #: includes/woo-hooks/classes/woo-hooks.class.php:590
 msgid "WordPress"
 msgstr "WordPress"
+
+#: includes/woo-hooks/screens/admin.php:3
+msgid "Hooks Settings Updated."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:121
+#: includes/woo-layout/screens/admin.php:2
+msgid "Layouts"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:156
+msgid "Settings"
+msgstr "Inställningar"
+
+#: includes/woo-layout/classes/woo-layout.class.php:160
+#: includes/woo-layout/classes/woo-layout.class.php:162
+msgid "Enable Layouts"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:163
+msgid ""
+"Load in the customisations you make to the layouts, using the options below."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:186
+#, php-format
+msgid "Your current layout width is %s and your current layout type is %s."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:187
+#, php-format
+msgid "You can select your desired layout on the %stheme options%s screen."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:212
+msgid "Column"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:245
+msgid ""
+"Adjust the widths of the layout you'd like to customise and hit the \"Save "
+"Changes\" button. It's as easy as that!"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:576
+msgid "One Column"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:576
+#, fuzzy
+msgid "One column with no sidebars."
+msgstr "En kommentar så här långt"
+
+#: includes/woo-layout/classes/woo-layout.class.php:580
+msgid "Two Columns (Content on the Left)"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:580
+msgid "Two columns with the main content column on the left."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:584
+msgid "Two Columns (Content on the Right)"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:584
+msgid "Two columns with the main content column on the right."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:588
+msgid "Three Columns (Content on the Left)"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:588
+msgid "Three columns with the main content column on the left."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:592
+msgid "Three Columns (Content in the Middle)"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:592
+msgid "Three columns with the main content column in the middle."
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:596
+msgid "Three Columns (Content on the Right)"
+msgstr ""
+
+#: includes/woo-layout/classes/woo-layout.class.php:596
+msgid "Three columns with the main content column on the right."
+msgstr ""
+
+#: includes/woo-layout/screens/admin.php:3
+msgid "Layouts Settings Updated."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:101
+#, fuzzy
+msgid "Above post content"
+msgstr "Hoppa till innehåll"
+
+#: includes/woo-meta/classes/woo-meta.class.php:102
+#, fuzzy
+msgid "on"
+msgstr "på"
+
+#: includes/woo-meta/classes/woo-meta.class.php:104
+msgid "Data above the content of your blog posts."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:107
+msgid "\"Read more\" area below posts"
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:110
+msgid "Data below each blog post."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:211
+#: includes/woo-meta/screens/admin.php:2
+msgid "Filters"
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:262
+msgid "Shortcode Reference"
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:272
+msgid "Use these shortcodes to include dynamic data into your meta sections."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:350
+msgid "Link to read the full post."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:351
+msgid "The post date."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:352
+msgid "The post time."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:353
+msgid "The post author (link to the author's website)."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:354
+msgid "The post author (link to the author's posts archive)."
+msgstr ""
+
+#: includes/woo-meta/classes/woo-meta.class.php:355
+#, fuzzy
+msgid "Comments for the post."
+msgstr "Kommentarer inaktiverade."
+
+#: includes/woo-meta/classes/woo-meta.class.php:356
+#, fuzzy
+msgid "Tags for the post."
+msgstr "Kommentarer inaktiverade."
+
+#: includes/woo-meta/classes/woo-meta.class.php:357
+#, fuzzy
+msgid "Categories for the post."
+msgstr "Kommentarer inaktiverade."
+
+#: includes/woo-meta/classes/woo-meta.class.php:358
+#, fuzzy
+msgid "\"Edit\" link for the post."
+msgstr "Kommentarer inaktiverade."
+
+#: includes/woo-meta/screens/admin.php:3
+msgid "Filters Settings Updated."
+msgstr ""
+
+#: ../lyxbling/content-designers.php:78
+msgid "Continue Reading &raquo;"
+msgstr "Läs mer &raquo;"
+
+#: ../lyxbling/functions.php:223
+msgid "RSS feed for this section"
+msgstr ""
 
 #~ msgid ""
 #~ "The 2013 theme for WordPress takes us back to the blog, featuring a full "

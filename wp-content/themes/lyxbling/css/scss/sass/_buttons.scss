@@ -1,3 +1,39 @@
+@import "sassy-buttons";    // From http://jaredhardy.com/sassy-buttons/
+
+$button-text:   #555;
+
+@mixin standard-button($base-color) {
+    cursor: pointer !important;
+    @include sassy-button("shiny", 5px, 14px, $base-color, darken($base-color, 15%), #fff, "inset");
+}
+
+.lb-button {
+    color: $button-text !important;
+    margin: 10px !important;
+    @include standard-button($lb-pink);
+    &.blue {
+        @include standard-button(#63bb4a);
+    }
+    &.green {
+        @include standard-button(#63bb4a);
+    }
+    &.red {
+        @include standard-button(#bf4040);
+    }
+    &.orange {
+        @include standard-button(#d98026);
+    }
+    &.left {
+        float: left;
+    }
+    &.right {
+        float: right;
+    }
+}
+a.lb-button {
+    color: $button-text;
+}
+
 @mixin multi-line-button($base-color) {
     @include background-clip('padding-box');
     border-width: 1px;
@@ -64,7 +100,8 @@
 }
 
 .multi-line-button {
-    @include multi-line-button(#ccafb3);
+    cursor: pointer;
+    @include multi-line-button($lb-pink);
     &.blue {
         @include color-multi-line-button(#63bb4a);
     }

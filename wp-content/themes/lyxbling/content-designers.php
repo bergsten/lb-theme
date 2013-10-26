@@ -45,19 +45,17 @@ woo_post_before();
 <article <?php post_class(); ?>>
 <?php
 woo_post_inside_before();
-?>
-	<header>
-	<?php the_title( $title_before, $title_after ); ?>
-	</header>
-        
-<?php
-if ( ! is_singular() ) {
-?>
+
+if ( ! is_singular() ) { ?>
+    
     <section class="image">
 <?php 
 woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( $settings['thumb_h'] ) . '&class=thumbnail ' . esc_attr( $settings['thumb_align'] ) );
 ?>
     </section>
+    <header>
+    <?php the_title( $title_before, $title_after ); ?>
+    </header>
 <?php
 }
 ?>
@@ -77,8 +75,9 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
             <span class='subtitle'><?php echo(get_the_title()); ?></span>
         </a>
      */ ?>
-    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
-    <?php
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div>
+    
+    <?php //<br><div class="lb-button right" id="">Test</div>
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
 ?>

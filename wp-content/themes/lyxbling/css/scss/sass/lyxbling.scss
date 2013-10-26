@@ -1,4 +1,10 @@
+$lb-pink:   #eccfd3;
+
 @import "base";
 @import "buttons";
-
+ 
 @include global-reset;
+
+article {
+    padding: 5px;
+}

@@ -7,8 +7,10 @@
  * Include all custom javascript and CSS styles.
  */
 function theme_name_scripts() {
-	wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
-	//wp_enqueue_script( 'lyxbling', get_template_directory_uri() . '/js/lyxbling.js', array('jquery'));
+        wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
+        wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
+        
+	//wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
@@ -21,6 +23,11 @@ function _remove_script_version( $src ){
 }
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+
+function new_excerpt_more( $more ) {
+	return '...';lb_get_post_meta_fakta
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 
 // Load the textdomain for translation
 load_child_theme_textdomain( 'woothemes' );

@@ -45,12 +45,7 @@ woo_post_before();
 <article <?php post_class(); ?>>
 <?php
 woo_post_inside_before();
-?>
-	<header>
-	<?php the_title( $title_before, $title_after ); ?>
-	</header>
-        
-<?php
+
 if ( ! is_singular() ) {
 ?>
     <section class="image">
@@ -62,30 +57,34 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 }
 ?>
 	<section class="entry">
+            <header>
+                <?php the_title( $title_before, $title_after ); ?>
+            </header>
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
-    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
+    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
+    <div class="lb-button right" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'hemsida-url')); ?>"><?php _e( 'Gå till ' . lb_get_post_meta(get_the_ID(), 'varumarke') . ' &rarr;', 'woothemes' ); ?></div><?php
     echo(lb_get_post_meta_fakta(get_the_ID()));
-    
+
     $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');
     if($rabattkoder->post_count > 0) {
-        echo('<h2>Aktuella rabattkoder for ' . get_the_title() . '</h2>');
+        echo('<h2 style="clear: both;">Aktuella rabattkoder för ' . get_the_title() . '</h2>');
         foreach($rabattkoder->posts as $the_post) {
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
-            <br clear="all" /><a href="<?php echo(get_permalink($the_post->ID)); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a><?php
+            <br clear="all" /><div class="lb-button right" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div><?php
         }
     }
     
     $tavlingar = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'tavlingar');
     if($tavlingar->post_count > 0) {
-        echo('<h2>Aktuella tavlingar fran ' . get_the_title() . '</h2>');
+        echo('<h2 style="clear: both;">Aktuella tavlingar fran ' . get_the_title() . '</h2>');
         foreach($tavlingar->posts as $the_post) {
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
-            <br clear="all" /><a href="<?php echo(get_permalink($the_post->ID)); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a><?php
+            <br clear="all" /><div class="lb-button right" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div><?php
         }
     }
     
@@ -98,7 +97,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     the_excerpt(); 
     //do_shortcode( '[button color="pink"]L�s mer &raquo;[/button]' );
     ?>
-    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
