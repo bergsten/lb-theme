@@ -77,7 +77,12 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
 //pr($the_post);
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
-            <br clear="all" /><a href="<?php echo(get_permalink($the_post->ID)); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a><?php
+    
+            <br clear="all" />
+            <a class='multi-line-button' href='<?php echo(get_permalink($the_post->ID)); ?>' style='width:14em'>
+                <span class='title'><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span>
+                <span class='subtitle'><?php echo(get_the_title()); ?></span>
+            </a><?php
         }
     }
     

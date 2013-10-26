@@ -1,0 +1,20 @@
+@import "base";
+@import "button";
+
+@include global-reset;
+
+a.multi-line-button {
+    @include multi-line-button(#ccafb3);
+    &.blue {
+        @include color-multi-line-button(#63bb4a);
+    }
+    &.green {
+        @include color-multi-line-button(#63bb4a);
+    }
+    &.red {
+        @include color-multi-line-button(#bf4040);
+    }
+    &.orange {
+        @include color-multi-line-button(#d98026);
+    }
+}

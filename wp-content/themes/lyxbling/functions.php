@@ -3,6 +3,15 @@
  * See canvas hooks and filters at http://woothemes.zendesk.com/entries/22533468-Canvas-Hook-Filter-Reference
  */
 
+/**
+ * Include all custom javascript and CSS styles.
+ */
+function theme_name_scripts() {
+	wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
+	//wp_enqueue_script( 'lyxbling', get_template_directory_uri() . '/js/lyxbling.js', array('jquery'));
+}
+add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+
 /*
  * Remove '?ver' from all .js and .css files in header.
  */
