@@ -33,7 +33,7 @@ if ( ! is_tax() ) {
 $varumarken = array();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
 $query_args = array(
-				'post_type' => 'varumarken',
+				'post_type' => 'smyckesvarumarken',
                                 'orderby' => 'title',
                                 'order' => 'ASC',
 				'paged' => $paged, 

@@ -26,11 +26,11 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title tavlingar">';
+$title_before = '<h1 class="title smyckesguider">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-$title_before = '<h2 class="title tavlingar">';
+$title_before = '<h2 class="title smyckesguider">';
 $title_after = '</h2>';
 $article_url = esc_url( get_permalink( get_the_ID() ) );
 $article_link = '<a href="' . $article_url . '" rel="bookmark">';
@@ -46,38 +46,34 @@ woo_post_before();
 <?php
 woo_post_inside_before();
 
-if ( ! is_singular() ) { ?>
-    
+if ( ! is_singular() ) {
+?>
     <section class="image">
 <?php 
 woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( $settings['thumb_h'] ) . '&class=thumbnail ' . esc_attr( $settings['thumb_align'] ) );
 ?>
     </section>
-    <header>
-    <?php the_title( $title_before, $title_after ); ?>
-    </header>
 <?php
 }
 ?>
 	<section class="entry">
+        <header>
+	<?php the_title( $title_before, $title_after ); ?>
+	</header>
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
+    if(function_exists('zemanta_related_posts'))
+        zemanta_related_posts();
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
     remove_filter('the_excerpt', 'st_add_widget');
     the_excerpt(); 
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
-    /*
-        <a class='multi-line-button' href='<?php echo(get_permalink($the_post->ID)); ?>' style='width:14em'>
-            <span class='title'><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span>
-            <span class='subtitle'><?php echo(get_the_title()); ?></span>
-        </a>
-     */ ?>
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div>
-    
-    <?php //<br><div class="lb-button right" id="">Test</div>
+    ?>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div>
+    <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
 ?>

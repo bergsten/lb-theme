@@ -26,7 +26,7 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title tavlingar">';
+$title_before = '<h1 class="title rabattkoder">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
@@ -45,12 +45,7 @@ woo_post_before();
 <article <?php post_class(); ?>>
 <?php
 woo_post_inside_before();
-?>
-	<header>
-	<?php the_title( $title_before, $title_after ); ?>
-	</header>
-        
-<?php
+
 if ( ! is_singular() ) {
 ?>
     <section class="image">
@@ -62,11 +57,13 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 }
 ?>
 	<section class="entry">
+            <header>
+                <?php the_title( $title_before, $title_after ); ?>
+            </header>
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
-    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
-    if(function_exists('zemanta_related_posts'))
-        zemanta_related_posts();
+    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
+    <div class="lb-button right" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'rabattkod-url')); ?>"><?php _e( 'Visa rabattkod &raquo;', 'woothemes' ); ?></div><?php
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
@@ -74,7 +71,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
     the_excerpt(); 
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
-    <a href="<?php echo($article_url); ?>" class="woo-sc-button lb-pink"><span class="woo-" style="text-align: right;"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></span></a>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading', 'woothemes' ); ?> om erbjudandet &raquo;</div>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );

@@ -33,13 +33,13 @@ if ( ! is_tax() ) {
 $tavlingar = array();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
 $query_args = array(
-				'post_type' => 'tavling', 
+				'post_type' => 'smyckestavlingar', 
 				'paged' => $paged, 
 				'posts_per_page' => -1
 			);
 
 /* Setup tavlingar navigation. */
-$tavlingar = get_terms( 'tavlingar' );
+$tavlingar = get_terms( 'smyckestavlingar' );
 
 $exclude_str = '';
 if ( isset( $woo_options['woo_portfolio_excludenav'] ) && ( $woo_options['woo_portfolio_excludenav'] != '' ) ) {

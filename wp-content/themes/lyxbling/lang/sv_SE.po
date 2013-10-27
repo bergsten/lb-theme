@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Thirteen sv_SE\n"
 "POT-Creation-Date: 2013-10-26 23:21+0100\n"
-"PO-Revision-Date: 2013-10-26 23:21+0100\n"
+"PO-Revision-Date: 2013-10-27 12:24+0100\n"
 "Last-Translator: Mats Bergsten <mats@bergsten.net>\n"
 "Language-Team: WordPress Sverige <info@wpsv.se>\n"
 "Language: Svenska\n"
@@ -193,7 +193,7 @@ msgstr ""
 
 #: template-contact.php:194
 msgid "There was an error submitting the form."
-msgstr ""
+msgstr "Ett fel uppstod när formuläret skulle skickas."
 
 #: template-contact.php:198
 msgid ""
@@ -1009,7 +1009,7 @@ msgstr ""
 #: functions/admin-shortcodes.php:974 includes/theme-functions.php:367
 #: includes/theme-functions.php:376
 msgid "Submit"
-msgstr ""
+msgstr "Skicka"
 
 #: functions/admin-shortcodes.php:1263
 msgid "Please enter your name"

@@ -26,11 +26,11 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title tavlingar">';
+$title_before = '<h1 class="title smyckesbutiker">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-    $title_before = '<h2 class="title butiker">';
+    $title_before = '<h2 class="title smyckesbutiker">';
     $title_after = '</h2>';
     $article_url = esc_url( get_permalink( get_the_ID() ) );
     $article_link = '<a href="' . $article_url . '" rel="bookmark">';
@@ -66,7 +66,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
-    <div class="lb-button right" style="clear: both;" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'hemsida-url')); ?>"><?php _e( 'Gå till ' . lb_get_post_meta(get_the_ID(), 'varumarke') . ' &rarr;', 'woothemes' ); ?></div><br clear="all" /><?php
+    <div class="lb-button right" style="clear: both;" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'hemsida-url')); ?>"><?php _e( 'Gå till ' . lb_get_post_meta(get_the_ID(), 'varumarke') . ' &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
     echo(lb_get_post_meta_fakta(get_the_ID()));
     
     $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'rabattkoder');
@@ -77,7 +77,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
     
-            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div><br clear="all" /><?php
+            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
         }
     }
     
@@ -88,7 +88,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
 //pr($the_post);
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
-            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div><br clear="all" /><?php
+            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
         }
     }
     //pr($the_post);
@@ -106,7 +106,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );

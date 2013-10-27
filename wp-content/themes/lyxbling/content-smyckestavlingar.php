@@ -26,7 +26,7 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title tavlingar">';
+$title_before = '<h1 class="title smyckestavlingar">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
@@ -63,7 +63,7 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
-    <div class="lb-button right" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'rabattkod-url')); ?>"><?php _e( 'Gå till erbjudandet &rarr;', 'woothemes' ); ?></div><?php
+    <div class="lb-button right" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'tavlings-url')); ?>"><?php _e( 'Gå till tävlingen &raquo;', 'woothemes' ); ?></div><?php
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
@@ -71,7 +71,8 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
     the_excerpt(); 
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &rarr;', 'woothemes' ); ?></div>
+    
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading', 'woothemes' ); ?> om tävlingen &raquo;</div>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );

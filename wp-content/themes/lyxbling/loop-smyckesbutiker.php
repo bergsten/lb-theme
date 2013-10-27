@@ -33,7 +33,7 @@ if ( ! is_tax() ) {
 $butiker = array();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
 $query_args = array(
-				'post_type' => 'butiker', 
+				'post_type' => 'smyckesbutiker', 
                                 'orderby' => 'title',
                                 'order' => 'ASC',
 				'paged' => $paged, 

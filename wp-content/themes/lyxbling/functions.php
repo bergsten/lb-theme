@@ -6,13 +6,14 @@
 /**
  * Include all custom javascript and CSS styles.
  */
-function theme_name_scripts() {
+function lb_enqueue_scripts() {
         wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
         wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
         
 	//wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
 }
-add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+add_action( 'wp_enqueue_scripts', 'lb_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', 'lb_enqueue_scripts' );
 
 /*
  * Remove '?ver' from all .js and .css files in header.
@@ -25,12 +26,15 @@ add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
 function new_excerpt_more( $more ) {
-	return '...';lb_get_post_meta_fakta
+	return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-// Load the textdomain for translation
-load_child_theme_textdomain( 'woothemes' );
+// Load the textdomain for translation.
+add_action( 'after_setup_theme', 'lb_child_theme_setup' );
+function lb_child_theme_setup() {
+    load_child_theme_textdomain( 'woothemes' );
+}
 
 function lb_redirect_link($url = '') {
     /*

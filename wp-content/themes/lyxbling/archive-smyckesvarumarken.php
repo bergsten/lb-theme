@@ -22,7 +22,7 @@
             <?php woo_main_before(); ?>
             <section id="main"> 
 <?php
-	get_template_part( 'loop', 'butiker' );
+	get_template_part( 'loop', 'smyckesvarumarken' );
 ?>
             </section><!-- /#main -->
             <?php woo_main_after(); ?>
