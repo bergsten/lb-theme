@@ -1,10 +1,22 @@
-$lb-pink:   darken(#eccfd3, 25%);
+$lb-pink:   #eccfd3;
+$lb-pink-button: darken($lb-pink, 25%);
 
 @import "base";
 @import "buttons";
+ @import "iframe-page";
  
 @include global-reset;
 
 article {
     padding: 5px;
+}
+
+.lb-homepage-link {
+    color: darken($lb-pink, 25%);
+    text-decoration: none;
+    cursor: pointer;
+}
+.lb-homepage-link:hover {
+    color: $lb-pink;
+    text-decoration: underline;
 }

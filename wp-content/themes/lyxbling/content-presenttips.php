@@ -26,16 +26,16 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title rabattkoder">';
+$title_before = '<h1 class="title presenttips">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-$title_before = '<h2 class="title tavlingar">';
-$title_after = '</h2>';
-$article_url = esc_url( get_permalink( get_the_ID() ) );
-$article_link = '<a href="' . $article_url . '" rel="bookmark">';
-$title_before = $title_before . $article_link;
-$title_after = '</a>' . $title_after;
+    $title_before = '<h2 class="title presenttips">';
+    $title_after = '</h2>';
+    $article_url = esc_url( get_permalink( get_the_ID() ) );
+    $article_link = '<a href="' . $article_url . '" rel="bookmark">';
+    $title_before = $title_before . $article_link;
+    $title_after = '</a>' . $title_after;
 }
 
 $page_link_args = apply_filters( 'woothemes_pagelinks_args', array( 'before' => '<div class="page-link">' . __( 'Pages:', 'woothemes' ), 'after' => '</div>' ) );
@@ -57,21 +57,28 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 }
 ?>
 	<section class="entry">
-            <header>
-                <?php the_title( $title_before, $title_after ); ?>
-            </header>
+        <header>
+	<?php the_title( $title_before, $title_after ); ?>
+	</header>
 <?php
-if ( 'content' == $settings['post_content'] || is_single() ) { 
-    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
+// Show the content
+if ( 'content' == $settings['post_content'] || is_single() ) { ?>
+    <h2>Sammanfattning</h2>
+    <?php
+    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
     echo(lb_get_link_button(get_the_ID()));
+
+    if(function_exists('zemanta_related_posts'))
+        zemanta_related_posts();
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
     remove_filter('the_excerpt', 'st_add_widget');
     the_excerpt(); 
+
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading', 'woothemes' ); ?> om erbjudandet &raquo;</div>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div>
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );

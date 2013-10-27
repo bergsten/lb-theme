@@ -64,8 +64,8 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
-    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); ?>
-    <div class="lb-button right" data-url="<?php echo(lb_get_post_meta(get_the_ID(), 'hemsida-url')); ?>"><?php _e( 'Gå till ' . lb_get_post_meta(get_the_ID(), 'varumarke') . ' &raquo;', 'woothemes' ); ?></div><?php
+    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
+    echo(lb_get_link_button(get_the_ID()));
     echo(lb_get_post_meta_fakta(get_the_ID()));
 
     $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');

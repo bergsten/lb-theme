@@ -36,6 +36,41 @@ function lb_child_theme_setup() {
     load_child_theme_textdomain( 'woothemes' );
 }
 
+add_action('init', 'lb_external_links_rewrite');  
+function lb_external_links_rewrite() {
+    global $wp_rewrite;  
+    //add_rewrite_rule("till/([^/]+)/?", "index.php?author_name=$matches[1]", "top");
+    $new_rules = array("till/([^/]+)/?" => "index.php?lb_external_url_page_slug=" . $wp_rewrite->preg_index(1));  
+    
+    if (!is_array($wp_rewrite->rules)) { 
+        $wp_rewrite->rules = array();
+    }
+    
+    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+}
+
+add_action( 'pre_get_posts', 'lb_external_links_page' );
+function lb_external_links_page() {
+    add_filter( 'template_include', 'lb_external_links_template');
+    
+    if ( get_query_var( 'lb_external_url_page_slug' ) && is_singular( 'movie' ) ) {
+        //add_filter( 'template_include', 'lb_external_links_template');
+    }
+}
+
+function lb_external_links_template($template) {
+    global $wp_query;
+    if ( 'till' == $wp_query->query['category_name'] ) {
+//pr($wp_query);
+        $new_template = locate_template( array( 'single-external-url.php' ) );
+        if ( '' != $new_template ) {
+            return $new_template ;
+        }
+    }
+    
+    return $template;
+}
+        
 function lb_redirect_link($url = '') {
     /*
     $url_trigger = 'till';
@@ -363,33 +398,60 @@ function lb_aff_redirect_query($post_id) {
 }
 //***** End Redirection *****
 
-function lb_get_post_meta_homepage_url($post_id) {
-    $homepage_array = array();
-
-    $homepage_array['url'] = lb_get_post_meta($post_id, 'hemsida-url');
-    $homepage_array['affiliate_url'] = lb_get_post_meta($post_id, 'affiliate-url');
+function lb_get_link_button($post_id) {
+    $post_type = get_post_type($post_id);
+    $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
     
-    $homepage_domain_parts = parse_url($homepage_array['url']);
+    $button_text = 'Gå till ' . $brand;
     
-    $homepage_array['pretty_url'] = $homepage_domain_parts['host'];;
-
-    return $homepage_array;
-}
-
-function lb_get_post_meta_homepage_link($post_id, $anchor_text = '') {
-    $homepage_array = lb_get_post_meta_homepage_url($post_id);
-    
-    $link_url = $homepage_array['url'];
-    $microdata = ' itemprop="url"';
-    $link_rel = '';
-    $anchor_text = $homepage_array['pretty_url'];
-    
-    if('' != trim($homepage_array['affiliate_url'])) {
-        $link_url = $homepage_array['affiliate_url'];
-        $link_rel = ' rel="nofollow"';
+    switch($post_type) {
+        case 'smyckestavlingar':
+            $button_text = __( 'Gå till tävlingen', 'woothemes' );
+            break;
+        case 'rabattkoder-smycken':
+            $button_text = __( 'Visa rabattkod', 'woothemes' );
+            break;
+        case 'presenttips':
+            $button_text = __( 'Gå till present', 'woothemes' );
+            break;
     }
     
-    return '<a href="' . $link_url . '"' . $microdata . $link_rel . ' target="_blank">' . $anchor_text . '</a>';
+    $button_text .= ' &raquo;';
+    
+    $target_url = lb_get_post_meta($post_id, 'target-url');
+    $target_url_parts = parse_url($target_url);
+    $current_url_parts = parse_url(lb_get_current_page_url());
+    $rel_external = '';
+    
+    if($target_url_parts['host'] != $current_url_parts['host'])
+        $rel_external = ' rel="external" ';
+    
+    return '<div class="lb-button left" style="clear: both;" data-url="' . $target_url . '"' . $rel_external . '>' . $button_text . '</div><br clear="all" />';
+}
+
+function lb_get_post_meta_target_url($post_id) {
+    $target_url_array = array();
+    
+    $target_url_array['target_url'] = lb_get_post_meta($post_id, 'target-url');
+    $target_url_array['display_url'] = lb_get_post_meta($post_id, 'display-url');
+    
+    $target_domain_parts = parse_url($target_url_array['display_url']);
+    
+    $target_url_array['pretty_url'] = $target_domain_parts['host'];;
+
+    return $target_url_array;
+}
+
+function lb_get_post_meta_target_link($post_id, $anchor_text = '') {
+    $target_url_array = lb_get_post_meta_target_url($post_id);
+    
+    $link_url = $target_url_array['target_url'];
+    $microdata = ' itemprop="url"';
+    $link_rel = '';
+    $anchor_text = $target_url_array['pretty_url'];
+    
+    //return '<a href="' . $link_url . '"' . $microdata . $link_rel . ' target="_blank">' . $anchor_text . '</a>';
+    return '<span class="lb-homepage-link" data-url="' . $link_url . '"' . $microdata . $link_rel . ' rel="external">' . $anchor_text . '</span>';
 }
 
 function lb_get_post_meta_fakta($post_id) {
@@ -402,8 +464,8 @@ function lb_get_post_meta_fakta($post_id) {
     
     if('' != trim(lb_get_post_meta($post_id, 'fakta-wysiwyg')))
         $fakta_html .= '<div id="fakta-fritext" itemprop="description">' . lb_get_post_meta($post_id, 'fakta-wysiwyg', $args = array('output' => 'html')) . '</div>';
-    if('' != trim(lb_get_post_meta_homepage_link($post_id)))
-        $fakta_html .= '<strong>Hemsida:</strong> ' . lb_get_post_meta_homepage_link($post_id) . '<br /><br />';
+    if('' != trim(lb_get_post_meta_target_link($post_id)))
+        $fakta_html .= '<strong>Hemsida:</strong> ' . lb_get_post_meta_target_link($post_id) . '<br /><br />';
     if('' != trim(lb_get_post_meta($post_id, 'gatuadress'))) 
         $fakta_html .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span class="fn org">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br /><span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br /><span itemprop="postalCode">' . substr_replace(lb_get_post_meta($post_id, 'postnummer'), ' ', 3, 0) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span></section><br />';
     if('' != trim(lb_get_post_meta($post_id, 'telefon')))
@@ -508,6 +570,18 @@ function lb_get_shop_social_buttons($post_id) {
     $html_output .= '</div>';
     
     return $html_output;
+}
+
+function lb_get_current_page_url() {
+    $pageURL = 'http';
+    if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "80") {
+     $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+    } else {
+     $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
 }
 
 function pr($array, $title='Array') {

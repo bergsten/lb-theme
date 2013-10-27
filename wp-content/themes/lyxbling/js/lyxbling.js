@@ -4,6 +4,15 @@
  */
 jQuery(document).ready(function(){
     jQuery(".lb-button").click(function() {
-        window.location = jQuery(this).attr('data-url');
+        if('external' == jQuery(this).attr('rel'))
+            window.open(jQuery(this).attr('data-url'), '_blank');
+        else
+            window.location = jQuery(this).attr('data-url');
+    });
+    jQuery(".lb-homepage-link").click(function() {
+        if('external' == jQuery(this).attr('rel'))
+            window.open(jQuery(this).attr('data-url'), '_blank');
+        else
+            window.location = jQuery(this).attr('data-url');
     });
 });

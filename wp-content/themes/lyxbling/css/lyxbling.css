@@ -554,6 +554,31 @@
   border-color: #824d17;
 }
 
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2013-okt-27, 20:55:40
+    Author     : Mats
+*/
+/* line 11, scss/sass/_iframe-page.scss */
+#iframe-header {
+  height: 53px;
+  background-color: #fff;
+  border-bottom: 1px solid #191919;
+  z-index: 100;
+  line-height: 53px;
+  margin-bottom: 1px;
+}
+
+/* line 20, scss/sass/_iframe-page.scss */
+#preview-frame {
+  width: 100%;
+  background-color: white;
+}
+
 /* line 17, ../../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -619,7 +644,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 8, scss/sass/lyxbling.scss */
+/* line 10, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
+}
+
+/* line 14, scss/sass/lyxbling.scss */
+.lb-homepage-link {
+  color: #c8747f;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 19, scss/sass/lyxbling.scss */
+.lb-homepage-link:hover {
+  color: #eccfd3;
+  text-decoration: underline;
 }
