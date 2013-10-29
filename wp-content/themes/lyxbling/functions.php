@@ -36,9 +36,8 @@ function lb_child_theme_setup() {
     load_child_theme_textdomain( 'woothemes' );
 }
 
-add_action('init', 'lb_external_links_rewrite');  
-function lb_external_links_rewrite() {
-    global $wp_rewrite;  
+function lb_external_links_rewrite_rule() {
+    /*global $wp_rewrite;  
     //add_rewrite_rule("till/([^/]+)/?", "index.php?author_name=$matches[1]", "top");
     $new_rules = array("till/([^/]+)/?" => "index.php?lb_external_url_page_slug=" . $wp_rewrite->preg_index(1));  
     
@@ -46,31 +45,50 @@ function lb_external_links_rewrite() {
         $wp_rewrite->rules = array();
     }
     
-    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;*/
+    add_rewrite_tag( '%postid%', '(\d+)', 'postid='); 
+    add_rewrite_rule('till/(\d+)/?', 'index.php?pagename=till&postid=$matches[1]', 'top');
 }
+add_action('init', 'lb_external_links_rewrite_rule');  
 
-add_action( 'pre_get_posts', 'lb_external_links_page' );
+function lb_register_query_vars( $vars ) {
+    $vars[] = 'postid';
+    $vars[] = 'pagename';
+ 
+    return $vars;
+}
+add_filter( 'query_vars', 'lb_register_query_vars' );
+
+function lb_external_links_template($template) {
+    if(get_query_var('postid')) {
+        $post = get_post(get_query_var('postid'));
+        if('rabattkoder-smycken' == $post->post_type) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            include(get_stylesheet_directory() . '/single-rabattkod-external.php');
+            exit;
+        } else {
+            $redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
+            header("X-Robots-Tag: noindex, nofollow", true);
+            header("Location: " . $redirect_url, true, 301);
+            exit;
+        }
+    }
+    
+    return $template;
+}
+add_action( 'template_redirect', 'lb_external_links_template' );
+
+/*
 function lb_external_links_page() {
     add_filter( 'template_include', 'lb_external_links_template');
     
     if ( get_query_var( 'lb_external_url_page_slug' ) && is_singular( 'movie' ) ) {
         //add_filter( 'template_include', 'lb_external_links_template');
     }
-}
+}*/
+//add_action( 'pre_get_posts', 'lb_external_links_page' );
 
-function lb_external_links_template($template) {
-    global $wp_query;
-    if ( 'till' == $wp_query->query['category_name'] ) {
-//pr($wp_query);
-        $new_template = locate_template( array( 'single-external-url.php' ) );
-        if ( '' != $new_template ) {
-            return $new_template ;
-        }
-    }
-    
-    return $template;
-}
-        
 function lb_redirect_link($url = '') {
     /*
     $url_trigger = 'till';
@@ -360,6 +378,19 @@ function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args
 
 function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'raw')) {
     return types_render_field("$custom_field", $args);
+    // If a post ID is supplied we use the shortcode version that supports post ID.
+    /*if('' != trim($post_id)) {
+        $args_string = '';
+        
+        foreach ($args as $arg => $val) {
+            $args_string .= ' ' . $arg . '="' . $val . '"';
+        }
+//echo('[types field="' . $custom_field . '" id="' . $post_id . '"' .  $args_string . ']');
+echo(do_shortcode('[types field="' . $custom_field . '" id="' . $post_id . $args_string . ']'));
+        return do_shortcode('[types field="' . $custom_field . '" id="' . $post_id . $args_string . ']');
+    } else {
+        return types_render_field("$custom_field", $args);
+    }*/
 }
 
 function lb_aff_redirect_query($post_id) {
@@ -398,27 +429,15 @@ function lb_aff_redirect_query($post_id) {
 }
 //***** End Redirection *****
 
-function lb_get_link_button($post_id) {
+function lb_get_link_button($post_id, $align='left') {
     $post_type = get_post_type($post_id);
     $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
-    
-    $button_text = 'Gå till ' . $brand;
-    
-    switch($post_type) {
-        case 'smyckestavlingar':
-            $button_text = __( 'Gå till tävlingen', 'woothemes' );
-            break;
-        case 'rabattkoder-smycken':
-            $button_text = __( 'Visa rabattkod', 'woothemes' );
-            break;
-        case 'presenttips':
-            $button_text = __( 'Gå till present', 'woothemes' );
-            break;
-    }
-    
-    $button_text .= ' &raquo;';
-    
     $target_url = lb_get_post_meta($post_id, 'target-url');
+    
+    // If no target url is set we link to the post permalink.
+    if('' == trim($target_url))
+        $target_url = get_permalink($post->ID);
+    
     $target_url_parts = parse_url($target_url);
     $current_url_parts = parse_url(lb_get_current_page_url());
     $rel_external = '';
@@ -426,7 +445,30 @@ function lb_get_link_button($post_id) {
     if($target_url_parts['host'] != $current_url_parts['host'])
         $rel_external = ' rel="external" ';
     
-    return '<div class="lb-button left" style="clear: both;" data-url="' . $target_url . '"' . $rel_external . '>' . $button_text . '</div><br clear="all" />';
+    $button_text = 'Gå till ' . $brand;
+    
+    switch($post_type) {
+        case 'smyckestavlingar':
+            $button_text = __( 'Gå till tävlingen', 'woothemes' );
+            $target_url = 'http://lyxbling.se/till/' . $post_id;
+            break;
+        case 'rabattkoder-smycken':
+            $button_text = __( 'Visa rabattkod', 'woothemes' );
+            break;
+        case 'presenttips':
+            $button_text = __( 'Gå till present', 'woothemes' );
+            $target_url = 'http://lyxbling.se/till/' . $post_id;
+            break;
+        default:
+            $button_text = __( 'Continue Reading', 'woothemes' );
+            break;
+    }
+    
+    $button_text .= ' &raquo;';
+    
+    
+    
+    return '<div class="lb-button ' . $align . '" style="clear: both;" data-url="' . $target_url . '"' . $rel_external . '>' . $button_text . '</div><br clear="all" />';
 }
 
 function lb_get_post_meta_target_url($post_id) {
