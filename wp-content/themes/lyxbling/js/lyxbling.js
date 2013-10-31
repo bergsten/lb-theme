@@ -15,4 +15,14 @@ jQuery(document).ready(function(){
         else
             window.location = jQuery(this).attr('data-url');
     });
+    
+    // From http://websolstore.com/how-to-add-pinterest-to-social-media-icons-in-prettyphoto/
+    jQuery(".prettyPhoto").prettyPhoto({
+        changepicturecallback: function onPictureChanged() {
+            var href= "http://pinterest.com/pin/create/button/?url=" + encodeURIComponent(location.href.replace(location.hash, '')) + "&media=" + jQuery("#fullResImage").attr("src");
+            jQuery(".pp_social").append('<div class="pinterest" ><a href=' + href + ' class="pin-it-button" count-layout="horizontal" target="_blank"><img border="0" src="http://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a></div>');
+        }
+    });
+    
+    
 });

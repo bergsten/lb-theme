@@ -66,7 +66,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
-    echo(lb_get_link_button(get_the_ID()));
+    
 
     if(function_exists('zemanta_related_posts'))
         zemanta_related_posts();
@@ -75,11 +75,6 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
     remove_filter('the_excerpt', 'st_add_widget');
     the_excerpt(); 
-
-    //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
-    ?>
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div>
-    <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
 ?>

@@ -9,8 +9,7 @@
 function lb_enqueue_scripts() {
         wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
         wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
-        
-	//wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
+        wp_enqueue_script( 'pinterest', 'http://assets.pinterest.com/js/pinit.js');
 }
 add_action( 'wp_enqueue_scripts', 'lb_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'lb_enqueue_scripts' );
@@ -37,15 +36,6 @@ function lb_child_theme_setup() {
 }
 
 function lb_external_links_rewrite_rule() {
-    /*global $wp_rewrite;  
-    //add_rewrite_rule("till/([^/]+)/?", "index.php?author_name=$matches[1]", "top");
-    $new_rules = array("till/([^/]+)/?" => "index.php?lb_external_url_page_slug=" . $wp_rewrite->preg_index(1));  
-    
-    if (!is_array($wp_rewrite->rules)) { 
-        $wp_rewrite->rules = array();
-    }
-    
-    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;*/
     add_rewrite_tag( '%postid%', '(\d+)', 'postid='); 
     add_rewrite_rule('till/(\d+)/?', 'index.php?pagename=till&postid=$matches[1]', 'top');
 }
@@ -62,7 +52,7 @@ add_filter( 'query_vars', 'lb_register_query_vars' );
 function lb_external_links_template($template) {
     if(get_query_var('postid')) {
         $post = get_post(get_query_var('postid'));
-        if('rabattkoder-smycken' == $post->post_type) {
+        if('rabattkoder-smycken' == $post->post_type && true != $_GET['noiframe']) {
             global $wp_query;
             $wp_query->is_404 = false;
             include(get_stylesheet_directory() . '/single-rabattkod-external.php');
@@ -448,12 +438,17 @@ function lb_get_link_button($post_id, $align='left') {
     $button_text = 'Gå till ' . $brand;
     
     switch($post_type) {
+        case 'smyckesbutiker':
+            break;
+        case 'smyckesvarumarken':
+            break;
         case 'smyckestavlingar':
             $button_text = __( 'Gå till tävlingen', 'woothemes' );
             $target_url = 'http://lyxbling.se/till/' . $post_id;
             break;
         case 'rabattkoder-smycken':
             $button_text = __( 'Visa rabattkod', 'woothemes' );
+            $target_url = 'http://lyxbling.se/till/' . $post_id;
             break;
         case 'presenttips':
             $button_text = __( 'Gå till present', 'woothemes' );
@@ -624,6 +619,10 @@ function lb_get_current_page_url() {
      $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
     }
     return $pageURL;
+}
+
+function lb_get_wp_base() {
+    return '/home/lyxbling/public_html/';
 }
 
 function pr($array, $title='Array') {

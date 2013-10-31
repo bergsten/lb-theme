@@ -4,6 +4,7 @@ $lb-pink-button: darken($lb-pink, 25%);
 @import "base";
 @import "buttons";
 @import "webicons";
+@import "prettyphoto";
 @import "rabattkod-page";
  
 @include global-reset;

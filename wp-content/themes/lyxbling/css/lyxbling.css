@@ -884,21 +884,84 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
+    Created on : 2013-okt-31, 17:40:35
+    Author     : Mats
+*/
+/* line 12, scss/sass/_prettyphoto.scss */
+.pp_social .pinterest {
+  float: left;
+  margin-left: 5px;
+  overflow: hidden;
+  width: 60px;
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
     Created on : 2013-okt-27, 20:55:40
     Author     : Mats
 */
-/* line 11, scss/sass/_rabattkod-page.scss */
-#iframe-header {
-  height: 53px;
-  background-color: #fff;
-  border-bottom: 1px solid #191919;
-  z-index: 100;
-  line-height: 100px;
-  margin-bottom: 1px;
+/* line 12, scss/sass/_rabattkod-page.scss */
+body#rabattkod-body {
+  overflow: hidden;
 }
 
-/* line 28, scss/sass/_rabattkod-page.scss */
+/* line 16, scss/sass/_rabattkod-page.scss */
+#rabattkod-header-container {
+  background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/* line 22, scss/sass/_rabattkod-page.scss */
+#rabattkod-header {
+  height: 100px;
+  background-color: #210c16;
+  background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 1.618em;
+  padding-right: 1.618em;
+  border: 0px solid;
+}
+
+/* line 37, scss/sass/_rabattkod-page.scss */
+#rabattkod-container {
+  padding: 10px;
+}
+
+/* line 41, scss/sass/_rabattkod-page.scss */
+#rabattkod-close-iframe {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+}
+
+/* line 48, scss/sass/_rabattkod-page.scss */
+.rabattkod-title {
+  font-size: 20px;
+  color: #fff;
+}
+
+/* line 53, scss/sass/_rabattkod-page.scss */
+.rabattkod {
+  font-size: 12px;
+  color: #fff;
+}
+
+/* line 58, scss/sass/_rabattkod-page.scss */
 #preview-frame {
+  margin: 0;
+  padding: 0;
+  border: none;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -969,19 +1032,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 11, scss/sass/lyxbling.scss */
+/* line 12, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 15, scss/sass/lyxbling.scss */
+/* line 16, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 20, scss/sass/lyxbling.scss */
+/* line 21, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
