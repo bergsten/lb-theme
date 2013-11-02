@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Thirteen sv_SE\n"
-"POT-Creation-Date: 2013-10-26 23:21+0100\n"
-"PO-Revision-Date: 2013-10-27 12:24+0100\n"
+"POT-Creation-Date: 2013-11-02 09:45+0100\n"
+"PO-Revision-Date: 2013-11-02 09:52+0100\n"
 "Last-Translator: Mats Bergsten <mats@bergsten.net>\n"
 "Language-Team: WordPress Sverige <info@wpsv.se>\n"
 "Language: Svenska\n"
@@ -53,12 +53,17 @@ msgstr "Inga kommentarer ännu"
 #: content-magazine-featured.php:26 content-magazine-grid.php:26
 #: content-page-template-business.php:24 content-page.php:27
 #: content-post.php:41 content-search.php:41 content-tumblog.php:25
-#: content.php:29 ../lyxbling/content-archive-butiker.php:30
-#: ../lyxbling/content-archive-varumarken.php:30
-#: ../lyxbling/content-butiker.php:41 ../lyxbling/content-designers.php:41
-#: ../lyxbling/content-frontpage.php:24 ../lyxbling/content-guider.php:41
-#: ../lyxbling/content-post.php:41 ../lyxbling/content-rabattkoder.php:41
-#: ../lyxbling/content-tavlingar.php:41 ../lyxbling/content-varumarken.php:41
+#: content.php:29 ../lyxbling/content-archive-presenttips.php:30
+#: ../lyxbling/content-archive-smyckesbutiker.php:30
+#: ../lyxbling/content-archive-smyckesvarumarken.php:30
+#: ../lyxbling/content-frontpage.php:24 ../lyxbling/content-post.php:41
+#: ../lyxbling/content-presenttips.php:41
+#: ../lyxbling/content-rabattkoder-smycken.php:41
+#: ../lyxbling/content-smyckesbutiker.php:41
+#: ../lyxbling/content-smyckesdesigners.php:41
+#: ../lyxbling/content-smyckesguider.php:41
+#: ../lyxbling/content-smyckestavlingar.php:41
+#: ../lyxbling/content-smyckesvarumarken.php:41
 msgid "Pages:"
 msgstr "Sidor:"
 
@@ -77,15 +82,13 @@ msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
 #: content-page.php:44 content-post.php:59 content-tumblog.php:38
-#: ../lyxbling/content-butiker.php:70 ../lyxbling/content-butiker.php:83
-#: ../lyxbling/content-butiker.php:96 ../lyxbling/content-butiker.php:114
-#: ../lyxbling/content-designers.php:65 ../lyxbling/content-guider.php:67
-#: ../lyxbling/content-guider.php:77 ../lyxbling/content-post.php:68
-#: ../lyxbling/content-post.php:76 ../lyxbling/content-rabattkoder.php:68
-#: ../lyxbling/content-rabattkoder.php:76 ../lyxbling/content-tavlingar.php:68
-#: ../lyxbling/content-tavlingar.php:76 ../lyxbling/content-varumarken.php:69
-#: ../lyxbling/content-varumarken.php:78 ../lyxbling/content-varumarken.php:88
-#: ../lyxbling/content-varumarken.php:101
+#: ../lyxbling/content-post.php:68 ../lyxbling/content-presenttips.php:68
+#: ../lyxbling/content-rabattkoder-smycken.php:65
+#: ../lyxbling/content-smyckesbutiker.php:68
+#: ../lyxbling/content-smyckesdesigners.php:65
+#: ../lyxbling/content-smyckesguider.php:65
+#: ../lyxbling/content-smyckestavlingar.php:65
+#: ../lyxbling/content-smyckesvarumarken.php:67
 msgid "Continue Reading &rarr;"
 msgstr "Läs mer &rarr;"
 
@@ -152,7 +155,7 @@ msgstr ""
 #: template-contact.php:70 template-contact.php:76
 #: functions/admin-shortcodes.php:1330 functions/admin-shortcodes.php:1336
 msgid "From: "
-msgstr ""
+msgstr "Från:"
 
 #: template-contact.php:70 functions/admin-shortcodes.php:1330
 #: functions/admin-shortcodes.php:1336
@@ -165,11 +168,11 @@ msgstr ""
 
 #: template-contact.php:95
 msgid "You got the maths wrong"
-msgstr ""
+msgstr "Du klarade inte din matteuppgift"
 
 #: template-contact.php:102
 msgid "You forgot to enter your"
-msgstr ""
+msgstr "Du glömde skriva in "
 
 #: template-contact.php:109
 msgid "You entered an invalid"
@@ -177,19 +180,19 @@ msgstr ""
 
 #: template-contact.php:120
 msgid "<strong>Thanks!</strong> Your email was successfully sent."
-msgstr ""
+msgstr "<strong>Tack!</strong> Ditt e-postmeddelande har skickats."
 
 #: template-contact.php:153 functions/admin-shortcodes.php:1355
 msgid "Your email was successfully sent."
-msgstr ""
+msgstr "Ditt e-postmeddelande har skickats."
 
 #: template-contact.php:170
 msgid "Tel:"
-msgstr ""
+msgstr "Tel:"
 
 #: template-contact.php:171
 msgid "Fax:"
-msgstr ""
+msgstr "Fax:"
 
 #: template-contact.php:194
 msgid "There was an error submitting the form."
@@ -200,31 +203,33 @@ msgid ""
 "Please <strong>add your e-mail</strong> in <em>Contact Page > Contact Form E-"
 "mail</em>."
 msgstr ""
+"Var god <strong>lägg till din e-postadress</strong> i <em>Kontaktsidan > "
+"Kontaktformulär, e-post</em>."
 
 #: template-contact.php:205 functions/admin-shortcodes.php:1385
 #: includes/theme-actions.php:1743
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: template-contact.php:212 functions/admin-shortcodes.php:1394
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: template-contact.php:219 functions/admin-shortcodes.php:1403
 msgid "Message"
-msgstr ""
+msgstr "Meddelande"
 
 #: template-contact.php:226
 msgid "Solve:"
-msgstr ""
+msgstr "Lös"
 
 #: template-contact.php:233 functions/admin-shortcodes.php:1521
 msgid "Send a copy of this email to yourself"
-msgstr ""
+msgstr "Skicka en kopia av detta e-postmeddelande till dig själv"
 
 #: template-contact.php:234 functions/admin-shortcodes.php:1528
 msgid "If you want to submit this form, do not enter anything in this field"
-msgstr ""
+msgstr "Skriv inte någonting i detta fältet om du vill skicka detta formulär"
 
 #: template-sitemap.php:36
 msgid "Pages"
@@ -405,7 +410,7 @@ msgstr ""
 
 #: functions/admin-custom.php:390 functions/admin-interface.php:1435
 msgid "@"
-msgstr ""
+msgstr "@"
 
 #: functions/admin-custom.php:585 functions/admin-custom.php:598
 #: functions/admin-custom.php:599
@@ -664,7 +669,7 @@ msgstr ""
 
 #: functions/admin-functions.php:1998
 msgid "&larr; Previous"
-msgstr ""
+msgstr "&larr; Föregående"
 
 #: functions/admin-functions.php:1999
 msgid "Next &rarr;"
@@ -672,29 +677,29 @@ msgstr "Nästa &rarr;"
 
 #: functions/admin-functions.php:2122
 msgid "You are here:"
-msgstr ""
+msgstr "Du är här:"
 
 #: functions/admin-functions.php:2125 includes/theme-actions.php:1330
 #: includes/theme-actions.php:1345
 msgid "Home"
-msgstr ""
+msgstr "Hem"
 
 #: functions/admin-functions.php:2290
 msgid "g:i a"
-msgstr ""
+msgstr "g:i a"
 
 #: functions/admin-functions.php:2293
 #, php-format
 msgid "Minute %1$s"
-msgstr ""
+msgstr "Minut %1$s"
 
 #: functions/admin-functions.php:2293
 msgid "i"
-msgstr ""
+msgstr "i"
 
 #: functions/admin-functions.php:2296
 msgid "g a"
-msgstr ""
+msgstr "g a"
 
 #: functions/admin-functions.php:2307 functions/admin-functions.php:2313
 #: functions/admin-functions.php:2318 functions/admin-functions.php:2323
@@ -703,16 +708,16 @@ msgstr "Y"
 
 #: functions/admin-functions.php:2308 functions/admin-functions.php:2319
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: functions/admin-functions.php:2309
 msgid "j"
-msgstr ""
+msgstr "j"
 
 #: functions/admin-functions.php:2314
 #, php-format
 msgid "Week %1$s"
-msgstr ""
+msgstr "Vecka %1$s"
 
 #: functions/admin-functions.php:2330
 #, php-format
@@ -765,7 +770,7 @@ msgstr ""
 #: functions/admin-functions.php:3045 functions/admin-functions.php:3082
 #: functions/admin-functions.php:3112
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: functions/admin-functions.php:2989 functions/admin-functions.php:2991
 msgid "Enable PressTrends"
@@ -996,11 +1001,11 @@ msgstr "Hoppa till innehåll"
 #: functions/admin-shortcodes.php:865
 #: includes/widgets/widget-woo-blogauthor.php:179
 msgid "Read More"
-msgstr ""
+msgstr "Läs mer"
 
 #: functions/admin-shortcodes.php:866
 msgid "Read Less"
-msgstr ""
+msgstr "Visa mindre"
 
 #: functions/admin-shortcodes.php:973
 msgid "Message via the contact form"
@@ -1172,7 +1177,7 @@ msgstr ""
 msgid "Return to Content"
 msgstr "Hoppa till innehåll"
 
-#: includes/theme-actions.php:1461 ../lyxbling/functions.php:174
+#: includes/theme-actions.php:1461 ../lyxbling/functions.php:221
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Visa alla inlägg av %s <span class=\"meta-nav\">&rarr;</span>"
@@ -1427,8 +1432,8 @@ msgstr "Relaterade inlägg:"
 
 #: includes/theme-functions.php:481 includes/theme-functions.php:492
 #: includes/theme-functions.php:499 includes/theme-functions.php:506
-#: includes/theme-functions.php:527 ../lyxbling/functions.php:231
-#: ../lyxbling/functions.php:238 ../lyxbling/functions.php:245
+#: includes/theme-functions.php:527 ../lyxbling/functions.php:278
+#: ../lyxbling/functions.php:285 ../lyxbling/functions.php:292
 msgid "Archive"
 msgstr "Arkiv"
 
@@ -1436,15 +1441,15 @@ msgstr "Arkiv"
 msgid "Author Archive"
 msgstr "Författararkiv"
 
-#: includes/theme-functions.php:518 ../lyxbling/functions.php:257
+#: includes/theme-functions.php:518 ../lyxbling/functions.php:304
 msgid "Tag Archives"
 msgstr "Etikettarkiv"
 
-#: includes/theme-functions.php:535 ../lyxbling/functions.php:276
+#: includes/theme-functions.php:535 ../lyxbling/functions.php:323
 msgid " Archives"
 msgstr "Arkiv"
 
-#: includes/theme-functions.php:541 ../lyxbling/functions.php:282
+#: includes/theme-functions.php:541 ../lyxbling/functions.php:329
 #, fuzzy, php-format
 msgid "%1$s Archives: %2$s"
 msgstr "Etikettarkiv: %s"
@@ -3491,7 +3496,7 @@ msgstr ""
 
 #: includes/theme-options.php:1680
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: includes/theme-options.php:1681
 msgid "Change the default text in this area."
@@ -3690,11 +3695,11 @@ msgstr ""
 
 #: includes/theme-options.php:1820
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: includes/theme-options.php:1821
 msgid "Enter your fax number"
-msgstr ""
+msgstr "Skriv in ditt faxnummer"
 
 #: includes/theme-options.php:1827
 msgid "Contact Form E-Mail"
@@ -3963,6 +3968,8 @@ msgid ""
 msgstr ""
 
 #: includes/theme-shortcodes.php:42
+#: ../lyxbling/content-rabattkoder-smycken.php:74
+#: ../lyxbling/content-smyckestavlingar.php:75 ../lyxbling/functions.php:458
 msgid "Continue Reading"
 msgstr "Läs mer"
 
@@ -4431,7 +4438,7 @@ msgstr ""
 #: includes/widgets/widget-woo-tabs.php:202
 #: includes/widgets/widget-woo-tabs.php:216
 msgid "Tags"
-msgstr ""
+msgstr "Etiketter"
 
 #: includes/widgets/widget-woo-tabs.php:68
 #: includes/widgets/widget-woo-tabs.php:199
@@ -4754,7 +4761,7 @@ msgstr ""
 #: includes/woo-meta/classes/woo-meta.class.php:211
 #: includes/woo-meta/screens/admin.php:2
 msgid "Filters"
-msgstr ""
+msgstr "Filter"
 
 #: includes/woo-meta/classes/woo-meta.class.php:262
 msgid "Shortcode Reference"
@@ -4808,12 +4815,31 @@ msgstr "Kommentarer inaktiverade."
 msgid "Filters Settings Updated."
 msgstr ""
 
-#: ../lyxbling/content-designers.php:78
+#: ../lyxbling/content-smyckesbutiker.php:80
+#: ../lyxbling/content-smyckesbutiker.php:91
+#: ../lyxbling/content-smyckesbutiker.php:109
+#: ../lyxbling/content-smyckesdesigners.php:78
+#: ../lyxbling/content-smyckesguider.php:75
+#: ../lyxbling/content-smyckesvarumarken.php:77
+#: ../lyxbling/content-smyckesvarumarken.php:87
+#: ../lyxbling/content-smyckesvarumarken.php:100
 msgid "Continue Reading &raquo;"
 msgstr "Läs mer &raquo;"
 
-#: ../lyxbling/functions.php:223
+#: ../lyxbling/functions.php:270
 msgid "RSS feed for this section"
+msgstr "RSS-flöde för denna sektion"
+
+#: ../lyxbling/functions.php:446
+msgid "Gå till tävlingen"
+msgstr ""
+
+#: ../lyxbling/functions.php:450
+msgid "Visa rabattkod"
+msgstr ""
+
+#: ../lyxbling/functions.php:454
+msgid "Gå till present"
 msgstr ""
 
 #~ msgid ""

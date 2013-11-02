@@ -946,18 +946,26 @@ body#rabattkod-body {
 }
 
 /* line 48, scss/sass/_rabattkod-page.scss */
+#rabattkod-close-iframe a {
+  display: block;
+  width: 34px;
+  overflow: hidden;
+  height: 2.5em;
+}
+
+/* line 57, scss/sass/_rabattkod-page.scss */
 .rabattkod-title {
   font-size: 20px;
   color: #fff;
 }
 
-/* line 53, scss/sass/_rabattkod-page.scss */
+/* line 62, scss/sass/_rabattkod-page.scss */
 .rabattkod {
   font-size: 12px;
   color: #fff;
 }
 
-/* line 58, scss/sass/_rabattkod-page.scss */
+/* line 67, scss/sass/_rabattkod-page.scss */
 #preview-frame {
   margin: 0;
   padding: 0;
@@ -1032,19 +1040,48 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 12, scss/sass/lyxbling.scss */
+/* line 14, scss/sass/lyxbling.scss */
+#nav-container {
+  margin-bottom: 0 !important;
+}
+
+/* line 18, scss/sass/lyxbling.scss */
+#subheader-image-container {
+  background-color: #210c16;
+}
+
+/* line 22, scss/sass/lyxbling.scss */
+#subheader-image {
+  background-color: #210c16;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 160px;
+  padding-left: 1.618em;
+  padding-right: 1.618em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0 auto;
+  border: 0px solid;
+  clear: both;
+  position: relative;
+  background-size: auto;
+  max-width: 1200px !important;
+  display: block;
+}
+
+/* line 40, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 16, scss/sass/lyxbling.scss */
+/* line 44, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 21, scss/sass/lyxbling.scss */
+/* line 49, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
