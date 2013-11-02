@@ -1,5 +1,7 @@
 $lb-pink:   #eccfd3;
 $lb-pink-button: darken($lb-pink, 25%);
+$lb-subheader-height: 160px;
+$lb-bg-color: #210c16;
 
 @import "base";
 @import "buttons";
@@ -8,6 +10,32 @@ $lb-pink-button: darken($lb-pink, 25%);
 @import "rabattkod-page";
  
 @include global-reset;
+
+#nav-container {
+    margin-bottom: 0 !important;
+}
+
+#subheader-image-container {
+    background-color: $lb-bg-color;
+}
+
+#subheader-image {
+    background-color: $lb-bg-color;
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: $lb-subheader-height;
+    padding-left: 1.618em;
+    padding-right: 1.618em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0 auto;
+    border: 0px solid;
+    clear: both;
+    position: relative;
+    background-size: auto;
+    max-width: 1200px !important;
+    display: block;
+}
 
 article {
     padding: 5px;
