@@ -70,46 +70,6 @@ function lb_external_links_template($template) {
 add_action( 'template_redirect', 'lb_external_links_template' );
 
 /*
-function lb_external_links_page() {
-    add_filter( 'template_include', 'lb_external_links_template');
-    
-    if ( get_query_var( 'lb_external_url_page_slug' ) && is_singular( 'movie' ) ) {
-        //add_filter( 'template_include', 'lb_external_links_template');
-    }
-}*/
-//add_action( 'pre_get_posts', 'lb_external_links_page' );
-
-function lb_redirect_link($url = '') {
-    /*
-    $url_trigger = 'till';
-    $request = $_SERVER['REQUEST_URI'];
-    if (!isset($_SERVER['REQUEST_URI'])) {
-            $request = substr($_SERVER['PHP_SELF'], 1);
-            if (isset($_SERVER['QUERY_STRING']) AND $_SERVER['QUERY_STRING'] != '') { $request.='?'.$_SERVER['QUERY_STRING']; }
-    }
-    if ( strpos('/'.$request, '/' . $url_trigger . '/') ) {
-            $gocode_key = explode($url_trigger . '/', $request);
-            $gocode_key = $gocode_key[1];
-            $gocode_key = str_replace('/', '', $gocode_key);
-            $table_name = $wpdb->prefix . "wsc_gocodes";
-            $gocode_key = $wpdb->escape($gocode_key);
-            $gocode_db = $wpdb->get_row("SELECT id, target, key1, docount FROM $table_name WHERE key1 = '$gocode_key'", OBJECT);
-            $gocode_target = $gocode_db->target;
-            if ($gocode_target!="") {
-                    if ($gocode_db->docount == 1) {
-                            $update = "UPDATE ". $table_name ." SET hitcount=hitcount+1 WHERE id='$gocode_db->id'";
-                            $results = $wpdb->query( $update );
-                    }
-                    if ($nofollow != '') { header("X-Robots-Tag: noindex, nofollow", true); }
-                    wp_redirect($gocode_target, 301);
-                    exit;
-            } else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
-    }
-     * */
-}
-add_action('init', lb_redirect_link);
-
-/*
  *  Create the custom taxonomy permalinks in the format /presenttips/%tips%/%postname% - See http://wp-types.com/forums/topic/custom-taxonomies-not-showing-on-permalink/#post-16949
  */
 add_filter('post_link', 'lb_presenttips_permalink', 1, 3);
@@ -128,6 +88,7 @@ function lb_presenttips_permalink($permalink, $post_id, $leavename) {
  
         return str_replace('%tips%', $taxonomy_slug, $permalink);
 }
+
 /*
  * Make the Yoast breadcrumbs do the same.
  */
@@ -152,6 +113,28 @@ pr($terms);
         return $link_output;
 }
 //add_filter('wpseo_breadcrumb_single_link_with_sep', 'lb_adjust_single_breadcrumb', 10, 2 );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Custom breadcrumbs section under the navigation bar. */
+/*-----------------------------------------------------------------------------------*/
+function lb_woo_subheader() {
+    if ( !is_front_page() ) { 
+        if(file_exists(get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.png')) { ?>
+            <style>
+                #nav-container {
+                    margin-bottom: 0 !important;
+                    margin: 0 !important;
+                }
+            </style>
+            <div id="subheader-image-container">
+                <div id="subheader-image" style="background-image: url(<?php echo(get_stylesheet_directory_uri() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.png'); ?>) !important;">
+                </div>
+            </div><?php
+        }
+    }
+}
+add_action( 'woo_content_before', 'lb_woo_subheader' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom breadcrumbs section under the navigation bar. */
@@ -626,7 +609,9 @@ function lb_get_wp_base() {
 }
 
 function pr($array, $title='Array') {
-    echo('<p>' . $title . ':</p><pre>');
-    print_r($array);
-    echo('</pre>');
+    if(is_admin()) {
+        echo('<p>' . $title . ':</p><pre>');
+        print_r($array);
+        echo('</pre>');
+    }
 }
