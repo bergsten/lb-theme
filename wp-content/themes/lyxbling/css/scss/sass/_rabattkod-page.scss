@@ -21,7 +21,7 @@ body#rabattkod-body {
 
 #rabattkod-header {
     height: $header-height;
-    background-color: #210c16;
+    background-color: $lb-bg-color;
     background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
     background-repeat: no-repeat;
     background-position: left top;
@@ -43,6 +43,15 @@ body#rabattkod-body {
     top: 0px;
     right: 0px;
     padding: 10px;
+}
+
+#rabattkod-close-iframe a {
+    display: block;
+    width: 34px;
+    //text-indent: -999em;
+    overflow: hidden;
+    height: 2.5em;
+    //background: $lb-bg-color url("/image/icons/close.png") 11px -1142px no-repeat;
 }
 
 .rabattkod-title {
