@@ -28,7 +28,7 @@
 
 	<?php woo_header_before(); ?>
 
-	<header id="header" class="col-full">
+	<header id="header" class="col-full" style="background-position: center top;">
 
 		<?php woo_header_inside(); ?>
 
