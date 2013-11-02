@@ -30,12 +30,12 @@ $title_before = '<h1 class="title blog">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-$title_before = '<h2 class="title blog">';
-$title_after = '</h2>';
-$article_url = esc_url( get_permalink( get_the_ID() ) );
-$article_link = '<a href="' . $article_url . '" rel="bookmark">';
-$title_before = $title_before . $article_link;
-$title_after = '</a>' . $title_after;
+    $title_before = '<h2 class="title blog">';
+    $title_after = '</h2>';
+    $article_url = esc_url( get_permalink( get_the_ID() ) );
+    $article_link = '<a href="' . $article_url . '" rel="bookmark">';
+    $title_before = $title_before . $article_link;
+    $title_after = '</a>' . $title_after;
 }
 
 $page_link_args = apply_filters( 'woothemes_pagelinks_args', array( 'before' => '<div class="page-link">' . __( 'Pages:', 'woothemes' ), 'after' => '</div>' ) );
@@ -61,7 +61,10 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 ?>
 	<section class="entry">
 <?php
-if ( 'content' == $settings['post_content'] || is_single() ) { 
+if ( 'content' == $settings['post_content'] || is_single() ) { ?>
+    <header>
+    <?php the_title( $title_before, $title_after ); ?>
+    </header><?php 
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
 } else { 
     // Remove ShareThis.
