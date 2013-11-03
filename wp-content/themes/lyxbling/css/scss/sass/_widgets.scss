@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2013-nov-03, 10:34:55
+    Author     : Mats
+*/
+
+#sidebar {
+    width: $lb-sidebar-width !important;
+}
+
+#sidebar-alt {
+    width: $lb-sidebar2-width !important;
+}
+
+#sidebar .widget, #sidebar-alt .widget {
+    clear: both;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    background: $lb-white;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+    -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+    position: relative;
+    z-index: 90;
+}
+
+#sidebar .widget {
+    width: $lb-sidebar-width - 40;
+}
+
+#sidebar-alt .widget {
+    width: $lb-sidebar2-width - 40;
+}
+
+#sidebar .widget h3, #sidebar-alt .widget h3  {
+    background: $lb-pink;
+    height: 20px;
+    position: relative;
+    left: -15px;
+    top: 15px;
+    //float: left;
+    -moz-box-shadow: 0px 0px 4px rgba(0,0,0,.55);
+    -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,.55);
+    -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,.55);
+    z-index: 100;
+    font-size: 30px;
+    color: $lb-black;
+    padding-top: 6px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+    text-align: center;
+}
+
+.rpwe-block ul li h3, .rpwe-block ul li h3  {
+    font: $lb-widget-text;
+    width: $lb-sidebar-width - 150 !important;
+    margin-top: -20px !important;
+    padding-left: $lb-sidebar-width - 200 !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    -moz-box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+    -khtml-box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+    -webkit-box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+}
+
+.rpwe-block ul li time {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+#sidebar .widget h3 {
+    width: $lb-sidebar-width - 10;
+}
+
+#sidebar-alt .widget h3 {
+    width: $lb-sidebar2-width - 10;
+}
+
+#sidebar .widget h3 a, #sidebar-alt .widget h3 a {
+    color: $lb-black;
+    text-decoration: none;
+}
+
+#sidebar .widget div, #sidebar .widget ul, #sidebar-alt .widget div, #sidebar-alt .widget ul {
+    margin-top: 20px;
+}

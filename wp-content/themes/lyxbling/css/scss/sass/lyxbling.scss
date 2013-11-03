@@ -1,10 +1,18 @@
+$lb-layout-width: 1200px;
+$lb-content-width: $lb-layout-width/1.62;
+$lb-sidebar-width: 330px;
+$lb-sidebar2-width: 208px;
+$lb-widget-text: 300 16px/1.5em Calibri, Candara, Segoe, Optima, sans-serif;
 $lb-pink:   #eccfd3;
+$lb-white: #fff;
+$lb-black: #000;
 $lb-pink-button: darken($lb-pink, 25%);
 $lb-subheader-height: 160px;
 $lb-bg-color: #210c16;
 
 @import "base";
 @import "buttons";
+@import "widgets";
 @import "webicons";
 @import "prettyphoto";
 @import "rabattkod-page";
@@ -49,4 +57,36 @@ article {
 .lb-homepage-link:hover {
     color: $lb-pink;
     text-decoration: underline;
+}
+
+/**
+ * Remove the wpstats image.
+ */
+img#wpstats{position:absolute;top:0;width:0px;height:0px;overflow:hidden}
+
+/**
+ * For modern browsers - From http://nicolasgallagher.com/micro-clearfix-hack/
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
 }
