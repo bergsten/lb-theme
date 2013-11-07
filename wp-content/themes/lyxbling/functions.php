@@ -28,12 +28,24 @@ function new_excerpt_more( $more ) {
 	return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-
-// Load the textdomain for translation.
-add_action( 'after_setup_theme', 'lb_child_theme_setup' );
+ 
+/*
+ * Load the textdomain for translation.
+ */
 function lb_child_theme_setup() {
     load_child_theme_textdomain( 'woothemes' );
 }
+add_action( 'after_setup_theme', 'lb_child_theme_setup' );
+
+/*
+ * Add all custom post type feeds to main feed.
+ */
+function lb_feed_request($qv) {
+	if (isset($qv['feed']) && !isset($qv['post_type']))
+		$qv['post_type'] = array('post', 'smyckesbutiker', 'smyckesvarumarken', 'smyckesdesigners', 'smyckesguider', 'smyckestavlingar', 'rabattkoder');
+	return $qv;
+}
+add_filter('request', 'lb_feed_request');
 
 function lb_external_links_rewrite_rule() {
     add_rewrite_tag( '%postid%', '(\d+)', 'postid='); 
@@ -72,8 +84,6 @@ add_action( 'template_redirect', 'lb_external_links_template' );
 /*
  *  Create the custom taxonomy permalinks in the format /presenttips/%tips%/%postname% - See http://wp-types.com/forums/topic/custom-taxonomies-not-showing-on-permalink/#post-16949
  */
-add_filter('post_link', 'lb_presenttips_permalink', 1, 3);
-add_filter('post_type_link', 'lb_presenttips_permalink', 1, 3);
 function lb_presenttips_permalink($permalink, $post_id, $leavename) {
         if (strpos($permalink, '%tips%') === FALSE) return $permalink;
  
@@ -88,6 +98,8 @@ function lb_presenttips_permalink($permalink, $post_id, $leavename) {
  
         return str_replace('%tips%', $taxonomy_slug, $permalink);
 }
+add_filter('post_link', 'lb_presenttips_permalink', 1, 3);
+add_filter('post_type_link', 'lb_presenttips_permalink', 1, 3);
 
 /*
  * Make the Yoast breadcrumbs do the same.
