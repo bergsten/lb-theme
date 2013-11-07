@@ -26,11 +26,11 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title blog">';
+$title_before = '<h1 class="title blogg">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {
-    $title_before = '<h2 class="title blog">';
+    $title_before = '<h2 class="title blogg">';
     $title_after = '</h2>';
     $article_url = esc_url( get_permalink( get_the_ID() ) );
     $article_link = '<a href="' . $article_url . '" rel="bookmark">';
