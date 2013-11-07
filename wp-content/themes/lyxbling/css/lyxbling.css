@@ -554,6 +554,114 @@
   border-color: #824d17;
 }
 
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2013-nov-03, 10:34:55
+    Author     : Mats
+*/
+/* line 11, scss/sass/_widgets.scss */
+#sidebar {
+  width: 330px !important;
+}
+
+/* line 15, scss/sass/_widgets.scss */
+#sidebar-alt {
+  width: 208px !important;
+}
+
+/* line 19, scss/sass/_widgets.scss */
+#sidebar .widget, #sidebar-alt .widget {
+  clear: both;
+  margin: 0px auto;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+  background: white;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 90;
+}
+
+/* line 38, scss/sass/_widgets.scss */
+#sidebar .widget {
+  width: 290px;
+}
+
+/* line 42, scss/sass/_widgets.scss */
+#sidebar-alt .widget {
+  width: 168px;
+}
+
+/* line 46, scss/sass/_widgets.scss */
+#sidebar .widget h3, #sidebar-alt .widget h3 {
+  background: #eccfd3;
+  height: 20px;
+  position: relative;
+  left: -15px;
+  top: 15px;
+  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+  -khtml-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  font-size: 30px;
+  color: black;
+  padding-top: 6px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* line 64, scss/sass/_widgets.scss */
+.rpwe-block ul li h3, .rpwe-block ul li h3 {
+  font: 300 16px/1.5em Calibri, Candara, Segoe, Optima, sans-serif;
+  width: 180px !important;
+  margin-top: -20px !important;
+  padding-left: 130px !important;
+  text-align: left !important;
+  font-size: 14px !important;
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  -khtml-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
+/* line 76, scss/sass/_widgets.scss */
+.rpwe-block ul li time {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+/* line 82, scss/sass/_widgets.scss */
+#sidebar .widget h3 {
+  width: 320px;
+}
+
+/* line 86, scss/sass/_widgets.scss */
+#sidebar-alt .widget h3 {
+  width: 198px;
+}
+
+/* line 90, scss/sass/_widgets.scss */
+#sidebar .widget h3 a, #sidebar-alt .widget h3 a {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 95, scss/sass/_widgets.scss */
+#sidebar .widget div, #sidebar .widget ul, #sidebar-alt .widget div, #sidebar-alt .widget ul {
+  margin-top: 20px;
+}
+
 /* Webicons by Adam Fairhead at Fairhead Creative http://fairheadcreative.com */
 /* line 3, scss/sass/_webicons.scss */
 .webicon {
@@ -1040,17 +1148,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 14, scss/sass/lyxbling.scss */
+/* line 22, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 18, scss/sass/lyxbling.scss */
+/* line 26, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #210c16;
 }
 
-/* line 22, scss/sass/lyxbling.scss */
+/* line 30, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #210c16;
   background-repeat: no-repeat;
@@ -1069,20 +1177,64 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 40, scss/sass/lyxbling.scss */
+/* line 48, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 44, scss/sass/lyxbling.scss */
+/* line 52, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 49, scss/sass/lyxbling.scss */
+/* line 57, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
+}
+
+/**
+ * Remove the wpstats image.
+ */
+/* line 65, scss/sass/lyxbling.scss */
+img#wpstats {
+  position: absolute;
+  top: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+/**
+ * For modern browsers - From http://nicolasgallagher.com/micro-clearfix-hack/
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+/* line 77, scss/sass/lyxbling.scss */
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+/* line 82, scss/sass/lyxbling.scss */
+.cf:after {
+  clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+/* line 90, scss/sass/lyxbling.scss */
+.cf {
+  *zoom: 1;
 }
