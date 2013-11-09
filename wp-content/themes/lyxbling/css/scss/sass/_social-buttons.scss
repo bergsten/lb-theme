@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2013-nov-09, 13:00:14
+    Author     : Mats
+*/
+
+// The social buttons that link to the respective social page.
+.social-buttons {
+    
+}
+
+// The social share buttons with which users can share a page on social media.
+#social-share {
+    background-color: #fafafa;
+    background: #fafafa;
+    margin: 0 0 1.5em;
+    padding: 15px;
+    border: 1px solid #e6e6e6;
+    clear: both;
+    font-weight: normal;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.social-share-buttons {
+    font-weight: bold;
+    font-size: 1.4em;
+    text-align: center;
+    display:inline-block;
+    zoom:1;
+    *display:inline;
+}
+
+.social-share-buttons li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin: 20px;
+}

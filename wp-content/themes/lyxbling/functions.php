@@ -570,22 +570,40 @@ function lb_get_brands_sold($post_id) {
     }
 }
 
-function lb_get_social_buttons() { 
-    $html_output = '<div class="social-buttons">';
+/*
+ * Function to display information below each article.
+ */
+function lb_display_below_post_info() {
+    //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
+    //if(!is_front_page()) {
+        echo(lb_get_social_share_buttons());
+        //lb_get_outgoing_competitions();
+    //}
+    if(function_exists('zemanta_related_posts'))
+        zemanta_related_posts();
+}
+add_action('woo_post_inside_after', 'lb_display_below_post_info');
+
+function lb_get_social_share_buttons($array = false) { 
+    // See http://www.l3analytics.com/2013/09/06/tracking-clicks-within-iframes-with-google-analytics-and-jquery/
+    $html_output = '<aside id="social-share" class="social-share-buttons">';
+    $html_output .= '<h3>Dela gärna denna sida med dina vänner</h3>';
+    $html_output .= '<div class="social-buttons">';
     $html_output .= '<ul>';
     $html_output .= '<li class="iframetrack facebook"><div class="fb-like" data-href="" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>';
     $html_output .= '<li class="pinterest"><a href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" alt="" /></a><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script></li>';
     $html_output .= '<li class="iframetrack twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="LyxBling" data-lang="sv" data-count="none">Tweeta</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
     $html_output .= '<li class="iframetrack googleplus"><div class="g-plusone" data-size="medium" data-annotation="none"></div></li>';
-    $html_output .= '<li class="linkedin"><script type="IN/Share"></script></li>';
+    $html_output .= '<li class="linkedin"><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: sv_SE</script><script type="IN/Share"></script></li>';
     $html_output .= '</ul>';
     $html_output .= '</div>';
+    $html_output .= '</aside>';
     
     return $html_output;
 }
 
-function lb_get_shop_social_buttons($post_id) { 
-    $html_output = '<div class="social">';
+function lb_get_shop_social_buttons($post_id, $array = false) { 
+    $html_output = '<div class="social-buttons">';
     if('' != trim(lb_get_post_meta($post_id, 'facebook-url'))) 
         $html_output .= '<a target="_blank" href="' . lb_get_post_meta($post_id, 'facebook-url') . '" class="facebook" title="Facebook"></a>';
     if('' != trim(lb_get_post_meta($post_id, 'twitter-url'))) 

@@ -85,19 +85,12 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     if($tavlingar->post_count > 0) {
         echo('<h2 style="clear: both;">Aktuella t&auml;vlingar fr&aring;n ' . get_the_title() . '</h2>');
         foreach($tavlingar->posts as $the_post) {
-//pr($the_post);
+            
             echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
             echo(strip_tags($the_post->post_content)); ?>
             <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
         }
     }
-    //pr($the_post);
-    //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
-    
-    //echo(lb_get_social_buttons());
-//lb_get_outgoing_competitions();
-    if(function_exists('zemanta_related_posts'))
-        zemanta_related_posts();
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
