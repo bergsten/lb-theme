@@ -1,0 +1,45 @@
+User-agent: *
+
+Allow: /
+
+# Disallow all files in these directories
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content
+Disallow: /comment-page-
+
+# Allow indexing of image files
+Allow: /wp-content/uploads/
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Adsbot-Google
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Getting sick with the sitemaps
+Sitemap: http://lyxbling.se/sitemap_index.xml
+Sitemap: http://lyxbling.se/post-sitemap.xml
+Sitemap: http://lyxbling.se/post-sitemap.xml
+Sitemap: http://lyxbling.se/page-sitemap.xml
+Sitemap: http://lyxbling.se/presenttips-sitemap.xml
+Sitemap: http://lyxbling.se/smyckesvarumarken-sitemap.xml
+Sitemap: http://lyxbling.se/smyckesguider-sitemap.xml
+Sitemap: http://lyxbling.se/smyckesdesigners-sitemap.xml
+Sitemap: http://lyxbling.se/smyckesbutiker-sitemap.xml
+Sitemap: http://lyxbling.se/smyckestavlingar-sitemap.xml
+Sitemap: http://lyxbling.se/rabattkoder-smycken-sitemap.xml
+Sitemap: http://lyxbling.se/category-sitemap.xml
+Sitemap: http://lyxbling.se/post_tag-sitemap.xml
+Sitemap: http://lyxbling.se/butik-sitemap.xml
+Sitemap: http://lyxbling.se/varumarke-sitemap.xml
+Sitemap: http://lyxbling.se/tips-sitemap.xml
+Sitemap: http://lyxbling.se/slide-page-sitemap.xml
+Sitemap: http://lyxbling.se/author-sitemap.xml
