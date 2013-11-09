@@ -451,6 +451,8 @@ function lb_get_link_button($post_id, $align='left') {
             break;
         default:
             $button_text = __( 'Continue Reading', 'woothemes' );
+            $target_url = get_permalink($post->ID);
+            $rel_external = '';
             break;
     }
     
