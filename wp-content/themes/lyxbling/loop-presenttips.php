@@ -30,17 +30,15 @@ if ( isset( $woo_options['woo_portfolio_thumb_height'] ) && ( $woo_options['woo_
 
 if ( ! is_tax() ) {
 
-$presenttips = array();
+$tavlingar = array();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
 $query_args = array(
 				'post_type' => 'presenttips', 
-                                'orderby' => 'title',
-                                'order' => 'ASC',
 				'paged' => $paged, 
 				'posts_per_page' => -1
 			);
 
-/* Setup portfolio galleries navigation. */
+/* Setup tavlingar navigation. */
 $presenttips = get_terms( 'tips' );
 
 $exclude_str = '';
@@ -69,17 +67,17 @@ if ( $exclude_str != '' ) {
 	}
 }
 
-/* If we have galleries, make sure we only get items from those galleries. */
+/* If we have tavlingar, make sure we only get items from those tavlingar. */
 if ( count( $presenttips ) > 0 ) {
 
-$gallery_slugs = array();
-foreach ( $presenttips as $g ) { $gallery_slugs[] = $g->slug; }
+$presenttips_slugs = array();
+foreach ( $presenttips_slugs as $presenttips ) { $presenttips_slugs[] = $presenttips->slug; }
 
 $query_args['tax_query'] = array(
 								array(
-									'taxonomy' => 'tips',
+									'taxonomy' => 'presenttips',
 									'field' => 'slug',
-									'terms' => $gallery_slugs
+									'terms' => $presenttips_slugs
 								)
 							);
 }
@@ -93,8 +91,10 @@ query_posts( $query_args );
 if ( have_posts() ) { $count = 0;
 ?>
 <div id="portfolio">
-        <h1>Presenttips</h1>
-        <p>Här hittar du presenttips till olika tillfällen när du behöver hjälp att hitta någonting att ge bort.</p>
+<?php
+	/* Display the tavlingar navigation (from theme-functions.php). */
+	if ( is_page() || is_post_type_archive() ) { woo_portfolio_navigation( $tavlingar ); }
+?>
 	<div class="portfolio-items">
 <?php
 	while ( have_posts() ) { the_post(); $count++;
@@ -111,15 +111,14 @@ if ( have_posts() ) { $count = 0;
 		<div <?php post_class( $settings['css_classes'] ); ?> style="max-width: <?php echo intval( $thumb_width ); ?>px;">
 		<?php
 			/* Setup image for display and for checks, to avoid doing multiple queries. */
-			$image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
-			?>
-                        <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-			<?php
-                        if ( $image != '' ) {
+			$image = woo_image( 'return=true&key=portfolio-image&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
+			
+			if ( $image != '' ) {
 		?>
-			<a href="<?php the_permalink(); ?>" class="thumb">
+			<a <?php echo $settings['rel']; ?> title="<?php echo $settings['caption']; ?>" href="<?php echo $settings['large']; ?>" class="thumb">
 				<?php echo $image; ?>
-                        </a>
+            </a>
+			<h3><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 		<?php
 				// Output image gallery for lightbox
             	if ( ! empty( $settings['gallery'] ) ) {

@@ -1,9 +1,9 @@
 <?php
 /**
- * "Portfolio" Post Type Archive Template
+ * "Tävlingar" Taxonomy Archive Template
  *
- * This template file is used when displaying an archive of posts of the
- * "portfolio" post type. This is used with WooTumblog.
+ * This template file is used when displaying an archive of posts in the
+ * "butik" taxonomy.
  *
  * @package WooFramework
  * @subpackage Template
