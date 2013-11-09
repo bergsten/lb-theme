@@ -574,13 +574,17 @@ function lb_get_brands_sold($post_id) {
  * Function to display information below each article.
  */
 function lb_display_below_post_info() {
-    //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
-    //if(!is_front_page()) {
-        echo(lb_get_social_share_buttons());
-        //lb_get_outgoing_competitions();
-    //}
-    if(function_exists('zemanta_related_posts'))
-        zemanta_related_posts();
+    if(is_single()) {
+        //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
+        if(!is_front_page()) {
+            echo(lb_get_social_share_buttons());
+            //lb_get_outgoing_competitions();
+        }
+        
+        if(function_exists('zemanta_related_posts')) {
+            zemanta_related_posts();
+        }
+    }
 }
 add_action('woo_post_inside_after', 'lb_display_below_post_info');
 
