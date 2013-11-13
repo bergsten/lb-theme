@@ -707,6 +707,20 @@ and open the template in the editor.
   margin-top: 20px;
 }
 
+/* line 99, scss/sass/_widgets.scss */
+.facebook-box-widget {
+  width: 330px;
+  height: 210px;
+  padding: 0px;
+  alignment-adjust: middle;
+}
+
+/* line 106, scss/sass/_widgets.scss */
+.facebook-box-wrap {
+  height: 210px;
+  overflow: hidden;
+}
+
 /* Webicons by Adam Fairhead at Fairhead Creative http://fairheadcreative.com */
 /* line 3, scss/sass/_webicons.scss */
 .webicon {

@@ -65,8 +65,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
-    echo(lb_get_link_button(get_the_ID()));
-    echo(lb_get_facts_contact(get_the_ID()));
+    
 
     $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');
     if($rabattkoder->post_count > 0) {

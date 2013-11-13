@@ -14,20 +14,30 @@
 function lb_display_below_post_info() {
     $post_type = get_post_type();
     
-    if(is_single() && 'smyckesbutiker' == $post_type) {
-        echo(lb_get_facts_contact());
-        echo(lb_get_social_media_links());
-        echo(lb_get_payment_options());
-        echo(lb_get_freight());
-        //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
-        echo(lb_get_link_button(get_the_ID()));
-        if(!is_front_page()) {
-            echo(lb_get_social_share_buttons());
-            //lb_get_outgoing_competitions();
+    if(is_single()) {
+        switch($post_type) {
+            case 'smyckesbutiker':
+                echo(lb_get_link_button(get_the_ID()));
+                echo(lb_get_facts_contact());
+                //echo(lb_get_social_media_links());
+                //echo(lb_get_payment_options());
+                //echo(lb_get_freight());
+                //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
+                echo(lb_get_link_button(get_the_ID()));
+                break;
+            case 'smyckesvarumarken':
+                echo(lb_get_link_button(get_the_ID()));
+                echo(lb_get_facts_contact());
+                //echo(lb_get_social_media_links());
+                echo(lb_get_link_button(get_the_ID()));
+                break;
+            default:
+                break;
         }
         
-        if(function_exists('zemanta_related_posts')) {
-            zemanta_related_posts();
+        if(!is_front_page()) {
+                echo(lb_get_social_share_buttons());
+                //lb_get_outgoing_competitions();
         }
     }
 }
@@ -150,7 +160,7 @@ function lb_get_trust_symbols() {
 function lb_get_social_media_links() {
     $post_id = get_the_ID();
     
-    $html_output = '<div class="social-buttons"><h2>Sociala mediakanaler</h2>';
+    $html_output = ''; // '<div class="social-buttons"><h2>Sociala mediakanaler</h2>';
     if('' != trim(lb_get_post_meta($post_id, 'facebook-url-id'))) 
         $html_output .= '<a class="svg webicon facebook" target="_blank" href="https://www.facebook.com/' . lb_get_post_meta($post_id, 'facebook-url-id') . '" class="facebook" title="Facebook"></a>';
     if('' != trim(lb_get_post_meta($post_id, 'twitter-url-id'))) 

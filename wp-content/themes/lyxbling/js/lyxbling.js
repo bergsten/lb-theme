@@ -23,8 +23,6 @@ jQuery(document).ready(function(){
             jQuery(".pp_social").append('<div class="pinterest" ><a href=' + href + ' class="pin-it-button" count-layout="horizontal" target="_blank"><img border="0" src="http://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a></div>');
         }
     });
-    
-    
 });
 
 // Facebook button.
