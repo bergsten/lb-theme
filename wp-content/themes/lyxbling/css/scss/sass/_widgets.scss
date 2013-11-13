@@ -96,11 +96,12 @@ and open the template in the editor.
     margin-top: 20px;
 }
 
+#sidebar .facebook-widget div {
+    margin-top: 10px;
+    padding-bottom: 0px;
+}
+
 .facebook-box-widget {
-    width: 330px;
-    height: 210px;
-    padding: 0px;
-    alignment-adjust: middle;
 }
 
 .facebook-box-wrap {

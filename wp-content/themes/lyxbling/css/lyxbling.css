@@ -708,14 +708,12 @@ and open the template in the editor.
 }
 
 /* line 99, scss/sass/_widgets.scss */
-.facebook-box-widget {
-  width: 330px;
-  height: 210px;
-  padding: 0px;
-  alignment-adjust: middle;
+#sidebar .facebook-widget div {
+  margin-top: 10px;
+  padding-bottom: 0px;
 }
 
-/* line 106, scss/sass/_widgets.scss */
+/* line 107, scss/sass/_widgets.scss */
 .facebook-box-wrap {
   height: 210px;
   overflow: hidden;

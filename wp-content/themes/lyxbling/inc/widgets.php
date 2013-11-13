@@ -51,8 +51,8 @@ class ThematerFacebook extends WP_Widget
         $header = $instance['header'] == 'true' ? 'true' : 'false';
         $border = $instance['border'];
         ?>
-        <ul class="widget-container"><li class="facebook-widget">
-        <?php  if ( $title ) {  ?> <h3 class="widgettitle"><?php echo $title; ?></h3> <?php }  ?>
+        <div class="widget facebook-widget">
+        <?php  if ( $title ) {  ?> <h3><?php echo $title; ?></h3> <?php }  ?>
             <div id="fb-root"></div>
             <script>(function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
@@ -67,8 +67,7 @@ class ThematerFacebook extends WP_Widget
                     <div class="fb-like-box" data-href="<?php echo $url; ?>" data-width="<?php echo $width; ?>" data-height="<?php echo $height; ?>" show_border="false" data-colorscheme="<?php echo $colorscheme; ?>" data-show-faces="<?php echo $show_faces; ?>" data-stream="<?php echo $stream; ?>" data-header="<?php echo $header; ?>" data-border-color="<?php echo $border; ?>"></div>
                 </div>
             </div>
-            
-        </li></ul>
+        </div>
      <?php
     }
  function update($new_instance, $old_instance) 
