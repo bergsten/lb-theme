@@ -610,15 +610,15 @@ and open the template in the editor.
 */
 /* line 11, scss/sass/_widgets.scss */
 #sidebar {
-  width: 330px !important;
+  overflow: visible !important;
 }
 
-/* line 15, scss/sass/_widgets.scss */
+/* line 16, scss/sass/_widgets.scss */
 #sidebar-alt {
   width: 208px !important;
 }
 
-/* line 19, scss/sass/_widgets.scss */
+/* line 20, scss/sass/_widgets.scss */
 #sidebar .widget, #sidebar-alt .widget {
   clear: both;
   margin: 0px auto;
@@ -638,17 +638,17 @@ and open the template in the editor.
   z-index: 90;
 }
 
-/* line 38, scss/sass/_widgets.scss */
+/* line 39, scss/sass/_widgets.scss */
 #sidebar .widget {
   width: 290px;
 }
 
-/* line 42, scss/sass/_widgets.scss */
+/* line 43, scss/sass/_widgets.scss */
 #sidebar-alt .widget {
   width: 168px;
 }
 
-/* line 46, scss/sass/_widgets.scss */
+/* line 47, scss/sass/_widgets.scss */
 #sidebar .widget h3, #sidebar-alt .widget h3 {
   background: #eccfd3;
   height: 20px;
@@ -666,7 +666,7 @@ and open the template in the editor.
   text-align: center;
 }
 
-/* line 64, scss/sass/_widgets.scss */
+/* line 65, scss/sass/_widgets.scss */
 .rpwe-block ul li h3, .rpwe-block ul li h3 {
   font: 300 16px/1.5em Calibri, Candara, Segoe, Optima, sans-serif;
   width: 180px !important;
@@ -679,41 +679,41 @@ and open the template in the editor.
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
 }
 
-/* line 76, scss/sass/_widgets.scss */
+/* line 77, scss/sass/_widgets.scss */
 .rpwe-block ul li time {
   bottom: 0;
   right: 0;
   position: absolute;
 }
 
-/* line 82, scss/sass/_widgets.scss */
+/* line 83, scss/sass/_widgets.scss */
 #sidebar .widget h3 {
   width: 320px;
 }
 
-/* line 86, scss/sass/_widgets.scss */
+/* line 87, scss/sass/_widgets.scss */
 #sidebar-alt .widget h3 {
   width: 198px;
 }
 
-/* line 90, scss/sass/_widgets.scss */
+/* line 91, scss/sass/_widgets.scss */
 #sidebar .widget h3 a, #sidebar-alt .widget h3 a {
   color: black;
   text-decoration: none;
 }
 
-/* line 95, scss/sass/_widgets.scss */
+/* line 96, scss/sass/_widgets.scss */
 #sidebar .widget div, #sidebar .widget ul, #sidebar-alt .widget div, #sidebar-alt .widget ul {
   margin-top: 20px;
 }
 
-/* line 99, scss/sass/_widgets.scss */
+/* line 100, scss/sass/_widgets.scss */
 #sidebar .facebook-widget div {
   margin-top: 10px;
   padding-bottom: 0px;
 }
 
-/* line 107, scss/sass/_widgets.scss */
+/* line 108, scss/sass/_widgets.scss */
 .facebook-box-wrap {
   height: 210px;
   overflow: hidden;
@@ -2240,9 +2240,10 @@ body#rabattkod-body {
 /* line 37, scss/sass/_rabattkod-page.scss */
 #rabattkod-container {
   padding: 10px;
+  padding-left: 350px;
 }
 
-/* line 41, scss/sass/_rabattkod-page.scss */
+/* line 42, scss/sass/_rabattkod-page.scss */
 #rabattkod-close-iframe {
   position: absolute;
   top: 0px;
@@ -2250,7 +2251,7 @@ body#rabattkod-body {
   padding: 10px;
 }
 
-/* line 48, scss/sass/_rabattkod-page.scss */
+/* line 49, scss/sass/_rabattkod-page.scss */
 #rabattkod-close-iframe a {
   display: block;
   width: 34px;
@@ -2258,19 +2259,19 @@ body#rabattkod-body {
   height: 2.5em;
 }
 
-/* line 57, scss/sass/_rabattkod-page.scss */
+/* line 58, scss/sass/_rabattkod-page.scss */
 .rabattkod-title {
   font-size: 20px;
   color: #fff;
 }
 
-/* line 62, scss/sass/_rabattkod-page.scss */
+/* line 63, scss/sass/_rabattkod-page.scss */
 .rabattkod {
-  font-size: 12px;
+  font-size: 20px;
   color: #fff;
 }
 
-/* line 67, scss/sass/_rabattkod-page.scss */
+/* line 68, scss/sass/_rabattkod-page.scss */
 #preview-frame {
   margin: 0;
   padding: 0;

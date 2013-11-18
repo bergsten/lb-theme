@@ -37,7 +37,7 @@ the_post(); ?>
                     <div class="rabattkod">Använd rabattkod "<?php echo(get_post_meta($post->ID, 'wpcf-rabattkod', true)); ?>"</div>
                 </div>
                 <div id="rabattkod-close-iframe">
-                    <a href="http://lyxbling.se/till/<?php echo($post->ID); ?>?noiframe=true">x</a>
+                    <a href="http://lyxbling.se/till/<?php echo($post->ID); ?>?noiframe=true" title="Stäng sidhuvudet">&#x2717</a>
                 </div>
             </div>
         </div>

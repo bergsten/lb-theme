@@ -7,6 +7,7 @@ require_once('inc/overrides.php');
 require_once('inc/links.php');
 require_once('inc/store-information.php');
 require_once('inc/widgets.php');
+require_once('inc/theme-options.php');
 
 /**
  * Include all custom javascript and CSS styles.

@@ -157,7 +157,7 @@ var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(
             $link_data_array['target_url'] = 'http://lyxbling.se/till/' . $post_id;
             break;
         case 'presenttips':
-            $link_data_array['button_text'] = __( 'Gå till present', 'woothemes' );
+            $link_data_array['button_text'] = __( 'Gå till presenttips', 'woothemes' );
             $link_data_array['target_url'] = 'http://lyxbling.se/till/' . $post_id;
             break;
         default:

@@ -9,7 +9,8 @@ and open the template in the editor.
 */
 
 #sidebar {
-    width: $lb-sidebar-width !important;
+    //width: $lb-sidebar-width !important;
+    overflow: visible !important;
 }
 
 #sidebar-alt {

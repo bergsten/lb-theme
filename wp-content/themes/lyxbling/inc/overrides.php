@@ -16,6 +16,28 @@ function _remove_script_version( $src ){
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
+//Add Woocommerce body classes
+
+function lb_body_classes($classes){
+    $post_type = get_post_type(get_the_ID());
+    
+    if(is_archive()) {
+        if('smyckesbutiker' == $post_type || 'smyckesvarumarken' == $post_type) {
+            foreach($classes as $key => $val) {
+                if('three-col-left' == $val) {
+                    $classes[$key] = 'two-col-left';
+                }
+                if('three-col-left-1200' == $val) {
+                    $classes[$key] = 'two-col-left-1200';
+                }
+            }
+        }
+    }
+    
+    return $classes;
+}
+add_filter('body_class', 'lb_body_classes', 1000);
+
 function new_excerpt_more( $more ) {
 	return '...';
 }
@@ -56,12 +78,12 @@ add_filter('post_type_link', 'lb_presenttips_permalink', 1, 3);
  */
 function lb_adjust_single_breadcrumb( $link_output, $link ) {
         if (strpos($link['url'], '%tips%') === FALSE) return $link_output;
-pr($link_output);
-pr($link);
+//pr($link_output);
+//pr($link);
         $post = get_post();
         // Get taxonomy terms
         $terms = wp_get_object_terms($post->ID, 'tips');
-pr($terms);
+//pr($terms);
         if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
         else $taxonomy_slug = 'diverse';
         
