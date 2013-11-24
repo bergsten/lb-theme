@@ -62,6 +62,16 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
             </header>
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
+    $store_post_id = get_post_meta($post->ID, 'wpcf-store-post-id', true);
+    $store_url = get_post_permalink($store_post_id);
+    $store_brand = get_post_meta($store_post_id, 'wpcf-varumarke', true);
+
+    if (has_post_thumbnail($store_post_id)) {
+        $store_image = wp_get_attachment_image_src(get_post_thumbnail_id($store_post_id), 'thumbnail');
+        $store_image_html = '<a href="' . $store_url . '"><img class="alignright size-thumbnail" alt="' . $store_brand . ' smycken online" src="' . $store_image[0] . '" width="' . $store_image[1] . '" height="' . $store_image[2] . '" /></a>';
+        echo($store_image_html);
+    }
+    
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
     echo(lb_get_link_button(get_the_ID()));
 } else { 

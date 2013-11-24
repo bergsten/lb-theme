@@ -41,7 +41,7 @@ function lb_external_links_template($template) {
 }
 add_action( 'template_redirect', 'lb_external_links_template' );
 
-
+/*
 function lb_aff_redirect_query($post_id) {
 	global $wpdb, $table_prefix;
 	$request = $_SERVER['REQUEST_URI'];
@@ -76,6 +76,8 @@ function lb_aff_redirect_query($post_id) {
 		} else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
 	}
 }
+ * 
+ */
 //***** End Redirection *****
 
 /*
@@ -150,15 +152,15 @@ var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(
             break;
         case 'smyckestavlingar':
             $link_data_array['button_text'] = __( 'Gå till tävlingen', 'woothemes' );
-            $link_data_array['target_url'] = 'http://lyxbling.se/till/' . $post_id;
+            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         case 'rabattkoder-smycken':
             $link_data_array['button_text'] = __( 'Visa rabattkod', 'woothemes' );
-            $link_data_array['target_url'] = 'http://lyxbling.se/till/' . $post_id;
+            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         case 'presenttips':
             $link_data_array['button_text'] = __( 'Gå till presenttips', 'woothemes' );
-            $link_data_array['target_url'] = 'http://lyxbling.se/till/' . $post_id;
+            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         default:
             $link_data_array['button_text'] = __( 'Continue Reading', 'woothemes' );
@@ -170,24 +172,32 @@ var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(
     return $link_data_array;
 }
 
+function lb_get_target_url($post_id) {
+    $link_data = lb_get_link_data($post_id);
+    
+    $target_url = $link_data['target_url'];
+    
+    if(isset($link_data['affiliate_url']))
+        $target_url = $link_data['affiliate_url'];
+    
+    return $target_url;
+}
+
 /*
  * Get the link button.
  */
 function lb_get_link_button($post_id, $align='left') {
     $link_data = lb_get_link_data($post_id);
-    
-    $target_url = $link_data['target_url'];
     $impression_tracking = '';
     $rel_external = '';
+    $target_url = $link_data['target_url'];
     
     if(isset($link_data['affiliate_url']))
         $target_url = $link_data['affiliate_url'];
-    
-    if(isset($link_data['affiliate_impression_tracking']))
-        $impression_tracking = $link_data['affiliate_impression_tracking'];
-    
     if(true == $link_data['external'])
         $rel_external = ' rel="external" ';
+    if(isset($link_data['affiliate_impression_tracking']))
+        $impression_tracking = $link_data['affiliate_impression_tracking'];
     
     $button_text = $link_data['button_text'] . ' &raquo;';
     

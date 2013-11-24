@@ -6,6 +6,7 @@
 require_once('inc/overrides.php');
 require_once('inc/links.php');
 require_once('inc/store-information.php');
+require_once('inc/rabattkoder.php');
 require_once('inc/widgets.php');
 require_once('inc/theme-options.php');
 
@@ -27,6 +28,23 @@ function lb_child_theme_setup() {
     load_child_theme_textdomain( 'woothemes' );
 }
 add_action( 'after_setup_theme', 'lb_child_theme_setup' );
+
+/*
+ * Get all posts with a specific meta key/value pair.
+ */
+function lb_get_posts_with_meta_value($meta_key, $meta_value, $post_type = 'post', $post_status = 'publish', $meta_compare = '=') {
+    $query = new WP_Query(
+                array(
+                    'post_type'     => $post_type,
+                    'post_status'   => $post_status,
+                    'meta_key'      => $meta_key,
+                    'meta_value'    => $meta_value,
+                    'meta_compare'  => $meta_compare,
+                )
+    );
+    
+    return $query;
+}
 
 function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=array()) {
     $query = new WP_Query();
@@ -50,7 +68,10 @@ function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args
 }
 
 function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'raw')) {
-    return types_render_field("$custom_field", $args);
+    if(function_exists('types_render_field'))
+        return types_render_field($custom_field, $args);
+    else
+        return get_post_meta($post_id, 'wpcf_' . $custom_field, true);
 }
 
 function lb_get_outgoing_competitions() {
@@ -129,6 +150,17 @@ function lb_get_social_share_buttons($array = false) {
     return $html_output;
 }
 
+/* 
+ * See http://www.epochconverter.com/programming/functions-php.php
+ */
+function get_datetime_from_epoch($epoch, $format = 'Y-m-d') {
+    date_default_timezone_set('Europe/Stockholm');
+    $epoch = round($epoch/1000, 0);
+    
+    $dt = new DateTime("@$epoch"); // convert UNIX timestamp to PHP DateTime
+    
+    return $dt->format($format);
+}
 function lb_get_wp_base() {
     return '/home/lyxbling/public_html/';
 }
