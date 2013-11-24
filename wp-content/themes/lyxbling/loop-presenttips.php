@@ -115,7 +115,7 @@ if ( have_posts() ) { $count = 0;
 			
 			if ( $image != '' ) {
 		?>
-			<a <?php echo $settings['rel']; ?> title="<?php echo $settings['caption']; ?>" href="<?php echo $settings['large']; ?>" class="thumb">
+			<a <?php echo $settings['rel']; ?> title="<?php echo $settings['caption']; ?>" href="<?php the_permalink(); ?>" class="thumb">
 				<?php echo $image; ?>
             </a>
 			<h3><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>

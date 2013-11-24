@@ -37,6 +37,7 @@ $query_args = array(
                                 'orderby' => 'title',
                                 'order' => 'ASC',
 				'paged' => $paged, 
+                                'post_status' => 'publish',
 				'posts_per_page' => -1
 			);
 
