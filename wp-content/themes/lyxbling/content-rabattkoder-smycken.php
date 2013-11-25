@@ -66,7 +66,7 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
     
     if(1 == $is_percentage) {
         $discount_amount = get_post_meta($post->ID, 'wpcf-discount-amount', true);
-        $discount_image = '<a href="' . '/till/' . $post->ID . '" rel="external"><img class="alignright size-thumbnail" alt="' . get_the_title() . '" src="' . get_stylesheet_directory_uri() . '/images/rabattkoder/rabatt-' . $discount_amount . '.png" width="300" height="230" /></a>';
+        $discount_image = '<a href="' . '/till/' . $post->ID . '" rel="external" target="_blank"><img class="alignright size-thumbnail" alt="' . get_the_title() . '" src="' . get_stylesheet_directory_uri() . '/images/rabattkoder/rabatt-' . $discount_amount . '.png" width="300" height="230" /></a>';
         echo($discount_image);
     } else {
         $store_post_id = get_post_meta($post->ID, 'wpcf-store-post-id', true);
