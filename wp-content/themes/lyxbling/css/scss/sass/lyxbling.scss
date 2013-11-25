@@ -8,7 +8,7 @@ $lb-white: #fff;
 $lb-black: #000;
 $lb-pink-button: darken($lb-pink, 25%);
 $lb-subheader-height: 160px;
-$lb-bg-color: #210c16;
+$lb-header-bg-color: #8c0047;
 
 @import "base";
 @import "buttons";
@@ -25,11 +25,11 @@ $lb-bg-color: #210c16;
 }
 
 #subheader-image-container {
-    background-color: $lb-bg-color;
+    background-color: $lb-header-bg-color;
 }
 
 #subheader-image {
-    background-color: $lb-bg-color;
+    background-color: $lb-header-bg-color;
     background-repeat: no-repeat;
     background-position: center top;
     height: $lb-subheader-height;

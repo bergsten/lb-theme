@@ -16,8 +16,14 @@ function _remove_script_version( $src ){
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
-//Add Woocommerce body classes
+// Fix the top space issue for absolute positioned elements.
+function my_filter_head() {
+    if (!is_user_logged_in())
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+add_action('get_header', 'my_filter_head');
 
+//Add Woocommerce body classes
 function lb_body_classes($classes){
     $post_type = get_post_type(get_the_ID());
     

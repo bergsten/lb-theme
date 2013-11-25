@@ -7,24 +7,25 @@ and open the template in the editor.
     Created on : 2013-okt-27, 20:55:40
     Author     : Mats
 */
-$header-height: 100px;
+$header-height: 60px;
+
+html {
+    margin-top: 0px !important;
+}
 
 body#rabattkod-body {
     overflow: hidden;
 }
 
 #rabattkod-header-container {
-    background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
-    background-repeat: no-repeat;
-    background-position: top center;
 }
 
 #rabattkod-header {
     height: $header-height;
-    background-color: $lb-bg-color;
+    background-color: $lb-header-bg-color;
     background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: top center;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-top: 40px;
@@ -52,7 +53,7 @@ body#rabattkod-body {
     //text-indent: -999em;
     overflow: hidden;
     height: 2.5em;
-    //background: $lb-bg-color url("/image/icons/close.png") 11px -1142px no-repeat;
+    //background: $lb-header-bg-color url("/image/icons/close.png") 11px -1142px no-repeat;
 }
 
 .rabattkod-title {

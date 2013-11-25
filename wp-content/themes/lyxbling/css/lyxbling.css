@@ -2210,24 +2210,22 @@ and open the template in the editor.
     Author     : Mats
 */
 /* line 12, scss/sass/_rabattkod-page.scss */
+html {
+  margin-top: 0px !important;
+}
+
+/* line 16, scss/sass/_rabattkod-page.scss */
 body#rabattkod-body {
   overflow: hidden;
 }
 
-/* line 16, scss/sass/_rabattkod-page.scss */
-#rabattkod-header-container {
+/* line 23, scss/sass/_rabattkod-page.scss */
+#rabattkod-header {
+  height: 60px;
+  background-color: #8c0047;
   background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
   background-repeat: no-repeat;
   background-position: top center;
-}
-
-/* line 22, scss/sass/_rabattkod-page.scss */
-#rabattkod-header {
-  height: 100px;
-  background-color: #210c16;
-  background-image: url(http://lyxbling.se/wp-content/uploads/2013/10/lyxbling-bg.png);
-  background-repeat: no-repeat;
-  background-position: left top;
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 40px;
@@ -2237,13 +2235,13 @@ body#rabattkod-body {
   border: 0px solid;
 }
 
-/* line 37, scss/sass/_rabattkod-page.scss */
+/* line 38, scss/sass/_rabattkod-page.scss */
 #rabattkod-container {
   padding: 10px;
   padding-left: 350px;
 }
 
-/* line 42, scss/sass/_rabattkod-page.scss */
+/* line 43, scss/sass/_rabattkod-page.scss */
 #rabattkod-close-iframe {
   position: absolute;
   top: 0px;
@@ -2251,7 +2249,7 @@ body#rabattkod-body {
   padding: 10px;
 }
 
-/* line 49, scss/sass/_rabattkod-page.scss */
+/* line 50, scss/sass/_rabattkod-page.scss */
 #rabattkod-close-iframe a {
   display: block;
   width: 34px;
@@ -2259,19 +2257,19 @@ body#rabattkod-body {
   height: 2.5em;
 }
 
-/* line 58, scss/sass/_rabattkod-page.scss */
+/* line 59, scss/sass/_rabattkod-page.scss */
 .rabattkod-title {
   font-size: 20px;
   color: #fff;
 }
 
-/* line 63, scss/sass/_rabattkod-page.scss */
+/* line 64, scss/sass/_rabattkod-page.scss */
 .rabattkod {
   font-size: 20px;
   color: #fff;
 }
 
-/* line 68, scss/sass/_rabattkod-page.scss */
+/* line 69, scss/sass/_rabattkod-page.scss */
 #preview-frame {
   margin: 0;
   padding: 0;
@@ -2353,12 +2351,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 27, scss/sass/lyxbling.scss */
 #subheader-image-container {
-  background-color: #210c16;
+  background-color: #8c0047;
 }
 
 /* line 31, scss/sass/lyxbling.scss */
 #subheader-image {
-  background-color: #210c16;
+  background-color: #8c0047;
   background-repeat: no-repeat;
   background-position: center top;
   height: 160px;
