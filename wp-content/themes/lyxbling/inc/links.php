@@ -24,6 +24,7 @@ add_filter( 'query_vars', 'lb_register_query_vars' );
 function lb_external_links_template($template) {
     if(get_query_var('postid')) {
         $post = get_post(get_query_var('postid'));
+        
         if('rabattkoder-smycken' == $post->post_type && true != $_GET['noiframe']) {
             global $wp_query;
             $wp_query->is_404 = false;
@@ -85,17 +86,15 @@ function lb_aff_redirect_query($post_id) {
  */
 function lb_get_link_data($post_id) {
     $link_data_array = array();
-    
     $post_type = get_post_type($post_id);
     $link_data_array['brand'] = trim(lb_get_post_meta($post_id, 'varumarke'));
     $link_data_array['target_url'] = lb_get_post_meta($post_id, 'target-url');
     $link_data_array['display_url'] = lb_get_post_meta($post_id, 'display-url');
     $target_domain_parts = parse_url($link_data_array['display_url']);
     $link_data_array['pretty_url'] = $target_domain_parts['host'];
-    
     // If no target url is set we link to the post permalink.
     if('' == trim($link_data_array['target_url']))
-        $link_data_array['target_url'] = get_permalink($post->ID);
+        $link_data_array['target_url'] = get_permalink($post_id);
     
     $target_url_parts = parse_url($link_data_array['target_url']);
     $current_url_parts = parse_url(lb_get_current_page_url());
@@ -163,8 +162,8 @@ var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(
             $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         default:
-            $link_data_array['button_text'] = __( 'Continue Reading', 'woothemes' );
-            $link_data_array['target_url'] = get_permalink($post->ID);
+            $link_data_array['button_text'] = __( 'Continue Reading &raquo;', 'woothemes' );
+            $link_data_array['target_url'] = get_permalink($post_id);
             $link_data_array['external'] = false;
             break;
     }

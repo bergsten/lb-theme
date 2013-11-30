@@ -12,42 +12,46 @@
  * Function to display information below each online store.
  */
 function lb_display_below_post_info() {
+    $post_id = get_the_ID();
     $post_type = get_post_type();
+    $link_button = lb_get_link_button($post_id);
     
     if(is_single()) {
         switch($post_type) {
             case 'smyckesbutiker':
-                echo(lb_get_link_button(get_the_ID()));
-                echo(lb_get_trust_symbols());
-                echo(lb_get_facts_contact());
-                //echo(lb_get_social_media_links());
-                echo(lb_get_payment_options());
-                //echo(lb_get_freight());
-                //echo(lb_get_brands_sold($the_post->ID, $the_post->post_name));
-                echo(lb_get_link_button(get_the_ID()));
+                echo($link_button);
+                echo(lb_get_rabattkoder($post_id));
+                echo(lb_get_competitions($post_id));
+                echo(lb_get_trust_symbols($post_id));
+                echo(lb_get_facts_contact($post_id));
+                //echo(lb_get_social_media_links($post_id));
+                echo(lb_get_payment_options($post_id));
+                //echo(lb_get_freight($post_id));
+                echo(lb_get_brands_sold_by_store($post_id));
+                echo($link_button);
                 break;
             case 'smyckesvarumarken':
-                echo(lb_get_link_button(get_the_ID()));
-                echo(lb_get_facts_contact());
-                //echo(lb_get_social_media_links());
-                echo(lb_get_link_button(get_the_ID()));
+                echo($link_button);
+                echo(lb_get_facts_contact($post_id));
+                //echo(lb_get_social_media_links($post_id));
+                echo($link_button);
                 break;
             case 'presenttips':
-                echo(lb_get_link_button(get_the_ID()));
+                echo($link_button);
             default:
                 break;
         }
         
         if(!is_front_page()) {
-                echo(lb_get_social_share_buttons());
-                //lb_get_outgoing_competitions();
+                echo(lb_get_social_share_buttons($post_id));
         }
     }
 }
 add_action('woo_post_inside_after', 'lb_display_below_post_info');
 
-function lb_get_facts_contact() {
-    $post_id = get_the_ID();
+function lb_get_facts_contact($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
     
     if('' != trim(lb_get_post_meta($post_id, 'varumarke'))) {
         $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
@@ -85,8 +89,9 @@ function lb_get_customer_service() {
     $post_id = get_the_ID();
 }
 
-function lb_get_payment_options() {
-    $post_id = get_the_ID();
+function lb_get_payment_options($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
     
     $payment_options = get_post_meta($post_id, 'wpcf-betalningsalternativ');
     $payment_options = $payment_options[0];
@@ -131,8 +136,9 @@ function lb_get_payment_options() {
     return $html_output;
 }
 
-function lb_get_freight() {
-    $post_id = get_the_ID();
+function lb_get_freight($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
     
     $html_output = '<div class="entry" itemscope itemtype="http://schema.org/DeliveryChargeSpecification"><h2>Fraktkostnader &amp; Leveranstid</h2>';
     
@@ -154,8 +160,10 @@ function lb_get_freight() {
     return $html_output;
 }
 
-function lb_get_trust_symbols() {
-    $post_id = get_the_ID();
+function lb_get_trust_symbols($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
     $html_output = '';
     
     if('' != trim(lb_get_post_meta($post_id, 'trygg-ehandel-butiks-id')) || '' != trim(lb_get_post_meta($post_id, 'e-handelscertifiering-butiks-url'))) {
@@ -177,8 +185,9 @@ function lb_get_trust_symbols() {
     return $html_output;
 }
 
-function lb_get_social_media_links() {
-    $post_id = get_the_ID();
+function lb_get_social_media_links($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
     
     $html_output = ''; // '<div class="social-buttons"><h2>Sociala mediakanaler</h2>';
     if('' != trim(lb_get_post_meta($post_id, 'facebook-url-id'))) 
@@ -203,7 +212,103 @@ function lb_get_social_media_links() {
     return $html_output;
 }
 
-function lb_get_others() {
-    $post_id = get_the_ID();
+function lb_get_others($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+}
+
+function lb_get_brands_sold_by_store($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
+    $html_output = '';
+    
+    $query = lb_get_related_posts_by_taxonomy($post_id, 'varumarke', 'smyckesvarumarken');
+    
+    if($query->have_posts()) {
+        $html_output .= '<h2>Smyckesvarumärken hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
+        
+        while($query->have_posts()) {
+            $query->the_post();
+            
+            $html_output .= '<div><a href="' . get_permalink(get_the_ID()) . '">' . lb_get_post_meta(get_the_ID(), 'varumarke') . '</a></div> ';
+        }
+    }
+    
+    wp_reset_query();
+    
+    return $html_output;
+}
+
+function lb_get_rabattkoder($post_id = NULL) {
+    global $woo_options;
+    
+    $thumb_width = 210;
+    $thumb_height = 120;
+    
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
+    $html_output = '';
+    
+    $query = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'rabattkoder-smycken');
+    
+    if($query->have_posts()) {
+        $html_output .= '<h2>Rabattkoder hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
+        
+        while($query->have_posts()) {
+            $query->the_post();
+            
+            /* Setup image for display and for checks, to avoid doing multiple queries. */
+            $woo_image = woo_image( 'return=true&key=image&class=thumbnail alignleft&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . get_the_title() . '' );
+            if ( $woo_image != '' ) {
+		$html_output .= '<a ' . $settings['rel'] . ' title="' . get_the_title() . '" href="' . get_permalink(get_the_ID()) . '" class="thumb">' . $woo_image . '</a>';
+            }
+            
+            $html_output .= '<h3><a href="' . get_permalink(get_the_ID()) . '">' . get_the_title() . '</a></h3>';
+            $html_output .= strip_tags(get_the_excerpt());
+            $html_output .= '<br clear="all" /><div class="lb-button right" style="clear: both;" data-url="' . get_permalink(get_the_ID()) . '">' . __( 'Continue Reading &raquo;', 'woothemes' ) . '</div><br clear="all" />';
+            $html_output .= '<div><a href="' . get_permalink(get_the_ID()) . '">' . lb_get_post_meta(get_the_ID(), 'varumarke') . '</a></div> ';
+        }
+    }
+    
+    wp_reset_query();
+    
+    return $html_output;
+}
+
+function lb_get_competitions($post_id = NULL) {
+    global $woo_options;
+    
+    $thumb_width = 210;
+    $thumb_height = 120;
+    
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
+    $html_output = '';
+    
+    $query = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckestavlingar');
+    
+    if($query->have_posts()) {
+        $html_output .= '<h2>Smyckestävlingar hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
+        
+        while($query->have_posts()) {
+            $query->the_post();
+            
+            $woo_image = woo_image( 'return=true&key=image&class=thumbnail alignleft&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . get_the_title() . '' );
+            if ( $woo_image != '' ) {
+		$html_output .= '<a ' . $settings['rel'] . ' title="' . get_the_title() . '" href="' . get_permalink(get_the_ID()) . '" class="thumb">' . $woo_image . '</a>';
+            }
+            $html_output .= '<h3><a href="' . get_permalink(get_the_ID()) . '">' . get_the_title() . '</a></h3>';
+            $html_output .= strip_tags(get_the_excerpt());
+            $html_output .= '<br clear="all" /><div class="lb-button right" style="clear: both;" data-url="' . get_permalink(get_the_ID()) . '">' . __( 'Continue Reading &raquo;', 'woothemes' ) . '</div><br clear="all" />';
+            $html_output .= '<div><a href="' . get_permalink(get_the_ID()) . '">' . lb_get_post_meta(get_the_ID(), 'varumarke') . '</a></div> ';
+        }
+    }
+    
+    wp_reset_query();
+    
+    return $html_output;
 }
 ?>

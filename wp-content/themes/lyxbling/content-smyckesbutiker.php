@@ -62,40 +62,19 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 	</header>
 <?php
 // Show the content
-if ( 'content' == $settings['post_content'] || is_single() ) { ?>
+if ( 'content' == $settings['post_content'] || is_single() ) {
+    ?>
     <h2>Sammanfattning</h2>
     <?php
-    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
+    the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
     
-    $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'rabattkoder');
-    if($rabattkoder->post_count > 0) {
-        echo('<h2 style="clear: both;">Aktuella rabattkoder f&ouml;r ' . get_the_title() . '</h2>');
-        foreach($rabattkoder->posts as $the_post) {
-//pr($the_post);
-            echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
-            echo(strip_tags($the_post->post_content)); ?>
     
-            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
-        }
-    }
-    
-    $tavlingar = lb_get_related_posts_by_taxonomy(get_the_ID(), 'butik', 'tavlingar');
-    if($tavlingar->post_count > 0) {
-        echo('<h2 style="clear: both;">Aktuella t&auml;vlingar fr&aring;n ' . get_the_title() . '</h2>');
-        foreach($tavlingar->posts as $the_post) {
-            
-            echo('<h3><a href="' . get_permalink($the_post->ID) . '">' . $the_post->post_title . '</a></h3>');
-            echo(strip_tags($the_post->post_content)); ?>
-            <br clear="all" /><div class="lb-button right" style="clear: both;" data-url="<?php echo(get_permalink($the_post->ID)); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div><br clear="all" /><?php
-        }
-    }
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);
     remove_filter('the_excerpt', 'st_add_widget');
     the_excerpt(); 
     
-    //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
     <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading &raquo;', 'woothemes' ); ?></div>
     <?php

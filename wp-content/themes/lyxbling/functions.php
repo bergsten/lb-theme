@@ -46,20 +46,55 @@ function lb_get_posts_with_meta_value($meta_key, $meta_value, $post_type = 'post
     return $query;
 }
 
-function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=array()) {
-    $query = new WP_Query();
-    $terms = wp_get_object_terms( $post_id, $taxonomy );
+// get taxonomies terms links
+function lb_custom_taxonomies_terms_links($post_id) {
+    // get post by post id
+    $post = &get_post($post_id);
+    // get post type by post
+    $post_type = $post->post_type;
+    // get post type taxonomies
+    $taxonomies = get_object_taxonomies($post_type);
+    $out = "<ul>";
     
+    foreach ($taxonomies as $taxonomy) {        
+        $out .= "<li>".$taxonomy.": ";
+        // get the terms related to post
+        $terms = get_the_terms( $post->ID, $taxonomy );
+        if ( !empty( $terms ) ) {
+            foreach ( $terms as $term )
+                $out .= '<a href="' . get_term_link($term->slug, $taxonomy) .'">'.$term->name.'</a> ';
+        }
+        $out .= "</li>";
+    }
+    
+    $out .= "</ul>";
+    
+    return $out;
+} 
+
+function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args=array()) {
+    $terms = wp_get_object_terms($post_id, $taxonomy);
     // Make sure we have terms from the current post
-    if ( count( $terms ) ) {
-        $post_ids = get_objects_in_term( $terms[0]->term_id, $taxonomy );
+    if(count($terms)) {
+        $all_object_ids = array();
         
-        $args = wp_parse_args( $args, array(
+        foreach($terms as $term) {
+            $object_ids = get_objects_in_term($term->term_id, $taxonomy);
+            
+            // Merge only the unique values in the arrays.
+            $all_object_ids = array_merge(array_diff($all_object_ids, $object_ids), array_diff($object_ids, $all_object_ids));
+        }
+        
+        $args = wp_parse_args($args, array(
                 'post_type' => $post_type,
-                'post__in' => $post_ids,
-                'taxonomy' => $taxonomy,
-                'term' => $terms[0]->slug,
+                'post__in' => $all_object_ids,
+                'tax_query' => array(
+                                    'taxonomy' => $taxonomy,
+                                    'field' => 'id',
+                                    'operator' => 'IN'
+                                ),
             ) );
+
         $query = new WP_Query( $args );
     }
 
@@ -68,10 +103,15 @@ function lb_get_related_posts_by_taxonomy($post_id, $taxonomy, $post_type, $args
 }
 
 function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'raw')) {
-    if(function_exists('types_render_field'))
+    if(function_exists('types_render_field')) {
+        $args = array_merge($args, array(
+                    'id' => $post_id
+                ));
+        
         return types_render_field($custom_field, $args);
-    else
+    } else {
         return get_post_meta($post_id, 'wpcf_' . $custom_field, true);
+    }
 }
 
 function lb_get_outgoing_competitions() {
@@ -102,36 +142,6 @@ function lb_get_outgoing_competitions() {
     }
 }
 
-function lb_get_brands_sold($post_id) {
-    $post = get_post($post_id);
-//echo("postname: $post->post_name<br>");
-    
-    $brand_terms = get_the_terms($post->ID, 'varumarke');
-    
-    foreach($brand_terms as $brand_term) {
-//pr($brand_term);
-        $args = array(
-                'post_type' => 'varumarken',
-                'varumarke' => $brand_term,
-        );
-        $query = new WP_Query( $args );
-//pr($query->posts, 'Query');
-        $brands_args = get_posts( array(
-            'post_type' => 'varumarken',
-            'post_status' => 'publish',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'varumarke',
-                    'field' => 'id',
-                    'terms' => array($brand_term->term_taxonomy_id)
-                )
-            )
-        ));
-        $brands_query = new WP_Query($brands_args);
-//pr($brands_query, 'Items');
-    }
-}
-
 function lb_get_social_share_buttons($array = false) { 
     // See http://www.l3analytics.com/2013/09/06/tracking-clicks-within-iframes-with-google-analytics-and-jquery/
     $html_output = '<aside id="social-share" class="social-share-buttons">';
@@ -153,7 +163,7 @@ function lb_get_social_share_buttons($array = false) {
 /* 
  * See http://www.epochconverter.com/programming/functions-php.php
  */
-function get_datetime_from_epoch($epoch, $format = 'Y-m-d') {
+function lb_get_datetime_from_epoch($epoch, $format = 'Y-m-d') {
     date_default_timezone_set('Europe/Stockholm');
     $epoch = round($epoch/1000, 0);
     
