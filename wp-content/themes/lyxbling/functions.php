@@ -149,7 +149,7 @@ function lb_get_social_share_buttons($array = false) {
     $html_output .= '<div class="social-buttons">';
     $html_output .= '<ul>';
     $html_output .= '<li class="iframetrack facebook"><div class="fb-like" data-href="" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>';
-    $html_output .= '<li class="pinterest"><a href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" alt="" /></a><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script></li>';
+    $html_output .= '<li class="pinterest"><a href="//pinterest.com/pin/create/button/" target="_blank" data-pin-do="buttonPin"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" alt="" /></a><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script></li>';
     $html_output .= '<li class="iframetrack twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-via="LyxBling" data-lang="sv" data-count="none">Tweeta</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
     $html_output .= '<li class="iframetrack googleplus"><div class="g-plusone" data-size="medium" data-annotation="none"></div></li>';
     $html_output .= '<li class="linkedin"><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: sv_SE</script><script type="IN/Share"></script></li>';
