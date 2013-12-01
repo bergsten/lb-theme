@@ -17,11 +17,11 @@ add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
 // Fix the top space issue for absolute positioned elements.
-function my_filter_head() {
+function lb_my_filter_head() {
     if (!is_user_logged_in())
 	remove_action('wp_head', '_admin_bar_bump_cb');
 }
-add_action('get_header', 'my_filter_head');
+add_action('get_header', 'lb_my_filter_head');
 
 //Add Woocommerce body classes
 function lb_body_classes($classes){
@@ -44,10 +44,10 @@ function lb_body_classes($classes){
 }
 add_filter('body_class', 'lb_body_classes', 1000);
 
-function new_excerpt_more( $more ) {
+function lb_new_excerpt_more( $more ) {
 	return '...';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+add_filter('excerpt_more', 'lb_new_excerpt_more');
 
 /*
  * Add all custom post type feeds to main feed.
@@ -168,12 +168,13 @@ function lb_woo_logo () {
 </div>
 <?php
 } // End woo_logo()
+add_action( 'woo_header_inside', 'lb_woo_logo', 10 );
+
 // Remove logo code from Canvas - See https://gist.github.com/srikat/5581777
-add_action('wp_head', 'remove_woo_logo');
-function remove_woo_logo() {
+function lb_remove_woo_logo() {
     remove_action('woo_header_inside','woo_logo');
 }
-add_action( 'woo_header_inside', 'lb_woo_logo', 10 );
+add_action('wp_head', 'lb_remove_woo_logo');
 
 /*-----------------------------------------------------------------------------------*/
 /* Single Post Author. From https://managewp.com/create-an-authority-site-part-2 */

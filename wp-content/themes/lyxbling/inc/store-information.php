@@ -16,7 +16,7 @@ function lb_display_below_post_info() {
     $post_type = get_post_type();
     $link_button = lb_get_link_button($post_id);
     
-    if(is_single()) {
+    if(is_single() || is_page()) {
         switch($post_type) {
             case 'smyckesbutiker':
                 echo($link_button);
