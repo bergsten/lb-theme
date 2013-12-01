@@ -24,7 +24,7 @@ function lb_display_below_post_info() {
                 echo(lb_get_competitions($post_id));
                 echo(lb_get_trust_symbols($post_id));
                 echo(lb_get_facts_contact($post_id));
-                //echo(lb_get_social_media_links($post_id));
+                echo(lb_get_social_media_links($post_id));
                 echo(lb_get_payment_options($post_id));
                 //echo(lb_get_freight($post_id));
                 echo(lb_get_brands_sold_by_store($post_id));
@@ -189,25 +189,39 @@ function lb_get_social_media_links($post_id = NULL) {
     if(!$post_id)
         $post_id = get_the_ID();
     
-    $html_output = ''; // '<div class="social-buttons"><h2>Sociala mediakanaler</h2>';
-    if('' != trim(lb_get_post_meta($post_id, 'facebook-url-id'))) 
-        $html_output .= '<a class="svg webicon facebook" target="_blank" href="https://www.facebook.com/' . lb_get_post_meta($post_id, 'facebook-url-id') . '" class="facebook" title="Facebook"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'twitter-url-id'))) 
-        $html_output .= '<a class="no-svg webicon twitter" target="_blank" href="https://twitter.com/' . lb_get_post_meta($post_id, 'twitter-url-id') . '" class="twitter" title="Twitter"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'google-url-id'))) 
-        $html_output .= '<a class="webicon googleplus" target="_blank" href="https://plus.google.com/' . lb_get_post_meta($post_id, 'google-url-id') . '" class="googleplus" title="Google+"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'pinterest-url-id'))) 
-        $html_output .= '<a class="webicon pinterest" target="_blank" href="http://www.pinterest.com/' . lb_get_post_meta($post_id, 'pinterest-url-id') . '/" class="pinterest" title="Pinterest"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'instagram-url-id'))) 
-        $html_output .= '<a class="webicon instagram" target="_blank" href="http://instagram.com/' . lb_get_post_meta($post_id, 'instagram-url-id') . '" class="instagram" title="Instagram"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'flickr-url-id'))) 
-        $html_output .= '<a class="webicon flickr" target="_blank" href="http://www.flickr.com/people/com/' . lb_get_post_meta($post_id, 'flickr-url-id') . '/" class="flickr" title="Flickr"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'youtube-url-id'))) 
-        $html_output .= '<a class="webicon youtube" target="_blank" href="http://www.youtube.com/' . lb_get_post_meta($post_id, 'youtube-url-id') . '" class="youtube" title="YouTube"></a>';
-    if('' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))) 
-        $html_output .= '<a class="webicon vimeo" target="_blank" href="http://vimeo.com/' . lb_get_post_meta($post_id, 'youtube-url-id') . '" class="youtube" title="YouTube"></a>';
+    $html_output = '';
     
-    $html_output .= '</div>';
+    if('' != trim(lb_get_post_meta($post_id, 'facebook-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'twitter-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'google-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'pinterest-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'instagram-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'flickr-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'youtube-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))
+    ) {
+        $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
+
+        $html_output = '<div class="social-buttons"><strong>' . $brand . ' på sociala medier</strong><br />'; // '<div class="social-buttons"><h2>Sociala mediakanaler</h2>';
+        if('' != trim(lb_get_post_meta($post_id, 'facebook-url-id'))) 
+            $html_output .= '<a class="webicon facebook" target="_blank" href="https://www.facebook.com/' . lb_get_post_meta($post_id, 'facebook-url-id') . '" class="facebook" title="' . $brand . ' på Facebook">' . $brand . ' på Facebook</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'twitter-url-id'))) 
+            $html_output .= '<a class="webicon twitter" target="_blank" href="https://twitter.com/' . lb_get_post_meta($post_id, 'twitter-url-id') . '" class="twitter" title="' . $brand . ' på Twitter">' . $brand . ' på Twitter</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'google-url-id'))) 
+            $html_output .= '<a class="webicon googleplus" target="_blank" href="https://plus.google.com/' . lb_get_post_meta($post_id, 'google-url-id') . '" class="googleplus" title="' . $brand . ' på Google+">' . $brand . ' på Google+</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'pinterest-url-id'))) 
+            $html_output .= '<a class="webicon pinterest" target="_blank" href="http://www.pinterest.com/' . lb_get_post_meta($post_id, 'pinterest-url-id') . '/" class="pinterest" title="' . $brand . ' på Pinterest">' . $brand . ' på Pinterest</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'instagram-url-id'))) 
+            $html_output .= '<a class="webicon instagram" target="_blank" href="http://instagram.com/' . lb_get_post_meta($post_id, 'instagram-url-id') . '" class="instagram" title="' . $brand . ' på Instagram">' . $brand . ' på Instagram</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'flickr-url-id'))) 
+            $html_output .= '<a class="webicon flickr" target="_blank" href="http://www.flickr.com/people/com/' . lb_get_post_meta($post_id, 'flickr-url-id') . '/" class="flickr" title="' . $brand . ' på Flickr">' . $brand . ' på Flickr</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'youtube-url-id'))) 
+            $html_output .= '<a class="webicon youtube" target="_blank" href="http://www.youtube.com/' . lb_get_post_meta($post_id, 'youtube-url-id') . '" class="youtube" title="' . $brand . ' på YouTube">' . $brand . ' på YouTube</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))) 
+            $html_output .= '<a class="webicon vimeo" target="_blank" href="http://vimeo.com/' . lb_get_post_meta($post_id, 'vimeo-url-id') . '" class="vimeo" title="' . $brand . ' på Vimeo">' . $brand . ' på Vimeo</a>';
+
+        $html_output .= '</div>';
+    }
     
     return $html_output;
 }
