@@ -242,7 +242,7 @@ function lb_get_brands_sold_by_store($post_id = NULL) {
     
     $query = lb_get_related_posts_by_taxonomy($post_id, 'varumarke', 'smyckesvarumarken');
     
-    if($query->have_posts()) {
+    if(!empty($query) && $query->have_posts()) {
         $html_output .= '<h2>Smyckesvarumärken hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
         
         while($query->have_posts()) {
@@ -270,7 +270,7 @@ function lb_get_rabattkoder($post_id = NULL) {
     
     $query = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'rabattkoder-smycken');
     
-    if($query->have_posts()) {
+    if(!empty($query) && $query->have_posts()) {
         $html_output .= '<h2>Rabattkoder hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
         
         while($query->have_posts()) {
@@ -307,7 +307,7 @@ function lb_get_competitions($post_id = NULL) {
     
     $query = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckestavlingar');
     
-    if($query->have_posts()) {
+    if(!empty($query) && $query->have_posts()) {
         $html_output .= '<h2>Smyckestävlingar hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
         
         while($query->have_posts()) {
