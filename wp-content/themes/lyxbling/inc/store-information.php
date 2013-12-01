@@ -221,7 +221,7 @@ function lb_get_social_media_links($post_id = NULL) {
         if('' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))) 
             $html_output .= '<a class="webicon vimeo" target="_blank" href="http://vimeo.com/' . lb_get_post_meta($post_id, 'vimeo-url-id') . '" class="vimeo" title="' . $brand . ' på Vimeo">' . $brand . ' på Vimeo</a>';
         if('' != trim(lb_get_post_meta($post_id, 'linkedin-url-id'))) 
-            $html_output .= '<a class="webicon linkedin" target="_blank" href="http://www.linkedin.com/' . lb_get_post_meta($post_id, 'linkedin-url-id') . '" class="linkedin" title="' . $brand . ' på LinkedIn">' . $brand . ' på LinkedIn</a>';
+            $html_output .= '<a class="webicon linkedin" target="_blank" href="http://www.linkedin.com/company/' . lb_get_post_meta($post_id, 'linkedin-url-id') . '" class="linkedin" title="' . $brand . ' på LinkedIn">' . $brand . ' på LinkedIn</a>';
 
         $html_output .= '</div>';
     }
