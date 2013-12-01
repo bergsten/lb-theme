@@ -33,7 +33,7 @@ function lb_display_below_post_info() {
             case 'smyckesvarumarken':
                 echo($link_button);
                 echo(lb_get_facts_contact($post_id));
-                //echo(lb_get_social_media_links($post_id));
+                echo(lb_get_social_media_links($post_id));
                 echo($link_button);
                 break;
             case 'presenttips':
