@@ -199,6 +199,7 @@ function lb_get_social_media_links($post_id = NULL) {
             || '' != trim(lb_get_post_meta($post_id, 'flickr-url-id'))
             || '' != trim(lb_get_post_meta($post_id, 'youtube-url-id'))
             || '' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))
+            || '' != trim(lb_get_post_meta($post_id, 'linkedin-url-id'))
     ) {
         $brand = trim(lb_get_post_meta($post_id, 'varumarke'));
 
@@ -219,6 +220,8 @@ function lb_get_social_media_links($post_id = NULL) {
             $html_output .= '<a class="webicon youtube" target="_blank" href="http://www.youtube.com/' . lb_get_post_meta($post_id, 'youtube-url-id') . '" class="youtube" title="' . $brand . ' på YouTube">' . $brand . ' på YouTube</a>';
         if('' != trim(lb_get_post_meta($post_id, 'vimeo-url-id'))) 
             $html_output .= '<a class="webicon vimeo" target="_blank" href="http://vimeo.com/' . lb_get_post_meta($post_id, 'vimeo-url-id') . '" class="vimeo" title="' . $brand . ' på Vimeo">' . $brand . ' på Vimeo</a>';
+        if('' != trim(lb_get_post_meta($post_id, 'linkedin-url-id'))) 
+            $html_output .= '<a class="webicon linkedin" target="_blank" href="http://www.linkedin.com/' . lb_get_post_meta($post_id, 'linkedin-url-id') . '" class="linkedin" title="' . $brand . ' på LinkedIn">' . $brand . ' på LinkedIn</a>';
 
         $html_output .= '</div>';
     }
