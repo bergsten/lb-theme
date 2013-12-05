@@ -1,7 +1,8 @@
-/* line 13, scss/sass/_buttons.scss */
+/* line 26, scss/sass/_buttons.scss */
 .lb-button {
   color: white !important;
   margin: 10px !important;
+  padding: 0.5em 1.5em;
   font-size: 16px;
   padding: 0.5em 1.5em;
   display: inline-block;
@@ -24,6 +25,27 @@
   border: 1px solid #993d49;
   color: white;
   text-shadow: #bb5361 0 -1px 0;
+}
+@media (max-width: 1200px) {
+  /* line 26, scss/sass/_buttons.scss */
+  .lb-button {
+    margin: 10px !important;
+    padding: 0.5em 1.5em;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 26, scss/sass/_buttons.scss */
+  .lb-button {
+    margin: 15px !important;
+    padding: 0.4em 1.3em;
+  }
+}
+@media (max-width: 320px) {
+  /* line 26, scss/sass/_buttons.scss */
+  .lb-button {
+    margin: 20px !important;
+    padding: 0.4em 1em;
+  }
 }
 /* line 15, ../../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
 .lb-button:hover {
@@ -59,7 +81,7 @@
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 17, scss/sass/_buttons.scss */
+/* line 34, scss/sass/_buttons.scss */
 .lb-button.blue {
   font-size: 16px;
   padding: 0.5em 1.5em;
@@ -118,7 +140,7 @@
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 20, scss/sass/_buttons.scss */
+/* line 37, scss/sass/_buttons.scss */
 .lb-button.green {
   font-size: 16px;
   padding: 0.5em 1.5em;
@@ -177,7 +199,7 @@
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 23, scss/sass/_buttons.scss */
+/* line 40, scss/sass/_buttons.scss */
 .lb-button.red {
   font-size: 16px;
   padding: 0.5em 1.5em;
@@ -236,7 +258,7 @@
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 26, scss/sass/_buttons.scss */
+/* line 43, scss/sass/_buttons.scss */
 .lb-button.orange {
   font-size: 16px;
   padding: 0.5em 1.5em;
@@ -295,24 +317,60 @@
   padding: 0 !important;
   margin: -1px !important;
 }
-/* line 29, scss/sass/_buttons.scss */
+/* line 46, scss/sass/_buttons.scss */
 .lb-button.left {
   float: left;
 }
-/* line 32, scss/sass/_buttons.scss */
+/* line 49, scss/sass/_buttons.scss */
 .lb-button.right {
   float: right;
 }
-/* line 35, scss/sass/_buttons.scss */
+/* line 52, scss/sass/_buttons.scss */
 .lb-button.large {
   font-size: 24px;
 }
-/* line 38, scss/sass/_buttons.scss */
+@media (max-width: 1200px) {
+  /* line 52, scss/sass/_buttons.scss */
+  .lb-button.large {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 52, scss/sass/_buttons.scss */
+  .lb-button.large {
+    font-size: 19.2px;
+  }
+}
+@media (max-width: 320px) {
+  /* line 52, scss/sass/_buttons.scss */
+  .lb-button.large {
+    font-size: 16px;
+  }
+}
+/* line 58, scss/sass/_buttons.scss */
 .lb-button.small {
   font-size: 12.8px;
 }
+@media (max-width: 1200px) {
+  /* line 58, scss/sass/_buttons.scss */
+  .lb-button.small {
+    font-size: 12.8px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 58, scss/sass/_buttons.scss */
+  .lb-button.small {
+    font-size: 11.2px;
+  }
+}
+@media (max-width: 320px) {
+  /* line 58, scss/sass/_buttons.scss */
+  .lb-button.small {
+    font-size: 8px;
+  }
+}
 
-/* line 42, scss/sass/_buttons.scss */
+/* line 65, scss/sass/_buttons.scss */
 .lb-button a {
   font-family: Calibri, Candara, Segoe, Optima, sans-serif !important;
   font-weight: bold !important;
@@ -321,7 +379,7 @@
   text-decoration: none !important;
 }
 
-/* line 115, scss/sass/_buttons.scss */
+/* line 138, scss/sass/_buttons.scss */
 .multi-line-button {
   cursor: pointer;
   -webkit-background-clip: padding;
@@ -355,7 +413,7 @@
   color: white;
   text-shadow: #ab4452, 0, 1px, 2px;
 }
-/* line 61, scss/sass/_buttons.scss */
+/* line 84, scss/sass/_buttons.scss */
 .multi-line-button .title {
   font-size: 24px;
   font-weight: bold;
@@ -363,7 +421,7 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
 }
-/* line 67, scss/sass/_buttons.scss */
+/* line 90, scss/sass/_buttons.scss */
 .multi-line-button .subtitle {
   font-size: 14px;
   display: block;
@@ -371,21 +429,21 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 73, scss/sass/_buttons.scss */
+/* line 96, scss/sass/_buttons.scss */
 .multi-line-button .subtitle:hover .title {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 76, scss/sass/_buttons.scss */
+/* line 99, scss/sass/_buttons.scss */
 .multi-line-button .subtitle:hover .subtitle {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 80, scss/sass/_buttons.scss */
+/* line 103, scss/sass/_buttons.scss */
 .multi-line-button .subtitle:active {
   padding: 13px 15px 11px;
 }
-/* line 105, scss/sass/_buttons.scss */
+/* line 128, scss/sass/_buttons.scss */
 .multi-line-button:hover, .multi-line-button:focus {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #deaab2), color-stop(50%, #cf8690), color-stop(100%, #b94f5e));
   background-image: -webkit-linear-gradient(#deaab2, #cf8690, #b94f5e);
@@ -393,7 +451,7 @@
   background-image: -o-linear-gradient(#deaab2, #cf8690, #b94f5e);
   background-image: linear-gradient(#deaab2, #cf8690, #b94f5e);
 }
-/* line 108, scss/sass/_buttons.scss */
+/* line 131, scss/sass/_buttons.scss */
 .multi-line-button:active, .multi-line-button.depressed {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b66c76), color-stop(100%, #be7d86));
   background-image: -webkit-linear-gradient(#b66c76, #be7d86);
@@ -405,7 +463,7 @@
   box-shadow: none;
   border-color: #993d49;
 }
-/* line 118, scss/sass/_buttons.scss */
+/* line 141, scss/sass/_buttons.scss */
 .multi-line-button.blue {
   background-color: #63bb4a;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #83c96f), color-stop(50%, #63bb4a), color-stop(100%, #4e9939));
@@ -422,7 +480,7 @@
   color: white;
   text-shadow: #458632, 0, 1px, 2px;
 }
-/* line 105, scss/sass/_buttons.scss */
+/* line 128, scss/sass/_buttons.scss */
 .multi-line-button.blue:hover, .multi-line-button.blue:focus {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #93d082), color-stop(50%, #73c25d), color-stop(100%, #4e9939));
   background-image: -webkit-linear-gradient(#93d082, #73c25d, #4e9939);
@@ -430,7 +488,7 @@
   background-image: -o-linear-gradient(#93d082, #73c25d, #4e9939);
   background-image: linear-gradient(#93d082, #73c25d, #4e9939);
 }
-/* line 108, scss/sass/_buttons.scss */
+/* line 131, scss/sass/_buttons.scss */
 .multi-line-button.blue:active, .multi-line-button.blue.depressed {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5f9f4c), color-stop(100%, #6aaf56));
   background-image: -webkit-linear-gradient(#5f9f4c, #6aaf56);
@@ -442,7 +500,7 @@
   box-shadow: none;
   border-color: #3b742b;
 }
-/* line 121, scss/sass/_buttons.scss */
+/* line 144, scss/sass/_buttons.scss */
 .multi-line-button.green {
   background-color: #63bb4a;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #83c96f), color-stop(50%, #63bb4a), color-stop(100%, #4e9939));
@@ -459,7 +517,7 @@
   color: white;
   text-shadow: #458632, 0, 1px, 2px;
 }
-/* line 105, scss/sass/_buttons.scss */
+/* line 128, scss/sass/_buttons.scss */
 .multi-line-button.green:hover, .multi-line-button.green:focus {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #93d082), color-stop(50%, #73c25d), color-stop(100%, #4e9939));
   background-image: -webkit-linear-gradient(#93d082, #73c25d, #4e9939);
@@ -467,7 +525,7 @@
   background-image: -o-linear-gradient(#93d082, #73c25d, #4e9939);
   background-image: linear-gradient(#93d082, #73c25d, #4e9939);
 }
-/* line 108, scss/sass/_buttons.scss */
+/* line 131, scss/sass/_buttons.scss */
 .multi-line-button.green:active, .multi-line-button.green.depressed {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5f9f4c), color-stop(100%, #6aaf56));
   background-image: -webkit-linear-gradient(#5f9f4c, #6aaf56);
@@ -479,7 +537,7 @@
   box-shadow: none;
   border-color: #3b742b;
 }
-/* line 124, scss/sass/_buttons.scss */
+/* line 147, scss/sass/_buttons.scss */
 .multi-line-button.red {
   background-color: #bf4040;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc6666), color-stop(50%, #bf4040), color-stop(100%, #993333));
@@ -496,7 +554,7 @@
   color: white;
   text-shadow: #862d2d, 0, 1px, 2px;
 }
-/* line 105, scss/sass/_buttons.scss */
+/* line 128, scss/sass/_buttons.scss */
 .multi-line-button.red:hover, .multi-line-button.red:focus {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d27979), color-stop(50%, #c55353), color-stop(100%, #993333));
   background-image: -webkit-linear-gradient(#d27979, #c55353, #993333);
@@ -504,7 +562,7 @@
   background-image: -o-linear-gradient(#d27979, #c55353, #993333);
   background-image: linear-gradient(#d27979, #c55353, #993333);
 }
-/* line 108, scss/sass/_buttons.scss */
+/* line 131, scss/sass/_buttons.scss */
 .multi-line-button.red:active, .multi-line-button.red.depressed {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a04545), color-stop(100%, #b24d4d));
   background-image: -webkit-linear-gradient(#a04545, #b24d4d);
@@ -516,7 +574,7 @@
   box-shadow: none;
   border-color: #732626;
 }
-/* line 127, scss/sass/_buttons.scss */
+/* line 150, scss/sass/_buttons.scss */
 .multi-line-button.orange {
   background-color: #d98026;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e19951), color-stop(50%, #d98026), color-stop(100%, #ae661e));
@@ -533,7 +591,7 @@
   color: white;
   text-shadow: #985a1b, 0, 1px, 2px;
 }
-/* line 105, scss/sass/_buttons.scss */
+/* line 128, scss/sass/_buttons.scss */
 .multi-line-button.orange:hover, .multi-line-button.orange:focus {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e4a667), color-stop(50%, #dd8d3c), color-stop(100%, #ae661e));
   background-image: -webkit-linear-gradient(#e4a667, #dd8d3c, #ae661e);
@@ -541,7 +599,7 @@
   background-image: -o-linear-gradient(#e4a667, #dd8d3c, #ae661e);
   background-image: linear-gradient(#e4a667, #dd8d3c, #ae661e);
 }
-/* line 108, scss/sass/_buttons.scss */
+/* line 131, scss/sass/_buttons.scss */
 .multi-line-button.orange:active, .multi-line-button.orange.depressed {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b8732e), color-stop(100%, #cc8033));
   background-image: -webkit-linear-gradient(#b8732e, #cc8033);
@@ -2698,17 +2756,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 23, scss/sass/lyxbling.scss */
+/* line 26, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 27, scss/sass/lyxbling.scss */
+/* line 30, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 31, scss/sass/lyxbling.scss */
+/* line 34, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -2727,19 +2785,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 49, scss/sass/lyxbling.scss */
+/* line 52, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 53, scss/sass/lyxbling.scss */
+/* line 56, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 58, scss/sass/lyxbling.scss */
+/* line 61, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -2748,7 +2806,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 66, scss/sass/lyxbling.scss */
+/* line 69, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -2766,7 +2824,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 78, scss/sass/lyxbling.scss */
+/* line 81, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -2775,7 +2833,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 83, scss/sass/lyxbling.scss */
+/* line 86, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -2784,7 +2842,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 91, scss/sass/lyxbling.scss */
+/* line 94, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }

@@ -2,6 +2,7 @@
 
 $button-text-color:   #fff;
 $button-shade-color:   #333;
+
 $font-size: 16px;
 
 @mixin standard-button($base-color) {
@@ -10,9 +11,25 @@ $font-size: 16px;
     //@include text-shadow(darken($button-text-color, 70%) 0 -1px 0);
 }
 
+@mixin breakpoint($point) {
+    @if $point == papa-bear {
+        @media (max-width: $lb-break-large) { @content; }
+    }
+    @else if $point == mama-bear {
+        @media (max-width: $lb-break-medium) { @content; }
+    }
+    @else if $point == baby-bear {
+        @media (max-width: $lb-break-small)  { @content; }
+    }
+}
+
 .lb-button {
     color: $button-text-color !important;
     margin: 10px !important;
+    padding: 0.5em 1.5em;
+    @include breakpoint(papa-bear) { margin: 10px !important; padding: 0.5em 1.5em; }
+    @include breakpoint(mama-bear) { margin: 15px !important; padding: 0.4em 1.3em; }
+    @include breakpoint(baby-bear) { margin: 20px !important; padding: 0.4em 1em; }
     @include standard-button($lb-pink-button);
     &.blue {
         @include standard-button(#60a3d8);
@@ -34,9 +51,15 @@ $font-size: 16px;
     }
     &.large {
         font-size: $font-size*1.5;
+        @include breakpoint(papa-bear) { font-size: $font-size*1.5; }
+        @include breakpoint(mama-bear) { font-size: $font-size*1.2; }
+        @include breakpoint(baby-bear) { font-size: $font-size; }
     }
     &.small {
         font-size: $font-size*0.8;
+        @include breakpoint(papa-bear) { font-size: $font-size*0.8; }
+        @include breakpoint(mama-bear) { font-size: $font-size*0.7; }
+        @include breakpoint(baby-bear) { font-size: $font-size*0.5; }
     }
 }
 .lb-button a {
