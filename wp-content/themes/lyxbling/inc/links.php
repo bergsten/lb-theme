@@ -95,6 +95,12 @@ function lb_get_link_data($post_id) {
     // If no target url is set we link to the post permalink.
     if('' == trim($link_data_array['target_url']))
         $link_data_array['target_url'] = get_permalink($post_id);
+    // If http://lyxbling.se is set as target url we shouldn't set the target_url.
+    if('http://lyxbling.se' == trim($link_data_array['target_url'])) {
+        $link_data_array['target_url'] = '';
+        
+        return $link_data_array;
+    }
     
     $target_url_parts = parse_url($link_data_array['target_url']);
     $current_url_parts = parse_url(lb_get_current_page_url());
@@ -191,6 +197,8 @@ function lb_get_link_button($post_id, $align='left') {
     $rel_external = '';
     $target_url = $link_data['target_url'];
     
+    if('' == trim($target_url))
+        return '';
     if(isset($link_data['affiliate_url']))
         $target_url = $link_data['affiliate_url'];
     if(true == $link_data['external'])
