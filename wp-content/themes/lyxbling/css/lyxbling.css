@@ -2618,6 +2618,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
+    Created on : 2013-dec-07, 17:41:25
+    Author     : Mats
+*/
+/* line 11, scss/sass/_mixitup.scss */
+#Grid .mix {
+  opacity: 0;
+  display: none;
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
     Created on : 2013-okt-27, 20:55:40
     Author     : Mats
 */
@@ -2756,17 +2771,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 26, scss/sass/lyxbling.scss */
+/* line 27, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 30, scss/sass/lyxbling.scss */
+/* line 31, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 34, scss/sass/lyxbling.scss */
+/* line 35, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -2785,19 +2800,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 52, scss/sass/lyxbling.scss */
+/* line 53, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 56, scss/sass/lyxbling.scss */
+/* line 57, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 61, scss/sass/lyxbling.scss */
+/* line 62, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -2806,7 +2821,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 69, scss/sass/lyxbling.scss */
+/* line 70, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -2824,7 +2839,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 81, scss/sass/lyxbling.scss */
+/* line 82, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -2833,7 +2848,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 86, scss/sass/lyxbling.scss */
+/* line 87, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -2842,7 +2857,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 94, scss/sass/lyxbling.scss */
+/* line 95, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }

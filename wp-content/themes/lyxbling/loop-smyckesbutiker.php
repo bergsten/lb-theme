@@ -96,45 +96,53 @@ if ( have_posts() ) { $count = 0;
 <div id="portfolio">
         <h1>Smyckesbutiker</h1>
         <p>Här hittar du de smyckesbutiker online vi recenserar för att hjälpa dig välja den smyckesbutik som passar dig bäst.</p>
+        <ul>
+            <li class="sort lb-button small" data-sort="data-name" data-order="desc" rel="nolink">Butiksnamn A - Ö</li>
+            <li class="sort lb-button small" data-sort="data-name" data-order="asc" rel="nolink">Butiksnamn Ö - A</li>
+        </ul>
 	<div class="portfolio-items">
+            <ul id="Grid">
 <?php
-	while ( have_posts() ) { the_post(); $count++;
-	
-	/* Get the settings for this portfolio item. */
-	$settings = woo_portfolio_item_settings( $post->ID );
-	
-	/* If the theme option is set to link to the single portfolio item, adjust the $settings. */
-	if ( isset( $woo_options['woo_portfolio_linkto'] ) && ( $woo_options['woo_portfolio_linkto'] == 'post' ) ) {
-		$settings['large'] = get_permalink( $post->ID );
-		$settings['rel'] = '';
-	}
-?>
-		<div <?php post_class( $settings['css_classes'] ); ?> style="max-width: <?php echo intval( $thumb_width ); ?>px;">
-		<?php
-			/* Setup image for display and for checks, to avoid doing multiple queries. */
-			$image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
-			?>
-                        <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-			<?php
-                        if ( $image != '' ) {
-		?>
-			<a href="<?php the_permalink(); ?>" class="thumb">
-				<?php echo $image; ?>
-                        </a>
-		<?php
-				// Output image gallery for lightbox
-            	if ( ! empty( $settings['gallery'] ) ) {
-                	foreach ( array_slice( $settings['gallery'], 1 ) as $img => $attachment ) {
-                		echo '<a ' . $settings['rel'] . ' title="' . $attachment['caption'] . '" href="' . $attachment['url'] . '" class="gallery-image"><img src="' . esc_url( $attachment['url'] ) . '" alt="' . esc_attr( $attachment['alt'] ) . '" width="0" height="0" /></a>' . "\n";	                    
-                	}
-                }
-			} // End IF Statement
-		?>
-		</div><!--/.group .post .portfolio-img-->
-<?php
-	} // End WHILE Loop
-?>
-	</div><!--/.portfolio-items-->
+            while ( have_posts() ) { the_post(); $count++;
+
+            /* Get the settings for this portfolio item. */
+            $settings = woo_portfolio_item_settings( $post->ID );
+
+            /* If the theme option is set to link to the single portfolio item, adjust the $settings. */
+            if ( isset( $woo_options['woo_portfolio_linkto'] ) && ( $woo_options['woo_portfolio_linkto'] == 'post' ) ) {
+                    $settings['large'] = get_permalink( $post->ID );
+                    $settings['rel'] = '';
+            }
+    ?>
+                <li class="mix" data-name="<?php the_title(); ?>">
+                    <div <?php post_class( $settings['css_classes'] ); ?> style="max-width: <?php echo intval( $thumb_width ); ?>px;">
+                    <?php
+                            /* Setup image for display and for checks, to avoid doing multiple queries. */
+                            $image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
+                            ?>
+                            <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                            <?php
+                            if ( $image != '' ) {
+                    ?>
+                            <a href="<?php the_permalink(); ?>" class="thumb">
+                                    <?php echo $image; ?>
+                            </a>
+                    <?php
+                                    // Output image gallery for lightbox
+                    if ( ! empty( $settings['gallery'] ) ) {
+                            foreach ( array_slice( $settings['gallery'], 1 ) as $img => $attachment ) {
+                                    echo '<a ' . $settings['rel'] . ' title="' . $attachment['caption'] . '" href="' . $attachment['url'] . '" class="gallery-image"><img src="' . esc_url( $attachment['url'] ) . '" alt="' . esc_attr( $attachment['alt'] ) . '" width="0" height="0" /></a>' . "\n";	                    
+                            }
+                    }
+                            } // End IF Statement
+                    ?>
+                    </div><!--/.group .post .portfolio-img-->
+                </li>
+    <?php
+            } // End WHILE Loop
+    ?>
+            </ul>
+        </div><!--/.portfolio-items-->
 </div><!--/#portfolio-->
 <?php
 } else {

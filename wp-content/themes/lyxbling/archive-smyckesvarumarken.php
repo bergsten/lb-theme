@@ -29,10 +29,7 @@
     
             <?php get_sidebar(); ?>
 
-		</div><!-- /#main-sidebar-container -->         
-
-		<?php get_sidebar( 'alt' ); ?>
-
+	</div><!-- /#main-sidebar-container -->
     </div><!-- /#content -->
 	<?php woo_content_after(); ?>
 

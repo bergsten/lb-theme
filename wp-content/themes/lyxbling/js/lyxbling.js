@@ -6,6 +6,8 @@ jQuery(document).ready(function(){
     jQuery(".lb-button").click(function() {
         if('external' == jQuery(this).attr('rel'))
             window.open(jQuery(this).attr('data-url'), '_blank');
+        else if('nolink' == jQuery(this).attr('rel'))
+            jQuery.noop();
         else
             window.location = jQuery(this).attr('data-url');
     });
@@ -22,6 +24,37 @@ jQuery(document).ready(function(){
             var href= "http://pinterest.com/pin/create/button/?url=" + encodeURIComponent(location.href.replace(location.hash, '')) + "&media=" + jQuery("#fullResImage").attr("src");
             jQuery(".pp_social").append('<div class="pinterest" ><a href=' + href + ' class="pin-it-button" count-layout="horizontal" target="_blank"><img border="0" src="http://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a></div>');
         }
+    });
+    
+    jQuery(function() {
+        jQuery("#Grid").mixitup({
+            targetSelector: '.mix',
+            filterSelector: '.filter',
+            sortSelector: '.sort',
+            buttonEvent: 'click',
+            effects: ['fade','scale'],
+            listEffects: null,
+            easing: 'smooth',
+            layoutMode: 'grid',
+            targetDisplayGrid: 'inline-block',
+            targetDisplayList: 'block',
+            gridClass: '',
+            listClass: '',
+            transitionSpeed: 600,
+            showOnLoad: 'all',
+            sortOnLoad: ['data-name', 'desc'],
+            multiFilter: false,
+            filterLogic: 'or',
+            resizeContainer: true,
+            minHeight: 0,
+            failClass: 'fail',
+            perspectiveDistance: '3000',
+            perspectiveOrigin: '50% 50%',
+            animateGridList: true,
+            onMixLoad: null,
+            onMixStart: null,
+            onMixEnd: null
+        });
     });
 });
 

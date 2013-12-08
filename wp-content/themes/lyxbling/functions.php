@@ -7,6 +7,7 @@ require_once('inc/overrides.php');
 require_once('inc/links.php');
 require_once('inc/store-information.php');
 require_once('inc/rabattkoder.php');
+require_once('inc/product-feeds.php');
 require_once('inc/widgets.php');
 require_once('inc/theme-options.php');
 
@@ -17,6 +18,9 @@ function lb_enqueue_scripts() {
         wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
         wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
         wp_enqueue_script( 'pinterest', 'http://assets.pinterest.com/js/pinit.js');
+        if(is_post_type_archive(array('smyckesbutiker', 'smyckesvarumarken'))) {
+            wp_enqueue_script( 'mixitup', get_stylesheet_directory_uri() . '/js/jquery.mixitup.min.js', array('jquery'));
+        }
 }
 add_action( 'wp_enqueue_scripts', 'lb_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'lb_enqueue_scripts' );

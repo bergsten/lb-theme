@@ -13,8 +13,7 @@ function lb_rabattkoder_setup_schedule() {
 		wp_schedule_event( time(), 'daily', 'lb_rabattkoder_daily_event');
 	}
 }
-//add_action( 'wp', 'lb_rabattkoder_setup_schedule' );
-// Product Feed - http://pf.tradedoubler.com/pf/pf?a=2343730&categoryId=70&recurse=true&oe=UTF-8
+add_action( 'wp', 'lb_rabattkoder_setup_schedule' );
 
 /**
  * On the scheduled action hook, run a function.
