@@ -22,7 +22,7 @@ function lb_rabattkoder_do_daily() {
     //$result = lb_update_rabattkoder('tradedoubler');
     $result = lb_update_rabattkoder('double');
 }
-//add_action('init', 'lb_rabattkoder_do_daily');
+add_action('init', 'lb_rabattkoder_do_daily');
 //add_action( 'lb_rabattkoder_daily_event', 'lb_rabattkoder_do_daily' );
 
 function lb_update_rabattkoder($affiliate_network) {
@@ -46,7 +46,7 @@ function lb_update_rabattkoder($affiliate_network) {
     }
     
     $api_response = wp_remote_retrieve_body(wp_remote_get($api_url, $args));
-    
+
     if(is_wp_error($api_response)) {
         $result = array(
             'result' => false,
@@ -54,7 +54,6 @@ function lb_update_rabattkoder($affiliate_network) {
         );
         
         return $result;
-//pr($api_response);
     } else {
 
         // Let's turn the JSON response into something easier to work with
@@ -63,12 +62,20 @@ function lb_update_rabattkoder($affiliate_network) {
         
         $rabattkoder_array = json_decode($api_response, true);
         // that's it
-//pr($rabattkoder_array);
 
         $i = 0;
         
         if(!empty($rabattkoder_array)) {
             foreach ($rabattkoder_array as $rabattkod) {
+                // Make the rabattkoder array have the same array names.
+                switch($affiliate_network) {
+                    case 'double':
+                        $rabattkod['programId'] = $rabattkod['program'];
+                        $rabattkod['startDate'] = strtotime($rabattkod['start_date']) * 1000;
+                        $rabattkod['endDate'] = strtotime($rabattkod['end_date']) * 1000;
+                        break;
+                }
+                
                 $i++;
                 
                 // Check if there already exists a rabattkoder-smycken post with this rabattkods-ID.
@@ -79,7 +86,7 @@ function lb_update_rabattkoder($affiliate_network) {
 
                 if(trim(get_post_meta($butik->post->ID, 'wpcf-affiliatenatverk', true)) != $affiliate_network)
                     $post = NULL;
-
+                
 /*
 echo('programName: ' . $rabattkod['programName'] . '<br />');
 echo('programId: ' . $rabattkod['programId'] . '<br />');
@@ -114,19 +121,21 @@ Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-
 
         )
  */
-
+                
                 // If there is no rabattkoder-smycken post with this rabattkods-ID we check for any smyckesbutik with the post meta wpcf-program-id=programID.
                 if(empty($post->posts)) {
                     $post = lb_get_posts_with_meta_value('wpcf-program-id', $rabattkod['programId'], 'smyckesbutiker', array('publish'), '=');
+                    
                     if(!empty($post->posts)) {
                         $post = $post->posts[0];
                         $store_post_id = $post->ID;
                         $target_url = get_post_meta($store_post_id, 'wpcf-target-url', true);
                         $display_url = get_post_meta($store_post_id, 'wpcf-display-url', true);
                         $store_brand = get_post_meta($store_post_id, 'wpcf-varumarke', true);
+                        
                         // Add new rabattkoder-smycken post with all meta data.
                         $title = $rabattkod['publisherInformation'] . ' - ' . $store_brand;
-
+                        
                         switch($rabattkod['voucherTypeId']) {
                             case 1: // Voucher - Offer usable only with a voucher code. This type has a voucher code.
                                 $title = $rabattkod['discountAmount'] . (true == $rabattkod['isPercentage']?'%':':-') . ' rabatt hos ' . $store_brand;
@@ -146,8 +155,7 @@ Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-
                                 $title = 'Erbjudande från ' . $store_brand;
                                 break;
                         }
-
-
+                        
                         $post = array(
                             'post_title'        => $title,
                             'post_content'      => $rabattkod['description'],
@@ -157,7 +165,7 @@ Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-
                             'post_status'       => 'pending',
                             'post_author'       => 2,   // Synnöve
                         );
-
+                        
                         $post_id = wp_insert_post($post, true);
                         
                         if(is_wp_error($post_id)) {
@@ -165,8 +173,6 @@ Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-
                                 'result' => false,
                                 'message' => 'Error when inserting new rabattkod post.'
                             );
-
-                            return $result;
                         } else {
                             update_post_meta($post_id, 'wpcf-rabattkod-id', $rabattkod['id']);
                             update_post_meta($post_id, 'wpcf-store-post-id', $store_post_id);
@@ -203,24 +209,18 @@ Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-
                                 'result' => true,
                                 'message' => 'Post with ID ' . $post_id . ' added and meta for rabattkod added.'
                             );
-
-                            return $result;
                         }
                     } else {
                         $result = array(
                                 'result' => false,
                                 'message' => 'Affiliate ID för ' . $rabattkod['programName'] . ' hittades inte'
                             );
-
-                        return $result;
                     }
                 } else {
                     $result = array(
                         'result' => false,
                         'message' => 'Rabattkoder post with rabattkod ID ' . $rabattkod['id'] . ' already added.'
                     );
-
-                    return $result;
                 }
 
                 /*
