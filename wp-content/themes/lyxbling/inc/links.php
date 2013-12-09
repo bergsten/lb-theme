@@ -122,26 +122,26 @@ function lb_get_link_data($post_id) {
                 
                 switch($affiliate_network) {
                     case 'tradedoubler':
-                        $publisher_id = trim(lb_get_post_meta($post_id, 'publisher-id'));
-                        $advertiser_id = trim(lb_get_post_meta($post_id, 'advertiser-id'));
-                        $graphics_id = trim(lb_get_post_meta($post_id, 'graphics-id'));
-                        $link_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $publisher_id . '&a=' . $advertiser_id . '&g=' . $graphics_id . '&url=' . $link_data_array['target_url'];
-                        $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(' . $advertiser_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
-                        $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $graphics_id . ')a(' . $advertiser_id . ')">';
+                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
+                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
+                        $ad_id = trim(lb_get_post_meta($post_id, 'ad-id'));
+                        $link_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                        $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
+                        $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
                         $link_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
                         break;
                     case 'adrecord':
-                        $publisher_id = trim(lb_get_post_meta($post_id, 'publisher-id'));
-                        $advertiser_id = trim(lb_get_post_meta($post_id, 'advertiser-id'));
-                        $link_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $publisher_id . '&c=' . $advertiser_id . '&url=' . $link_data_array['target_url'];
+                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
+                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
+                        $link_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['target_url'];
                         break;
                     case 'double':
                         //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
-                        $publisher_id = trim(lb_get_post_meta($post_id, 'publisher-id'));
-                        $advertiser_id = trim(lb_get_post_meta($post_id, 'advertiser-id'));
-                        $graphics_id = trim(lb_get_post_meta($post_id, 'graphics-id'));
-                        $link_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $publisher_id . '&ad=' . $graphics_id . '&url=' . $link_data_array['target_url'];
-                        $link_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $publisher_id . '&ad=' . $graphics_id . '">';
+                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
+                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
+                        $ad_id = trim(lb_get_post_meta($post_id, 'ad-id'));
+                        $link_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                        $link_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
                         break;
                     case 'affiliator':
                         break;

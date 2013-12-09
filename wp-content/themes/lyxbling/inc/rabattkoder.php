@@ -19,14 +19,41 @@ add_action( 'wp', 'lb_rabattkoder_setup_schedule' );
  * On the scheduled action hook, run a function.
  */
 function lb_rabattkoder_do_daily() {
-    // https://api.tradedoubler.com/1.0/vouchers.json;siteSpecific=false?token=FF47AC9656810C3F795E2407E9B67828D1B7561F
-    $voucher_key = 'FF47AC9656810C3F795E2407E9B67828D1B7561F';
-    $tradedoubler_api_url = 'https://api.tradedoubler.com/1.0/vouchers.json;siteSpecific=false?token=' . $voucher_key;
-    
-    $api_response = wp_remote_retrieve_body(wp_remote_get($tradedoubler_api_url, array('sslverify' => false )));
+    //$result = lb_update_rabattkoder('tradedoubler');
+    $result = lb_update_rabattkoder('double');
+}
+//add_action('init', 'lb_rabattkoder_do_daily');
+//add_action( 'lb_rabattkoder_daily_event', 'lb_rabattkoder_do_daily' );
 
+function lb_update_rabattkoder($affiliate_network) {
+    $result = array('result' => false);
+    
+    switch($affiliate_network) {
+        case 'tradedoubler':
+            // https://api.tradedoubler.com/1.0/vouchers.json;siteSpecific=false?token=FF47AC9656810C3F795E2407E9B67828D1B7561F
+            $voucher_key = 'FF47AC9656810C3F795E2407E9B67828D1B7561F';
+            $api_url = 'https://api.tradedoubler.com/1.0/vouchers.json;siteSpecific=false?token=' . $voucher_key;
+            $args = array('sslverify' => false);
+            break;
+        case 'double':
+            // https://www.double.net/api/publisher/v2/coupons/?program=826&format=json
+            $api_token = 'a346cb979e3395f33c87585d15a576a6a2cb8de2';
+            $api_url = 'https://www.double.net/api/publisher/v2/coupons/?format=json';
+            $args = array('sslverify' => false, 'headers' => array('Authorization' => 'Token ' . $api_token));
+            break;
+        default:
+            break;
+    }
+    
+    $api_response = wp_remote_retrieve_body(wp_remote_get($api_url, $args));
+    
     if(is_wp_error($api_response)) {
-        echo 'Something went wrong!';
+        $result = array(
+            'result' => false,
+            'message' => 'Something went wrong!'
+        );
+        
+        return $result;
 //pr($api_response);
     } else {
 
@@ -46,6 +73,13 @@ function lb_rabattkoder_do_daily() {
                 
                 // Check if there already exists a rabattkoder-smycken post with this rabattkods-ID.
                 $post = lb_get_posts_with_meta_value('wpcf-rabattkod-id', $rabattkod['id'], 'rabattkoder-smycken', array('pending', 'draft', 'future', 'private', 'publish'), '=');
+
+                // Check if the rabattkod is for the correct affiliate network. Otherwise set $post to NULL.
+                $butik = lb_get_posts_with_meta_value('wpcf-program-id', $rabattkod['programId'], 'smyckesbutiker', array('pending', 'draft', 'future', 'private', 'publish'), '=');
+
+                if(trim(get_post_meta($butik->post->ID, 'wpcf-affiliatenatverk', true)) != $affiliate_network)
+                    $post = NULL;
+
 /*
 echo('programName: ' . $rabattkod['programName'] . '<br />');
 echo('programId: ' . $rabattkod['programId'] . '<br />');
@@ -55,11 +89,35 @@ echo('startDate: ' . get_datetime_from_epoch($rabattkod['startDate']) . '<br />'
 echo('endDate: ' . get_datetime_from_epoch($rabattkod['endDate']) . '<br />');
 echo('endDate: ' . date($rabattkod['endDate']) . '<br />');
 pr($rabattkod, 'Rabattkod');
+ * 
+ * Double:
+ *     [0] => Array
+        (
+            [id] => 20
+            [program] => 680
+            [code] => vÃ¥r2013
+            [start_date] => 2013-04-01
+            [end_date] => 2013-04-30
+            [description] => 15% rabatt pÃ¥ Bust-Up brÃ¶stfÃ¶rstoring hos SthlmCompany!
+GÃ¤ller fÃ¶r valfritt antal fÃ¶rpackningar Bust-Up nano gold plus under april mÃ¥nad.
+Koden "vÃ¥r2013" anges i rutan fÃ¶r rabattkod i kassan.
+Du hittar Bust-Up pÃ¥ fÃ¶ljande lÃ¤nk: http://www.sthlmcompany.com/bustup-brostforstoring/bust-up-nano-gold-plus.html
+
+
+
+
+
+
+            [tracking] => Array
+                (
+                )
+
+        )
  */
 
-                // If there is no rabattkoder-smycken post with this rabattkods-ID we check for any smyckesbutik with the post meta wpcf-publisher-id=programID.
+                // If there is no rabattkoder-smycken post with this rabattkods-ID we check for any smyckesbutik with the post meta wpcf-program-id=programID.
                 if(empty($post->posts)) {
-                    $post = lb_get_posts_with_meta_value('wpcf-publisher-id', $rabattkod['programId'], 'smyckesbutiker', array('publish'), '=');
+                    $post = lb_get_posts_with_meta_value('wpcf-program-id', $rabattkod['programId'], 'smyckesbutiker', array('publish'), '=');
                     if(!empty($post->posts)) {
                         $post = $post->posts[0];
                         $store_post_id = $post->ID;
@@ -103,7 +161,12 @@ pr($rabattkod, 'Rabattkod');
                         $post_id = wp_insert_post($post, true);
                         
                         if(is_wp_error($post_id)) {
-                            $message = 'Error when inserting new rabattkod post.';
+                            $result = array(
+                                'result' => false,
+                                'message' => 'Error when inserting new rabattkod post.'
+                            );
+
+                            return $result;
                         } else {
                             update_post_meta($post_id, 'wpcf-rabattkod-id', $rabattkod['id']);
                             update_post_meta($post_id, 'wpcf-store-post-id', $store_post_id);
@@ -136,13 +199,28 @@ pr($rabattkod, 'Rabattkod');
                                 $result = wp_set_object_terms($post_id, $varumarke_id_array, 'varumarke');
                             }
 
-                            $message = 'Post with ID ' . $post_id . ' added and meta for rabattkod added.';
+                            $result = array(
+                                'result' => true,
+                                'message' => 'Post with ID ' . $post_id . ' added and meta for rabattkod added.'
+                            );
+
+                            return $result;
                         }
                     } else {
-                        $message = 'Affiliate ID för ' . $rabattkod['programName'] . ' hittades inte';
+                        $result = array(
+                                'result' => false,
+                                'message' => 'Affiliate ID för ' . $rabattkod['programName'] . ' hittades inte'
+                            );
+
+                        return $result;
                     }
                 } else {
-                    $message = 'Rabattkoder post with rabattkod ID ' . $rabattkod['id'] . ' already added.';
+                    $result = array(
+                        'result' => false,
+                        'message' => 'Rabattkoder post with rabattkod ID ' . $rabattkod['id'] . ' already added.'
+                    );
+
+                    return $result;
                 }
 
                 /*
@@ -172,7 +250,7 @@ pr($rabattkod, 'Rabattkod');
      * isPercentage
      * currencyId
      */
+    
+    return $result;
 }
-//add_action('init', 'lb_rabattkoder_do_daily');
-add_action( 'lb_rabattkoder_daily_event', 'lb_rabattkoder_do_daily' );
 ?>
