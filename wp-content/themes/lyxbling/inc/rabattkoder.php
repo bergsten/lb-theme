@@ -22,8 +22,8 @@ function lb_rabattkoder_do_daily() {
     //$result = lb_update_rabattkoder('tradedoubler');
     $result = lb_update_rabattkoder('double');
 }
-add_action('init', 'lb_rabattkoder_do_daily');
-//add_action( 'lb_rabattkoder_daily_event', 'lb_rabattkoder_do_daily' );
+//add_action('init', 'lb_rabattkoder_do_daily');
+add_action( 'lb_rabattkoder_daily_event', 'lb_rabattkoder_do_daily' );
 
 function lb_update_rabattkoder($affiliate_network) {
     $result = array('result' => false);

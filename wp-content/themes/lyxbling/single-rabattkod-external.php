@@ -40,7 +40,15 @@ the_post(); ?>
                     <a href="http://lyxbling.se/till/<?php echo($post->ID); ?>?noiframe=true" title="Stäng sidhuvudet">&#x2717</a>
                 </div>
             </div>
-        </div>
-        <iframe id="preview-frame" src="<?php echo(get_post_meta($post->ID, 'wpcf-target-url', true)); ?>" frameborder="0" noresize="noresize" ></iframe>
+        </div><?php 
+    $store_id = get_post_meta($post->ID, 'wpcf-store-post-id', true);
+    $link_data = lb_get_link_data($store_id);
+    $target_url = $link_data['target_url'];
+    
+    if('' == trim($target_url))
+        return '';
+    if(isset($link_data['affiliate_url']))
+        $target_url = $link_data['affiliate_url']; ?>
+        <iframe id="preview-frame" src="<?php echo($target_url); ?>" frameborder="0" noresize="noresize" ></iframe>
     </body>
 </html>

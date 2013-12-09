@@ -114,7 +114,7 @@ function lb_get_post_meta($post_id, $custom_field, $args = array('output' => 'ra
         
         return types_render_field($custom_field, $args);
     } else {
-        return get_post_meta($post_id, 'wpcf_' . $custom_field, true);
+        return get_post_meta($post_id, 'wpcf-' . $custom_field, true);
     }
 }
 

@@ -87,11 +87,12 @@ function lb_aff_redirect_query($post_id) {
 function lb_get_link_data($post_id) {
     $link_data_array = array();
     $post_type = get_post_type($post_id);
-    $link_data_array['brand'] = trim(lb_get_post_meta($post_id, 'varumarke'));
-    $link_data_array['target_url'] = lb_get_post_meta($post_id, 'target-url');
-    $link_data_array['display_url'] = lb_get_post_meta($post_id, 'display-url');
+    $link_data_array['brand'] = trim(get_post_meta($post_id, 'wpcf-varumarke', true));
+    $link_data_array['target_url'] = get_post_meta($post_id, 'wpcf-target-url', true);
+    $link_data_array['display_url'] = get_post_meta($post_id, 'wpcf-display-url', true);
     $target_domain_parts = parse_url($link_data_array['display_url']);
     $link_data_array['pretty_url'] = $target_domain_parts['host'];
+    
     // If no target url is set we link to the post permalink.
     if('' == trim($link_data_array['target_url']))
         $link_data_array['target_url'] = get_permalink($post_id);
@@ -110,10 +111,10 @@ function lb_get_link_data($post_id) {
         $link_data_array['external'] = true;
     
     $link_data_array['button_text'] = 'Gå till ' . $link_data_array['brand'];
- 
+    
     switch($post_type) {
         case 'smyckesbutiker':
-            $affiliate_network = trim(lb_get_post_meta($post_id, 'affiliatenatverk'));
+            $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
             
             if('' == $affiliate_network || 'none' == $affiliate_network) {
                 
@@ -122,24 +123,24 @@ function lb_get_link_data($post_id) {
                 
                 switch($affiliate_network) {
                     case 'tradedoubler':
-                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
-                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
-                        $ad_id = trim(lb_get_post_meta($post_id, 'ad-id'));
+                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
+                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
+                        $ad_id = trim(get_post_meta($post_id, 'wpcf-ad-id', true));
                         $link_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['target_url'];
                         $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
                         $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
                         $link_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
                         break;
                     case 'adrecord':
-                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
-                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
+                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
+                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
                         $link_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['target_url'];
                         break;
                     case 'double':
                         //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
-                        $program_id = trim(lb_get_post_meta($post_id, 'program-id'));
-                        $site_id = trim(lb_get_post_meta($post_id, 'site-id'));
-                        $ad_id = trim(lb_get_post_meta($post_id, 'ad-id'));
+                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
+                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
+                        $ad_id = trim(get_post_meta($post_id, 'wpcf-ad-id', true));
                         $link_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['target_url'];
                         $link_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
                         break;
