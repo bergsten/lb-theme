@@ -111,7 +111,7 @@ function lb_get_link_data($post_id) {
         $link_data_array['external'] = true;
     
     $link_data_array['button_text'] = 'Gå till ' . $link_data_array['brand'];
-    
+
     switch($post_type) {
         case 'smyckesbutiker':
             $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
@@ -179,7 +179,7 @@ function lb_get_link_data($post_id) {
             $link_data_array['external'] = false;
             break;
     }
-    
+
     return $link_data_array;
 }
 

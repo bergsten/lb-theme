@@ -9,6 +9,9 @@
  * @package WooFramework
  * @subpackage Template
  */
+
+include_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
+
 status_header(200);
 header("X-Robots-Tag: noindex, nofollow", true);
 
@@ -42,13 +45,13 @@ the_post(); ?>
             </div>
         </div><?php 
     $store_id = get_post_meta($post->ID, 'wpcf-store-post-id', true);
+    
     $link_data = lb_get_link_data($store_id);
     $target_url = $link_data['target_url'];
     
-    if('' == trim($target_url))
-        return '';
     if(isset($link_data['affiliate_url']))
         $target_url = $link_data['affiliate_url']; ?>
+    
         <iframe id="preview-frame" src="<?php echo($target_url); ?>" frameborder="0" noresize="noresize" ></iframe>
     </body>
 </html>
