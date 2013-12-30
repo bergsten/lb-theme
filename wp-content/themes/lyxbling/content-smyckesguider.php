@@ -26,7 +26,7 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title smyckesguider">';
+$title_before = '<h1 class="title smyckesguider entry-title">';
 $title_after = '</h1>';
 
 if ( ! is_single() ) {

@@ -93,7 +93,7 @@ query_posts( $query_args );
 if ( have_posts() ) { $count = 0;
 ?>
 <div id="portfolio">
-        <h1>Smyckesvarumärken</h1>
+        <h1 class="entry-title">Smyckesvarumärken</h1>
         <p>Här hittar du information om olika smyckesvarumärken.</p>
         <ul>
             <li class="sort lb-button small" data-sort="data-name" data-order="desc" rel="nolink">Varumärkesnamn A - Ö</li>
@@ -119,7 +119,7 @@ if ( have_posts() ) { $count = 0;
                             /* Setup image for display and for checks, to avoid doing multiple queries. */
                             $image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
                             ?>
-                            <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                            <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
                             <?php
                             if ( $image != '' ) {
                     ?>

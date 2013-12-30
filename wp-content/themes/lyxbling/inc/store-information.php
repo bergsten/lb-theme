@@ -67,20 +67,29 @@ function lb_get_facts_contact($post_id = NULL) {
         
         $html_output .= '<strong>Hemsida:</strong> ' . $homepage_link . '<br /><br />';
     }
-    if('' != trim(lb_get_post_meta($post_id, 'gatuadress'))) 
-        $html_output .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span class="fn org">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br /><span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br /><span itemprop="postalCode">' . substr_replace(lb_get_post_meta($post_id, 'postnummer'), ' ', 3, 0) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span></section><br />';
+    if('' != trim(lb_get_post_meta($post_id, 'gatuadress')) || '' != trim(lb_get_post_meta($post_id, 'postbox'))) {
+        $address = '';
+        $country = '';
+        if('' != trim(lb_get_post_meta($post_id, 'gatuadress')))
+            $address .= '<span itemprop="streetAddress">' . lb_get_post_meta($post_id, 'gatuadress') . '</span><br />';
+        if('' != trim(lb_get_post_meta($post_id, 'postbox')))
+            $address .= 'Box <span itemprop="postOfficeBoxNumber">' . lb_get_post_meta($post_id, 'postbox') . '</span><br />';
+        if('' != trim(lb_get_post_meta($post_id, 'country')) && 'sweden' != trim(lb_get_post_meta($post_id, 'country')))
+            $country .= '<br /><span itemprop="addressCountry">' . ucfirst(lb_get_post_meta($post_id, 'country')) . '</span><br />';
+        $html_output .= '<strong>Adress:</strong><br /><section itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="name">' . lb_get_post_meta($post_id, 'foretagsnamn') . '</span><br />' . $address . '<span itemprop="postalCode">' . lb_format_postal_number(lb_get_post_meta($post_id, 'postnummer')) . '</span> <span itemprop="addressLocality">' . lb_get_post_meta($post_id, 'postadress') . '</span>' . $country . '</section><br />';
+    }
     if('' != trim(lb_get_post_meta($post_id, 'telefon')))
-        $html_output .= '<strong>Telefon:</strong> <span itemprop="telephone">' . lb_get_post_meta($post_id, 'telefon') . '</span><br /><br />';
+        $html_output .= '<strong>Telefon:</strong> <span><a itemprop="telephone" href="tel:' . lb_format_phone_number_link(lb_get_post_meta($post_id, 'telefon')) . '">' . lb_format_phone_number(lb_get_post_meta($post_id, 'telefon')) . '</a></span><br /><br />';
     if('' != trim(lb_get_post_meta($post_id, 'e-post')))
         $html_output .= '<strong>E-post:</strong> <a href="mailto:' . lb_get_post_meta($post_id, 'e-post') . '" itemprop="email">' . lb_get_post_meta($post_id, 'e-post') . '</a><br />';
     if('' != trim(lb_get_post_meta($post_id, 'organisationsnummer')))
-        $html_output .= '<strong>Organisationsnummer:</strong> <span itemprop="taxID">' . lb_get_post_meta($post_id, 'organisationsnummer') . '</span><br />';
+        $html_output .= '<br /><strong>Organisationsnummer:</strong> <span itemprop="taxID">' . lb_get_post_meta($post_id, 'organisationsnummer') . '</span><br />';
     if('' != trim(lb_get_post_meta($post_id, 'omsattning')))
-        $html_output .= '<strong>Omsättning:</strong> <span>' . lb_get_post_meta($post_id, 'omsattning') . '</span><br />';
+        $html_output .= '<strong>Omsättning:</strong> <span>' . lb_get_post_meta($post_id, 'omsattning') . ' miljoner kronor</span><br />';
     if('' != trim(lb_get_post_meta($post_id, 'antal-anstallda')))
         $html_output .= '<strong>Antal anställda:</strong> <span>' . lb_get_post_meta($post_id, 'antal-anstallda') . '</span><br />';
     
-    $html_output .= '</div><!- itemscope itemtype="http://schema.org/Organization" -->';
+    $html_output .= '</div><br /><!- itemscope itemtype="http://schema.org/Organization" -->';
     
     return $html_output;
 }
@@ -327,5 +336,44 @@ function lb_get_competitions($post_id = NULL) {
     wp_reset_query();
     
     return $html_output;
+}
+
+function lb_format_postal_number($num) {
+    $len = strlen($num);
+    
+    if($len == 5) $num = substr_replace($num, ' ', 3, 0);
+    
+    return $num;
+}
+
+function lb_format_phone_number($num) {
+    // If number starts with 0 it's a Swedish phone number.
+    if ('0' == substr($num, 0, 1)) {
+        $num = preg_replace('/[^0-9]/', '', $num);
+        $area_code = preg_replace('/0(10|70|72|73|760|76|741|742|743|744|745|747|271|322|174|472|371|589|961|960|570|583|226|624|915|531|652|932|662|921|278|243|33|142|661|456|693|914|912|431|571|295|586|552|653|942|534|271|381|471|171|246|16|413|223|346|515|23|590|122|585|157|241|943|684|258|528|645|241|493|371|158|498|525|555|591|390|514|551|672|970|693|26|31|511|563|975|643|582|220|175|35|696|644|297|922|928|224|684|225|291|42|513|301|503|290|671|506|650|495|36|663|345|591|611|451|42|491|415|413|253|247|971|621|647|36|916|923|480|505|454|294|586|455|54|150|554|320|980|494|435|580|977|612|44|550|640|226|19|300|227|303|221|430|925|418|584|247|474|302|478|692|510|581|13|642|372|651|657|240|920|46|950|523|913|157|40|280|953|496|159|501|433|530|142|553|250|141|392|524|563|499|587|223|930|11|176|918|512|481|155|380|622|297|454|250|304|479|491|643|155|978|435|911|973|623|175|934|457|459|472|924|682|248|224|26|414|416|511|910|222|142|294|500|240|620|952|8|951|290|152|433|526|670|695|60|565|220|418|585|680|325|687|246|564|533|253|225|382|293|270|121|456|504|502|293|60|477|304|417|691|560|16|486|345|325|140|410|520|156|954|292|506|522|613|321|90|18|143|393|156|123|281|512|340|383|125|940|492|933|151|495|498|981|976|322|521|935|370|490|21|470|411|571|532|690|647|573|474|941|120|476|251|929|431|144|485|295|19|173|660|291|63|292|173|926|927)(\d*)/', '0$1', $num);
+        $number = substr($num, strlen($area_code));
+        $len = strlen($number);
+        $num = $area_code . ' - ';
+        
+        if($len == 5) $num .= preg_replace('/([0-9]{3})([0-9]{2})/', '$1 $2', $number);
+        elseif($len == 6) $num .= preg_replace('/([0-9]{2})([0-9]{2})([0-9]{2})/', '$1 $2 $3', $number);
+        elseif($len == 7) $num .= preg_replace('/([0-9]{3})([0-9]{2})([0-9]{2})/', '$1 $2 $3', $number);
+        elseif($len == 8) $num .= preg_replace('/([0-9]{3})([0-9]{3})([0-9]{2})/', '$1 $2 $3', $number);
+    // If number starts with a + it's an international number.
+    } else if('+' == substr($num, 0, 1)) {
+        
+    }
+    
+    return $num;
+}
+
+function lb_format_phone_number_link($num) {
+    if ('0' == substr($num, 0, 1)) {
+        $num = '+46' . substr($num, 1);        
+    } else if('+' == substr($num, 0, 1)) {
+        
+    }
+    
+    return $num;
 }
 ?>

@@ -118,7 +118,7 @@ if ( have_posts() ) { $count = 0;
 			<a <?php echo $settings['rel']; ?> title="<?php echo $settings['caption']; ?>" href="<?php echo $settings['large']; ?>" class="thumb">
 				<?php echo $image; ?>
             </a>
-			<h3><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 		<?php
 				// Output image gallery for lightbox
             	if ( ! empty( $settings['gallery'] ) ) {

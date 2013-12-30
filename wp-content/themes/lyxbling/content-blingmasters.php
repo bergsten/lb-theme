@@ -9,7 +9,7 @@ $settings = array(
 				'comments' => 'both'
 				);
 
-$title_before = '<h1 class="title blingmasters">';
+$title_before = '<h1 class="title blingmasters entry-title">';
 $title_after = '</h1>';
 
 global $wpdb;

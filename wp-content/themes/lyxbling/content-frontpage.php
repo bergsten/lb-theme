@@ -18,7 +18,7 @@
  * @link http://codex.wordpress.org/Plugin_API#Filters
  */
  global $woo_options;
- $title_before = '<h1 class="title">';
+ $title_before = '<h1 class="title entry-title">';
  $title_after = '</h1>';
  
  $page_link_args = apply_filters( 'woothemes_pagelinks_args', array( 'before' => '<div class="page-link">' . __( 'Pages:', 'woothemes' ), 'after' => '</div>' ) );

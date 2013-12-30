@@ -17,7 +17,7 @@
  * @link http://codex.wordpress.org/Plugin_API#Filters
  */
 
- $title_before = '<h1 class="title">';
+ $title_before = '<h1 class="title entry-title">';
  $title_after = '</h1>';
 
  if ( ! is_single() ) {
