@@ -116,6 +116,8 @@ function lb_woo_subheader() {
         } else if (file_exists(get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.jpg')) { 
             $image_url = get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.jpg';
         }
+        
+        if('' != trim($image_url)) {
             ?>
             <style>
                 #nav-container {
@@ -128,7 +130,7 @@ function lb_woo_subheader() {
                     <h1 id="subheader-text"><?php echo(lb_get_post_meta($post_id, 'varumarke')); ?></h1>
                 </div>
             </div><?php
-        
+        }
     }
 }
 add_action( 'woo_content_before', 'lb_woo_subheader' );
