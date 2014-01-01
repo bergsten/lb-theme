@@ -195,7 +195,7 @@ if ( ! function_exists( 'woo_author_box' ) ) {
             <div class="profile-image"><?php echo get_avatar( $author_id, '80' ); ?></div>
             <div class="profile-content">
                     <h4><a href="<?php echo(get_the_author_meta( 'user_url', $author_id )); ?>">Skrivet av <span class="vcard author"><span class="fn"><?php echo(get_the_author_meta( 'display_name', $author_id )); ?></span></spand></a></h4>
-                    <div class="date-updated">Sidan senast uppdaterad <span class="date updated"><?php echo(get_the_date()); ?></span></div>
+                    <div class="date-updated">Sidan senast uppdaterad <span class="date updated"><?php echo(get_the_modified_date()); ?></span></div>
                     <?php echo get_the_author_meta( 'description', $author_id ); ?>
                     <?php if ( is_singular() ) { ?>
                     <div class="profile-link">
