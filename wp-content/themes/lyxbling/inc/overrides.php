@@ -106,11 +106,17 @@ function lb_adjust_single_breadcrumb( $link_output, $link ) {
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Custom breadcrumbs section under the navigation bar. */
+/* Custom subheader image under the navigation bar.                                     */
 /*-----------------------------------------------------------------------------------*/
 function lb_woo_subheader() {
-    if ( !is_front_page() ) { 
-        if(file_exists(get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.png')) { ?>
+    if ( !is_front_page() ) {
+        $post_id = get_the_ID();
+        if('' != trim(lb_get_post_meta($post_id, 'sidhuvudbild'))) {
+            $image_url = lb_get_post_meta($post_id, 'sidhuvudbild');
+        } else if (file_exists(get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.jpg')) { 
+            $image_url = get_stylesheet_directory() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.jpg';
+        }
+            ?>
             <style>
                 #nav-container {
                     margin-bottom: 0 !important;
@@ -118,10 +124,11 @@ function lb_woo_subheader() {
                 }
             </style>
             <div id="subheader-image-container">
-                <div id="subheader-image" style="background-image: url(<?php echo(get_stylesheet_directory_uri() . '/images/subheader-images/' . get_post_type(get_the_ID()) . '.png'); ?>) !important;">
+                <div id="subheader-image" style="background-image: url(<?php echo($image_url); ?>) !important;">
+                    <h1 id="subheader-text"><?php echo(lb_get_post_meta($post_id, 'varumarke')); ?></h1>
                 </div>
             </div><?php
-        }
+        
     }
 }
 add_action( 'woo_content_before', 'lb_woo_subheader' );

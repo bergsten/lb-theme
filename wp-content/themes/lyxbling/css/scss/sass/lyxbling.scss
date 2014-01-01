@@ -46,8 +46,15 @@ $lb-header-bg-color: #8c0047;
     clear: both;
     position: relative;
     background-size: auto;
-    max-width: 1200px !important;
+    //max-width: 1200px !important;
     display: block;
+}
+
+#subheader-text {
+    font-size: 70px;
+    color: $lb-white;
+    padding-top: 50px;
+    padding-left: 500px;
 }
 
 article {
