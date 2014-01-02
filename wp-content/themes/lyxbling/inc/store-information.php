@@ -34,6 +34,7 @@ function lb_display_below_post_info() {
                 echo($link_button);
                 echo(lb_get_facts_contact($post_id));
                 echo(lb_get_social_media_links($post_id));
+                echo(lb_get_stores_selling_brand($post_id));
                 echo($link_button);
                 break;
             case 'presenttips':
@@ -253,6 +254,29 @@ function lb_get_brands_sold_by_store($post_id = NULL) {
     
     if(!empty($query) && $query->have_posts()) {
         $html_output .= '<h2>Smyckesvarumärken hos ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
+        
+        while($query->have_posts()) {
+            $query->the_post();
+            
+            $html_output .= '<div><a href="' . get_permalink(get_the_ID()) . '">' . lb_get_post_meta(get_the_ID(), 'varumarke') . '</a></div> ';
+        }
+    }
+    
+    wp_reset_query();
+    
+    return $html_output;
+}
+
+function lb_get_stores_selling_brand($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
+    $html_output = '';
+    
+    $query = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+    
+    if(!empty($query) && $query->have_posts()) {
+        $html_output .= '<h2>Butiker som saluför smycken från ' . lb_get_post_meta($post_id, 'varumarke') . '</h2>';
         
         while($query->have_posts()) {
             $query->the_post();
