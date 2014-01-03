@@ -6,7 +6,6 @@
  * and open the template in the editor.
  */
 
-
 function lb_external_links_rewrite_rule() {
     add_rewrite_tag( '%postid%', '(\d+)', 'postid='); 
     add_rewrite_rule('till/(\d+)/?', 'index.php?pagename=till&postid=$matches[1]', 'top');
@@ -25,17 +24,31 @@ function lb_external_links_template($template) {
     if(get_query_var('postid')) {
         $post = get_post(get_query_var('postid'));
         
-        if('rabattkoder-smycken' == $post->post_type && true != $_GET['noiframe']) {
-            global $wp_query;
-            $wp_query->is_404 = false;
-            include(get_stylesheet_directory() . '/single-rabattkod-external.php');
-            exit;
+        if('rabattkoder-smycken' == $post->post_type) {
+            if(true != $_GET['noiframe']) {
+                global $wp_query;
+                $wp_query->is_404 = false;
+                include(get_stylesheet_directory() . '/single-rabattkod-external.php');
+                exit;
+            } else {
+                $butik_post = lb_get_related_posts_by_taxonomy($post->ID, 'butik', 'smyckesbutiker');
+                $link_data = lb_get_link_data($butik_post->posts[0]->ID);
+                
+                if(isset($link_data['affiliate_url']))
+                    $target_url = $link_data['affiliate_url']; 
+                else
+                    $target_url = $link_data['target_url'];
+                
+                $redirect_url = $target_url;   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
+            }
         } else {
             $redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
-            header("X-Robots-Tag: noindex, nofollow", true);
-            header("Location: " . $redirect_url, true, 301);
-            exit;
         }
+        
+        header("X-Robots-Tag: noindex, nofollow", true);
+        header("Location: " . $redirect_url, true, 301);
+
+        exit;
     }
     
     return $template;
@@ -111,53 +124,13 @@ function lb_get_link_data($post_id) {
         $link_data_array['external'] = true;
     
     $link_data_array['button_text'] = 'Gå till ' . $link_data_array['brand'];
+    
+    $affiliate_data_array = lb_get_affiliate_data($post_id, $link_data_array);
 
+    $link_data_array = array_merge($link_data_array, $affiliate_data_array);
+    
     switch($post_type) {
         case 'smyckesbutiker':
-            $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
-            
-            if('' == $affiliate_network || 'none' == $affiliate_network) {
-                
-            } else {
-                $link_data_array['external'] = true;
-                
-                switch($affiliate_network) {
-                    case 'tradedoubler':
-                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
-                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
-                        $ad_id = trim(get_post_meta($post_id, 'wpcf-ad-id', true));
-                        $link_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['target_url'];
-                        $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
-                        $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
-                        $link_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
-                        break;
-                    case 'adrecord':
-                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
-                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
-                        $link_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['target_url'];
-                        break;
-                    case 'double':
-                        //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
-                        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
-                        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
-                        $ad_id = trim(get_post_meta($post_id, 'wpcf-ad-id', true));
-                        $link_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['target_url'];
-                        $link_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
-                        break;
-                    case 'affiliator':
-                        break;
-                    case 'adtraction':
-                        break;
-                    case 'affilinet':
-                        break;
-                    case 'cj':
-                        break;
-                    case 'zanox':
-                        break;
-                    default:
-                        break;
-                }
-            }
             break;
         case 'smyckesvarumarken':
             break;
@@ -166,10 +139,20 @@ function lb_get_link_data($post_id) {
             $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         case 'rabattkoder-smycken':
-            $link_data_array['button_text'] = __( 'Visa rabattkod', 'woothemes' );
-            $link_data_array['target_url'] = '/till/' . $post_id;
+            $rabattkod = get_post_meta($post_id, 'wpcf-rabattkod', true);
+            $link_data_array['external'] = true;
+            
+            if('' == trim($rabattkod)) {
+                $link_data_array['target_url'] = '/till/' . $post_id . '?noiframe=true';
+                $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+                $link_data_array['button_text'] = __( 'Gå till ', 'woothemes' ) . ' ' . trim(get_post_meta($butik_post->posts[0]->ID, 'wpcf-varumarke', true));
+            } else {
+                $link_data_array['target_url'] = '/till/' . $post_id;
+                $link_data_array['button_text'] = __( 'Visa rabattkod', 'woothemes' );
+            }
             break;
         case 'presenttips':
+            $link_data_array['external'] = true;
             $link_data_array['button_text'] = __( 'Gå till presenttips', 'woothemes' );
             $link_data_array['target_url'] = '/till/' . $post_id;
             break;
@@ -181,6 +164,54 @@ function lb_get_link_data($post_id) {
     }
 
     return $link_data_array;
+}
+
+function lb_get_affiliate_data($post_id, $link_data_array = array()) {
+    $affiliate_data_array = array();
+    $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
+            
+    if('' == $affiliate_network || 'none' == $affiliate_network) {
+
+    } else {
+        $affiliate_data_array['external'] = true;
+        $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
+        $site_id = trim(get_post_meta($post_id, 'wpcf-site-id', true));
+        $ad_id = trim(get_post_meta($post_id, 'wpcf-ad-id', true));
+
+        switch($affiliate_network) {
+            case 'tradedoubler':
+                $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
+                $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
+                $affiliate_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
+                break;
+            case 'adrecord':
+                $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['target_url'];
+                break;
+            case 'double':
+                //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
+                $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
+                break;
+            case 'affiliator':
+                $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/direct_link/' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
+                //http://imp.affiliator.com/imp.php?a=1159&b=8747&w=36046&p=276
+                break;
+            case 'adtraction':
+                break;
+            case 'affilinet':
+                break;
+            case 'cj':
+                break;
+            case 'zanox':
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return $affiliate_data_array;
 }
 
 function lb_get_target_url($post_id) {

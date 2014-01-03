@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Thirteen sv_SE\n"
-"POT-Creation-Date: 2013-11-02 09:45+0100\n"
-"PO-Revision-Date: 2013-11-02 09:52+0100\n"
+"POT-Creation-Date: 2014-01-03 14:20+0100\n"
+"PO-Revision-Date: 2014-01-03 15:03+0100\n"
 "Last-Translator: Mats Bergsten <mats@bergsten.net>\n"
 "Language-Team: WordPress Sverige <info@wpsv.se>\n"
 "Language: Svenska\n"
@@ -83,8 +83,8 @@ msgstr ""
 
 #: content-page.php:44 content-post.php:59 content-tumblog.php:38
 #: ../lyxbling/content-post.php:68 ../lyxbling/content-presenttips.php:68
-#: ../lyxbling/content-rabattkoder-smycken.php:65
-#: ../lyxbling/content-smyckesbutiker.php:68
+#: ../lyxbling/content-rabattkoder-smycken.php:83
+#: ../lyxbling/content-smyckesbutiker.php:69
 #: ../lyxbling/content-smyckesdesigners.php:65
 #: ../lyxbling/content-smyckesguider.php:65
 #: ../lyxbling/content-smyckestavlingar.php:65
@@ -1177,7 +1177,7 @@ msgstr ""
 msgid "Return to Content"
 msgstr "Hoppa till innehåll"
 
-#: includes/theme-actions.php:1461 ../lyxbling/functions.php:221
+#: includes/theme-actions.php:1461 ../lyxbling/inc/overrides.php:205
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Visa alla inlägg av %s <span class=\"meta-nav\">&rarr;</span>"
@@ -1432,8 +1432,8 @@ msgstr "Relaterade inlägg:"
 
 #: includes/theme-functions.php:481 includes/theme-functions.php:492
 #: includes/theme-functions.php:499 includes/theme-functions.php:506
-#: includes/theme-functions.php:527 ../lyxbling/functions.php:278
-#: ../lyxbling/functions.php:285 ../lyxbling/functions.php:292
+#: includes/theme-functions.php:527 ../lyxbling/inc/overrides.php:262
+#: ../lyxbling/inc/overrides.php:269 ../lyxbling/inc/overrides.php:276
 msgid "Archive"
 msgstr "Arkiv"
 
@@ -1441,15 +1441,15 @@ msgstr "Arkiv"
 msgid "Author Archive"
 msgstr "Författararkiv"
 
-#: includes/theme-functions.php:518 ../lyxbling/functions.php:304
+#: includes/theme-functions.php:518 ../lyxbling/inc/overrides.php:288
 msgid "Tag Archives"
 msgstr "Etikettarkiv"
 
-#: includes/theme-functions.php:535 ../lyxbling/functions.php:323
+#: includes/theme-functions.php:535 ../lyxbling/inc/overrides.php:307
 msgid " Archives"
 msgstr "Arkiv"
 
-#: includes/theme-functions.php:541 ../lyxbling/functions.php:329
+#: includes/theme-functions.php:541 ../lyxbling/inc/overrides.php:313
 #, fuzzy, php-format
 msgid "%1$s Archives: %2$s"
 msgstr "Etikettarkiv: %s"
@@ -2372,7 +2372,7 @@ msgstr ""
 msgid "Specify border properties for Archive header"
 msgstr ""
 
-#: includes/theme-options.php:765
+#: includes/theme-options.php:765 ../lyxbling/inc/theme-options.php:22
 msgid "Disable Archive Header RSS link"
 msgstr ""
 
@@ -3968,8 +3968,8 @@ msgid ""
 msgstr ""
 
 #: includes/theme-shortcodes.php:42
-#: ../lyxbling/content-rabattkoder-smycken.php:74
-#: ../lyxbling/content-smyckestavlingar.php:75 ../lyxbling/functions.php:458
+#: ../lyxbling/content-rabattkoder-smycken.php:92
+#: ../lyxbling/content-smyckestavlingar.php:75
 msgid "Continue Reading"
 msgstr "Läs mer"
 
@@ -4815,31 +4815,63 @@ msgstr "Kommentarer inaktiverade."
 msgid "Filters Settings Updated."
 msgstr ""
 
-#: ../lyxbling/content-smyckesbutiker.php:80
-#: ../lyxbling/content-smyckesbutiker.php:91
-#: ../lyxbling/content-smyckesbutiker.php:109
+#: ../lyxbling/content-smyckesbutiker.php:79
 #: ../lyxbling/content-smyckesdesigners.php:78
 #: ../lyxbling/content-smyckesguider.php:75
-#: ../lyxbling/content-smyckesvarumarken.php:77
-#: ../lyxbling/content-smyckesvarumarken.php:87
-#: ../lyxbling/content-smyckesvarumarken.php:100
+#: ../lyxbling/content-smyckesvarumarken.php:76
+#: ../lyxbling/content-smyckesvarumarken.php:86
+#: ../lyxbling/content-smyckesvarumarken.php:99 ../lyxbling/inc/links.php:143
+#: ../lyxbling/inc/store-information.php:320
+#: ../lyxbling/inc/store-information.php:355
 msgid "Continue Reading &raquo;"
 msgstr "Läs mer &raquo;"
 
-#: ../lyxbling/functions.php:270
-msgid "RSS feed for this section"
-msgstr "RSS-flöde för denna sektion"
-
-#: ../lyxbling/functions.php:446
+#: ../lyxbling/inc/links.php:124
 msgid "Gå till tävlingen"
 msgstr ""
 
-#: ../lyxbling/functions.php:450
+#: ../lyxbling/inc/links.php:132
+msgid "Gå till "
+msgstr ""
+
+#: ../lyxbling/inc/links.php:135
 msgid "Visa rabattkod"
 msgstr ""
 
-#: ../lyxbling/functions.php:454
-msgid "Gå till present"
+#: ../lyxbling/inc/links.php:139
+msgid "Gå till presenttips"
+msgstr ""
+
+#: ../lyxbling/inc/overrides.php:254
+msgid "RSS feed for this section"
+msgstr "RSS-flöde för denna sektion"
+
+#: ../lyxbling/inc/theme-options.php:26
+msgid "Archive Page Layout"
+msgstr ""
+
+#: ../lyxbling/inc/theme-options.php:27
+msgid ""
+"Select main content and sidebar alignment for archive pages. Choose between "
+"1, 2 or 3 column layout."
+msgstr ""
+
+#: ../lyxbling/inc/widgets.php:35
+msgid ""
+"Facebook Like Box social widget. Enables Facebook Page owners to attract and "
+"gain Likes from their own website."
+msgstr ""
+
+#: ../lyxbling/inc/widgets.php:129
+msgid "Show Faces"
+msgstr ""
+
+#: ../lyxbling/inc/widgets.php:130
+msgid "Show Stream"
+msgstr ""
+
+#: ../lyxbling/inc/widgets.php:131
+msgid "Show Header"
 msgstr ""
 
 #~ msgid ""
