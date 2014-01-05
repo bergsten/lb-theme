@@ -66,7 +66,6 @@ if ( 'content' == $settings['post_content'] || is_single() ) { ?>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
     
-
     $rabattkoder = lb_get_related_posts_by_taxonomy(get_the_ID(), 'varumarke', 'rabattkoder');
     if($rabattkoder->post_count > 0) {
         echo('<h2 style="clear: both;">Aktuella rabattkoder för ' . get_the_title() . '</h2>');

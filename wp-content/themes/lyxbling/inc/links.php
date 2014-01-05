@@ -30,20 +30,19 @@ function lb_external_links_template($template) {
                 $wp_query->is_404 = false;
                 include(get_stylesheet_directory() . '/single-rabattkod-external.php');
                 exit;
-            } else {
-                $butik_post = lb_get_related_posts_by_taxonomy($post->ID, 'butik', 'smyckesbutiker');
-                $link_data = lb_get_link_data($butik_post->posts[0]->ID);
-                
-                if(isset($link_data['affiliate_url']))
-                    $target_url = $link_data['affiliate_url']; 
-                else
-                    $target_url = $link_data['target_url'];
-                
-                $redirect_url = $target_url;   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
             }
-        } else {
-            $redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
         }
+        
+        $butik_post = lb_get_related_posts_by_taxonomy($post->ID, 'butik', 'smyckesbutiker');
+        $link_data = lb_get_link_data($butik_post->posts[0]->ID);
+
+        if(isset($link_data['affiliate_url']))
+            $target_url = $link_data['affiliate_url']; 
+        else
+            $target_url = $link_data['target_url'];
+
+        $redirect_url = $target_url;   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
+        //$redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
         
         header("X-Robots-Tag: noindex, nofollow", true);
         header("Location: " . $redirect_url, true, 301);
@@ -54,45 +53,6 @@ function lb_external_links_template($template) {
     return $template;
 }
 add_action( 'template_redirect', 'lb_external_links_template' );
-
-/*
-function lb_aff_redirect_query($post_id) {
-	global $wpdb, $table_prefix;
-	$request = $_SERVER['REQUEST_URI'];
-	if (!isset($_SERVER['REQUEST_URI'])) {
-		$request = substr($_SERVER['PHP_SELF'], 1);
-		if (isset($_SERVER['QUERY_STRING']) AND $_SERVER['QUERY_STRING'] != '') { $request.='?'.$_SERVER['QUERY_STRING']; }
-	}
-	if (isset($_GET['gocode'])) {
-		$request = '/go/'.$_GET['gocode'].'/';
-	}
-	$url_trigger = get_option("wsc_gocodes_url_trigger");
-	$nofollow = get_option("wsc_gocodes_nofollow");
-	if ($url_trigger=='') {
-		$url_trigger = 'go';
-	}
-	if ( strpos('/'.$request, '/'.$url_trigger.'/') ) {
-		$gocode_key = explode($url_trigger.'/', $request);
-		$gocode_key = $gocode_key[1];
-		$gocode_key = str_replace('/', '', $gocode_key);
-		$table_name = $wpdb->prefix . "wsc_gocodes";
-		$gocode_key = $wpdb->escape($gocode_key);
-		$gocode_db = $wpdb->get_row("SELECT id, target, key1, docount FROM $table_name WHERE key1 = '$gocode_key'", OBJECT);
-		$gocode_target = $gocode_db->target;
-		if ($gocode_target!="") {
-			if ($gocode_db->docount == 1) {
-				$update = "UPDATE ". $table_name ." SET hitcount=hitcount+1 WHERE id='$gocode_db->id'";
-				$results = $wpdb->query( $update );
-			}
-			if ($nofollow != '') { header("X-Robots-Tag: noindex, nofollow", true); }
-			wp_redirect($gocode_target, 301);
-			exit;
-		} else { $badgckey = get_option('siteurl'); wp_redirect($badgckey, 301); exit; }
-	}
-}
- * 
- */
-//***** End Redirection *****
 
 /*
  * Get the link data.
@@ -154,6 +114,11 @@ function lb_get_link_data($post_id) {
         case 'presenttips':
             $link_data_array['external'] = true;
             $link_data_array['button_text'] = __( 'Gå till presenttips', 'woothemes' );
+            $link_data_array['target_url'] = '/till/' . $post_id;
+            break;
+        case 'smyckeserbjudanden':
+            $link_data_array['external'] = true;
+            $link_data_array['button_text'] = __( 'Gå till erbjudandet', 'woothemes' );
             $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         default:
