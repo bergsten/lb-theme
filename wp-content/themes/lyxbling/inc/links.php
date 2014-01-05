@@ -23,6 +23,7 @@ add_filter( 'query_vars', 'lb_register_query_vars' );
 function lb_external_links_template($template) {
     if(get_query_var('postid')) {
         $post = get_post(get_query_var('postid'));
+        $post_id = $post->ID;
         
         if('rabattkoder-smycken' == $post->post_type) {
             if(true != $_GET['noiframe']) {
@@ -33,15 +34,13 @@ function lb_external_links_template($template) {
             }
         }
         
-        $butik_post = lb_get_related_posts_by_taxonomy($post->ID, 'butik', 'smyckesbutiker');
-        $link_data = lb_get_link_data($butik_post->posts[0]->ID);
-
-        if(isset($link_data['affiliate_url']))
-            $target_url = $link_data['affiliate_url']; 
+        $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+        if(!empty($butik_post))
+            $link_data = lb_get_link_data($butik_post->posts[0]->ID);
         else
-            $target_url = $link_data['target_url'];
-
-        $redirect_url = $target_url;   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
+            $link_data = lb_get_link_data($post_id);
+        
+        $redirect_url = $link_data['final_target_url'];   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
         //$redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
         
         header("X-Robots-Tag: noindex, nofollow", true);
@@ -58,25 +57,34 @@ add_action( 'template_redirect', 'lb_external_links_template' );
  * Get the link data.
  */
 function lb_get_link_data($post_id) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
     $link_data_array = array();
     $post_type = get_post_type($post_id);
     $link_data_array['brand'] = trim(get_post_meta($post_id, 'wpcf-varumarke', true));
     $link_data_array['target_url'] = get_post_meta($post_id, 'wpcf-target-url', true);
+    $link_data_array['final_target_url'] = $link_data_array['target_url'];
+    $link_data_array['non_affiliate_target_url'] = $link_data_array['target_url'];
     $link_data_array['display_url'] = get_post_meta($post_id, 'wpcf-display-url', true);
     $target_domain_parts = parse_url($link_data_array['display_url']);
     $link_data_array['pretty_url'] = $target_domain_parts['host'];
     
     // If no target url is set we link to the post permalink.
-    if('' == trim($link_data_array['target_url']))
+    if('' == trim($link_data_array['target_url'])) {
         $link_data_array['target_url'] = get_permalink($post_id);
+        $link_data_array['final_target_url'] = $link_data_array['target_url'];
+    }
+    
     // If http://lyxbling.se is set as target url we shouldn't set the target_url.
     if('http://lyxbling.se' == trim($link_data_array['target_url'])) {
         $link_data_array['target_url'] = '';
+        $link_data_array['final_target_url'] = $link_data_array['target_url'];
         
         return $link_data_array;
     }
     
-    $target_url_parts = parse_url($link_data_array['target_url']);
+    $target_url_parts = parse_url($link_data_array['final_target_url']);
     $current_url_parts = parse_url(lb_get_current_page_url());
     $link_data_array['external'] = false;
     
@@ -85,9 +93,16 @@ function lb_get_link_data($post_id) {
     
     $link_data_array['button_text'] = 'Gå till ' . $link_data_array['brand'];
     
+    // Get the affiliate link data for the store this post is associated with.
     $affiliate_data_array = lb_get_affiliate_data($post_id, $link_data_array);
-
+    
     $link_data_array = array_merge($link_data_array, $affiliate_data_array);
+    
+    // Check for any affiliate URL and set the final target URL to that.
+    if(isset($link_data_array['affiliate_url']))
+        $link_data_array['final_target_url'] = $link_data_array['affiliate_url'];
+    
+    $link_data_array['target_url'] = '/till/' . $post_id;
     
     switch($post_type) {
         case 'smyckesbutiker':
@@ -96,34 +111,37 @@ function lb_get_link_data($post_id) {
             break;
         case 'smyckestavlingar':
             $link_data_array['button_text'] = __( 'Gå till tävlingen', 'woothemes' );
-            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         case 'rabattkoder-smycken':
             $rabattkod = get_post_meta($post_id, 'wpcf-rabattkod', true);
             $link_data_array['external'] = true;
             
+            // If there's no rabattkod to be used, don't show the iframe.
             if('' == trim($rabattkod)) {
                 $link_data_array['target_url'] = '/till/' . $post_id . '?noiframe=true';
                 $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
                 $link_data_array['button_text'] = __( 'Gå till ', 'woothemes' ) . ' ' . trim(get_post_meta($butik_post->posts[0]->ID, 'wpcf-varumarke', true));
             } else {
-                $link_data_array['target_url'] = '/till/' . $post_id;
                 $link_data_array['button_text'] = __( 'Visa rabattkod', 'woothemes' );
             }
             break;
         case 'presenttips':
             $link_data_array['external'] = true;
             $link_data_array['button_text'] = __( 'Gå till presenttips', 'woothemes' );
-            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         case 'smyckeserbjudanden':
             $link_data_array['external'] = true;
             $link_data_array['button_text'] = __( 'Gå till erbjudandet', 'woothemes' );
-            $link_data_array['target_url'] = '/till/' . $post_id;
             break;
         default:
-            $link_data_array['button_text'] = __( 'Continue Reading &raquo;', 'woothemes' );
-            $link_data_array['target_url'] = get_permalink($post_id);
+            $link_data_array['button_text'] = __( 'Continue Reading', 'woothemes' );
+            
+            // If the Target URL field is not set we use the post permalink.
+            if('' == trim(get_post_meta($post_id, 'wpcf-target-url', true)))
+                $link_data_array['target_url'] = get_permalink($post_id);
+            else
+                $link_data_array['target_url'] = get_post_meta($post_id, 'wpcf-target-url', true);
+            
             $link_data_array['external'] = false;
             break;
     }
@@ -134,7 +152,7 @@ function lb_get_link_data($post_id) {
 function lb_get_affiliate_data($post_id, $link_data_array = array()) {
     $affiliate_data_array = array();
     $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
-            
+    
     if('' == $affiliate_network || 'none' == $affiliate_network) {
 
     } else {
@@ -145,21 +163,21 @@ function lb_get_affiliate_data($post_id, $link_data_array = array()) {
 
         switch($affiliate_network) {
             case 'tradedoubler':
-                $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['non_affiliate_target_url'];
                 $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
                 $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
                 $affiliate_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
                 break;
             case 'adrecord':
-                $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['non_affiliate_target_url'];
                 break;
             case 'double':
                 //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
-                $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['non_affiliate_target_url'];
                 $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
                 break;
             case 'affiliator':
-                $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/direct_link/' . $link_data_array['target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/direct_link/' . $link_data_array['non_affiliate_target_url'];
                 $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
                 //http://imp.affiliator.com/imp.php?a=1159&b=8747&w=36046&p=276
                 break;
@@ -201,8 +219,8 @@ function lb_get_link_button($post_id, $align='left') {
     
     if('' == trim($target_url))
         return '';
-    if(isset($link_data['affiliate_url']))
-        $target_url = $link_data['affiliate_url'];
+    /*if(isset($link_data['affiliate_url']))
+        $target_url = $link_data['affiliate_url'];*/
     if(true == $link_data['external'])
         $rel_external = ' rel="external" ';
     if(isset($link_data['affiliate_impression_tracking']))
