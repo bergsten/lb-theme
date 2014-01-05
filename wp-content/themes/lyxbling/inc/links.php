@@ -34,16 +34,15 @@ function lb_external_links_template($template) {
             }
         }
         
-        $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
-        if(!empty($butik_post))
-            $link_data = lb_get_link_data($butik_post->posts[0]->ID);
-        else
-            $link_data = lb_get_link_data($post_id);
+        $link_data = lb_get_link_data($post_id);
         
         $redirect_url = $link_data['final_target_url'];   //get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
         //$redirect_url = get_post_meta($post->ID, 'wpcf-target-url', true); //lb_get_post_meta($post->ID, 'target-url');
-        
-        header("X-Robots-Tag: noindex, nofollow", true);
+/*echo("redirect_url=$redirect_url<br>");
+pr($link_data);
+exit;*/
+ 
+       header("X-Robots-Tag: noindex, nofollow", true);
         header("Location: " . $redirect_url, true, 301);
 
         exit;
@@ -63,33 +62,21 @@ function lb_get_link_data($post_id) {
     $link_data_array = array();
     $post_type = get_post_type($post_id);
     $link_data_array['brand'] = trim(get_post_meta($post_id, 'wpcf-varumarke', true));
-    $link_data_array['target_url'] = get_post_meta($post_id, 'wpcf-target-url', true);
+    $link_data_array['target_url'] = trim(get_post_meta($post_id, 'wpcf-target-url', true));
     $link_data_array['final_target_url'] = $link_data_array['target_url'];
     $link_data_array['non_affiliate_target_url'] = $link_data_array['target_url'];
     $link_data_array['display_url'] = get_post_meta($post_id, 'wpcf-display-url', true);
     $target_domain_parts = parse_url($link_data_array['display_url']);
     $link_data_array['pretty_url'] = $target_domain_parts['host'];
-    
-    // If no target url is set we link to the post permalink.
-    if('' == trim($link_data_array['target_url'])) {
-        $link_data_array['target_url'] = get_permalink($post_id);
-        $link_data_array['final_target_url'] = $link_data_array['target_url'];
-    }
-    
-    // If http://lyxbling.se is set as target url we shouldn't set the target_url.
-    if('http://lyxbling.se' == trim($link_data_array['target_url'])) {
-        $link_data_array['target_url'] = '';
-        $link_data_array['final_target_url'] = $link_data_array['target_url'];
-        
-        return $link_data_array;
-    }
-    
     $target_url_parts = parse_url($link_data_array['final_target_url']);
     $current_url_parts = parse_url(lb_get_current_page_url());
-    $link_data_array['external'] = false;
     
-    if($target_url_parts['host'] != $current_url_parts['host'])
+    // Check if the final target URL is on another domain than this domain.
+    if($target_url_parts['host'] != $current_url_parts['host']) {
         $link_data_array['external'] = true;
+    } else {
+        $link_data_array['external'] = false;
+    }
     
     $link_data_array['button_text'] = 'Gå till ' . $link_data_array['brand'];
     
@@ -97,6 +84,19 @@ function lb_get_link_data($post_id) {
     $affiliate_data_array = lb_get_affiliate_data($post_id, $link_data_array);
     
     $link_data_array = array_merge($link_data_array, $affiliate_data_array);
+    
+    // If no final target URL exists, we link to the post permalink.
+    if('' == $link_data_array['final_target_url']) {
+        $link_data_array['target_url'] = get_permalink($post_id);
+        $link_data_array['final_target_url'] = $link_data_array['target_url'];
+    }
+    
+    if('http://lyxbling.se' == trim($link_data_array['target_url'])) {
+        $link_data_array['target_url'] = '';
+        $link_data_array['final_target_url'] = $link_data_array['target_url'];
+
+        return $link_data_array;
+    }
     
     // Check for any affiliate URL and set the final target URL to that.
     if(isset($link_data_array['affiliate_url']))
@@ -151,10 +151,30 @@ function lb_get_link_data($post_id) {
 
 function lb_get_affiliate_data($post_id, $link_data_array = array()) {
     $affiliate_data_array = array();
-    $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
+    
+    $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+    
+    if(isset($butik_post->posts[0])) {
+        $post_id = $butik_post->posts[0]->ID;
+        $affiliate_network = trim(get_post_meta($post_id, 'wpcf-affiliatenatverk', true));
+        $butik_link_data['target_url'] = trim(get_post_meta($post_id, 'wpcf-target-url', true));
+        $butik_link_data['non_affiliate_target_url'] = $butik_link_data['target_url'];
+        
+        $target_url_parts = parse_url($link_data_array['non_affiliate_target_url']);
+        $butik_target_url_parts = parse_url($butik_link_data['non_affiliate_target_url']);
+        
+        // If the target URL is on the same domain as the store URL, we use the store URL as target URL.
+        if($target_url_parts['host'] == $butik_target_url_parts['host']) {
+            $link_data_array['target_url'] = $butik_link_data['non_affiliate_target_url'];
+            $link_data_array['non_affiliate_target_url'] = $butik_link_data['non_affiliate_target_url'];
+        }
+    // If there's no associated store URL we return an empty array. 
+    } else {
+        return array();
+    }
     
     if('' == $affiliate_network || 'none' == $affiliate_network) {
-
+        return $affiliate_data_array;
     } else {
         $affiliate_data_array['external'] = true;
         $program_id = trim(get_post_meta($post_id, 'wpcf-program-id', true));
@@ -163,21 +183,21 @@ function lb_get_affiliate_data($post_id, $link_data_array = array()) {
 
         switch($affiliate_network) {
             case 'tradedoubler':
-                $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . '&url=' . $link_data_array['non_affiliate_target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . ('' != trim($link_data_array['non_affiliate_target_url'])?'&url=' . $link_data_array['non_affiliate_target_url']:'');
                 $impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
                 $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')">';
                 $affiliate_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
                 break;
             case 'adrecord':
-                $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . '&url=' . $link_data_array['non_affiliate_target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . ('' != trim($link_data_array['non_affiliate_target_url'])?'&url=' . $link_data_array['non_affiliate_target_url']:'');
                 break;
             case 'double':
                 //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
-                $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . '&url=' . $link_data_array['non_affiliate_target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . ('' != trim($link_data_array['non_affiliate_target_url'])?'&url=' . $link_data_array['non_affiliate_target_url']:'');
                 $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '">';
                 break;
             case 'affiliator':
-                $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/direct_link/' . $link_data_array['non_affiliate_target_url'];
+                $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/' . ('' != trim($link_data_array['non_affiliate_target_url'])?'direct_link/' . $link_data_array['non_affiliate_target_url']:'');
                 $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
                 //http://imp.affiliator.com/imp.php?a=1159&b=8747&w=36046&p=276
                 break;
@@ -256,13 +276,19 @@ function lb_get_link($post_id, $anchor_text = '', $external = true) {
 
 function lb_get_current_page_url() {
     $pageURL = 'http';
-    if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-    $pageURL .= "://";
-    if ($_SERVER["SERVER_PORT"] != "80") {
-     $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-    } else {
-     $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+    
+    if ($_SERVER["HTTPS"] == "on") {
+        $pageURL .= "s";
     }
+    
+    $pageURL .= "://";
+    
+    if ($_SERVER["SERVER_PORT"] != "80") {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    
     return $pageURL;
 }
 ?>
