@@ -43,7 +43,7 @@ pr($link_data);
 exit;*/
  
        header("X-Robots-Tag: noindex, nofollow", true);
-        header("Location: " . $redirect_url, true, 301);
+        header("Location: " . $redirect_url, true, 302);
 
         exit;
     }
