@@ -2706,6 +2706,215 @@ body#rabattkod-body {
   background-color: white;
 }
 
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-jan-06, 17:28:19
+    Author     : Mats
+*/
+/* line 11, scss/sass/_image-hover-caption.scss */
+.view {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  float: left;
+  border: 10px solid #eccfd3;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+  -moz-box-shadow: 1px 1px 2px #e6e6e6;
+  box-shadow: 1px 1px 2px #e6e6e6;
+  cursor: default;
+  background: white url(../images/bgimg.jpg) no-repeat center center;
+}
+
+/* line 26, scss/sass/_image-hover-caption.scss */
+.view .mask, .view .content {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+/* line 34, scss/sass/_image-hover-caption.scss */
+.view img {
+  position: relative;
+}
+
+/* line 38, scss/sass/_image-hover-caption.scss */
+.view h2 {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 20px 0 0 0;
+}
+
+/* line 48, scss/sass/_image-hover-caption.scss */
+.view p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  position: relative;
+  color: #fff;
+  padding: 10px 20px 0px;
+  text-align: center;
+}
+
+/* line 57, scss/sass/_image-hover-caption.scss */
+.view a.info {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 0 1px #000;
+  -moz-box-shadow: 0 0 1px #000;
+  box-shadow: 0 0 1px #000;
+}
+
+/* line 68, scss/sass/_image-hover-caption.scss */
+.view a.info:hover {
+  -webkit-box-shadow: 0 0 5px #000;
+  -moz-box-shadow: 0 0 5px #000;
+  box-shadow: 0 0 5px #000;
+}
+
+/* line 74, scss/sass/_image-hover-caption.scss */
+.view-tenth img {
+  -webkit-transform: scaleY(1);
+  -moz-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+  -ms-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+
+/* line 86, scss/sass/_image-hover-caption.scss */
+.view-tenth .mask {
+  background-color: rgba(255, 231, 179, 0.3);
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+/* line 97, scss/sass/_image-hover-caption.scss */
+.view-tenth h2 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background: transparent;
+  margin: 20px 40px 0px 40px;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  color: #333;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+/* line 116, scss/sass/_image-hover-caption.scss */
+.view-tenth h2 a {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 120, scss/sass/_image-hover-caption.scss */
+.view-tenth h2 a:hover {
+  text-decoration: none;
+}
+
+/* line 123, scss/sass/_image-hover-caption.scss */
+.view-tenth p {
+  color: #333;
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+/* line 139, scss/sass/_image-hover-caption.scss */
+.view-tenth a.info {
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+/* line 154, scss/sass/_image-hover-caption.scss */
+.view-tenth:hover img {
+  -webkit-transform: scale(10);
+  -moz-transform: scale(10);
+  -o-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+/* line 164, scss/sass/_image-hover-caption.scss */
+.view-tenth:hover .mask {
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+/* line 169, scss/sass/_image-hover-caption.scss */
+.view-tenth:hover h2, .view-tenth:hover p, .view-tenth:hover a.info {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 /* line 17, ../../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2771,17 +2980,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 27, scss/sass/lyxbling.scss */
+/* line 30, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 31, scss/sass/lyxbling.scss */
+/* line 34, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 35, scss/sass/lyxbling.scss */
+/* line 38, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -2799,7 +3008,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 53, scss/sass/lyxbling.scss */
+/* line 56, scss/sass/lyxbling.scss */
 #subheader-text {
   font-size: 70px;
   color: white;
@@ -2807,19 +3016,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-left: 500px;
 }
 
-/* line 60, scss/sass/lyxbling.scss */
+/* line 63, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 64, scss/sass/lyxbling.scss */
+/* line 67, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 69, scss/sass/lyxbling.scss */
+/* line 72, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -2828,7 +3037,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 77, scss/sass/lyxbling.scss */
+/* line 80, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -2846,7 +3055,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 89, scss/sass/lyxbling.scss */
+/* line 92, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -2855,7 +3064,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 94, scss/sass/lyxbling.scss */
+/* line 97, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -2864,7 +3073,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 102, scss/sass/lyxbling.scss */
+/* line 105, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }

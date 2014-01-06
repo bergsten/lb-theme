@@ -12,6 +12,8 @@ $lb-black: #000;
 $lb-pink-button: darken($lb-pink, 25%);
 $lb-subheader-height: 160px;
 $lb-header-bg-color: #8c0047;
+$lb-thumbnail-width: 300px;
+$lb-thumbnail-height: 300px;
 
 @import "base";
 @import "buttons";
@@ -21,6 +23,7 @@ $lb-header-bg-color: #8c0047;
 @import "prettyphoto";
 @import "mixitup";
 @import "rabattkod-page";
+@import "image-hover-caption";
 
 @include global-reset;
 

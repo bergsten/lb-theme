@@ -26,9 +26,6 @@
 ?>
             </section><!-- /#main -->
             <?php woo_main_after(); ?>
-    
-            <?php get_sidebar(); ?>
-
 	</div><!-- /#main-sidebar-container -->     
     </div><!-- /#content -->
 	<?php woo_content_after(); ?>

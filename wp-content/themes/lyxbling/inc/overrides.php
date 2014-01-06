@@ -31,10 +31,10 @@ function lb_body_classes($classes){
         if('smyckesbutiker' == $post_type || 'smyckesvarumarken' == $post_type) {
             foreach($classes as $key => $val) {
                 if('three-col-left' == $val) {
-                    $classes[$key] = 'two-col-left';
+                    $classes[$key] = 'one-col';
                 }
                 if('three-col-left-1200' == $val) {
-                    $classes[$key] = 'two-col-left-1200';
+                    $classes[$key] = 'one-col-1200';
                 }
             }
         }

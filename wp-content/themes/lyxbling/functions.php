@@ -15,12 +15,12 @@ require_once('inc/theme-options.php');
  * Include all custom javascript and CSS styles.
  */
 function lb_enqueue_scripts() {
-        wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
-        wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
-        wp_enqueue_script( 'pinterest', 'http://assets.pinterest.com/js/pinit.js');
-        if(is_post_type_archive(array('smyckesbutiker', 'smyckesvarumarken'))) {
-            wp_enqueue_script( 'mixitup', get_stylesheet_directory_uri() . '/js/jquery.mixitup.min.js', array('jquery'));
-        }
+    wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
+    wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
+    wp_enqueue_script( 'pinterest', 'http://assets.pinterest.com/js/pinit.js');
+    if(is_post_type_archive(array('smyckesbutiker', 'smyckesvarumarken'))) {
+        wp_enqueue_script( 'mixitup', get_stylesheet_directory_uri() . '/js/jquery.mixitup.min.js', array('jquery'));
+    }
 }
 add_action( 'wp_enqueue_scripts', 'lb_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'lb_enqueue_scripts' );
@@ -175,6 +175,38 @@ function lb_get_datetime_from_epoch($epoch, $format = 'Y-m-d') {
     
     return $dt->format($format);
 }
+
+/**
+ * trims text to a space then adds ellipses if desired
+ * @param string $input text to trim
+ * @param int $length in characters to trim to
+ * @param bool $ellipses if ellipses (...) are to be added
+ * @param bool $strip_html if html tags are to be stripped
+ * @return string 
+ */
+function lb_trim_text($input, $length, $ellipses = true, $strip_html = true) {
+    //strip tags, if desired
+    if ($strip_html) {
+        $input = strip_tags($input);
+    }
+  
+    //no need to trim, already shorter than trim length
+    if (strlen($input) <= $length) {
+        return $input;
+    }
+  
+    //find last space within length
+    $last_space = strrpos(substr($input, 0, $length), ' ');
+    $trimmed_text = substr($input, 0, $last_space);
+  
+    //add ellipses (...)
+    if ($ellipses) {
+        $trimmed_text .= '...';
+    }
+  
+    return $trimmed_text;
+}
+
 function lb_get_wp_base() {
     return '/home/lyxbling/public_html/';
 }

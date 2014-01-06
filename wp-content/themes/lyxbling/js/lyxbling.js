@@ -18,6 +18,12 @@ jQuery(document).ready(function(){
             window.location = jQuery(this).attr('data-url');
     });
     
+    // Enable hover stuff for touch devices as well. See http://stackoverflow.com/questions/2851663/how-do-i-simulate-a-hover-with-a-touch-in-touch-enabled-browsers
+    jQuery('.hover').bind('touchstart touchend', function(e) {
+        e.preventDefault();
+        jQuery(this).toggleClass('hover_effect');
+    });
+    
     // From http://websolstore.com/how-to-add-pinterest-to-social-media-icons-in-prettyphoto/
     jQuery(".prettyPhoto").prettyPhoto({
         changepicturecallback: function onPictureChanged() {
