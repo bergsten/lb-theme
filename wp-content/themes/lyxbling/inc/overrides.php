@@ -28,7 +28,9 @@ function lb_body_classes($classes){
     $post_type = get_post_type(get_the_ID());
     
     if(is_archive()) {
-        if('smyckesbutiker' == $post_type || 'smyckesvarumarken' == $post_type) {
+        if('smyckesbutiker' == $post_type || 
+           'smyckesvarumarken' == $post_type || 
+           'smyckesdesigners' == $post_type) {
             foreach($classes as $key => $val) {
                 if('three-col-left' == $val) {
                     $classes[$key] = 'one-col';
