@@ -23,7 +23,7 @@ if ( ! is_tax() ) {
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
 $query_args = array(
-				'post_type' => 'smyckesdesigners', 
+				'post_type' => 'smyckesguider', 
                                 'orderby' => 'title',
                                 'order' => 'ASC',
 				'paged' => $paged, 
@@ -40,11 +40,11 @@ $the_query = new WP_Query($query_args);
 /* The Loop. */	
 if ( $the_query->have_posts() ) { ?>
 <div id="portfolio">
-        <h1 class="entry-title">Smyckesdesigners</h1>
-        <p>Här kan du läsa mer om olika smyckesdesigners.</p>
+        <h1 class="entry-title">Smyckesguider</h1>
+        <p>Här kan du lära dig mer om smycken, diamanter, ädelstenar, olika ädelmetaller, m.m.</p>
         <ul>
-            <li class="sort lb-button small" data-sort="data-name" data-order="desc" rel="nolink">Smyckesdesigner A - Ö</li>
-            <li class="sort lb-button small" data-sort="data-name" data-order="asc" rel="nolink">Smyckesdesigner Ö - A</li>
+            <li class="sort lb-button small" data-sort="data-name" data-order="desc" rel="nolink">Smyckesguider A - Ö</li>
+            <li class="sort lb-button small" data-sort="data-name" data-order="asc" rel="nolink">Smyckesguider Ö - A</li>
         </ul>
 	<div class="portfolio-items">
             <ul id="Grid"><?php

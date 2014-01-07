@@ -23,29 +23,6 @@ function lb_my_filter_head() {
 }
 add_action('get_header', 'lb_my_filter_head');
 
-//Add Woocommerce body classes
-function lb_body_classes($classes){
-    $post_type = get_post_type(get_the_ID());
-    
-    if(is_archive()) {
-        if('smyckesbutiker' == $post_type || 
-           'smyckesvarumarken' == $post_type || 
-           'smyckesdesigners' == $post_type) {
-            foreach($classes as $key => $val) {
-                if('three-col-left' == $val) {
-                    $classes[$key] = 'one-col';
-                }
-                if('three-col-left-1200' == $val) {
-                    $classes[$key] = 'one-col-1200';
-                }
-            }
-        }
-    }
-    
-    return $classes;
-}
-add_filter('body_class', 'lb_body_classes', 1000);
-
 function lb_new_excerpt_more( $more ) {
 	return '...';
 }

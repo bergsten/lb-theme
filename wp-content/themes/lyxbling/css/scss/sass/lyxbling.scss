@@ -5,13 +5,16 @@ $lb-break-small: 320px;
 $lb-content-width: $lb-layout-width/1.62;
 $lb-sidebar-width: 330px;
 $lb-sidebar2-width: 208px;
-$lb-widget-text: 300 16px/1.5em Calibri, Candara, Segoe, Optima, sans-serif;
+$lb-font-scribe: 'Pinyon Script', arial, sans-serif;
+$lb-font: Calibri, Candara, Segoe, Optima, sans-serif;
+$lb-widget-text: 300 16px/1.5em $lb-font;
 $lb-pink:   #eccfd3;
 $lb-white: #fff;
 $lb-black: #000;
 $lb-pink-button: darken($lb-pink, 25%);
 $lb-subheader-height: 160px;
 $lb-header-bg-color: #8c0047;
+$lb-thumbnail-text: 34px $lb-font-scribe;
 $lb-thumbnail-width: 300px;
 $lb-thumbnail-height: 300px;
 

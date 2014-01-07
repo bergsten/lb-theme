@@ -111,6 +111,7 @@ if ( have_posts() ) { $count = 0;
                         $image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' ); ?>
 
                         <?php echo $image; ?>
+                        <span class="img-title"><?php the_title(); ?></span>
                         <div class="mask">
                             
                                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

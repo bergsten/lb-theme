@@ -2714,8 +2714,9 @@ and open the template in the editor.
 /* 
     Created on : 2014-jan-06, 17:28:19
     Author     : Mats
+See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 */
-/* line 11, scss/sass/_image-hover-caption.scss */
+/* line 12, scss/sass/_image-hover-caption.scss */
 .view {
   width: 300px;
   height: 300px;
@@ -2732,7 +2733,7 @@ and open the template in the editor.
   background: white url(../images/bgimg.jpg) no-repeat center center;
 }
 
-/* line 26, scss/sass/_image-hover-caption.scss */
+/* line 27, scss/sass/_image-hover-caption.scss */
 .view .mask, .view .content {
   width: 300px;
   height: 300px;
@@ -2742,12 +2743,12 @@ and open the template in the editor.
   left: 0;
 }
 
-/* line 34, scss/sass/_image-hover-caption.scss */
+/* line 35, scss/sass/_image-hover-caption.scss */
 .view img {
   position: relative;
 }
 
-/* line 38, scss/sass/_image-hover-caption.scss */
+/* line 39, scss/sass/_image-hover-caption.scss */
 .view h2 {
   text-transform: uppercase;
   color: #fff;
@@ -2759,7 +2760,24 @@ and open the template in the editor.
   margin: 20px 0 0 0;
 }
 
-/* line 48, scss/sass/_image-hover-caption.scss */
+/* line 49, scss/sass/_image-hover-caption.scss */
+.view span.img-title {
+  font: 34px "Pinyon Script", arial, sans-serif;
+  font-weight: 700;
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  position: absolute !important;
+  top: 220px !important;
+  left: 0px !important;
+  width: 100% !important;
+}
+
+/* line 63, scss/sass/_image-hover-caption.scss */
+.view:hover > span.img-title {
+  display: none;
+}
+
+/* line 66, scss/sass/_image-hover-caption.scss */
 .view p {
   font-family: Georgia, serif;
   font-style: italic;
@@ -2770,7 +2788,7 @@ and open the template in the editor.
   text-align: center;
 }
 
-/* line 57, scss/sass/_image-hover-caption.scss */
+/* line 75, scss/sass/_image-hover-caption.scss */
 .view a.info {
   display: inline-block;
   text-decoration: none;
@@ -2783,14 +2801,14 @@ and open the template in the editor.
   box-shadow: 0 0 1px #000;
 }
 
-/* line 68, scss/sass/_image-hover-caption.scss */
+/* line 86, scss/sass/_image-hover-caption.scss */
 .view a.info:hover {
   -webkit-box-shadow: 0 0 5px #000;
   -moz-box-shadow: 0 0 5px #000;
   box-shadow: 0 0 5px #000;
 }
 
-/* line 74, scss/sass/_image-hover-caption.scss */
+/* line 92, scss/sass/_image-hover-caption.scss */
 .view-tenth img {
   -webkit-transform: scaleY(1);
   -moz-transform: scaleY(1);
@@ -2804,7 +2822,7 @@ and open the template in the editor.
   transition: all 0.7s ease-in-out;
 }
 
-/* line 86, scss/sass/_image-hover-caption.scss */
+/* line 104, scss/sass/_image-hover-caption.scss */
 .view-tenth .mask {
   background-color: rgba(255, 231, 179, 0.3);
   -webkit-transition: all 0.5s linear;
@@ -2817,7 +2835,7 @@ and open the template in the editor.
   opacity: 0;
 }
 
-/* line 97, scss/sass/_image-hover-caption.scss */
+/* line 115, scss/sass/_image-hover-caption.scss */
 .view-tenth h2 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   background: transparent;
@@ -2838,18 +2856,18 @@ and open the template in the editor.
   opacity: 0;
 }
 
-/* line 116, scss/sass/_image-hover-caption.scss */
+/* line 134, scss/sass/_image-hover-caption.scss */
 .view-tenth h2 a {
   color: black;
   text-decoration: none;
 }
 
-/* line 120, scss/sass/_image-hover-caption.scss */
+/* line 138, scss/sass/_image-hover-caption.scss */
 .view-tenth h2 a:hover {
   text-decoration: none;
 }
 
-/* line 123, scss/sass/_image-hover-caption.scss */
+/* line 141, scss/sass/_image-hover-caption.scss */
 .view-tenth p {
   color: #333;
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -2867,7 +2885,7 @@ and open the template in the editor.
   transition: all 0.5s linear;
 }
 
-/* line 139, scss/sass/_image-hover-caption.scss */
+/* line 157, scss/sass/_image-hover-caption.scss */
 .view-tenth a.info {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -2884,7 +2902,7 @@ and open the template in the editor.
   transition: all 0.5s linear;
 }
 
-/* line 154, scss/sass/_image-hover-caption.scss */
+/* line 172, scss/sass/_image-hover-caption.scss */
 .view-tenth:hover img {
   -webkit-transform: scale(10);
   -moz-transform: scale(10);
@@ -2896,14 +2914,14 @@ and open the template in the editor.
   opacity: 0;
 }
 
-/* line 164, scss/sass/_image-hover-caption.scss */
+/* line 182, scss/sass/_image-hover-caption.scss */
 .view-tenth:hover .mask {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-/* line 169, scss/sass/_image-hover-caption.scss */
+/* line 187, scss/sass/_image-hover-caption.scss */
 .view-tenth:hover h2, .view-tenth:hover p, .view-tenth:hover a.info {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -2913,6 +2931,12 @@ and open the template in the editor.
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1;
+}
+
+/* line 198, scss/sass/_image-hover-caption.scss */
+.hover {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* line 17, ../../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
@@ -2980,17 +3004,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 30, scss/sass/lyxbling.scss */
+/* line 33, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 34, scss/sass/lyxbling.scss */
+/* line 37, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 38, scss/sass/lyxbling.scss */
+/* line 41, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -3008,7 +3032,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 56, scss/sass/lyxbling.scss */
+/* line 59, scss/sass/lyxbling.scss */
 #subheader-text {
   font-size: 70px;
   color: white;
@@ -3016,19 +3040,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-left: 500px;
 }
 
-/* line 63, scss/sass/lyxbling.scss */
+/* line 66, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 67, scss/sass/lyxbling.scss */
+/* line 70, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 72, scss/sass/lyxbling.scss */
+/* line 75, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -3037,7 +3061,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 80, scss/sass/lyxbling.scss */
+/* line 83, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -3055,7 +3079,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 92, scss/sass/lyxbling.scss */
+/* line 95, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -3064,7 +3088,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 97, scss/sass/lyxbling.scss */
+/* line 100, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -3073,7 +3097,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 105, scss/sass/lyxbling.scss */
+/* line 108, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }

@@ -36,7 +36,7 @@ add_filter('body_class', 'lb_body_classes', 1000);
             <?php woo_main_before(); ?>
             <section id="main"> 
 <?php
-	get_template_part( 'loop', 'smyckesbutiker' );
+	get_template_part( 'loop', 'smyckesguider' );
 ?>
             </section><!-- /#main -->
             <?php woo_main_after(); ?>

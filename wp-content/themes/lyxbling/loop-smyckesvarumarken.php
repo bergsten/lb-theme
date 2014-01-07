@@ -111,7 +111,6 @@ if ( have_posts() ) { $count = 0;
 
                         <?php echo $image; ?>
                         <div class="mask">
-                            
                                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                                 <p><?php echo(lb_trim_text(get_the_excerpt(), 300)); ?></p>
                                 <div class="lb-button small" style="clear: both;" data-url="<?php the_permalink(); ?>"><a href="<?php the_permalink(); ?>">Läs mer &raquo;</a></div>
