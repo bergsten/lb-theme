@@ -41,7 +41,7 @@ function lb_external_links_template($template) {
 /*echo("redirect_url=$redirect_url<br>");
 pr($link_data);
 exit;*/
- 
+
        header("X-Robots-Tag: noindex, nofollow", true);
         header("Location: " . $redirect_url, true, 302);
 
@@ -145,14 +145,19 @@ function lb_get_link_data($post_id) {
             $link_data_array['external'] = false;
             break;
     }
-
+    
     return $link_data_array;
 }
 
 function lb_get_affiliate_data($post_id, $link_data_array = array()) {
     $affiliate_data_array = array();
+    $post_type = get_post_type($post_id);
     
-    $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+    // Only return affiliate data if this is a store, otherwise return an empty array.
+    if('smyckesbutiker' == $post_type)
+        $butik_post = lb_get_related_posts_by_taxonomy($post_id, 'butik', 'smyckesbutiker');
+    else
+        return array();
     
     if(isset($butik_post->posts[0])) {
         $post_id = $butik_post->posts[0]->ID;
