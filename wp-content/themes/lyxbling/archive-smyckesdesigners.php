@@ -11,10 +11,10 @@
 //Add Woocommerce body classes
 function lb_body_classes($classes){
     foreach($classes as $key => $val) {
-        if('three-col-left' == $val) {
+        if('three-col-left' == $val || 'two-col-left' == $val) {
             $classes[$key] = 'one-col';
         }
-        if('three-col-left-1200' == $val) {
+        if('three-col-left-1200' == $val || 'two-col-left-1200' == $val) {
             $classes[$key] = 'one-col-1200';
         }
     }
