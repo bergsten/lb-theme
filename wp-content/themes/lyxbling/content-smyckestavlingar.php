@@ -63,7 +63,6 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) );
-    echo(lb_get_link_button(get_the_ID()));
 } else { 
     // Remove ShareThis.
     remove_filter('get_the_excerpt', 'st_remove_st_add_link', 9);

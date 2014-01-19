@@ -38,7 +38,41 @@ get_header();
 	}
 	
 	woo_loop_after();
-?>     
+?>
+<div id="3-col-section-promotion" style="text-align: center;">
+<ul id="Grid" style="align: middle;">
+	<li class="mix mix_all" style="display: inline-block; opacity: 1;" data-name="Smyckesguider">
+<div class="view view-tenth hover_effect">
+
+<img class="woo-image" alt="Smyckesguider" src="http://lyxbling.se/wp-content/uploads/2013/09/diamanter-300x300.jpg" width="300" height="300" /> <span class="img-title">Smyckesguider</span>
+<div class="mask">
+<h2><a href="http://lyxbling.se/smyckesguider">Smyckesguider</a></h2>
+Lär dig mer om diamanter, ädelstenar, pärlor, ädelmetaller som guld, roséguld, platina, silver, stål, m.m. i vår smyckesguide...<br />
+<div class="lb-button small" style="clear: both;" data-url="http://lyxbling.se/smyckesguider"><a href="http://lyxbling.se/smyckesguider">Läs mer »</a></div>
+</div>
+</div></li>
+	<li class="mix mix_all" style="display: inline-block; opacity: 1;" data-name="Smyckesvarumärken">
+<div class="view view-tenth hover_effect">
+
+<img class="woo-image" alt="Smyckesvarumärken" src="http://lyxbling.se/wp-content/uploads/2013/08/mercedes-gp-petronas-thomas-sabo-300x200.jpg" width="300" height="300" /> <span class="img-title">Smyckesvarumärken</span>
+<div class="mask">
+<h2><a href="http://lyxbling.se/smyckesvarumarken">Smyckesvarumärken</a></h2>
+Läs om olika kända &amp; okända smyckesvarumärken och lär dig vilka designer som kännetecknar de olika smyckesvarumärkena...<br />
+<div class="lb-button small" style="clear: both;" data-url="http://lyxbling.se/smyckesvarumarken"><a href="http://lyxbling.se/smyckesvarumarken">Läs mer »</a></div>
+</div>
+</div></li>
+	<li class="mix mix_all" style="display: inline-block; opacity: 1;" data-name="Smyckesbutiker">
+<div class="view view-tenth hover_effect">
+
+<img class="woo-image" alt="Smyckesbutiker" src="http://lyxbling.se/wp-content/uploads/2014/01/pandorashop-onlinebutik-185x300.png" width="300" height="300" /> <span class="img-title">Smyckesbutiker</span>
+<div class="mask">
+<h2><a href="http://lyxbling.se/smyckesbutiker">Smyckesbutiker</a></h2>
+Vi granskar svenska &amp; utländska smyckesbutiker online - Du väljer var du vill shoppa...<br />
+<div class="lb-button small" style="clear: both;" data-url="http://lyxbling.se/smyckesbutiker"><a href="http://lyxbling.se/smyckesbutiker">Läs mer »</a></div>
+</div>
+</div></li>
+</ul>
+</div>
             </section><!-- /#main -->
             <?php woo_main_after(); ?>
     

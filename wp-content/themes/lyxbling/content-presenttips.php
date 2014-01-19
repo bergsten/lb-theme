@@ -63,7 +63,6 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 <?php
 // Show the content
 if ( 'content' == $settings['post_content'] || is_single() ) { ?>
-    <h2>Sammanfattning</h2>
     <?php
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
 } else { 

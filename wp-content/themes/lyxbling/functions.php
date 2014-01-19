@@ -18,7 +18,7 @@ function lb_enqueue_scripts() {
     wp_enqueue_style( 'lyxbling', get_stylesheet_directory_uri() . '/css/lyxbling.css' );
     wp_enqueue_script( 'lyxbling', get_stylesheet_directory_uri() . '/js/lyxbling.js', array('jquery'));
     wp_enqueue_script( 'pinterest', 'http://assets.pinterest.com/js/pinit.js');
-    if(is_post_type_archive(array('smyckesbutiker', 'smyckesvarumarken', 'smyckesdesigners', 'smyckesguider'))) {
+    if(is_post_type_archive(array('smyckesbutiker', 'smyckesvarumarken', 'smyckesdesigners', 'smyckesguider', 'presenttips'))) {
         wp_enqueue_script( 'mixitup', get_stylesheet_directory_uri() . '/js/jquery.mixitup.min.js', array('jquery'));
     }
 }

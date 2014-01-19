@@ -39,8 +39,13 @@ function lb_display_below_post_info() {
                 break;
             case 'presenttips':
                 echo($link_button);
+                break;
             case 'smyckeserbjudanden':
                 echo($link_button);
+                break;
+            case 'smyckestavlingar':
+                echo($link_button);
+                break;
             default:
                 break;
         }
