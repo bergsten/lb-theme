@@ -9,6 +9,7 @@ require_once('inc/store-information.php');
 require_once('inc/rabattkoder.php');
 require_once('inc/product-feeds.php');
 require_once('inc/widgets.php');
+require_once('inc/ads.php');
 require_once('inc/theme-options.php');
 
 /**
