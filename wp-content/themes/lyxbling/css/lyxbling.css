@@ -778,6 +778,28 @@ and open the template in the editor.
 }
 
 /*
+Ad widgets
+*/
+/* line 121, scss/sass/_widgets.scss */
+#sidebar .acm_ad_zones {
+  width: 290px;
+  padding: 0;
+  border: 0;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-jan-20, 11:21:50
+    Author     : Mats
+
+For widget ads, see _widgets.scss
+*/
+/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -3018,17 +3040,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 34, scss/sass/lyxbling.scss */
+/* line 35, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 38, scss/sass/lyxbling.scss */
+/* line 39, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 42, scss/sass/lyxbling.scss */
+/* line 43, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -3046,7 +3068,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 60, scss/sass/lyxbling.scss */
+/* line 61, scss/sass/lyxbling.scss */
 #subheader-text {
   font-size: 70px;
   color: white;
@@ -3054,19 +3076,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-left: 500px;
 }
 
-/* line 67, scss/sass/lyxbling.scss */
+/* line 68, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 71, scss/sass/lyxbling.scss */
+/* line 72, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 76, scss/sass/lyxbling.scss */
+/* line 77, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -3075,7 +3097,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 84, scss/sass/lyxbling.scss */
+/* line 85, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -3093,7 +3115,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 96, scss/sass/lyxbling.scss */
+/* line 97, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -3102,7 +3124,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 101, scss/sass/lyxbling.scss */
+/* line 102, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -3111,7 +3133,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 109, scss/sass/lyxbling.scss */
+/* line 110, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }
