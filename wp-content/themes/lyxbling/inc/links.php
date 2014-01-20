@@ -206,6 +206,12 @@ function lb_get_affiliate_data($post_id, $link_data_array = array()) {
                 $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
                 //http://imp.affiliator.com/imp.php?a=1159&b=8747&w=36046&p=276
                 break;
+            case 'adsettings':
+                $affiliate_data_array['affiliate_url'] = 'http://www.adsettings.com/scripts/reg_click.php?aid=' . $ad_id . '&pid=' . $program_id . ('' != trim($link_data_array['non_affiliate_target_url'])?'&url=' . $link_data_array['non_affiliate_target_url']:'');
+                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://www.adsettings.com/scripts/gen_space_img.php?aid=' . $ad_id . '&pid=' . $program_id . '" width="0" height="0" />';
+                //http://www.adsettings.com/scripts/reg_click.php?aid=2560&pid=23718
+                //http://www.adsettings.com/scripts/gen_space_img.php?aid=2560&pid=23718
+                break;
             case 'adtraction':
                 break;
             case 'affilinet':
