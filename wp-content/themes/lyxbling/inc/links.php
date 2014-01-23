@@ -219,6 +219,9 @@ function lb_get_affiliate_data($post_id, $link_data_array = array()) {
             case 'cj':
                 break;
             case 'zanox':
+                $affiliate_data_array['affiliate_url'] = 'http://ad.zanox.com/ppc/?' . $ad_id . ('' != trim($link_data_array['non_affiliate_target_url'])?'&ulp=' . $link_data_array['non_affiliate_target_url']:'');
+                $affiliate_data_array['affiliate_impression_tracking'] = '';
+                //http://ad.zanox.com/ppc/?27051148C2094246278&ulp=[[%2Faccessoarer-dam-smycken%2F]]
                 break;
             default:
                 break;
