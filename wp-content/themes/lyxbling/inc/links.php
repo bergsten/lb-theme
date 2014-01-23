@@ -246,9 +246,9 @@ function lb_get_link_button($post_id, $align='left') {
     $link_data = lb_get_link_data($post_id);
     $impression_tracking = '';
     $rel_external = '';
-    $target_url = $link_data['target_url'];
+    $final_target_url = $link_data['final_target_url'];
     
-    if('' == trim($target_url))
+    if('' == trim($final_target_url))
         return '';
     /*if(isset($link_data['affiliate_url']))
         $target_url = $link_data['affiliate_url'];*/
@@ -259,7 +259,7 @@ function lb_get_link_button($post_id, $align='left') {
     
     $button_text = $link_data['button_text'] . ' &raquo;';
     
-    return '<div class="lb-button ' . $align . '" style="clear: both;" data-url="' . $target_url . '"' . $rel_external . '>' . $button_text . '</div>' . $impression_tracking . '<br clear="all" />';
+    return '<div class="lb-button ' . $align . '" style="clear: both;" data-url="' . $final_target_url . '"' . $rel_external . '>' . $button_text . '</div>' . $impression_tracking . '<br clear="all" />';
 }
 
 function lb_get_link($post_id, $anchor_text = '', $external = true) {

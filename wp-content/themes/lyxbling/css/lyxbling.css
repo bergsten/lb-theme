@@ -2939,7 +2939,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 }
 
 /* line 172, scss/sass/_image-hover-caption.scss */
-.view-tenth:hover img {
+.view-tenth:hover img, .view-tenth:hover img.hover_effect {
   -webkit-transform: scale(10);
   -moz-transform: scale(10);
   -o-transform: scale(10);

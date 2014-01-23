@@ -169,7 +169,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
    -ms-transition: all 0.5s linear;
    transition: all 0.5s linear;
 }
-.view-tenth:hover img {
+.view-tenth:hover img, .view-tenth:hover img.hover_effect {
    -webkit-transform: scale(10);
    -moz-transform: scale(10);
    -o-transform: scale(10);
