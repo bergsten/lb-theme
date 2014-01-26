@@ -38,6 +38,29 @@ function lb_feed_request($qv) {
 }
 add_filter('request', 'lb_feed_request');
 
+/*-----------------------------------------------------------------------------------*/
+/* Optional Top Navigation (WP Menus)  */
+/*-----------------------------------------------------------------------------------*/
+if ( ! function_exists( 'woo_top_navigation' ) ) {
+    function woo_top_navigation() {
+        if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) { ?>
+        <div id="top">
+            <div class="col-full"><?php
+                echo '<h3 class="top-menu">' . woo_get_menu_name( 'top-menu' ) . '</h3>';
+                wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu' ) ); ?>
+                <div class="sf_container">
+                    <div class="sf_search" style="border:1px solid #eee">
+                        <span class="sf_block">
+                            <input style="width:180px;" class="sf_input sf_focused" autocomplete="off" type="text" value="Sök" name="s"><button class="sf_button searchsubmit" type="submit"><span class="sf_hidden">Sök på LyxBling.se</span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /#top --><?php
+        }
+    } // End woo_top_navigation()
+}
+
 /*
  *  Create the custom taxonomy permalinks in the format /presenttips/%tips%/%postname% - See http://wp-types.com/forums/topic/custom-taxonomies-not-showing-on-permalink/#post-16949
  */

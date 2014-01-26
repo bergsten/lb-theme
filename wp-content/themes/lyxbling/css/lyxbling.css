@@ -813,6 +813,256 @@ and open the template in the editor.
   display: inline-block !important;
 }
 
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-jan-26, 16:09:16
+    Author     : Mats
+*/
+/* Styling for Ajaxy Live Search.
+*/
+/* line 16, scss/sass/_search.scss */
+.sf_container {
+  float: right;
+  margin-top: 6px;
+}
+
+/* line 21, scss/sass/_search.scss */
+#sf_results {
+  background: white;
+  border: 1px solid #888;
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif !important;
+  font-size: 11px !important;
+  z-index: 9999 !important;
+  text-align: left !important;
+  box-shadow: 0 0 5px #aaa;
+  border-radius: 3px;
+}
+
+/* line 32, scss/sass/_search.scss */
+.sf_more {
+  background: #F7F7F7;
+  border-top: 1px solid #DDD;
+  display: block;
+  min-height: 1px;
+  margin: 3px 0 0px;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 12px;
+}
+
+/* line 44, scss/sass/_search.scss */
+.sf_more .sf_text, .sf_more .sf_small {
+  text-align: center !important;
+}
+
+/* line 48, scss/sass/_search.scss */
+.sf_more img {
+  padding: 10px 0;
+}
+
+/* line 52, scss/sass/_search.scss */
+#sf_val {
+  z-index: 9999 !important;
+  -height: 180px;
+  -overflow-y: auto;
+}
+
+/* line 58, scss/sass/_search.scss */
+#sf_val ul {
+  margin: 0 !important;
+  list-style: none;
+  padding: 0 !important;
+}
+
+/* line 64, scss/sass/_search.scss */
+#sf_val ul li.sf_category a {
+  margin-left: 5px;
+  padding: 3px 0;
+}
+
+/* line 69, scss/sass/_search.scss */
+#sf_val ul li {
+  list-style: none;
+  color: #000;
+}
+
+/* line 74, scss/sass/_search.scss */
+#sf_val ul li.sf_selected {
+  background-color: #eccfd3 !important;
+  border-color: black !important;
+  color: white !important;
+}
+
+/* line 80, scss/sass/_search.scss */
+#sf_val ul li a:hover {
+  text-decoration: none !important;
+}
+
+/* line 84, scss/sass/_search.scss */
+#sf_val ul li a {
+  text-decoration: none !important;
+  display: block;
+}
+
+/* line 89, scss/sass/_search.scss */
+#sf_val ul li.sf_selected a, #sf_val ul li.sf_selected span {
+  color: white !important;
+  text-decoration: none;
+}
+
+/* line 94, scss/sass/_search.scss */
+#sf_val ul li.sf_item {
+  min-height: 50px;
+  padding: 2px 30px 2px 63px;
+  position: relative;
+  line-height: 12px;
+}
+
+/* line 101, scss/sass/_search.scss */
+#sf_val ul li.sf_item a {
+  display: block;
+  min-height: 50px;
+}
+
+/* line 106, scss/sass/_search.scss */
+#sf_val ul li.sf_header {
+  background: #eee;
+  padding: 3px 15px 6px 6px;
+  font-weight: bold;
+  border-top: 1px solid #DDD;
+}
+
+/* line 113, scss/sass/_search.scss */
+#sf_val li.sf_item img {
+  background-color: #ECEFF5;
+  display: block;
+  left: 6px;
+  position: absolute;
+}
+
+/* line 120, scss/sass/_search.scss */
+#sf_val li .sf_text {
+  padding-bottom: 2px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* line 126, scss/sass/_search.scss */
+#sf_val li a span {
+  display: block;
+}
+
+/* line 130, scss/sass/_search.scss */
+#sf_val li .sf_small {
+  color: #666;
+  text-align: left;
+}
+
+/* line 135, scss/sass/_search.scss */
+#sf_val li.sf_more .sf_small {
+  font-size: 9px;
+  text-align: center !important;
+}
+
+/* line 139, scss/sass/_search.scss */
+.sf_search .sf_input {
+  color: #aaa !important;
+  font-style: italic;
+  border: 0 none !important;
+  background: white !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  width: 90%;
+  margin-left: 2px;
+  height: 19px !important;
+}
+
+/* line 152, scss/sass/_search.scss */
+.sf_search .sf_focused {
+  color: #333 !important;
+  font-style: normal !important;
+}
+
+/* line 157, scss/sass/_search.scss */
+.sf_search .sf_input:focus, .searchsubmit:focus {
+  border: 0 none !important;
+  outline: none;
+}
+
+/* line 162, scss/sass/_search.scss */
+.sf_hidden {
+  display: none;
+}
+
+/* line 166, scss/sass/_search.scss */
+.sf_search {
+  border-radius: 2px;
+  background: white;
+  text-align: left !important;
+}
+
+/* line 172, scss/sass/_search.scss */
+.sf_search span.sf_block {
+  display: block;
+  height: 20px;
+  padding: 1px 0 2px;
+  position: relative;
+}
+
+/* line 179, scss/sass/_search.scss */
+.sf_search .sf_button, .sf_search .searchsubmit {
+  background-image: url("../images/ajax-search/sf_search.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0px 0 !important;
+  background-color: white !important;
+  border: 0 none !important;
+  cursor: pointer !important;
+  display: block !important;
+  height: 19px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  right: 1px !important;
+  top: 1px !important;
+  width: 22px !important;
+  margin: 1px 1% 1px 2px !important;
+  font-size: 11px !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
+  -moz-box-shadow: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+/* line 200, scss/sass/_search.scss */
+.sf_search .screen-reader-text {
+  display: none;
+}
+
+/* line 204, scss/sass/_search.scss */
+.sf_search .searchsubmit {
+  display: block !important;
+}
+
+/* line 207, scss/sass/_search.scss */
+.sf_search .searchsubmit {
+  float: none !important;
+}
+
+/* line 211, scss/sass/_search.scss */
+#sf_loading {
+  background-image: url("../images/ajax-search/sf_loading.gif") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  display: block !important;
+  width: 100%;
+  height: 30px !important;
+}
+
 /* Webicons by Adam Fairhead at Fairhead Creative http://fairheadcreative.com */
 /* line 3, scss/sass/_webicons.scss */
 .webicon {
@@ -2801,7 +3051,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
   font: 34px "Pinyon Script", arial, sans-serif;
   font-weight: 700;
   color: white;
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  text-shadow: -1px -1px 5px black, 1px -1px 5px black, -1px 1px 5px black, 1px 1px 5px black;
   position: absolute !important;
   top: 220px !important;
   left: 0px !important;
@@ -2951,14 +3201,14 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 }
 
 /* line 182, scss/sass/_image-hover-caption.scss */
-.view-tenth:hover .mask {
+.view-tenth:hover .mask, .view-tenth:hover .mask.hover_effect {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
 /* line 187, scss/sass/_image-hover-caption.scss */
-.view-tenth:hover h2, .view-tenth:hover p, .view-tenth:hover a.info {
+.view-tenth:hover h2, .view-tenth:hover p, .view-tenth:hover a.info, .view-tenth:hover h2.hover_effect, .view-tenth:hover p.hover_effect, .view-tenth:hover a.info.hover_effect {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -o-transform: scale(1);
@@ -2969,8 +3219,13 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
   opacity: 1;
 }
 
-/* line 198, scss/sass/_image-hover-caption.scss */
-.hover {
+/* line 197, scss/sass/_image-hover-caption.scss */
+.lb-item {
+  cursor: pointer;
+}
+
+/* line 201, scss/sass/_image-hover-caption.scss */
+.hover, .hover_effect {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
@@ -3040,17 +3295,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 35, scss/sass/lyxbling.scss */
+/* line 36, scss/sass/lyxbling.scss */
 #nav-container {
   margin-bottom: 0 !important;
 }
 
-/* line 39, scss/sass/lyxbling.scss */
+/* line 40, scss/sass/lyxbling.scss */
 #subheader-image-container {
   background-color: #8c0047;
 }
 
-/* line 43, scss/sass/lyxbling.scss */
+/* line 44, scss/sass/lyxbling.scss */
 #subheader-image {
   background-color: #8c0047;
   background-repeat: no-repeat;
@@ -3068,7 +3323,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 61, scss/sass/lyxbling.scss */
+/* line 62, scss/sass/lyxbling.scss */
 #subheader-text {
   font-size: 70px;
   color: white;
@@ -3076,19 +3331,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding-left: 500px;
 }
 
-/* line 68, scss/sass/lyxbling.scss */
+/* line 69, scss/sass/lyxbling.scss */
 article {
   padding: 5px;
 }
 
-/* line 72, scss/sass/lyxbling.scss */
+/* line 73, scss/sass/lyxbling.scss */
 .lb-homepage-link {
   color: #c8747f;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* line 77, scss/sass/lyxbling.scss */
+/* line 78, scss/sass/lyxbling.scss */
 .lb-homepage-link:hover {
   color: #eccfd3;
   text-decoration: underline;
@@ -3097,7 +3352,7 @@ article {
 /**
  * Remove the wpstats image.
  */
-/* line 85, scss/sass/lyxbling.scss */
+/* line 86, scss/sass/lyxbling.scss */
 img#wpstats {
   position: absolute;
   top: 0;
@@ -3115,7 +3370,7 @@ img#wpstats {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 97, scss/sass/lyxbling.scss */
+/* line 98, scss/sass/lyxbling.scss */
 .cf:before,
 .cf:after {
   content: " ";
@@ -3124,7 +3379,7 @@ img#wpstats {
   /* 2 */
 }
 
-/* line 102, scss/sass/lyxbling.scss */
+/* line 103, scss/sass/lyxbling.scss */
 .cf:after {
   clear: both;
 }
@@ -3133,7 +3388,7 @@ img#wpstats {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 110, scss/sass/lyxbling.scss */
+/* line 111, scss/sass/lyxbling.scss */
 .cf {
   *zoom: 1;
 }

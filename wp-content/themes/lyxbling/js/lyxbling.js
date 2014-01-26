@@ -2,27 +2,68 @@
  * jQuery function to open external site link on button click.
  * From http://stackoverflow.com/questions/4944387/go-to-link-on-button-click-jquery/4944460#4944460
  */
+// Make the whole .lb-item div link to respective item.
+jQuery(document).on('click', ".lb-item", function() {
+    event.preventDefault();
+    
+    if(undefined !== jQuery(this).attr('data-url')) {
+        if('external' === jQuery(this).attr('rel'))
+            window.open(jQuery(this).attr('data-url'), '_blank');
+        else
+            window.location = jQuery(this).attr('data-url');
+    }
+});
+
 jQuery(document).ready(function(){
     jQuery(".lb-button").click(function() {
-        if('external' == jQuery(this).attr('rel'))
+        if('external' === jQuery(this).attr('rel'))
             window.open(jQuery(this).attr('data-url'), '_blank');
-        else if('nolink' == jQuery(this).attr('rel'))
+        else if('nolink' === jQuery(this).attr('rel'))
             jQuery.noop();
         else
             window.location = jQuery(this).attr('data-url');
     });
     jQuery(".lb-homepage-link").click(function() {
-        if('external' == jQuery(this).attr('rel'))
+        if('external' === jQuery(this).attr('rel'))
             window.open(jQuery(this).attr('data-url'), '_blank');
         else
             window.location = jQuery(this).attr('data-url');
     });
-    
+    /*
+    // disable :hover on touch devices
+    // based on https://gist.github.com/4404503 
+    // via https://twitter.com/javan/status/284873379062890496
+    // + https://twitter.com/pennig/status/285790598642946048
+    // re http://retrogamecrunch.com/tmp/hover
+    if ('createTouch' in document)
+    {
+        try
+        {
+            var ignore = /:hover/;
+            for (var i=0; i<document.styleSheets.length; i++)
+            {
+                var sheet = document.styleSheets[i];
+                for (var j=sheet.cssRules.length-1; j>=0; j--)
+                {
+                    var rule = sheet.cssRules[j];
+                    if (rule.type === CSSRule.STYLE_RULE && ignore.test(rule.selectorText))
+                    {
+                        sheet.deleteRule(j);
+                    }
+                }
+            }
+        }
+        catch(e){}
+    }*/
     // Enable hover stuff for touch devices as well. See http://stackoverflow.com/questions/2851663/how-do-i-simulate-a-hover-with-a-touch-in-touch-enabled-browsers
-    jQuery('.hover').bind('touchstart touchend', function(e) {
+    /*document.addEventListener("touchstart", function(){
         e.preventDefault();
         jQuery(this).toggleClass('hover_effect');
-    });
+    }, true);*/
+    /*jQuery('.hover').bind('touchstart touchend', function(e) {
+        e.preventDefault();
+        jQuery(this).toggleClass('hover_effect');
+    });*/
     
     // From http://websolstore.com/how-to-add-pinterest-to-social-media-icons-in-prettyphoto/
     jQuery(".prettyPhoto").prettyPhoto({
