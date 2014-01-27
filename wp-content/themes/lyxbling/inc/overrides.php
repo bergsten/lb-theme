@@ -39,7 +39,8 @@ function lb_feed_request($qv) {
 add_filter('request', 'lb_feed_request');
 
 /*-----------------------------------------------------------------------------------*/
-/* Optional Top Navigation (WP Menus)  */
+/* Optional Top Navigation with Ajaxy Search (WP Menus) */
+/* Also check out http://wp-ajaxsearchpro-admin.demo.wp-dreams.com/wp-admin/admin.php?page=ajax-search-pro/backend/settings.php&asp_sid=248  */
 /*-----------------------------------------------------------------------------------*/
 if ( ! function_exists( 'woo_top_navigation' ) ) {
     function woo_top_navigation() {

@@ -22,7 +22,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
    -moz-box-shadow: 1px 1px 2px #e6e6e6;
    box-shadow: 1px 1px 2px #e6e6e6;
    cursor: default;
-   background: #fff url(../images/bgimg.jpg) no-repeat center center;
+   background: $lb-white url(../images/bgimg.jpg) no-repeat center center;
 }
 .view .mask,.view .content {
    width: $lb-thumbnail-width;
@@ -38,7 +38,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 }
 .view h2 {
    text-transform: uppercase;
-   color: #fff;
+   color: $lb-white;
    text-align: center;
    position: relative;
    font-size: 17px;
@@ -68,7 +68,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
    font-style: italic;
    font-size: 12px;
    position: relative;
-   color: #fff;
+   color: $lb-white;
    padding: 10px 20px 0px;
    text-align: center;
 }
@@ -77,7 +77,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
    text-decoration: none;
    padding: 7px 14px;
    background: #000;
-   color: #fff;
+   color: $lb-white;
    text-transform: uppercase;
    -webkit-box-shadow: 0 0 1px #000;
    -moz-box-shadow: 0 0 1px #000;

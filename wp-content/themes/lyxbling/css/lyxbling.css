@@ -823,14 +823,15 @@ and open the template in the editor.
     Author     : Mats
 */
 /* Styling for Ajaxy Live Search.
+Also check out http://wp-ajaxsearchpro-admin.demo.wp-dreams.com/wp-admin/admin.php?page=ajax-search-pro/backend/settings.php&asp_sid=248
 */
-/* line 16, scss/sass/_search.scss */
+/* line 17, scss/sass/_search.scss */
 .sf_container {
   float: right;
   margin-top: 6px;
 }
 
-/* line 21, scss/sass/_search.scss */
+/* line 22, scss/sass/_search.scss */
 #sf_results {
   background: white;
   border: 1px solid #888;
@@ -842,7 +843,7 @@ and open the template in the editor.
   border-radius: 3px;
 }
 
-/* line 32, scss/sass/_search.scss */
+/* line 33, scss/sass/_search.scss */
 .sf_more {
   background: #F7F7F7;
   border-top: 1px solid #DDD;
@@ -855,67 +856,67 @@ and open the template in the editor.
   line-height: 12px;
 }
 
-/* line 44, scss/sass/_search.scss */
+/* line 45, scss/sass/_search.scss */
 .sf_more .sf_text, .sf_more .sf_small {
   text-align: center !important;
 }
 
-/* line 48, scss/sass/_search.scss */
+/* line 49, scss/sass/_search.scss */
 .sf_more img {
   padding: 10px 0;
 }
 
-/* line 52, scss/sass/_search.scss */
+/* line 53, scss/sass/_search.scss */
 #sf_val {
   z-index: 9999 !important;
   -height: 180px;
   -overflow-y: auto;
 }
 
-/* line 58, scss/sass/_search.scss */
+/* line 59, scss/sass/_search.scss */
 #sf_val ul {
   margin: 0 !important;
   list-style: none;
   padding: 0 !important;
 }
 
-/* line 64, scss/sass/_search.scss */
+/* line 65, scss/sass/_search.scss */
 #sf_val ul li.sf_category a {
   margin-left: 5px;
   padding: 3px 0;
 }
 
-/* line 69, scss/sass/_search.scss */
+/* line 70, scss/sass/_search.scss */
 #sf_val ul li {
   list-style: none;
   color: #000;
 }
 
-/* line 74, scss/sass/_search.scss */
+/* line 75, scss/sass/_search.scss */
 #sf_val ul li.sf_selected {
   background-color: #eccfd3 !important;
   border-color: black !important;
   color: white !important;
 }
 
-/* line 80, scss/sass/_search.scss */
+/* line 81, scss/sass/_search.scss */
 #sf_val ul li a:hover {
   text-decoration: none !important;
 }
 
-/* line 84, scss/sass/_search.scss */
+/* line 85, scss/sass/_search.scss */
 #sf_val ul li a {
   text-decoration: none !important;
   display: block;
 }
 
-/* line 89, scss/sass/_search.scss */
+/* line 90, scss/sass/_search.scss */
 #sf_val ul li.sf_selected a, #sf_val ul li.sf_selected span {
   color: white !important;
   text-decoration: none;
 }
 
-/* line 94, scss/sass/_search.scss */
+/* line 95, scss/sass/_search.scss */
 #sf_val ul li.sf_item {
   min-height: 50px;
   padding: 2px 30px 2px 63px;
@@ -923,13 +924,13 @@ and open the template in the editor.
   line-height: 12px;
 }
 
-/* line 101, scss/sass/_search.scss */
+/* line 102, scss/sass/_search.scss */
 #sf_val ul li.sf_item a {
   display: block;
   min-height: 50px;
 }
 
-/* line 106, scss/sass/_search.scss */
+/* line 107, scss/sass/_search.scss */
 #sf_val ul li.sf_header {
   background: #eee;
   padding: 3px 15px 6px 6px;
@@ -937,7 +938,7 @@ and open the template in the editor.
   border-top: 1px solid #DDD;
 }
 
-/* line 113, scss/sass/_search.scss */
+/* line 114, scss/sass/_search.scss */
 #sf_val li.sf_item img {
   background-color: #ECEFF5;
   display: block;
@@ -945,31 +946,31 @@ and open the template in the editor.
   position: absolute;
 }
 
-/* line 120, scss/sass/_search.scss */
+/* line 121, scss/sass/_search.scss */
 #sf_val li .sf_text {
   padding-bottom: 2px;
   font-weight: bold;
   text-align: left;
 }
 
-/* line 126, scss/sass/_search.scss */
+/* line 127, scss/sass/_search.scss */
 #sf_val li a span {
   display: block;
 }
 
-/* line 130, scss/sass/_search.scss */
+/* line 131, scss/sass/_search.scss */
 #sf_val li .sf_small {
   color: #666;
   text-align: left;
 }
 
-/* line 135, scss/sass/_search.scss */
+/* line 136, scss/sass/_search.scss */
 #sf_val li.sf_more .sf_small {
   font-size: 9px;
   text-align: center !important;
 }
 
-/* line 139, scss/sass/_search.scss */
+/* line 140, scss/sass/_search.scss */
 .sf_search .sf_input {
   color: #aaa !important;
   font-style: italic;
@@ -984,31 +985,31 @@ and open the template in the editor.
   height: 19px !important;
 }
 
-/* line 152, scss/sass/_search.scss */
+/* line 153, scss/sass/_search.scss */
 .sf_search .sf_focused {
   color: #333 !important;
   font-style: normal !important;
 }
 
-/* line 157, scss/sass/_search.scss */
+/* line 158, scss/sass/_search.scss */
 .sf_search .sf_input:focus, .searchsubmit:focus {
   border: 0 none !important;
   outline: none;
 }
 
-/* line 162, scss/sass/_search.scss */
+/* line 163, scss/sass/_search.scss */
 .sf_hidden {
   display: none;
 }
 
-/* line 166, scss/sass/_search.scss */
+/* line 167, scss/sass/_search.scss */
 .sf_search {
   border-radius: 2px;
   background: white;
   text-align: left !important;
 }
 
-/* line 172, scss/sass/_search.scss */
+/* line 173, scss/sass/_search.scss */
 .sf_search span.sf_block {
   display: block;
   height: 20px;
@@ -1016,7 +1017,7 @@ and open the template in the editor.
   position: relative;
 }
 
-/* line 179, scss/sass/_search.scss */
+/* line 180, scss/sass/_search.scss */
 .sf_search .sf_button, .sf_search .searchsubmit {
   background-image: url("../images/ajax-search/sf_search.png") !important;
   background-repeat: no-repeat !important;
@@ -1038,22 +1039,22 @@ and open the template in the editor.
   box-shadow: 0 0 0 0 !important;
 }
 
-/* line 200, scss/sass/_search.scss */
+/* line 201, scss/sass/_search.scss */
 .sf_search .screen-reader-text {
   display: none;
 }
 
-/* line 204, scss/sass/_search.scss */
+/* line 205, scss/sass/_search.scss */
 .sf_search .searchsubmit {
   display: block !important;
 }
 
-/* line 207, scss/sass/_search.scss */
+/* line 208, scss/sass/_search.scss */
 .sf_search .searchsubmit {
   float: none !important;
 }
 
-/* line 211, scss/sass/_search.scss */
+/* line 212, scss/sass/_search.scss */
 #sf_loading {
   background-image: url("../images/ajax-search/sf_loading.gif") !important;
   background-repeat: no-repeat !important;
@@ -3037,7 +3038,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
 /* line 39, scss/sass/_image-hover-caption.scss */
 .view h2 {
   text-transform: uppercase;
-  color: #fff;
+  color: white;
   text-align: center;
   position: relative;
   font-size: 17px;
@@ -3069,7 +3070,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
   font-style: italic;
   font-size: 12px;
   position: relative;
-  color: #fff;
+  color: white;
   padding: 10px 20px 0px;
   text-align: center;
 }
@@ -3080,7 +3081,7 @@ See http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/
   text-decoration: none;
   padding: 7px 14px;
   background: #000;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   -webkit-box-shadow: 0 0 1px #000;
   -moz-box-shadow: 0 0 1px #000;

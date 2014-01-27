@@ -105,20 +105,20 @@ if ( have_posts() ) { $count = 0;
 	}
 ?>
                 <li class="mix" data-name="<?php the_title(); ?>">
-                    <div class="view view-tenth hover_effect"><?php
+                    <div class="view view-tenth lb-item hover" data-url="<?php the_permalink(); ?>"><?php
                         /* Setup image for display and for checks, to avoid doing multiple queries. */
-                        $image = woo_image( 'return=true&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' ); ?>
+                        $image = woo_image( 'return=true&class=hover_effect&key=portfolio-image&meta=' . get_the_title() . '&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' ); ?>
 
                         <?php echo $image; ?>
-                        <div class="mask">
-                                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                <p><?php echo(lb_trim_text(get_the_excerpt(), 300)); ?></p>
-                                <div class="lb-button small" style="clear: both;" data-url="<?php the_permalink(); ?>"><a href="<?php the_permalink(); ?>">Läs mer &raquo;</a></div>
+                        <span class="img-title"><?php the_title(); ?></span>
+                        <div class="mask hover_effect">
+                                <h2 class="hover_effect"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                <p class="hover_effect"><?php echo(lb_trim_text(get_the_excerpt(), 350)); ?></p>
+                                <div class="lb-button small" style="clear: both;" data-url="<?php the_permalink(); ?>">Läs mer &raquo;</div>
                             </a>
                         </div>
                     </div>
-                </li>
-<?php
+                </li><?php
 	} // End WHILE Loop
 ?>
             </ul>
