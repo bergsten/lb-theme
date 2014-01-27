@@ -60,6 +60,9 @@ woo_image( 'width=' . esc_attr( $settings['thumb_w'] ) . '&height=' . esc_attr( 
 }
 ?>
 	<section class="entry">
+        <header>
+	<?php the_title( $title_before, $title_after ); ?>
+	</header>
 <?php
 if ( 'content' == $settings['post_content'] || is_single() ) { 
     the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); 
