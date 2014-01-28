@@ -52,7 +52,9 @@ if ( ! function_exists( 'woo_top_navigation' ) ) {
                 <div class="sf_container">
                     <div class="sf_search" style="border:1px solid #eee">
                         <span class="sf_block">
-                            <input style="width:180px;" class="sf_input sf_focused" autocomplete="off" type="text" value="Sök" name="s"><button class="sf_button searchsubmit" type="submit"><span class="sf_hidden">Sök på LyxBling.se</span></button>
+                            <form method="get" action="http://lyxbling.se/">    
+                                <input style="width:180px;" class="sf_input sf_focused" autocomplete="off" type="text" value="Sök" name="s"><button class="sf_button searchsubmit" type="submit" name="submit"><span class="sf_hidden">Sök på LyxBling.se</span></button>
+                            </form>
                         </span>
                     </div>
                 </div>
