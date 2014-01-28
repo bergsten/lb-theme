@@ -40,6 +40,9 @@ function lb_display_below_post_info() {
             case 'presenttips':
                 echo($link_button);
                 break;
+            case 'smyckesevent':
+                echo($link_button);
+                break;
             case 'smyckeserbjudanden':
                 echo($link_button);
                 break;
@@ -47,6 +50,7 @@ function lb_display_below_post_info() {
                 echo($link_button);
                 break;
             default:
+                echo($link_button);
                 break;
         }
         
