@@ -108,24 +108,21 @@ if ( have_posts() ) { $count = 0;
 		$settings['rel'] = '';
 	}
 ?>
-		<div <?php post_class( $settings['css_classes'] ); ?> style="max-width: <?php echo intval( $thumb_width ); ?>px;">
-		<?php
+		<div <?php post_class( $settings['css_classes'] ); ?> style="max-width: <?php echo intval( $thumb_width ); ?>px;"><?php
 			/* Setup image for display and for checks, to avoid doing multiple queries. */
 			$image = woo_image( 'return=true&key=portfolio-image&width=' . $thumb_width . '&height=' . $thumb_height . '&link=img&alt=' . the_title_attribute( array( 'echo' => 0 ) ) . '' );
 			
-			if ( $image != '' ) {
-		?>
+			if ( $image != '' ) { ?>
 			<a <?php echo $settings['rel']; ?> title="<?php echo $settings['caption']; ?>" href="<?php echo $settings['large']; ?>" class="thumb">
 				<?php echo $image; ?>
-            </a>
-			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-		<?php
-				// Output image gallery for lightbox
-            	if ( ! empty( $settings['gallery'] ) ) {
-                	foreach ( array_slice( $settings['gallery'], 1 ) as $img => $attachment ) {
-                		echo '<a ' . $settings['rel'] . ' title="' . $attachment['caption'] . '" href="' . $attachment['url'] . '" class="gallery-image"><img src="' . esc_url( $attachment['url'] ) . '" alt="' . esc_attr( $attachment['alt'] ) . '" width="0" height="0" /></a>' . "\n";	                    
-                	}
-                }
+                        </a>
+			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2><?php
+                            // Output image gallery for lightbox
+                            if ( ! empty( $settings['gallery'] ) ) {
+                                foreach ( array_slice( $settings['gallery'], 1 ) as $img => $attachment ) {
+                                    echo '<a ' . $settings['rel'] . ' title="' . $attachment['caption'] . '" href="' . $attachment['url'] . '" class="gallery-image"><img src="' . esc_url( $attachment['url'] ) . '" alt="' . esc_attr( $attachment['alt'] ) . '" width="0" height="0" /></a>' . "\n";	                    
+                                }
+                            }
 			} // End IF Statement
 		?>
 		</div><!--/.group .post .portfolio-img-->

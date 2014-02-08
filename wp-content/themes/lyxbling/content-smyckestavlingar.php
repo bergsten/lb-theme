@@ -71,7 +71,13 @@ if ( 'content' == $settings['post_content'] || is_single() ) {
     //do_shortcode( '[button color="pink"]Läs mer &raquo;[/button]' );
     ?>
     
-    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading', 'woothemes' ); ?> om tävlingen &raquo;</div>
+    <div class="lb-button right" data-url="<?php echo($article_url); ?>"><?php _e( 'Continue Reading', 'woothemes' ); ?> om tävlingen &raquo;</div><?php
+        $affiliate_data = lb_get_affiliate_data($post->ID);
+        
+        if(!empty($affiliate_data['affiliate_impression_tracking'])) {
+            echo($affiliate_data['affiliate_impression_tracking']);
+        } ?>
+
     <?php
 }
 if ( 'content' == $settings['post_content'] || is_singular() ) wp_link_pages( $page_link_args );
