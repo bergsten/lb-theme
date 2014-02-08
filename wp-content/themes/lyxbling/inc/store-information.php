@@ -14,12 +14,12 @@
 function lb_display_below_post_info() {
     $post_id = get_the_ID();
     $post_type = get_post_type();
-    $link_button = lb_get_link_button($post_id);
+    //$link_button = lb_get_link_button($post_id);
     
     if(is_single() || is_page()) {
         switch($post_type) {
             case 'smyckesbutiker':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 echo(lb_get_rabattkoder($post_id));
                 echo(lb_get_competitions($post_id));
                 echo(lb_get_trust_symbols($post_id));
@@ -28,29 +28,29 @@ function lb_display_below_post_info() {
                 echo(lb_get_payment_options($post_id));
                 //echo(lb_get_freight($post_id));
                 echo(lb_get_brands_sold_by_store($post_id));
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             case 'smyckesvarumarken':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 echo(lb_get_facts_contact($post_id));
                 echo(lb_get_social_media_links($post_id));
                 echo(lb_get_stores_selling_brand($post_id));
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             case 'presenttips':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             case 'smyckesevent':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             case 'smyckeserbjudanden':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             case 'smyckestavlingar':
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
             default:
-                echo($link_button);
+                echo(lb_get_link_button($post_id));
                 break;
         }
         

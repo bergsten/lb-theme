@@ -139,26 +139,31 @@ function lb_get_affiliate_data($post_id = NULL) {
                 $affiliate_data_array['affiliate_url'] = 'http://clk.tradedoubler.com/click?p=' . $program_id . '&a=' . $site_id . '&g=' . $ad_id . ('' != trim($non_affiliate_target_url)?'&url=' . $non_affiliate_target_url:'');
                 // Problem with output when using javascript code below:
                 //$impression_tracking_javascript = '<script type="text/javascript">var uri = \'http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')\' + new String (Math.random()).substring (2, 11);document.write(\'<img src="\'+uri +\'">\');</script>';
+                $impression_tracking_javascript = '';
                 $impression_tracking_image = '<img src="http://impse.tradedoubler.com/imp?type(inv)g(' . $ad_id . ')a(' . $site_id . ')" width="0" height="0" />';
-                $affiliate_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
+                
                 break;
             case 'adrecord':
                 $affiliate_data_array['affiliate_url'] = 'http://click.adrecord.com/?p=' . $program_id . '&c=' . $site_id . ('' != trim($non_affiliate_target_url)?'&url=' . $non_affiliate_target_url:'');
-                $affiliate_data_array['affiliate_impression_tracking'] = '';
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '';
                 break;
             case 'double':
                 //http://track.double.net/click/?channel=49931&ad=22883&epi=EPI&epi2=EPI2" style="background:url(http://track.double.net/display.gif?channel=49931&ad=22883&epi=EPI&epi2=EPI2) no-repeat;" target="_blank">Cocoo.se - Nordens st&#246;rsta n&#228;tbutik f&#246;r smycken</a>
                 $affiliate_data_array['affiliate_url'] = 'http://track.double.net/click/?channel=' . $program_id . '&ad=' . $ad_id . ('' != trim($non_affiliate_target_url)?'&url=' . $non_affiliate_target_url:'');
-                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '" width="0" height="0" />';
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '<img src="http://track.double.net/display.gif?channel=' . $program_id . '&ad=' . $ad_id . '" width="0" height="0" />';
                 break;
             case 'affiliator':
                 $affiliate_data_array['affiliate_url'] = 'http://click.affiliator.com/click/a/' . $ad_id . '/b/0/w/' . $site_id . '/p/' . $program_id . '/' . ('' != trim($non_affiliate_target_url)?'direct_link/' . $non_affiliate_target_url:'');
-                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '<img src="http://imp.affiliator.com/imp.php?a=' . $ad_id . '&b=0&w=' . $site_id . '&p=' . $program_id . '" width="0" height="0" />';
                 //http://imp.affiliator.com/imp.php?a=1159&b=8747&w=36046&p=276
                 break;
             case 'adsettings':
                 $affiliate_data_array['affiliate_url'] = 'http://www.adsettings.com/scripts/reg_click.php?aid=' . $ad_id . '&pid=' . $program_id . ('' != trim($non_affiliate_target_url)?'&url=' . $non_affiliate_target_url:'');
-                $affiliate_data_array['affiliate_impression_tracking'] = '<img src="http://www.adsettings.com/scripts/gen_space_img.php?aid=' . $ad_id . '&pid=' . $program_id . '" width="0" height="0" />';
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '<img src="http://www.adsettings.com/scripts/gen_space_img.php?aid=' . $ad_id . '&pid=' . $program_id . '" width="0" height="0" />';
                 //http://www.adsettings.com/scripts/reg_click.php?aid=2560&pid=23718
                 //http://www.adsettings.com/scripts/gen_space_img.php?aid=2560&pid=23718
                 break;
@@ -170,12 +175,23 @@ function lb_get_affiliate_data($post_id = NULL) {
                 break;
             case 'zanox':
                 $affiliate_data_array['affiliate_url'] = 'http://ad.zanox.com/ppc/?' . $ad_id . ('' != trim($non_affiliate_target_url)?'&ulp=' . $non_affiliate_target_url:'');
-                $affiliate_data_array['affiliate_impression_tracking'] = '';
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '';
                 //http://ad.zanox.com/ppc/?27051148C2094246278&ulp=[[%2Faccessoarer-dam-smycken%2F]]
                 break;
             default:
                 break;
         }
+        
+        // Only show impression tracking image and javascript if not already shown on a page.
+        global $is_impression_tracking_set;
+        if($is_impression_tracking_set[$butik_post_id]) {
+            $affiliate_data_array['affiliate_impression_tracking'] = '';
+        } else {
+            $affiliate_data_array['affiliate_impression_tracking'] = $impression_tracking_javascript . $impression_tracking_image;
+            $is_impression_tracking_set[$butik_post_id] = true;
+        }
+        
     }
     
     return $affiliate_data_array;
@@ -324,11 +340,8 @@ function lb_get_link($post_id = NULL, $anchor_text = '', $external = true) {
     
     $target_url = $link_data['target_url'];
     
-    if(isset($link_data['affiliate_url'])) {
-        $target_url = $link_data['affiliate_url'];
-    }
-    
     if(true == $link_data['external']) {
+        $target_url = lb_get_external_link_url($post_id);
         $rel_external = ' rel="external" ';
     }
     

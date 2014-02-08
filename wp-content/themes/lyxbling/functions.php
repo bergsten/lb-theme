@@ -2,6 +2,14 @@
 /*
  * See canvas hooks and filters at http://woothemes.zendesk.com/entries/22533468-Canvas-Hook-Filter-Reference
  */
+global $is_impression_tracking_set;
+function lb_initialize_impression_tracking($post_id = NULL) {
+    if(!$post_id)
+        $post_id = get_the_ID();
+    
+    $is_impression_tracking_set[$post_id] = false;
+}
+add_action('init', 'lb_initialize_impression_tracking');
 
 require_once('inc/overrides.php');
 require_once('inc/links.php');
