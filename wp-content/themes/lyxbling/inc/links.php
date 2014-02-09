@@ -168,6 +168,11 @@ function lb_get_affiliate_data($post_id = NULL) {
                 //http://www.adsettings.com/scripts/gen_space_img.php?aid=2560&pid=23718
                 break;
             case 'adtraction':
+                $affiliate_data_array['affiliate_url'] = 'http://track.adtraction.com/t/t?a=' . $ad_id . '&as=' . $site_id . '&t=2&tk=1' . ('' != trim($non_affiliate_target_url)?'&url=' . $non_affiliate_target_url:'');
+                $impression_tracking_javascript = '';   //<script type="text/javascript" src="http://track.adtraction.com/t/t?as=' . $site_id . '&t=1&tk=0&trt=2" charset="UTF-8"></script>';
+                $impression_tracking_image = '';
+                //http://track.adtraction.com/t/t?a=1010647960&as=1050030987&t=2&tk=1&url=http://www.frogpearl.se/
+                //<script type="text/javascript" src="http://track.adtraction.com/t/t?as=1050030987&t=1&tk=0&trt=2" charset="ISO-8859-1"></script>
                 break;
             case 'affilinet':
                 break;
@@ -180,6 +185,8 @@ function lb_get_affiliate_data($post_id = NULL) {
                 //http://ad.zanox.com/ppc/?27051148C2094246278&ulp=[[%2Faccessoarer-dam-smycken%2F]]
                 break;
             default:
+                $impression_tracking_javascript = '';
+                $impression_tracking_image = '';
                 break;
         }
         
